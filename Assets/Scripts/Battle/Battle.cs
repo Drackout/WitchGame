@@ -39,7 +39,7 @@ public class Battle
     {
         LogBattlers();
 
-        while (!IsBattleOver())
+        while (!IsOver())
         {
             turnOrder[turnCounter].Act();
             turnCounter = (turnCounter + 1) % turnOrder.Count;
@@ -47,7 +47,7 @@ public class Battle
         }
     }
 
-    private bool IsBattleOver()
+    public bool IsOver()
     {
         if (Creatures.Select(c => c.Health).Sum() == 0)
             return true;

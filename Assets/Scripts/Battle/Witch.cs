@@ -43,6 +43,9 @@ public class Witch : Battler
             PlayCard(card);
         }
 
+        if (battle.IsOver())
+            return;
+
         if (hand.Count > 0)
         {
             cardIdx = player.DecideCard(battle);
