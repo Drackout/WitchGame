@@ -1,58 +1,73 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BattleEvents;
 
 public class Witch : Battler
 {
     public int MaxSlots { get; private set; }
     public int Slots { get; private set; }
     public int CardsPlayed { get; private set; }
+    public int Input { get; set; }
 
-    public IEnumerable<Card> Hand => hand;
+    public IList<Card> Hand => hand;
     public IEnumerable<Card> Discard => discard;
     public IEnumerable<Card> Deck => deck;
 
-    private IPlayer player;
     private IList<Card> deck;
     private IList<Card> hand;
     private IList<Card> discard;
 
     public Witch(string name, int maxHealth, IEnumerable<Card> cards,
-        int maxSlots, int startingSlots, IPlayer player) : base(name, maxHealth)
+        int maxSlots, int startingSlots) : base(name, maxHealth)
     {
         MaxSlots = maxSlots;
         Slots = startingSlots;
         CardsPlayed = 0;
-        this.player = player;
+        Input = 0;
 
         deck = new List<Card>(cards);
         hand = new List<Card>();
         discard = new List<Card>();
     }
 
-    public override void Act()
+    public override IEnumerable<BattleEvent> Act()
     {
-        RefillHand();
+        foreach (BattleEvent ev in RefillHand())
+        {
+            yield return ev;
+        }
 
         LogHand();
 
-        int cardIdx = player.DecideCard(battle);
+        yield return new InputRequestEvent(InputRequestType.Play);
+
+        battle.Logger.Log($"{Input}");
+        int cardIdx = Input;
         if (cardIdx >= 0)
         {
             Card card = hand[cardIdx];
-            PlayCard(card);
+            foreach (BattleEvent ev in PlayCard(card))
+            {
+                yield return ev;
+            }
         }
 
         if (battle.IsOver())
-            return;
+            yield break;
 
         if (hand.Count > 0)
         {
-            cardIdx = player.DecideCard(battle);
+            LogHand();
+            yield return new InputRequestEvent(InputRequestType.Play);
+            cardIdx = Input;
             if (cardIdx >= 0)
             {
                 Card card = hand[cardIdx];
-                PlayCard(card);
+                foreach (BattleEvent ev in PlayCard(card))
+                {
+                    yield return ev;
+                }
             }
         }
 
@@ -62,34 +77,37 @@ public class Witch : Battler
         CardsPlayed = 0;
     }
 
-    public override void Hurt(Attack attack)
+    public override BattleEvent Hurt(Attack attack)
     {
         int damage = attack.Power;
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"You took {damage} damage!");
+        return new DamageEvent(this, damage);
     }
 
-    private void PlayCard(Card card)
+    private IEnumerable<BattleEvent> PlayCard(Card card)
     {
         if (card.Type == CardType.Sword)
         {
-            int targetIdx = player.DecideTarget(battle);
+            yield return new InputRequestEvent(InputRequestType.Target);
+            int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
             battle.Logger.Log($"You used [{card}] on {target.Name}!");
 
-            Attack attack = new Attack(card.Power, card.Element,new string[] { "melee" });
-            target.Hurt(attack);
+            Attack attack = new Attack(card.Power, card.Element, new string[] { "melee" });
+            yield return target.Hurt(attack);
         }
         else if (card.Type == CardType.Spell)
         {
-            int targetIdx = player.DecideTarget(battle);
+            yield return new InputRequestEvent(InputRequestType.Target);
+            int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
             battle.Logger.Log($"You used [{card}] on {target.Name}!");
 
             Attack attack = new Attack(card.Power, card.Element, new string[] { "ranged" });
-            target.Hurt(attack);
+            yield return target.Hurt(attack);
         }
         else if (card.Type == CardType.Shield)
         {
@@ -103,9 +121,10 @@ public class Witch : Battler
         hand.Remove(card);
         discard.Add(card);
         CardsPlayed += 1;
+        yield return new CardEvent(card);
     }
 
-    private void RefillHand()
+    private IEnumerable<BattleEvent> RefillHand()
     {
         // While hand is not full...
         while (hand.Count < Slots)
@@ -128,6 +147,7 @@ public class Witch : Battler
             }
 
             hand.Add(deck[0]);
+            yield return new DrawEvent(deck[0]);
             deck.RemoveAt(0);
         }
     }

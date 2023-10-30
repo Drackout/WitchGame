@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BattleEvents;
 
 public class Battle
 {
@@ -35,13 +36,17 @@ public class Battle
         turnCounter = 0;
     }
 
-    public void Run()
+    public IEnumerable<BattleEvent> Run()
     {
         LogBattlers();
 
         while (!IsOver())
         {
-            turnOrder[turnCounter].Act();
+            IEnumerable<BattleEvent> turnIter = turnOrder[turnCounter].Act();
+            foreach (BattleEvent ev in turnIter)
+            {
+                yield return ev;
+            }
             turnCounter = (turnCounter + 1) % turnOrder.Count;
             LogBattlers();
         }

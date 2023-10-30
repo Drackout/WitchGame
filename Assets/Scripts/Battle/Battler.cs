@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BattleEvents;
 
 public abstract class Battler
 {
@@ -23,7 +24,7 @@ public abstract class Battler
         Health = MaxHealth;
     }
 
-    public abstract void Act();
+    public abstract IEnumerable<BattleEvent> Act();
 
-    public abstract void Hurt(Attack attack);
+    public abstract BattleEvent Hurt(Attack attack);
 }

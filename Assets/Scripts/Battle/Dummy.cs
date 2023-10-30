@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BattleEvents;
 
 public class Dummy : Creature
 {
@@ -7,16 +8,18 @@ public class Dummy : Creature
     {
     }
 
-    public override void Act()
+    public override IEnumerable<BattleEvent> Act()
     {
         battle.Logger.Log($"{Name} attacks you!");
-        battle.Witch.Hurt(new Attack(2, Element.None, new List<string>()));
+        BattleEvent ev = battle.Witch.Hurt(new Attack(2, Element.None, new List<string>()));
+        yield return ev;
     }
 
-    public override void Hurt(Attack attack)
+    public override BattleEvent Hurt(Attack attack)
     {
         int damage = attack.Power;
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"{Name} took {damage} damage!");
+        return new DamageEvent(this, damage);
     }
 }
