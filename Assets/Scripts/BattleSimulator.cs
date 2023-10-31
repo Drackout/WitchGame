@@ -61,9 +61,9 @@ public class BattleSimulator : MonoBehaviour
                     {
                         Debug.Log("[DEBUG] Choose a target");
                     }
+                    input = -1;
                     yield return new WaitUntil(() => input != -1);
                     battle.Witch.Input = input;
-                    input = -1;
                     break;
                 case DrawEvent ev:
                     ShowHand(battle);
