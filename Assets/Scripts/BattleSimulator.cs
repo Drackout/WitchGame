@@ -11,11 +11,17 @@ public class BattleSimulator : MonoBehaviour
 {
     [SerializeField] private Button button;
     [SerializeField] private GameObject cardContainer;
+    [SerializeField] private Slider playerHealthBar;
+    [SerializeField] private GameObject creatureContainer;
+
+    private IDictionary<Battler, UICreature> creatureElements;
 
     private int input = -1;
 
     private void Start()
     {
+        creatureElements = new Dictionary<Battler, UICreature>();
+
         IList<Card> cards = new List<Card>
         {
             new Card(CardType.Sword, Element.Fire, 3),
@@ -28,12 +34,19 @@ public class BattleSimulator : MonoBehaviour
 
         IList<Creature> creatures = new List<Creature>
         {
-            new Dummy("Dummy", 10, Element.None)
+            new Dummy("Dummy", 10, Element.Grass)
         };
 
         ILogger logger = new UnityLogger();
 
         Battle battle = new Battle(witch, creatures, logger);
+
+        for (int i = 0; i < battle.Creatures.Count; i++)
+        {
+            Battler c = battle.Creatures[i];
+            Transform cc = creatureContainer.transform.GetChild(i);
+            creatureElements[c] = cc.GetComponent<UICreature>();
+        }
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
@@ -72,6 +85,17 @@ public class BattleSimulator : MonoBehaviour
                 case CardEvent ev:
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     ShowHand(battle);
+                    break;
+                case DamageEvent ev:
+                    if (ev.Target == battle.Witch)
+                    {
+                        playerHealthBar.value = (float)battle.Witch.Health / battle.Witch.MaxHealth;
+                    }
+                    else
+                    {
+                        float health = (float)ev.Target.Health / ev.Target.MaxHealth;
+                        creatureElements[ev.Target].Health = health;
+                    }
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:

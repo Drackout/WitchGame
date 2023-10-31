@@ -87,9 +87,14 @@ public class Witch : Battler
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
     {
+        hand.Remove(card);
+        discard.Add(card);
+        CardsPlayed += 1;
+
         if (card.Type == CardType.Sword)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
+            yield return new CardEvent(card);
             int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
@@ -101,6 +106,7 @@ public class Witch : Battler
         else if (card.Type == CardType.Spell)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
+            yield return new CardEvent(card);
             int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
@@ -111,17 +117,14 @@ public class Witch : Battler
         }
         else if (card.Type == CardType.Shield)
         {
+            yield return new CardEvent(card);
             battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
         }
         else if (card.Type == CardType.Heal)
         {
+            yield return new CardEvent(card);
             battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
         }
-
-        hand.Remove(card);
-        discard.Add(card);
-        CardsPlayed += 1;
-        yield return new CardEvent(card);
     }
 
     private IEnumerable<BattleEvent> RefillHand()
