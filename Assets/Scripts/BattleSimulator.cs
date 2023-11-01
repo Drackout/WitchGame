@@ -14,6 +14,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private GameObject creatureContainer;
 
+    private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
 
     private int input = -1;
@@ -34,25 +35,30 @@ public class BattleSimulator : MonoBehaviour
 
         IList<Creature> creatures = new List<Creature>
         {
-            new Dummy("Dummy", 10, Element.Grass)
+            new Dummy("Dummy 1", 10, Element.Grass),
+            new Dummy("Dummy 2", 15, Element.Fire),
+            new Dummy("Dummy 3", 10, Element.Water)
         };
 
         ILogger logger = new UnityLogger();
 
-        Battle battle = new Battle(witch, creatures, logger);
+        battle = new Battle(witch, creatures, logger);
 
         for (int i = 0; i < battle.Creatures.Count; i++)
         {
+            int iCopy = i;
             Battler c = battle.Creatures[i];
             Transform cc = creatureContainer.transform.GetChild(i);
             creatureElements[c] = cc.GetComponent<UICreature>();
+            creatureElements[c].TargetButton.onClick.AddListener(() => HandleSelection(iCopy));
         }
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             int iCopy = i;
             Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
-            b.onClick.AddListener(() => HandleCardSelect(iCopy));
+            b.onClick.AddListener(() => HandleSelection(iCopy));
+            b.interactable = false;
         }
         StartCoroutine(RunBattle(battle));
     }
@@ -69,14 +75,26 @@ public class BattleSimulator : MonoBehaviour
                     if (ev.Type == InputRequestType.Play)
                     {
                         Debug.Log("[DEBUG] Choose a card");
+                        ToggleCards(true);
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
                         Debug.Log("[DEBUG] Choose a target");
+                        ToggleTargets(true);
                     }
                     input = -1;
                     yield return new WaitUntil(() => input != -1);
                     battle.Witch.Input = input;
+                    if (ev.Type == InputRequestType.Play)
+                    {
+                        Debug.Log("[DEBUG] Choose a card");
+                        ToggleCards(false);
+                    }
+                    else if (ev.Type == InputRequestType.Target)
+                    {
+                        Debug.Log("[DEBUG] Choose a target");
+                        ToggleTargets(false);
+                    }
                     break;
                 case DrawEvent ev:
                     ShowHand(battle);
@@ -127,7 +145,25 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
-    private void HandleCardSelect(int index)
+    private void ToggleCards(bool state)
+    {
+        for (int i = 0; i < cardContainer.transform.childCount; i++)
+        {
+            Transform card = cardContainer.transform.GetChild(i);
+            Button b = card.GetComponent<Button>();
+            b.interactable = state;
+        }
+    }
+
+    private void ToggleTargets(bool state)
+    {
+        foreach (KeyValuePair<Battler, UICreature> item in creatureElements)
+        {
+            item.Value.TargetButton.interactable = state;
+        }
+    }
+
+    private void HandleSelection(int index)
     {
         input = index;
     }

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UICreature : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Button targetButton;
+
+    public Button TargetButton => targetButton;
 
     public float Health
     {
@@ -13,5 +16,10 @@ public class UICreature : MonoBehaviour
         {
             healthBar.value = value;
         }
+    }
+
+    private void Awake()
+    {
+        targetButton.interactable = false;
     }
 }
