@@ -9,6 +9,7 @@ public class Witch : Battler
     public int Slots { get; private set; }
     public int CardsPlayed { get; private set; }
     public int Input { get; set; }
+    public bool InfiniteHealth { get; set; }
 
     public IList<Card> Hand => hand;
     public IEnumerable<Card> Discard => discard;
@@ -80,6 +81,10 @@ public class Witch : Battler
     public override BattleEvent Hurt(Attack attack)
     {
         int damage = attack.Power;
+        if (InfiniteHealth)
+        {
+            damage = 0;
+        }
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"You took {damage} damage!");
         return new DamageEvent(this, damage);

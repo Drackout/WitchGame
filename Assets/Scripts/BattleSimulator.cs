@@ -13,6 +13,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject cardContainer;
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private GameObject creatureContainer;
+    [SerializeField] private TMP_Text infiniteHealthText;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -166,5 +167,14 @@ public class BattleSimulator : MonoBehaviour
     private void HandleSelection(int index)
     {
         input = index;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("[Cheat] Infinite Health"))
+        {
+            battle.Witch.InfiniteHealth = !battle.Witch.InfiniteHealth;
+            infiniteHealthText.text = $"Infinite Health: {battle.Witch.InfiniteHealth}";
+        }
     }
 }
