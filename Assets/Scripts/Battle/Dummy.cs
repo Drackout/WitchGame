@@ -17,7 +17,7 @@ public class Dummy : Creature
 
     public override BattleEvent Hurt(Attack attack)
     {
-        int damage = attack.Power;
+        int damage = DamageTaken(attack);
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"{Name} took {damage} damage!");
         return new DamageEvent(this, damage);
