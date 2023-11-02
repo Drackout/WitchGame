@@ -12,8 +12,8 @@ public class Witch : Battler
     public bool InfiniteHealth { get; set; }
 
     public IList<Card> Hand => hand;
-    public IEnumerable<Card> DiscardPile => discardPile;
-    public IEnumerable<Card> Deck => deck;
+    public IList<Card> DiscardPile => discardPile;
+    public IList<Card> Deck => deck;
 
     private IList<Card> deck;
     private IList<Card> hand;
@@ -142,26 +142,36 @@ public class Witch : Battler
         // While hand is not full...
         while (hand.Count < Slots)
         {
-            // If deck is empty...
-            if (deck.Count == 0)
-            {
-                // If discard is not empty, shuffle discard and make it
-                // the new deck
-                if (discardPile.Count > 0)
-                {
-                    battle.Rand.Shuffle(discardPile);
-                    foreach (Card c in discardPile)
-                        deck.Add(c);
-                    discardPile.Clear();
-                }
-                // Deck and discard empty, no more cards
-                else
-                    break;
-            }
+            RefillDeck();
 
-            hand.Add(deck[0]);
-            yield return new DrawEvent(deck[0]);
-            deck.RemoveAt(0);
+            if (deck.Count > 0)
+            {
+                Card c = deck[0];
+                hand.Add(c);
+                deck.RemoveAt(0);
+                yield return new DrawEvent(c);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    private void RefillDeck()
+    {
+        // If deck is empty...
+        if (deck.Count == 0)
+        {
+            // If discard is not empty, shuffle discard and make it
+            // the new deck
+            if (discardPile.Count > 0)
+            {
+                battle.Rand.Shuffle(discardPile);
+                foreach (Card c in discardPile)
+                    deck.Add(c);
+                discardPile.Clear();
+            }
         }
     }
 

@@ -14,6 +14,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private GameObject creatureContainer;
     [SerializeField] private TMP_Text infiniteHealthText;
+    [SerializeField] private TMP_Text drawPileTotalText;
+    [SerializeField] private TMP_Text discardPileTotalText;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -152,6 +154,8 @@ public class BattleSimulator : MonoBehaviour
                 cardButton.gameObject.SetActive(false);
             }
         }
+        drawPileTotalText.text = $"{battle.Witch.Deck.Count}";
+        discardPileTotalText.text = $"{battle.Witch.DiscardPile.Count}";
     }
 
     private void ToggleCards(bool state)
