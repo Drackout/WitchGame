@@ -114,6 +114,10 @@ public class BattleSimulator : MonoBehaviour
                     {
                         float health = (float)ev.Target.Health / ev.Target.MaxHealth;
                         creatureElements[ev.Target].Health = health;
+                        if (ev.Target.Health == 0)
+                        {
+                            creatureElements[ev.Target].gameObject.SetActive(false);
+                        }
                     }
                     yield return new WaitForSeconds(2.0f);
                     break;
