@@ -8,7 +8,7 @@ public class Witch : Battler
     public int MaxSlots { get; private set; }
     public int Slots { get; private set; }
     public int CardsPlayed { get; private set; }
-    public int Input { get; set; }
+    public InputResponse Input { get; set; }
     public bool InfiniteHealth { get; set; }
 
     public IList<Card> Hand => hand;
@@ -25,7 +25,7 @@ public class Witch : Battler
         MaxSlots = maxSlots;
         Slots = startingSlots;
         CardsPlayed = 0;
-        Input = 0;
+        Input = new InputResponse();
 
         deck = new List<Card>(cards);
         hand = new List<Card>();
@@ -34,38 +34,49 @@ public class Witch : Battler
 
     public override IEnumerable<BattleEvent> Act()
     {
+        int actionsDone = 0;
+
         foreach (BattleEvent ev in RefillHand())
         {
             yield return ev;
         }
 
-        yield return new InputRequestEvent(InputRequestType.Play);
-
-        battle.Logger.Log($"{Input}");
-        int cardIdx = Input;
-        if (cardIdx >= 0)
+        while (actionsDone < 2)
         {
-            Card card = hand[cardIdx];
-            foreach (BattleEvent ev in PlayCard(card))
-            {
-                yield return ev;
-            }
-        }
-
-        if (battle.IsOver())
-            yield break;
-
-        if (hand.Count > 0)
-        {
-            LogHand();
             yield return new InputRequestEvent(InputRequestType.Play);
-            cardIdx = Input;
-            if (cardIdx >= 0)
+
+            if (Input.Intention == Intention.Play)
             {
-                Card card = hand[cardIdx];
-                foreach (BattleEvent ev in PlayCard(card))
+                if (CardsPlayed >= 2)
                 {
-                    yield return ev;
+                    battle.Logger.Log("You can only play up to 2 cards per turn!");
+                }
+                else
+                {
+                    int cardIdx = Input.Selection;
+                    Card card = hand[cardIdx];
+                    foreach (BattleEvent ev in PlayCard(card))
+                    {
+                        yield return ev;
+                    }
+
+                    if (battle.IsOver())
+                    {
+                        break;
+                    }
+
+                    actionsDone += 1;
+                }
+            }
+            else if (Input.Intention == Intention.EndTurn)
+            {
+                if (CardsPlayed <= 0)
+                {
+                    battle.Logger.Log("You must play at least 1 card!");
+                }
+                else
+                {
+                    break;
                 }
             }
         }
@@ -105,7 +116,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
-            int targetIdx = Input;
+            int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
             battle.Logger.Log($"You used [{card}] on {target.Name}!");
@@ -117,7 +128,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
-            int targetIdx = Input;
+            int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
             battle.Logger.Log($"You used [{card}] on {target.Name}!");

@@ -3190,6 +3190,7 @@ MonoBehaviour:
   cardContainer: {fileID: 1001960177}
   playerHealthBar: {fileID: 1291414215}
   creatureContainer: {fileID: 132391313}
+  endTurnButton: {fileID: 963290059}
   infiniteHealthText: {fileID: 1224018431}
   drawPileTotalText: {fileID: 145472615}
   discardPileTotalText: {fileID: 1684519397}

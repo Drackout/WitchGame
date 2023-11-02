@@ -13,6 +13,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject cardContainer;
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private GameObject creatureContainer;
+    [SerializeField] private Button endTurnButton;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
@@ -20,7 +21,7 @@ public class BattleSimulator : MonoBehaviour
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
 
-    private int input = -1;
+    private InputResponse input;
 
     private void Start()
     {
@@ -63,6 +64,10 @@ public class BattleSimulator : MonoBehaviour
             b.onClick.AddListener(() => HandleSelection(iCopy));
             b.interactable = false;
         }
+
+        endTurnButton.onClick.AddListener(HandleEndTurnClick);
+        endTurnButton.interactable = false;
+
         StartCoroutine(RunBattle(battle));
     }
 
@@ -79,23 +84,23 @@ public class BattleSimulator : MonoBehaviour
                     {
                         Debug.Log("[DEBUG] Choose a card");
                         ToggleCards(true);
+                        endTurnButton.interactable = true;
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
                         Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
                     }
-                    input = -1;
-                    yield return new WaitUntil(() => input != -1);
+                    input = new InputResponse();
+                    yield return new WaitUntil(() => input.Intention != Intention.None);
                     battle.Witch.Input = input;
                     if (ev.Type == InputRequestType.Play)
                     {
-                        Debug.Log("[DEBUG] Choose a card");
                         ToggleCards(false);
+                        endTurnButton.interactable = false;
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
-                        Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(false);
                     }
                     break;
@@ -178,7 +183,12 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleSelection(int index)
     {
-        input = index;
+        input = new InputResponse(Intention.Play, index);
+    }
+
+    private void HandleEndTurnClick()
+    {
+        input = new InputResponse(Intention.EndTurn);
     }
 
     private void Update()
