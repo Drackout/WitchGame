@@ -46,7 +46,10 @@ public class Battle
             foreach (BattleEvent ev in turnIter)
             {
                 yield return ev;
+                RetireDeadCreatures();
             }
+
+
             turnCounter = (turnCounter + 1) % turnOrder.Count;
             LogBattlers();
         }
@@ -70,5 +73,10 @@ public class Battle
             .Select(cr => $"{cr.Name} [HP: {cr.Health}]"));
         string text = witch + " | " + creatures;
         Logger.Log($"Status: {text}");
+    }
+
+    private void RetireDeadCreatures()
+    {
+        turnOrder = new List<Battler>(turnOrder.Where(b => b.Health > 0));
     }
 }
