@@ -12,12 +12,12 @@ public class Witch : Battler
     public bool InfiniteHealth { get; set; }
 
     public IList<Card> Hand => hand;
-    public IEnumerable<Card> Discard => discard;
+    public IEnumerable<Card> DiscardPile => discardPile;
     public IEnumerable<Card> Deck => deck;
 
     private IList<Card> deck;
     private IList<Card> hand;
-    private IList<Card> discard;
+    private IList<Card> discardPile;
 
     public Witch(string name, int maxHealth, IEnumerable<Card> cards,
         int maxSlots, int startingSlots) : base(name, maxHealth)
@@ -29,7 +29,7 @@ public class Witch : Battler
 
         deck = new List<Card>(cards);
         hand = new List<Card>();
-        discard = new List<Card>();
+        discardPile = new List<Card>();
     }
 
     public override IEnumerable<BattleEvent> Act()
@@ -38,8 +38,6 @@ public class Witch : Battler
         {
             yield return ev;
         }
-
-        LogHand();
 
         yield return new InputRequestEvent(InputRequestType.Play);
 
@@ -75,6 +73,14 @@ public class Witch : Battler
         Slots = CardsPlayed > 1 ? Slots - 1 : Slots + 1;
         Slots = Slots > MaxSlots ? MaxSlots : Slots;
 
+        // Throw out remaining cards
+        while (hand.Count > 0)
+        {
+            Card c = hand[0];
+            Discard(hand[0]);
+            yield return new DiscardEvent(c, 0);
+        }
+
         CardsPlayed = 0;
     }
 
@@ -92,14 +98,13 @@ public class Witch : Battler
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
     {
-        hand.Remove(card);
-        discard.Add(card);
+        Discard(card);
         CardsPlayed += 1;
 
         if (card.Type == CardType.Sword)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
-            yield return new CardEvent(card);
+            yield return new PlayCardEvent(card);
             int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
@@ -111,7 +116,7 @@ public class Witch : Battler
         else if (card.Type == CardType.Spell)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
-            yield return new CardEvent(card);
+            yield return new PlayCardEvent(card);
             int targetIdx = Input;
             Battler target = battle.Creatures[targetIdx];
 
@@ -122,12 +127,12 @@ public class Witch : Battler
         }
         else if (card.Type == CardType.Shield)
         {
-            yield return new CardEvent(card);
+            yield return new PlayCardEvent(card);
             battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
         }
         else if (card.Type == CardType.Heal)
         {
-            yield return new CardEvent(card);
+            yield return new PlayCardEvent(card);
             battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
         }
     }
@@ -142,12 +147,12 @@ public class Witch : Battler
             {
                 // If discard is not empty, shuffle discard and make it
                 // the new deck
-                if (discard.Count > 0)
+                if (discardPile.Count > 0)
                 {
-                    battle.Rand.Shuffle(discard);
-                    foreach (Card c in discard)
+                    battle.Rand.Shuffle(discardPile);
+                    foreach (Card c in discardPile)
                         deck.Add(c);
-                    discard.Clear();
+                    discardPile.Clear();
                 }
                 // Deck and discard empty, no more cards
                 else
@@ -158,6 +163,12 @@ public class Witch : Battler
             yield return new DrawEvent(deck[0]);
             deck.RemoveAt(0);
         }
+    }
+
+    private void Discard(Card card)
+    {
+        hand.Remove(card);
+        discardPile.Add(card);
     }
 
     private void LogHand()

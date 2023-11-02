@@ -101,9 +101,13 @@ public class BattleSimulator : MonoBehaviour
                     ShowHand(battle);
                     yield return new WaitForSeconds(0.5f);
                     break;
-                case CardEvent ev:
+                case PlayCardEvent ev:
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     ShowHand(battle);
+                    break;
+                case DiscardEvent ev:
+                    ShowHand(battle);
+                    yield return new WaitForSeconds(0.5f);
                     break;
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)

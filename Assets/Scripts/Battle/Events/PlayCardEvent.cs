@@ -1,10 +1,10 @@
 namespace BattleEvents
 {
-    public class CardEvent : BattleEvent
+    public class PlayCardEvent : BattleEvent
     {
         public Card Card { get; }
 
-        public CardEvent(Card card)
+        public PlayCardEvent(Card card)
         {
             Card = card;
         }
