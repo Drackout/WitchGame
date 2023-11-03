@@ -7,6 +7,7 @@ public class Witch : Battler
 {
     public int MaxSlots { get; private set; }
     public int Slots { get; private set; }
+    public Shield Shield { get; private set; }
     public int CardsPlayed { get; private set; }
     public InputResponse Input { get; set; }
     public bool InfiniteHealth { get; set; }
@@ -26,6 +27,7 @@ public class Witch : Battler
         Slots = startingSlots;
         CardsPlayed = 0;
         Input = new InputResponse();
+        Shield = new Shield();
 
         deck = new List<Card>(cards);
         hand = new List<Card>();
@@ -97,6 +99,23 @@ public class Witch : Battler
 
     public override BattleEvent Hurt(Attack attack)
     {
+        if (Shield.Charges > 0)
+        {
+            int advantage = Battle.CompareElements(attack.Element, Shield.Element);
+            battle.Logger.Log($"[DEBUG] Checking shield - {attack.Element} vs {Shield.Element}");
+            if (advantage < 0)
+            {
+                int charges = Shield.Charges - 1;
+                Shield = new Shield(charges, Shield.Element);
+                battle.Logger.Log($"[DEBUG] Shield block! {Shield.Charges} charges remaining");
+                return new BlockEvent();
+            }
+            else
+            {
+                battle.Logger.Log($"[DEBUG] No block");
+            }
+        }
+
         int damage = attack.Power;
         if (InfiniteHealth)
         {
@@ -139,7 +158,9 @@ public class Witch : Battler
         else if (card.Type == CardType.Shield)
         {
             yield return new PlayCardEvent(card);
-            battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
+            Shield = new Shield(card.Power, card.Element);
+            battle.Logger.Log($"You used [{card}]! Got {Shield.Charges} charges of {Shield.Element} shield");
+            yield return new ShieldEvent(Shield);
         }
         else if (card.Type == CardType.Heal)
         {

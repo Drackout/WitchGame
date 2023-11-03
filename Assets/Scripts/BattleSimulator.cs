@@ -30,9 +30,11 @@ public class BattleSimulator : MonoBehaviour
         IList<Card> cards = new List<Card>
         {
             new Card(CardType.Sword, Element.Fire, 3),
+            new Card(CardType.Shield, Element.Water, 1),
             new Card(CardType.Spell, Element.Water, 2),
             new Card(CardType.Spell, Element.Grass, 2),
-            new Card(CardType.Heal, Element.Fire, 3)
+            new Card(CardType.Heal, Element.Fire, 3),
+            new Card(CardType.Shield, Element.Grass, 1)
         };
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
@@ -133,6 +135,10 @@ public class BattleSimulator : MonoBehaviour
                             creatureElements[ev.Target].gameObject.SetActive(false);
                         }
                     }
+                    yield return new WaitForSeconds(2.0f);
+                    break;
+                case BlockEvent ev:
+                    Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:
