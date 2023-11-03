@@ -51,9 +51,11 @@ public class BattleSimulator : MonoBehaviour
         for (int i = 0; i < battle.Creatures.Count; i++)
         {
             int iCopy = i;
-            Battler c = battle.Creatures[i];
+            Creature c = battle.Creatures[i];
             Transform cc = creatureContainer.transform.GetChild(i);
             creatureElements[c] = cc.GetComponent<UICreature>();
+            creatureElements[c].Health = c.Health;
+            creatureElements[c].Element = c.Element;
             creatureElements[c].TargetButton.onClick.AddListener(() => HandleSelection(iCopy));
         }
 
