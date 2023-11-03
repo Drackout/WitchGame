@@ -82,6 +82,7 @@ public class BattleSimulator : MonoBehaviour
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
+                        Debug.Log("A CARD WAS SELECTED");
                         Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
                     }
