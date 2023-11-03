@@ -13,6 +13,35 @@ public class Battle
     private IList<Battler> turnOrder;
     private int turnCounter;
 
+    public static int CompareElements(Element att, Element def)
+    {
+        if (att == Element.Fire)
+        {
+            if (def == Element.Water)
+                return -1;
+            else if (def == Element.Grass)
+                return 1;
+            return 0;
+        }
+        else if (att == Element.Water)
+        {
+            if (def == Element.Grass)
+                return -1;
+            else if (def == Element.Fire)
+                return 1;
+            return 0;
+        }
+        else if (att == Element.Grass)
+        {
+            if (def == Element.Fire)
+                return -1;
+            else if (def == Element.Water)
+                return 1;
+            return 0;
+        }
+        return 0;
+    }
+
     public Battle(Witch witch, IList<Creature> creatures, ILogger logger)
     {
         Witch = witch;
