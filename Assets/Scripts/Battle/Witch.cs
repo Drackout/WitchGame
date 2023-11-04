@@ -165,7 +165,10 @@ public class Witch : Battler
         else if (card.Type == CardType.Heal)
         {
             yield return new PlayCardEvent(card);
-            battle.Logger.Log($"You used [{card}]! Nothing happens... (yet)");
+            int restored = GetEffectiveHeal(card);
+            battle.Logger.Log($"[DEBUG] Healing for {restored}");
+            Health = Math.Min(MaxHealth, Health + restored);
+            yield return new HealEvent(card.Power);
         }
     }
 
@@ -188,6 +191,27 @@ public class Witch : Battler
                 break;
             }
         }
+    }
+
+    private int GetEffectiveHeal(Card card)
+    {
+        if (Shield.Charges <= 0)
+        {
+            return card.Power;
+        }
+
+        int advantage = Battle.CompareElements(card.Element, Shield.Element);
+        int restored = card.Power;
+        if (advantage > 0)
+        {
+            restored *= 2;
+        }
+        else if (advantage < 0)
+        {
+            restored /= 2;
+        }
+
+        return restored;
     }
 
     private void RefillDeck()
