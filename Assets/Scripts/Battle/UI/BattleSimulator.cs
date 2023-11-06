@@ -12,6 +12,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private GameObject cardContainer;
     [SerializeField] private Slider playerHealthBar;
+    [SerializeField] private UIShield playerShield;
     [SerializeField] private GameObject creatureContainer;
     [SerializeField] private Button endTurnButton;
     [SerializeField] private TMP_Text infiniteHealthText;
@@ -75,6 +76,8 @@ public class BattleSimulator : MonoBehaviour
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
+
+        playerShield.Shield = new Shield();
 
         StartCoroutine(RunBattle(battle));
     }
@@ -141,11 +144,16 @@ public class BattleSimulator : MonoBehaviour
                     }
                     yield return new WaitForSeconds(2.0f);
                     break;
+                case ShieldEvent ev:
+                    playerShield.Shield = battle.Witch.Shield;
+                    yield return new WaitForSeconds(2.0f);
+                    break;
                 case HealEvent ev:
                     playerHealthBar.value = (float)battle.Witch.Health / battle.Witch.MaxHealth;
                     break;
                 case BlockEvent ev:
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
+                    playerShield.Shield = battle.Witch.Shield;
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:
