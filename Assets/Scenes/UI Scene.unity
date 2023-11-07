@@ -4184,6 +4184,7 @@ MonoBehaviour:
   infiniteHealthText: {fileID: 1224018431}
   drawPileTotalText: {fileID: 145472615}
   discardPileTotalText: {fileID: 1684519397}
+  cardActionDialogPrefab: {fileID: -6523471175437217999, guid: a9fe9d150aaa2424c97480668a578557, type: 3}
 --- !u!1 &1996142449
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Witch : Battler
     public int CardsPlayed { get; private set; }
     public InputResponse Input { get; set; }
     public bool InfiniteHealth { get; set; }
+    public IList<Card> HeldCards { get; private set; }
 
     public IList<Card> Hand => hand;
     public IList<Card> DiscardPile => discardPile;
@@ -32,6 +33,7 @@ public class Witch : Battler
         deck = new List<Card>(cards);
         hand = new List<Card>();
         discardPile = new List<Card>();
+        HeldCards = new List<Card>();
     }
 
     public override IEnumerable<BattleEvent> Act()
@@ -43,7 +45,7 @@ public class Witch : Battler
             yield return ev;
         }
 
-        while (actionsDone < 2)
+        while (actionsDone < 3)
         {
             yield return new InputRequestEvent(InputRequestType.Play);
 
@@ -70,6 +72,20 @@ public class Witch : Battler
                     actionsDone += 1;
                 }
             }
+            else if (Input.Intention == Intention.Hold)
+            {
+                if (HeldCards.Count >= 1)
+                {
+                    battle.Logger.Log("You can only hold a single card!");
+                }
+                else
+                {
+                    int cardIdx = Input.Selection;
+                    HeldCards.Add(hand[cardIdx]);
+
+                    actionsDone += 1;
+                }
+            }
             else if (Input.Intention == Intention.EndTurn)
             {
                 if (CardsPlayed <= 0)
@@ -87,13 +103,22 @@ public class Witch : Battler
         Slots = Slots > MaxSlots ? MaxSlots : Slots;
 
         // Throw out remaining cards
-        while (hand.Count > 0)
+        int ptr = 0;
+        while (ptr < hand.Count)
         {
-            Card c = hand[0];
-            Discard(hand[0]);
-            yield return new DiscardEvent(c, 0);
+            Card c = hand[ptr];
+            if (!HeldCards.Contains(c))
+            {
+                Discard(c);
+                yield return new DiscardEvent(c, 0);
+            }
+            else
+            {
+                ptr++;
+            }
         }
 
+        HeldCards.Clear();
         CardsPlayed = 0;
     }
 

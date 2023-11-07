@@ -18,11 +18,14 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
+    [SerializeField] private CardActionsDialog cardActionDialogPrefab;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
 
     private InputResponse input;
+
+    private CardActionsDialog activeCardActionDialog;
 
     private void Start()
     {
@@ -63,14 +66,15 @@ public class BattleSimulator : MonoBehaviour
             creatureElements[c] = cc.GetComponent<UICreature>();
             creatureElements[c].Health = c.Health;
             creatureElements[c].Element = c.Element;
-            creatureElements[c].TargetButton.onClick.AddListener(() => HandleSelection(iCopy));
+            creatureElements[c].TargetButton.onClick.AddListener(
+                () => HandleSelection(iCopy));
         }
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             int iCopy = i;
             Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
-            b.onClick.AddListener(() => HandleSelection(iCopy));
+            b.onClick.AddListener(() => HandleCardClick(iCopy, b));
             b.interactable = false;
         }
 
@@ -205,9 +209,37 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
+    private void HandleCardClick(int index, Button cardButton)
+    {
+        CloseActiveDialog();
+
+        RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
+        activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
+            Quaternion.identity, transform);
+
+        activeCardActionDialog.OnPlay += () => HandleSelection(index);
+        activeCardActionDialog.OnHold += () => HandleHoldCard(index);
+        activeCardActionDialog.OnClose += CloseActiveDialog;
+    }
+
     private void HandleSelection(int index)
     {
+        CloseActiveDialog();
         input = new InputResponse(Intention.Play, index);
+    }
+
+    private void HandleHoldCard(int index)
+    {
+        CloseActiveDialog();
+        input = new InputResponse(Intention.Hold, index);
+    }
+
+    private void CloseActiveDialog()
+    {
+        if (activeCardActionDialog != null)
+        {
+            Destroy(activeCardActionDialog.gameObject);
+        }
     }
 
     private void HandleEndTurnClick()
