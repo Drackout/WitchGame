@@ -17,16 +17,4 @@ public static class RandomExtensions
         }
         return list;
     }
-
-    public static void writeScrollView(TextMeshProUGUI _svContent, ScrollRect _svScrollRect, string texto)
-    {
-        if (_svContent.text == "")
-            _svContent.text += texto;
-        else
-            _svContent.text += "\n"+texto;
-        // Force scroll down
-        _svScrollRect.verticalNormalizedPosition = 0 ;
-    }
-
-   
 }

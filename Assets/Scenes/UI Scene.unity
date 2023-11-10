@@ -3668,6 +3668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1308940617}
+  - component: {fileID: 1308940618}
   m_Layer: 5
   m_Name: BattleLog
   m_TagString: Untagged
@@ -3692,9 +3693,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -190, y: -220}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -157, y: -231}
+  m_SizeDelta: {x: 412, y: 100}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1308940618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308940616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2605d9ea2d9a8204e9e9ca71c176b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _svContent: {fileID: 310377415}
+  _svScrollRect: {fileID: 1912755561}
 --- !u!1 &1373283378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,8 +4803,7 @@ MonoBehaviour:
   drawPileTotalText: {fileID: 145472615}
   discardPileTotalText: {fileID: 1684519397}
   cardActionDialogPrefab: {fileID: -6523471175437217999, guid: a9fe9d150aaa2424c97480668a578557, type: 3}
-  _svContent: {fileID: 310377415}
-  _svScrollRect: {fileID: 1912755561}
+  battleLogger: {fileID: 1308940618}
 --- !u!1 &1996142449
 GameObject:
   m_ObjectHideFlags: 0

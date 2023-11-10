@@ -82,6 +82,7 @@ public class Witch : Battler
                 {
                     int cardIdx = Input.Selection;
                     HeldCards.Add(hand[cardIdx]);
+                    battle.Logger.Log($"{hand[cardIdx]} was held");
 
                     actionsDone += 1;
                 }
@@ -127,17 +128,17 @@ public class Witch : Battler
         if (Shield.Charges > 0)
         {
             int advantage = Battle.CompareElements(attack.Element, Shield.Element);
-            battle.Logger.Log($"[DEBUG] Checking shield - {attack.Element} vs {Shield.Element}");
+            battle.Logger.Log($"Checking shield - {attack.Element} vs {Shield.Element}");
             if (advantage < 0)
             {
                 int charges = Shield.Charges - 1;
                 Shield = new Shield(charges, Shield.Element);
-                battle.Logger.Log($"[DEBUG] Shield block! {Shield.Charges} charges remaining");
+                battle.Logger.Log($"Shield block! {Shield.Charges} charges remaining");
                 return new BlockEvent();
             }
             else
             {
-                battle.Logger.Log($"[DEBUG] No block");
+                battle.Logger.Log($"No block");
             }
         }
 
@@ -191,7 +192,7 @@ public class Witch : Battler
         {
             yield return new PlayCardEvent(card);
             int restored = GetEffectiveHeal(card);
-            battle.Logger.Log($"[DEBUG] Healing for {restored}");
+            battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
             yield return new HealEvent(card.Power);
         }
