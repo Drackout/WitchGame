@@ -19,6 +19,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
     [SerializeField] private CardActionsDialog cardActionDialogPrefab;
+    [SerializeField] private TextMeshProUGUI _svContent;
+    [SerializeField] private ScrollRect _svScrollRect;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -26,6 +28,9 @@ public class BattleSimulator : MonoBehaviour
     private InputResponse input;
 
     private CardActionsDialog activeCardActionDialog;
+
+    private string logText;
+    //private BattleLog bLog;
 
     private void Start()
     {
@@ -126,6 +131,8 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case PlayCardEvent ev:
                     Debug.Log($"[DEBUG] Played {ev.Card}");
+                    logText = $"Played {ev.Card}";
+                    WriteScrollView(logText);
                     ShowHand(battle);
                     break;
                 case DiscardEvent ev:
@@ -157,6 +164,8 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case BlockEvent ev:
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
+                    logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
+                    WriteScrollView(logText);
                     playerShield.Shield = battle.Witch.Shield;
                     yield return new WaitForSeconds(2.0f);
                     break;
@@ -253,6 +262,13 @@ public class BattleSimulator : MonoBehaviour
         {
             battle.Witch.InfiniteHealth = !battle.Witch.InfiniteHealth;
             infiniteHealthText.text = $"Infinite Health: {battle.Witch.InfiniteHealth}";
+            logText = $"Infinite Health is {battle.Witch.InfiniteHealth}";
+            WriteScrollView(logText);
         }
+    }
+    // check the statics
+    public void WriteScrollView(string text)
+    {
+        RandomExtensions.writeScrollView(_svContent, _svScrollRect, text);
     }
 }
