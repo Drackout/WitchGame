@@ -20,6 +20,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private TMP_Text discardPileTotalText;
     [SerializeField] private CardActionsDialog cardActionDialogPrefab;
     [SerializeField] private BattleLog battleLogger;
+    [SerializeField] private UISlots slots;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -87,6 +88,8 @@ public class BattleSimulator : MonoBehaviour
 
         playerShield.Shield = new Shield();
 
+        slots.Slots = battle.Witch.Slots;
+
         StartCoroutine(RunBattle(battle));
     }
 
@@ -136,6 +139,9 @@ public class BattleSimulator : MonoBehaviour
                 case DiscardEvent ev:
                     ShowHand(battle);
                     yield return new WaitForSeconds(0.5f);
+                    break;
+                case SlotsEvent ev:
+                    slots.Slots = ev.Current;
                     break;
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)

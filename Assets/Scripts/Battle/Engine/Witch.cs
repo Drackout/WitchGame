@@ -105,8 +105,13 @@ public class Witch : Battler
             }
         }
 
-        Slots = CardsPlayed > 1 ? Slots - 1 : Slots + 1;
-        Slots = Slots > MaxSlots ? MaxSlots : Slots;
+        // Update slots
+        int newSlots = CardsPlayed > 1 ? Slots - 1 : Slots + 1;
+        newSlots = newSlots > MaxSlots ? MaxSlots : newSlots;
+
+        yield return new SlotsEvent(Slots, newSlots);
+
+        Slots = newSlots;
 
         // Throw out remaining cards
         int ptr = 0;
