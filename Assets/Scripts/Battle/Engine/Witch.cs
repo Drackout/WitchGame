@@ -40,6 +40,7 @@ public class Witch : Battler
     {
         int actionsDone = 0;
 
+        // Refill hand
         foreach (BattleEvent ev in RefillHand())
         {
             yield return ev;
@@ -51,14 +52,18 @@ public class Witch : Battler
 
             if (Input.Intention == Intention.Play)
             {
+                Card card = hand[Input.Selection];
+
                 if (CardsPlayed >= 2)
                 {
                     battle.Logger.Log("You can only play up to 2 cards per turn!");
                 }
+                else if (HeldCards.Contains(card))
+                {
+                    battle.Logger.Log($"{card} is being held!");
+                }
                 else
                 {
-                    int cardIdx = Input.Selection;
-                    Card card = hand[cardIdx];
                     foreach (BattleEvent ev in PlayCard(card))
                     {
                         yield return ev;
@@ -82,7 +87,7 @@ public class Witch : Battler
                 {
                     int cardIdx = Input.Selection;
                     HeldCards.Add(hand[cardIdx]);
-                    battle.Logger.Log($"{hand[cardIdx]} was held");
+                    battle.Logger.Log($"{hand[cardIdx]} was held...");
 
                     actionsDone += 1;
                 }
