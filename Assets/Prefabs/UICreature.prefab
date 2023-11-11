@@ -686,6 +686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8370012030193549932}
+  maxHealthText: {fileID: 6038702719386150746}
+  currentHealthText: {fileID: 4672247339407269694}
   targetButton: {fileID: 9059452790292920610}
   elementImage: {fileID: 8764935160073583557}
   fireSprite: {fileID: 21300000, guid: 18e5246d6ca15674eb293b7e557cc6e2, type: 3}

@@ -69,7 +69,7 @@ public class BattleSimulator : MonoBehaviour
             Creature c = battle.Creatures[i];
             Transform cc = creatureContainer.transform.GetChild(i);
             creatureElements[c] = cc.GetComponent<UICreature>();
-            creatureElements[c].Health = c.Health;
+            creatureElements[c].SetHealth(c.Health, c.MaxHealth);
             creatureElements[c].Element = c.Element;
             creatureElements[c].TargetButton.onClick.AddListener(
                 () => HandleSelection(iCopy));
@@ -150,8 +150,7 @@ public class BattleSimulator : MonoBehaviour
                     }
                     else
                     {
-                        float health = (float)ev.Target.Health / ev.Target.MaxHealth;
-                        creatureElements[ev.Target].Health = health;
+                        creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
                         if (ev.Target.Health == 0)
                         {
                             creatureElements[ev.Target].gameObject.SetActive(false);
