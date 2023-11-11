@@ -11,7 +11,7 @@ public class BattleSimulator : MonoBehaviour
 {
     [SerializeField] private Button button;
     [SerializeField] private GameObject cardContainer;
-    [SerializeField] private Slider playerHealthBar;
+    [SerializeField] private ResourceBar playerHealthBar;
     [SerializeField] private UIShield playerShield;
     [SerializeField] private GameObject creatureContainer;
     [SerializeField] private Button endTurnButton;
@@ -89,6 +89,7 @@ public class BattleSimulator : MonoBehaviour
         playerShield.Shield = new Shield();
 
         slots.Slots = battle.Witch.Slots;
+        playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
         StartCoroutine(RunBattle(battle));
     }
@@ -146,7 +147,7 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
-                        playerHealthBar.value = (float)battle.Witch.Health / battle.Witch.MaxHealth;
+                        playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     }
                     else
                     {
@@ -163,7 +164,7 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
-                    playerHealthBar.value = (float)battle.Witch.Health / battle.Witch.MaxHealth;
+                    playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     break;
                 case BlockEvent ev:
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");

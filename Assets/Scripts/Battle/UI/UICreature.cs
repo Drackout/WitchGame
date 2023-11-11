@@ -5,11 +5,9 @@ using TMPro;
 
 public class UICreature : MonoBehaviour
 {
-    [SerializeField] private Slider healthBar;
-    [SerializeField] private TMP_Text maxHealthText;
-    [SerializeField] private TMP_Text currentHealthText;
     [SerializeField] private Button targetButton;
     [SerializeField] private Image elementImage;
+    [SerializeField] private ResourceBar healthBar;
     [SerializeField] private Sprite fireSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite grassSprite;
@@ -32,9 +30,7 @@ public class UICreature : MonoBehaviour
 
     public void SetHealth(int currentHealth, int maxHealth)
     {
-        maxHealthText.text = maxHealth.ToString();
-        currentHealthText.text = currentHealth.ToString();
-        healthBar.value = (float)currentHealth / maxHealth;
+        healthBar.Set(currentHealth, maxHealth);
     }
 
     private void Awake()
