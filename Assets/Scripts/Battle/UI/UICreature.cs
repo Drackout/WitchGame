@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.Animations;
+using Unity.VisualScripting;
 
 public class UICreature : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class UICreature : MonoBehaviour
     [SerializeField] private Sprite fireSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite grassSprite;
+    
+    private Animator Animator;
 
     public Button TargetButton => targetButton;
 
@@ -36,5 +40,11 @@ public class UICreature : MonoBehaviour
     private void Awake()
     {
         targetButton.interactable = false;
+        Animator = gameObject.GetComponentInChildren<Animator>();
+    }
+
+    public void playAnimation(string animString)
+    {
+        Animator.SetTrigger(animString);
     }
 }

@@ -278,4 +278,5 @@ public class Witch : Battler
         string text = string.Join(" | ", hand.Select(c => c.ToString()));
         battle.Logger.Log("Hand: " + text);
     }
+
 }

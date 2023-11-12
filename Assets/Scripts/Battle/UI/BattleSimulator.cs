@@ -30,12 +30,14 @@ public class BattleSimulator : MonoBehaviour
     private CardActionsDialog activeCardActionDialog;
 
     private string logText;
-    //private BattleLog bLog;
+    
+    private Animator Animator;
 
     private void Start()
     {
         creatureElements = new Dictionary<Battler, UICreature>();
         System.Random rnd = new System.Random();
+        Animator = gameObject.GetComponentInChildren<Animator>();
 
         IList<Card> cards = new List<Card>
         {
@@ -148,10 +150,13 @@ public class BattleSimulator : MonoBehaviour
                     if (ev.Target == battle.Witch)
                     {
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
+                        playAnimation("Hurt");
+                        yield return new WaitForSeconds(1.0f);
                     }
                     else
                     {
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
+                        creatureElements[ev.Target].playAnimation("Hurt");
                         if (ev.Target.Health == 0)
                         {
                             creatureElements[ev.Target].gameObject.SetActive(false);
@@ -267,5 +272,10 @@ public class BattleSimulator : MonoBehaviour
             infiniteHealthText.text = $"Infinite Health: {battle.Witch.InfiniteHealth}";
             logText = $"Infinite Health is {battle.Witch.InfiniteHealth}";
         }
+    }
+
+    public void playAnimation(string animString)
+    {
+        Animator.SetTrigger(animString);
     }
 }

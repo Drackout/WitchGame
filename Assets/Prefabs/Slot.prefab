@@ -88,3 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6546257f5218042b5a8657f9bbe9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  images: []
+  lockedSlotAlpha: 0.2
