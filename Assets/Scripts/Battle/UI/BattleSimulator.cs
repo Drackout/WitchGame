@@ -39,6 +39,7 @@ public class BattleSimulator : MonoBehaviour
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
 
+
         IList<Card> cards = new List<Card>
         {
             new Card(CardType.Sword, Element.Fire, 3),
@@ -197,7 +198,9 @@ public class BattleSimulator : MonoBehaviour
             {
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
-                cardButton.GetComponentInChildren<TMP_Text>().text = c.ToString();
+                //cardButton.GetComponentInChildren<TMP_Text>().text = c.ToString();
+                UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
+                uicard.Create(c);
             }
             else
             {
