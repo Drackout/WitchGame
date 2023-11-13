@@ -9,102 +9,106 @@ using TMPro;
 
 public class UICardCreation : MonoBehaviour
 {
-    [SerializeField] private object fireBook;
-    [SerializeField] private object fireSword;
-    [SerializeField] private object fireHeal;
-    [SerializeField] private object fireShield;
-    [SerializeField] private object waterBook;
-    [SerializeField] private object waterSword;
-    [SerializeField] private object waterHeal;
-    [SerializeField] private object waterShield;
-    [SerializeField] private object grassBook;
-    [SerializeField] private object grassSword;
-    [SerializeField] private object grassHeal;
-    [SerializeField] private object grassShield;
-    [SerializeField] private object neutralBook;
-    [SerializeField] private object neutralSword;
-    [SerializeField] private object neutralHeal;
-    [SerializeField] private object neutralShield;
-    private void Create(Card toShow)
+    [SerializeField] private GameObject fireBook;
+    [SerializeField] private GameObject fireSword;
+    [SerializeField] private GameObject fireHeal;
+    [SerializeField] private GameObject fireShield;
+    [SerializeField] private GameObject waterBook;
+    [SerializeField] private GameObject waterSword;
+    [SerializeField] private GameObject waterHeal;
+    [SerializeField] private GameObject waterShield;
+    [SerializeField] private GameObject grassBook;
+    [SerializeField] private GameObject grassSword;
+    [SerializeField] private GameObject grassHeal;
+    [SerializeField] private GameObject grassShield;
+    [SerializeField] private GameObject neutralBook;
+    [SerializeField] private GameObject neutralSword;
+    [SerializeField] private GameObject neutralHeal;
+    [SerializeField] private GameObject neutralShield;
+
+    [SerializeField] private TextMeshProUGUI powerNumber;
+    public void Create(Card toShow)
     {
         switch(toShow.Type)
         {
             case CardType.Shield:
                 if (toShow.Element == Element.Fire)
                 {
-                    //Instantiate<>;
+                    Instantiate(fireShield, transform);
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-
+                    Instantiate(grassShield, transform);
                 }
                 else if (toShow.Element == Element.Water)
                 {
-
+                    Instantiate(waterShield, transform);
                 }
                 else
                 {
-
+                    Instantiate(neutralShield, transform);
                 }
                 break;
 
             case CardType.Heal:
                 if (toShow.Element == Element.Fire)
                 {
-
+                    Instantiate(fireShield, transform);
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-
+                    Instantiate(grassHeal, transform);
                 }
                 else if (toShow.Element == Element.Water)
                 {
-
+                    Instantiate(waterHeal, transform);
                 }
                 else
                 {
-
+                    Instantiate(neutralHeal, transform);
                 }
                 break;
 
             case CardType.Sword:
                 if (toShow.Element == Element.Fire)
                 {
-
+                    Instantiate(fireSword, transform);
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-
+                    Instantiate(grassSword, transform);
                 }
                 else if (toShow.Element == Element.Water)
                 {
-
+                    Instantiate(waterSword, transform);
                 }
                 else
                 {
-
+                    Instantiate(neutralSword, transform);
                 }
                 break;
 
             case CardType.Spell:
                 if (toShow.Element == Element.Fire)
                 {
-
+                    Instantiate(fireBook, transform);
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-
+                    Instantiate(grassBook, transform);
                 }
                 else if (toShow.Element == Element.Water)
                 {
-
+                    Instantiate(waterBook, transform);
                 }
                 else
                 {
-
+                    Instantiate(neutralBook, transform);
                 }
                 break;
         }
+
+        powerNumber.text = toShow.Power.ToString();
 
         /*for (int i = 0; i < cardContainer.transform.childCount; i++)
         {

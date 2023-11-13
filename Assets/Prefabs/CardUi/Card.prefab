@@ -36,140 +36,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!1 &685910808189820888
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2817029531468622500}
-  - component: {fileID: 3427951446976504344}
-  - component: {fileID: 4028058771481492366}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2817029531468622500
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685910808189820888}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8350779362707391378}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 220.8438, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3427951446976504344
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685910808189820888}
-  m_CullTransparentMesh: 1
---- !u!114 &4028058771481492366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685910808189820888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Fire Sword 3
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1860159285781093970
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +287,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2817029531468622500}
   - {fileID: 260168823243018159}
   - {fileID: 9033702586485997980}
   m_Father: {fileID: 0}
@@ -525,6 +390,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a8ecf36766efc45a2ce9236083b8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBook: {fileID: 1084481920829014614, guid: 5724abdca9979dd4fa923880553e6d9a, type: 3}
+  fireSword: {fileID: 2628147009947048479, guid: 6684473924d70764f83d7dd82d448f8c, type: 3}
+  fireHeal: {fileID: 6003223976523129145, guid: ffad5b633478bdf45b192f25303b8c88, type: 3}
+  fireShield: {fileID: 4351854252577043858, guid: 420fba233f2768b44a87f7fb28ec3da5, type: 3}
+  waterBook: {fileID: 613952078884594066, guid: 1d9fe1f54a9872840a9d08b00ed2e76a, type: 3}
+  waterSword: {fileID: 1325338355696531081, guid: 0c716ddb3ef845444a4099dbfb48c0a9, type: 3}
+  waterHeal: {fileID: 4337564734320401144, guid: 7c1975a8363b3e648bfc32309f959843, type: 3}
+  waterShield: {fileID: 230181477588458471, guid: 3b632f8f413bd524886914117b516303, type: 3}
+  grassBook: {fileID: 3879678207850974302, guid: e48128fc8e626a846957d99bf62a64ad, type: 3}
+  grassSword: {fileID: 7110801918413790332, guid: 1c559550d38ba5f4b86f9857831db415, type: 3}
+  grassHeal: {fileID: 5072512225127053011, guid: b8a18d6750741274d912b656464d0c94, type: 3}
+  grassShield: {fileID: 395803676887020908, guid: 6a8bdf9e5b98c6241b77fd930436623d, type: 3}
+  neutralBook: {fileID: 948463685697164799, guid: 663dff2a32ee29c40b20f40981b80a1c, type: 3}
+  neutralSword: {fileID: 3937005764138764925, guid: 71ad3685dbd2fdc4ab60273766956e48, type: 3}
+  neutralHeal: {fileID: 3221586903182277414, guid: b0cbb0dc0c31a564e98683ae03741eb6, type: 3}
+  neutralShield: {fileID: 2679482062839487042, guid: 177e683fdfcd8e243bed4968f3622010, type: 3}
+  powerNumber: {fileID: 2890655746303281700}
 --- !u!1 &5354850043354810528
 GameObject:
   m_ObjectHideFlags: 0
