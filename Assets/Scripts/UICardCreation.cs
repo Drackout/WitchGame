@@ -27,86 +27,98 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private GameObject neutralShield;
 
     [SerializeField] private TextMeshProUGUI powerNumber;
+
+    private GameObject activeIcon;
+
     public void Create(Card toShow)
     {
-        switch(toShow.Type)
+        if (activeIcon != null)
+        {
+            Destroy(activeIcon);
+        }
+
+        GameObject icon = null;
+
+        switch (toShow.Type)
         {
             case CardType.Shield:
                 if (toShow.Element == Element.Fire)
                 {
-                    Instantiate(fireShield, transform);
+                    icon = fireShield;
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-                    Instantiate(grassShield, transform);
+                    icon = grassShield;
                 }
                 else if (toShow.Element == Element.Water)
                 {
-                    Instantiate(waterShield, transform);
+                    icon = waterShield;
                 }
                 else
                 {
-                    Instantiate(neutralShield, transform);
+                    icon = neutralShield;
                 }
                 break;
 
             case CardType.Heal:
                 if (toShow.Element == Element.Fire)
                 {
-                    Instantiate(fireShield, transform);
+                    icon = fireHeal;
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-                    Instantiate(grassHeal, transform);
+                    icon = grassHeal;
                 }
                 else if (toShow.Element == Element.Water)
                 {
-                    Instantiate(waterHeal, transform);
+                    icon = waterHeal;
                 }
                 else
                 {
-                    Instantiate(neutralHeal, transform);
+                    icon = neutralHeal;
                 }
                 break;
 
             case CardType.Sword:
                 if (toShow.Element == Element.Fire)
                 {
-                    Instantiate(fireSword, transform);
+                    icon = fireSword;
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-                    Instantiate(grassSword, transform);
+                    icon = grassSword;
                 }
                 else if (toShow.Element == Element.Water)
                 {
-                    Instantiate(waterSword, transform);
+                    icon = waterSword;
                 }
                 else
                 {
-                    Instantiate(neutralSword, transform);
+                    icon = neutralSword;
                 }
                 break;
 
             case CardType.Spell:
                 if (toShow.Element == Element.Fire)
                 {
-                    Instantiate(fireBook, transform);
+                    icon = fireBook;
                 }
                 else if (toShow.Element == Element.Grass)
                 {
-                    Instantiate(grassBook, transform);
+                    icon = grassBook;
                 }
                 else if (toShow.Element == Element.Water)
                 {
-                    Instantiate(waterBook, transform);
+                    icon = waterBook;
                 }
                 else
                 {
-                    Instantiate(neutralBook, transform);
+                    icon = neutralBook;
                 }
                 break;
         }
+
+        activeIcon = Instantiate(icon, transform.position, Quaternion.identity, transform);
 
         powerNumber.text = toShow.Power.ToString();
 
