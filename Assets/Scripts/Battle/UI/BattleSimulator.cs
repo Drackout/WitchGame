@@ -160,6 +160,8 @@ public class BattleSimulator : MonoBehaviour
                         creatureElements[ev.Target].playAnimation("Hurt");
                         if (ev.Target.Health == 0)
                         {
+                            creatureElements[ev.Target].playAnimation("Dead");
+                            yield return new WaitForSeconds(2.0f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
                         }
                     }
@@ -198,9 +200,9 @@ public class BattleSimulator : MonoBehaviour
             {
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
-                //cardButton.GetComponentInChildren<TMP_Text>().text = c.ToString();
-                UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
-                uicard.Create(c);
+                cardButton.GetComponentInChildren<TMP_Text>().text = c.ToString();
+                //UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
+                //uicard.Create(c);
             }
             else
             {
