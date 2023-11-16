@@ -159,7 +159,7 @@ public class Witch : Battler
         }
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"You took {damage} damage!");
-        return new DamageEvent(this, damage);
+        return new DamageEvent(this, damage, attack.Element);
     }
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
@@ -281,7 +281,8 @@ public class Witch : Battler
 
     protected override void Setup()
     {
-        if (BattleSettings.Instance.ShuffleDeck)
+        bool shouldShuffle = BattleSettings.Instance?.ShuffleDeck ?? true;
+        if (shouldShuffle)
         {
             battle.Rand.Shuffle(deck);
             battle.Logger.Log("Deck shuffled");
