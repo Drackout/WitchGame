@@ -279,4 +279,12 @@ public class Witch : Battler
         battle.Logger.Log("Hand: " + text);
     }
 
+    protected override void Setup()
+    {
+        if (BattleSettings.Instance.ShuffleDeck)
+        {
+            battle.Rand.Shuffle(deck);
+            battle.Logger.Log("Deck shuffled");
+        }
+    }
 }

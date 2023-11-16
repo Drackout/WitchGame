@@ -30,7 +30,7 @@ public class BattleSimulator : MonoBehaviour
     private CardActionsDialog activeCardActionDialog;
 
     private string logText;
-    
+
     private Animator Animator;
 
     private void Start()
@@ -49,9 +49,6 @@ public class BattleSimulator : MonoBehaviour
             new Card(CardType.Spell, Element.Water, 2),
             new Card(CardType.Spell, Element.Grass, 2)
         };
-        
-        //Card Shuffler (Not used in the POC, remove afterwards)
-        //RandomExtensions.Shuffle(rnd, cards);
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
 
