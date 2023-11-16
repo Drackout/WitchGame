@@ -12,6 +12,7 @@ public abstract class Battler
         set
         {
             battle = value;
+            Setup();
         }
     }
 
@@ -27,4 +28,8 @@ public abstract class Battler
     public abstract IEnumerable<BattleEvent> Act();
 
     public abstract BattleEvent Hurt(Attack attack);
+
+    // Called when `Battle` is set
+    protected virtual void Setup()
+    {}
 }

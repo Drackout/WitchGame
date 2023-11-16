@@ -20,6 +20,6 @@ public class Dummy : Creature
         int damage = DamageTaken(attack);
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"{Name} took {damage} damage!");
-        return new DamageEvent(this, damage);
+        return new DamageEvent(this, damage, attack.Element);
     }
 }
