@@ -13,6 +13,7 @@ public class UICreature : MonoBehaviour
     [SerializeField] private Sprite fireSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite grassSprite;
+    [SerializeField] private TextMeshProUGUI NmbReceived;
     
     private Animator Animator;
 
@@ -46,5 +47,10 @@ public class UICreature : MonoBehaviour
     public void playAnimation(string animString)
     {
         Animator.SetTrigger(animString);
+    }
+
+    public void setNumbersReceived(int nreceived)
+    {
+        NmbReceived.SetText("-" + nreceived.ToString());
     }
 }

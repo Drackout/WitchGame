@@ -157,6 +157,7 @@ public class BattleSimulator : MonoBehaviour
                     else
                     {
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
+                        creatureElements[ev.Target].setNumbersReceived(ev.Damage);
                         creatureElements[ev.Target].playAnimation("Hurt");
                         if (ev.Target.Health == 0)
                         {
