@@ -131,7 +131,7 @@ Material:
     - _StencilWriteMask: 255
     - _Strength: 0.2
     - _Surface: 0
-    - _Thickness: 0.008
+    - _Thickness: 0.01
     - _UseUIAlphaClip: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
