@@ -18,9 +18,11 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
+    [SerializeField] private TMP_Text NmbReceived;
     [SerializeField] private CardActionsDialog cardActionDialogPrefab;
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
+    [SerializeField] private Image animationShield;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -148,13 +150,14 @@ public class BattleSimulator : MonoBehaviour
                     if (ev.Target == battle.Witch)
                     {
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
-                        playAnimation("Hurt");
+                        setNumbersReceived(ev.Damage, ev.Element, "Damage");
+                        playAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
                     }
                     else
                     {
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
-                        creatureElements[ev.Target].setNumbersReceived(ev.Damage);
+                        creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
                         creatureElements[ev.Target].playAnimation("Hurt");
                         if (ev.Target.Health == 0)
                         {
@@ -167,14 +170,19 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case ShieldEvent ev:
                     playerShield.Shield = battle.Witch.Shield;
+                    playAnimation("Shield", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
+                    setNumbersReceived(ev.LifeRestored, ev.Element, "Heal");
+                    Debug.Log("INSERT CORRECT NUMBERS ON ANIMATION (healing)");
+                    playAnimation("Heal", "");
                     break;
                 case BlockEvent ev:
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
+                    playAnimation("Block", battle.Witch.Shield.Element.ToString());
                     playerShield.Shield = battle.Witch.Shield;
                     yield return new WaitForSeconds(2.0f);
                     break;
@@ -277,8 +285,33 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
-    public void playAnimation(string animString)
+    public void setNumbersReceived(int nreceived, Element element, string dmgHeal)
     {
+        // Damage
+        if (element.ToString() == "Fire")
+            NmbReceived.color=Color.red;
+        if (element.ToString() == "Water")
+            NmbReceived.color=Color.cyan;
+        if (element.ToString() == "Grass")
+            NmbReceived.color=Color.green;
+
+        if (dmgHeal == "Damage")            
+            NmbReceived.SetText("-" + nreceived.ToString());
+        else     
+            NmbReceived.SetText("+" + nreceived.ToString());
+    }
+
+    public void playAnimation(string animString, string extra)
+    {
+        if (extra != "")
+        {
+            if (extra == "Fire")
+                animationShield.color=Color.red;
+            if (extra == "Water")
+                animationShield.color=Color.blue;
+            if (extra == "Grass")
+                animationShield.color=Color.green;
+        }
         Animator.SetTrigger(animString);
     }
 }

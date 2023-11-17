@@ -196,7 +196,7 @@ public class Witch : Battler
             yield return new PlayCardEvent(card);
             Shield = new Shield(card.Power, card.Element);
             battle.Logger.Log($"You used [{card}]! Got {Shield.Charges} charges of {Shield.Element} shield");
-            yield return new ShieldEvent(Shield);
+            yield return new ShieldEvent(Shield, Shield.Element);
         }
         else if (card.Type == CardType.Heal)
         {
@@ -204,7 +204,7 @@ public class Witch : Battler
             int restored = GetEffectiveHeal(card);
             battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
-            yield return new HealEvent(card.Power);
+            yield return new HealEvent(card.Power, card.Element);
         }
     }
 

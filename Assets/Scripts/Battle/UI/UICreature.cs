@@ -13,7 +13,7 @@ public class UICreature : MonoBehaviour
     [SerializeField] private Sprite fireSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite grassSprite;
-    [SerializeField] private TextMeshProUGUI NmbReceived;
+    [SerializeField] private TMP_Text NmbReceived;
     
     private Animator Animator;
 
@@ -49,8 +49,17 @@ public class UICreature : MonoBehaviour
         Animator.SetTrigger(animString);
     }
 
-    public void setNumbersReceived(int nreceived)
+    public void setNumbersReceived(int nreceived, Element element)
     {
+        if (element.ToString() == "Fire")
+            NmbReceived.color=Color.red;
+        else if (element.ToString() == "Water")
+            NmbReceived.color=Color.cyan;
+        else if (element.ToString() == "Grass")
+            NmbReceived.color=Color.green;
+        else
+            NmbReceived.color=Color.white;
+
         NmbReceived.SetText("-" + nreceived.ToString());
     }
 }
