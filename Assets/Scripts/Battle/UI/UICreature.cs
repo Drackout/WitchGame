@@ -14,7 +14,8 @@ public class UICreature : MonoBehaviour
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite grassSprite;
     [SerializeField] private TMP_Text NmbReceived;
-    
+    [SerializeField] private Image outlineImage;
+
     private Animator Animator;
 
     public Button TargetButton => targetButton;
