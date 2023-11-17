@@ -206,9 +206,8 @@ public class BattleSimulator : MonoBehaviour
             {
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
-                cardButton.GetComponentInChildren<TMP_Text>().text = c.ToString();
-                //UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
-                //uicard.Create(c);
+                UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
+                uicard.Create(c);
             }
             else
             {
