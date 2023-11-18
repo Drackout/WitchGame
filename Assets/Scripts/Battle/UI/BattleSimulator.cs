@@ -349,11 +349,11 @@ public class BattleSimulator : MonoBehaviour
         if (extra != "")
         {
             if (extra == "Fire")
-                animationShield.color=Color.red;
+                animationShield.color = Color.red;
             if (extra == "Water")
-                animationShield.color=Color.blue;
+                animationShield.color = Color.cyan;
             if (extra == "Grass")
-                animationShield.color=Color.green;
+                animationShield.color = Color.green;
         }
         Animator.SetTrigger(animString);
     }

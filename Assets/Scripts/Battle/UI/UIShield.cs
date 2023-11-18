@@ -23,7 +23,7 @@ public class UIShield : MonoBehaviour
                     {
                         Element.Fire => Color.red,
                         Element.Grass => Color.green,
-                        Element.Water => Color.blue,
+                        Element.Water => Color.cyan,
                         _ => throw new ArgumentException("Unknown element")
                     };
                 }
