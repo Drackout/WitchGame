@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class btnLogShowHide : MonoBehaviour
 {
+    [SerializeField] private GameObject battleLog;
+
     private bool activeyn;
     private Animator Animator;
 
     void Start()
     {
         activeyn = false;
-        Animator = gameObject.GetComponentInChildren<Animator>();
+        Animator = battleLog.GetComponentInChildren<Animator>();
     }
 
     public void showLog()

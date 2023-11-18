@@ -1574,7 +1574,6 @@ GameObject:
   - component: {fileID: 156333446}
   - component: {fileID: 156333445}
   - component: {fileID: 156333444}
-  - component: {fileID: 156333447}
   - component: {fileID: 156333448}
   m_Layer: 5
   m_Name: btnLog
@@ -1596,7 +1595,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 500174705}
-  - {fileID: 1308940617}
   m_Father: {fileID: 1985428020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1698,27 +1696,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156333442}
   m_CullTransparentMesh: 1
---- !u!95 &156333447
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156333442}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6ba02e80eddef940bdc78a04c28f03a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &156333448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1731,6 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c70d70d471220d4bab9938230c74b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleLog: {fileID: 1308940616}
 --- !u!1001 &157028697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2554,7 +2532,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2578,7 +2556,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 8, y: 8, z: 8, w: 8}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11188,6 +11166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1308940617}
   - component: {fileID: 1308940618}
+  - component: {fileID: 1308940619}
   m_Layer: 5
   m_Name: BattleLog
   m_TagString: Untagged
@@ -11208,12 +11187,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1912755560}
-  m_Father: {fileID: 156333443}
+  m_Father: {fileID: 1985428020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 169, y: 205}
-  m_SizeDelta: {x: 529.32, y: 274.4005}
+  m_AnchoredPosition: {x: 245.5, y: 149}
+  m_SizeDelta: {x: 1625.1941, y: 274.4005}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1308940618
 MonoBehaviour:
@@ -11229,6 +11208,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _svContent: {fileID: 310377415}
   _svScrollRect: {fileID: 1912755561}
+--- !u!95 &1308940619
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308940616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6ba02e80eddef940bdc78a04c28f03a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1309822894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15303,7 +15303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15667,6 +15667,7 @@ RectTransform:
   - {fileID: 582971957}
   - {fileID: 132391314}
   - {fileID: 744202584}
+  - {fileID: 1308940617}
   - {fileID: 156333443}
   - {fileID: 1224018430}
   - {fileID: 2047568032}
