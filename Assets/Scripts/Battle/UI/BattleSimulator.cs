@@ -162,7 +162,6 @@ public class BattleSimulator : MonoBehaviour
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     logText = $"Played {ev.Card}";
                     ShowHand(battle);
-                    yield return new WaitForSeconds(1.0f);
                     //playCardAnimation("pExit");
                     break;
                 case DiscardEvent ev:
