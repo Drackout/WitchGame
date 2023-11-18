@@ -11,14 +11,14 @@ public class Witch : Battler
     public int CardsPlayed { get; private set; }
     public InputResponse Input { get; set; }
     public bool InfiniteHealth { get; set; }
-    public IList<Card> HeldCards { get; private set; }
+    public IList<int> HeldCards { get; private set; }
 
     public IList<Card> Hand => hand;
     public IList<Card> DiscardPile => discardPile;
     public IList<Card> Deck => deck;
 
     private IList<Card> deck;
-    private IList<Card> hand;
+    private List<Card> hand;
     private IList<Card> discardPile;
 
     public Witch(string name, int maxHealth, IEnumerable<Card> cards,
@@ -31,9 +31,16 @@ public class Witch : Battler
         Shield = new Shield();
 
         deck = new List<Card>(cards);
+
         hand = new List<Card>();
+        for (int i = 0; i < MaxSlots; i++)
+        {
+            hand.Add(Card.None);
+        }
+
         discardPile = new List<Card>();
-        HeldCards = new List<Card>();
+
+        HeldCards = new List<int>();
     }
 
     public override IEnumerable<BattleEvent> Act()
@@ -53,12 +60,13 @@ public class Witch : Battler
             if (Input.Intention == Intention.Play)
             {
                 Card card = hand[Input.Selection];
+                Discard(Input.Selection);
 
                 if (CardsPlayed >= 2)
                 {
                     battle.Logger.Log("You can only play up to 2 cards per turn!");
                 }
-                else if (HeldCards.Contains(card))
+                else if (HeldCards.Contains(Input.Selection))
                 {
                     battle.Logger.Log($"{card} is being held!");
                 }
@@ -86,7 +94,7 @@ public class Witch : Battler
                 else
                 {
                     int cardIdx = Input.Selection;
-                    HeldCards.Add(hand[cardIdx]);
+                    HeldCards.Add(cardIdx);
                     battle.Logger.Log($"{hand[cardIdx]} was held...");
 
                     actionsDone += 1;
@@ -105,6 +113,27 @@ public class Witch : Battler
             }
         }
 
+        // Throw out remaining cards, except held ones
+        for (int i = 0; i < Slots; i++)
+        {
+            if (hand[i].Type != CardType.None && !HeldCards.Contains(i))
+            {
+                Card c = hand[i];
+                Discard(i);
+                yield return new DiscardEvent(c, i);
+            }
+        }
+
+        HeldCards.Clear();
+
+        // Move cards to the first slots, in order
+        List<Card> newHand = hand.Where((Card c) => c.Type != CardType.None).ToList();
+        while (newHand.Count < MaxSlots)
+        {
+            newHand.Add(Card.None);
+        }
+        hand = newHand;
+
         // Update slots
         int newSlots = CardsPlayed > 1 ? Slots - 1 : Slots + 1;
         newSlots = newSlots > MaxSlots ? MaxSlots : newSlots;
@@ -113,23 +142,6 @@ public class Witch : Battler
 
         Slots = newSlots;
 
-        // Throw out remaining cards
-        int ptr = 0;
-        while (ptr < hand.Count)
-        {
-            Card c = hand[ptr];
-            if (!HeldCards.Contains(c))
-            {
-                Discard(c);
-                yield return new DiscardEvent(c, 0);
-            }
-            else
-            {
-                ptr++;
-            }
-        }
-
-        HeldCards.Clear();
         CardsPlayed = 0;
     }
 
@@ -164,7 +176,6 @@ public class Witch : Battler
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
     {
-        Discard(card);
         CardsPlayed += 1;
 
         if (card.Type == CardType.Sword)
@@ -204,27 +215,23 @@ public class Witch : Battler
             int restored = GetEffectiveHeal(card);
             battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
-            yield return new HealEvent(card.Power, card.Element);
+            yield return new HealEvent(restored, card.Element);
         }
     }
 
     private IEnumerable<BattleEvent> RefillHand()
     {
-        // While hand is not full...
-        while (hand.Count < Slots)
+        // Check each slot - if it's empty, draw a card and put it there
+        for (int i = 0; i < Slots; i++)
         {
             RefillDeck();
 
-            if (deck.Count > 0)
+            if (deck.Count > 0 && hand[i].Type == CardType.None)
             {
                 Card c = deck[0];
-                hand.Add(c);
+                hand[i] = c;
                 deck.RemoveAt(0);
                 yield return new DrawEvent(c);
-            }
-            else
-            {
-                break;
             }
         }
     }
@@ -267,10 +274,11 @@ public class Witch : Battler
         }
     }
 
-    private void Discard(Card card)
+    private void Discard(int index)
     {
-        hand.Remove(card);
-        discardPile.Add(card);
+        Card c = hand[index];
+        hand[index] = Card.None;
+        discardPile.Add(c);
     }
 
     private void LogHand()

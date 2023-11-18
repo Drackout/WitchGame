@@ -168,6 +168,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case SlotsEvent ev:
                     slots.Slots = ev.Current;
+                    ShowHand(battle);
                     break;
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
@@ -232,7 +233,7 @@ public class BattleSimulator : MonoBehaviour
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             Transform cardButton = cardContainer.transform.GetChild(i);
-            if (i < battle.Witch.Hand.Count)
+            if (i < battle.Witch.Hand.Count && battle.Witch.Hand[i].Type != CardType.None)
             {
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
