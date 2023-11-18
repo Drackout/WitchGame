@@ -60,7 +60,6 @@ public class Witch : Battler
             if (Input.Intention == Intention.Play)
             {
                 Card card = hand[Input.Selection];
-                Discard(Input.Selection);
 
                 if (CardsPlayed >= 2)
                 {
@@ -72,6 +71,8 @@ public class Witch : Battler
                 }
                 else
                 {
+                    Discard(Input.Selection);
+
                     foreach (BattleEvent ev in PlayCard(card))
                     {
                         yield return ev;
