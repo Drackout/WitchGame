@@ -67,8 +67,6 @@ public class Battle
 
     public IEnumerable<BattleEvent> Run()
     {
-        LogBattlers();
-
         while (!IsOver())
         {
             IEnumerable<BattleEvent> turnIter = turnOrder[turnCounter].Act();
@@ -78,9 +76,7 @@ public class Battle
                 RetireDeadCreatures();
             }
 
-
             turnCounter = (turnCounter + 1) % turnOrder.Count;
-            LogBattlers();
         }
     }
 
