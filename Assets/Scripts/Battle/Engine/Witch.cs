@@ -215,7 +215,7 @@ public class Witch : Battler
             int restored = GetEffectiveHeal(card);
             battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
-            yield return new HealEvent(card.Power, card.Element);
+            yield return new HealEvent(restored, card.Element);
         }
     }
 
