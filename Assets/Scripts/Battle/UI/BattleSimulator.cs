@@ -288,6 +288,8 @@ public class BattleSimulator : MonoBehaviour
     private void HandleHoldCard(int index)
     {
         CloseActiveDialog();
+        playAnimation("Hold", "");
+        Debug.Log("HOOOLD");
         input = new InputResponse(Intention.Hold, index);
     }
 
