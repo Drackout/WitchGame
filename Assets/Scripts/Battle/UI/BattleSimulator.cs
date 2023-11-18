@@ -23,6 +23,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
+    //[SerializeField] private Animator CardAnimator;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -122,7 +123,7 @@ public class BattleSimulator : MonoBehaviour
     private IEnumerator RunBattle(Battle battle)
     {
         IEnumerable<BattleEvent> battleIter = battle.Run();
-
+        
         foreach (BattleEvent battleEvent in battleIter)
         {
             switch (battleEvent)
@@ -161,6 +162,8 @@ public class BattleSimulator : MonoBehaviour
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     logText = $"Played {ev.Card}";
                     ShowHand(battle);
+                    yield return new WaitForSeconds(1.0f);
+                    //playCardAnimation("pExit");
                     break;
                 case DiscardEvent ev:
                     ShowHand(battle);
@@ -207,7 +210,6 @@ public class BattleSimulator : MonoBehaviour
                 case HealEvent ev:
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal");
-                    Debug.Log("INSERT CORRECT NUMBERS ON ANIMATION (healing)" + ev.LifeRestored);
                     playAnimation("Heal", "");
                     break;
                 case BlockEvent ev:
@@ -283,14 +285,14 @@ public class BattleSimulator : MonoBehaviour
     private void HandleSelection(int index)
     {
         CloseActiveDialog();
+        //playCardAnimation("pClick");
         input = new InputResponse(Intention.Play, index);
     }
 
     private void HandleHoldCard(int index)
     {
         CloseActiveDialog();
-        playAnimation("Hold", "");
-        Debug.Log("HOOOLD");
+        //playCardAnimation("pHold");
         input = new InputResponse(Intention.Hold, index);
     }
 
@@ -305,6 +307,8 @@ public class BattleSimulator : MonoBehaviour
     private void HandleEndTurnClick()
     {
         input = new InputResponse(Intention.EndTurn);
+        playAnimation("Turn", "");
+
     }
 
     private void Update()
@@ -354,4 +358,9 @@ public class BattleSimulator : MonoBehaviour
         }
         Animator.SetTrigger(animString);
     }
+
+    //public void playCardAnimation(string animString)
+    //{
+    //    CardAnimator.SetTrigger(animString);
+    //}
 }

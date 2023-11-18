@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardAnimation : MonoBehaviour, IPointerEnterHandler
+public class CardAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Animator Animator;
 
@@ -14,14 +14,26 @@ public class CardAnimation : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
      {
-        Debug.Log("onOver");
-        Animator.Play("onOver");
+        Debug.Log("pOver");
+        Animator.SetTrigger("pOver");
      }
 
-     public void OnPointerExit(PointerEventData eventDatum)
+     public void OnPointerExit(PointerEventData eventData)
      {
-        Debug.Log("Exit");
-        Animator.Play("Exit");
+        Debug.Log("pExit");
+        Animator.SetTrigger("pExit");
+     }
+
+     public void ClickPlay()
+     {
+        Debug.Log("pClick");
+        Animator.SetTrigger("pClick");
+     }
+
+     public void ClickHold()
+     {
+        Debug.Log("pHold");
+        Animator.SetTrigger("pHold");
      }
      
 }
