@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public struct Card
 {
+    public static Card None => new Card(CardType.None, Element.None, 0);
+
     public CardType Type { get; }
     public int Power { get; }
     public Element Element { get; }
