@@ -33,6 +33,8 @@ public class BattleSimulator : MonoBehaviour
 
     private string logText;
 
+    private int enemiesDefeated;
+
     private Animator Animator;
 
     private void Start()
@@ -40,7 +42,7 @@ public class BattleSimulator : MonoBehaviour
         creatureElements = new Dictionary<Battler, UICreature>();
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
-
+        enemiesDefeated = 0;
 
         IList<Card> cards = new List<Card>
         {
@@ -174,6 +176,11 @@ public class BattleSimulator : MonoBehaviour
                         setNumbersReceived(ev.Damage, ev.Element, "Damage");
                         playAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
+
+                        if (battle.Witch.Health == 0)
+                        {
+                            playAnimation("Loss", "");
+                        }
                     }
                     else
                     {
@@ -185,6 +192,8 @@ public class BattleSimulator : MonoBehaviour
                             creatureElements[ev.Target].playAnimation("Dead");
                             yield return new WaitForSeconds(2.0f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
+                            enemiesDefeated++;
+                            CheckEnemiesDefeated(enemiesDefeated, creatureElements.Count);
                         }
                     }
                     yield return new WaitForSeconds(2.0f);
@@ -197,7 +206,7 @@ public class BattleSimulator : MonoBehaviour
                 case HealEvent ev:
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal");
-                    Debug.Log("INSERT CORRECT NUMBERS ON ANIMATION (healing)");
+                    Debug.Log("INSERT CORRECT NUMBERS ON ANIMATION (healing)" + ev.LifeRestored);
                     playAnimation("Heal", "");
                     break;
                 case BlockEvent ev:
@@ -302,6 +311,14 @@ public class BattleSimulator : MonoBehaviour
             battle.Witch.InfiniteHealth = !battle.Witch.InfiniteHealth;
             infiniteHealthText.text = $"Infinite Health: {battle.Witch.InfiniteHealth}";
             logText = $"Infinite Health is {battle.Witch.InfiniteHealth}";
+        }
+    }
+
+    private void CheckEnemiesDefeated(int defeated, int total)
+    {
+        if (defeated == total)
+        {
+            playAnimation("Win", "");
         }
     }
 
