@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Animations;
 using Unity.VisualScripting;
 
 public class UICreature : MonoBehaviour
