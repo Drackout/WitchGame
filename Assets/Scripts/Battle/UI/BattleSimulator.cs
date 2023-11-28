@@ -23,7 +23,6 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
-    //[SerializeField] private Animator CardAnimator;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -37,6 +36,8 @@ public class BattleSimulator : MonoBehaviour
     private int enemiesDefeated;
 
     private Animator Animator;
+
+    private CardAnimation cardAnimation;
 
     private void Start()
     {
@@ -271,7 +272,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardClick(int index, Button cardButton)
     {
-        CloseActiveDialog();
+        CloseActiveDialog(index);
 
         RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
         activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
@@ -279,24 +280,26 @@ public class BattleSimulator : MonoBehaviour
 
         activeCardActionDialog.OnPlay += () => HandleSelection(index);
         activeCardActionDialog.OnHold += () => HandleHoldCard(index);
-        activeCardActionDialog.OnClose += CloseActiveDialog;
+        activeCardActionDialog.OnClose += () => CloseActiveDialog(index);
     }
 
     private void HandleSelection(int index)
     {
-        CloseActiveDialog();
-        //playCardAnimation("pClick");
+        CloseActiveDialog(index);
+        Debug.Log("pClick1");
+        //playCardAnimation("pClick1");
         input = new InputResponse(Intention.Play, index);
     }
 
     private void HandleHoldCard(int index)
     {
-        CloseActiveDialog();
-        //playCardAnimation("pHold");
+        CloseActiveDialog(index);
+        Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+        anim.SetTrigger("pHold");
         input = new InputResponse(Intention.Hold, index);
     }
 
-    private void CloseActiveDialog()
+    private void CloseActiveDialog(int index)
     {
         if (activeCardActionDialog != null)
         {
@@ -308,6 +311,13 @@ public class BattleSimulator : MonoBehaviour
     {
         input = new InputResponse(Intention.EndTurn);
         playAnimation("Turn", "");
+
+        // Force all cards to starting position
+        for (int i = 0; i < cardContainer.transform.childCount; i++)
+        {
+            Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+            anim.SetTrigger("pNormal");
+        }
 
     }
 
@@ -358,9 +368,4 @@ public class BattleSimulator : MonoBehaviour
         }
         Animator.SetTrigger(animString);
     }
-
-    //public void playCardAnimation(string animString)
-    //{
-    //    CardAnimator.SetTrigger(animString);
-    //}
 }

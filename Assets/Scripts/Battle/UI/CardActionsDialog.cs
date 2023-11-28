@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CardActionsDialog : MonoBehaviour
+public class CardActionsDialog : MonoBehaviour//, IPointerExitHandler
 {
     [SerializeField] private Button playButton;
     [SerializeField] private Button holdButton;
@@ -32,6 +33,13 @@ public class CardActionsDialog : MonoBehaviour
         Debug.Log("Clicked close button");
         OnClose?.Invoke();
     }
+
+    /* Destroy on leave the box - bugs w/ button animation
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Destroy(gameObject);
+    }
+    */
 
     public event Action OnPlay;
     public event Action OnHold;
