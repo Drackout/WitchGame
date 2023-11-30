@@ -2313,7 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0.9490196}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16113,7 +16113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c70d70d471220d4bab9938230c74b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleLog: {fileID: 1308940616}
+  battleLog: {fileID: 903448472}
 --- !u!114 &1980457329
 MonoBehaviour:
   m_ObjectHideFlags: 0
