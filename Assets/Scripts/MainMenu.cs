@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Toggle shuffleDeckToggle;
     [SerializeField] private Button battleButton;
+    [SerializeField] private Button bestiaryButton;
     [SerializeField] private Button quitButton;
 
     private void Start()
@@ -16,6 +17,8 @@ public class MainMenu : MonoBehaviour
         shuffleDeckToggle.onValueChanged.AddListener(ToggleShuffleDeck);
 
         battleButton.onClick.AddListener(LoadBattleScene);
+        
+        bestiaryButton.onClick.AddListener(LoadBestiaryScene);
 
         quitButton.onClick.AddListener(Quit);
     }
@@ -28,6 +31,11 @@ public class MainMenu : MonoBehaviour
     private void LoadBattleScene()
     {
         SceneManager.LoadScene("UI Scene");
+    }
+
+    private void LoadBestiaryScene()
+    {
+        SceneManager.LoadScene("Bestiary");
     }
 
     private void Quit()
