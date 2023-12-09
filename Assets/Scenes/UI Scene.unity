@@ -415,7 +415,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2047568033}
         m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+        m_MethodName: LoadShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2880,7 +2880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Shop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8547757f8b96df145991462c5f9e7638, type: 2}
   m_sharedMaterial: {fileID: 7164519296133618887, guid: 8547757f8b96df145991462c5f9e7638, type: 2}
@@ -4521,7 +4521,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2047568033}
         m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+        m_MethodName: LoadShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7993,7 +7993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Shop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8547757f8b96df145991462c5f9e7638, type: 2}
   m_sharedMaterial: {fileID: 7164519296133618887, guid: 8547757f8b96df145991462c5f9e7638, type: 2}

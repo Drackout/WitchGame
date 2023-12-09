@@ -326,9 +326,15 @@ public class BattleSimulator : MonoBehaviour
     {
         if (Input.GetButtonDown("[Cheat] Infinite Health"))
         {
-            battle.Witch.InfiniteHealth = !battle.Witch.InfiniteHealth;
-            infiniteHealthText.text = $"Infinite Health: {battle.Witch.InfiniteHealth}";
-            logText = $"Infinite Health is {battle.Witch.InfiniteHealth}";
+            battle.Cheats[(int)Cheats.InfiniteHealth] = !battle.Cheats[(int)Cheats.InfiniteHealth];
+            infiniteHealthText.text = $"Infinite Health: {battle.Cheats[(int)Cheats.InfiniteHealth]}";
+            logText = $"Infinite Health is {battle.Cheats[(int)Cheats.InfiniteHealth]}";
+        }
+
+        if (Input.GetButtonDown("[Cheat] Infinite Damage"))
+        {
+            battle.Cheats[(int)Cheats.InfiniteDamage] = !battle.Cheats[(int)Cheats.InfiniteDamage];
+            Debug.Log($"Infinite damage: battle.Cheats[(int)Cheats.InfiniteDamage]");
         }
     }
 
@@ -337,6 +343,10 @@ public class BattleSimulator : MonoBehaviour
         if (defeated == total)
         {
             playAnimation("Win", "");
+            PlayerResources.Gold = PlayerResources.Gold + 42;
+            PlayerResources.SetStones(Element.Fire, PlayerResources.GetStones(Element.Fire) + 2);
+            PlayerResources.SetStones(Element.Water, PlayerResources.GetStones(Element.Water) + 1);
+            PlayerResources.SetStones(Element.Grass, PlayerResources.GetStones(Element.Grass) + 1);
         }
     }
 
