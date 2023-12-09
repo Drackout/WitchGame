@@ -10,7 +10,6 @@ public class Witch : Battler
     public Shield Shield { get; private set; }
     public int CardsPlayed { get; private set; }
     public InputResponse Input { get; set; }
-    public bool InfiniteHealth { get; set; }
     public IList<int> HeldCards { get; private set; }
 
     public IList<Card> Hand => hand;
@@ -166,7 +165,7 @@ public class Witch : Battler
         }
 
         int damage = attack.Power;
-        if (InfiniteHealth)
+        if (battle.Cheats[(int)Cheats.InfiniteHealth])
         {
             damage = 0;
         }

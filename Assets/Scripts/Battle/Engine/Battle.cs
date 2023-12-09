@@ -9,9 +9,11 @@ public class Battle
     public IList<Creature> Creatures { get; private set; }
     public ILogger Logger { get; private set; }
     public Random Rand { get; }
+    public IList<bool> Cheats => cheats;
 
     private IList<Battler> turnOrder;
     private int turnCounter;
+    private bool[] cheats;
 
     public static int CompareElements(Element att, Element def)
     {
@@ -63,6 +65,8 @@ public class Battle
             turnOrder.Add(c);
 
         turnCounter = 0;
+
+        cheats = new bool[Enum.GetNames(typeof(Cheats)).Length];
     }
 
     public IEnumerable<BattleEvent> Run()
