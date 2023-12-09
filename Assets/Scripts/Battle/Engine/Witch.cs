@@ -172,7 +172,7 @@ public class Witch : Battler
         }
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"You took {damage} damage!");
-        return new DamageEvent(this, damage, attack.Element);
+        return new DamageEvent(this, damage, attack.Element, 0); // 0: Cause witch doesnt React on dmg taken
     }
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
@@ -216,7 +216,7 @@ public class Witch : Battler
             int restored = GetEffectiveHeal(card);
             battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
-            yield return new HealEvent(restored, card.Element);
+            yield return new HealEvent(restored, card.Element, 0); // 0: Need to review the heal/shield reaction here
         }
     }
 

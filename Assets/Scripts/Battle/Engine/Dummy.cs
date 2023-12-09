@@ -17,9 +17,11 @@ public class Dummy : Creature
 
     public override BattleEvent Hurt(Attack attack)
     {
-        int damage = DamageTaken(attack);
+        Tuple<int, int> dmgTaken = DamageTaken(attack);
+        int damage = dmgTaken.Item1;
+        int reactionType = dmgTaken.Item2;
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"{Name} took {damage} damage!");
-        return new DamageEvent(this, damage, attack.Element);
+        return new DamageEvent(this, damage, attack.Element, reactionType);
     }
 }

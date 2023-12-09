@@ -178,7 +178,7 @@ public class BattleSimulator : MonoBehaviour
                     if (ev.Target == battle.Witch)
                     {
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
-                        setNumbersReceived(ev.Damage, ev.Element, "Damage");
+                        setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
                         playAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
 
@@ -191,6 +191,7 @@ public class BattleSimulator : MonoBehaviour
                     {
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
                         creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
+                        Debug.Log("Reaction Type: " + ev.ReactionType);
                         creatureElements[ev.Target].playAnimation("Hurt");
                         if (ev.Target.Health == 0)
                         {
@@ -210,7 +211,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case HealEvent ev:
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
-                    setNumbersReceived(ev.LifeRestored, ev.Element, "Heal");
+                    setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
                     playAnimation("Heal", "");
                     break;
                 case BlockEvent ev:
@@ -339,9 +340,9 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
-    public void setNumbersReceived(int nreceived, Element element, string dmgHeal)
+    public void setNumbersReceived(int nreceived, Element element, string dmgHeal, int reactionType)
     {
-        // Damage
+        // Damage / Healing
         if (element.ToString() == "Fire")
             NmbReceived.color=Color.red;
         if (element.ToString() == "Water")
@@ -349,10 +350,12 @@ public class BattleSimulator : MonoBehaviour
         if (element.ToString() == "Grass")
             NmbReceived.color=Color.green;
 
-        if (dmgHeal == "Damage")            
+        if (dmgHeal == "Damage")
             NmbReceived.SetText("-" + nreceived.ToString());
         else     
             NmbReceived.SetText("+" + nreceived.ToString());
+
+        Debug.Log(dmgHeal+ ": "+reactionType);
     }
 
     public void playAnimation(string animString, string extra)
