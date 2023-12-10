@@ -14,7 +14,7 @@ public abstract class Creature : Battler
     {
         if (battle.Cheats[(int)Cheats.InfiniteDamage])
         {
-            return 99999;
+            return Tuple.Create(99999, 1);
         }
 
         int advantage = Battle.CompareElements(attack.Element, Element);

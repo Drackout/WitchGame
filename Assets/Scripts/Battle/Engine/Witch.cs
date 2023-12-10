@@ -212,10 +212,11 @@ public class Witch : Battler
         else if (card.Type == CardType.Heal)
         {
             yield return new PlayCardEvent(card);
-            int restored = GetEffectiveHeal(card);
+            int restored = GetEffectiveHeal(card).Item1;
+            int reactionType = GetEffectiveHeal(card).Item2;
             battle.Logger.Log($"Healing for {restored}");
             Health = Math.Min(MaxHealth, Health + restored);
-            yield return new HealEvent(restored, card.Element, 0); // 0: Need to review the heal/shield reaction here
+            yield return new HealEvent(restored, card.Element, reactionType);
         }
     }
 
@@ -236,25 +237,30 @@ public class Witch : Battler
         }
     }
 
-    private int GetEffectiveHeal(Card card)
+    private Tuple<int, int> GetEffectiveHeal(Card card)
     {
+        int reactionType = 0; //-1-Weak, 0-Normal, 1-Strong
+
         if (Shield.Charges <= 0)
         {
-            return card.Power;
+            return Tuple.Create(card.Power, reactionType);
         }
 
         int advantage = Battle.CompareElements(card.Element, Shield.Element);
         int restored = card.Power;
+
         if (advantage > 0)
         {
             restored *= 2;
+            reactionType = 1;
         }
         else if (advantage < 0)
         {
             restored /= 2;
+            reactionType = -1;
         }
 
-        return restored;
+        return Tuple.Create(restored, reactionType);
     }
 
     private void RefillDeck()
