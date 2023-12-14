@@ -260,6 +260,8 @@ GameObject:
   - component: {fileID: 8869052064253337736}
   - component: {fileID: 2450684356733138826}
   - component: {fileID: 6408011125794627694}
+  - component: {fileID: 5423048303417446572}
+  - component: {fileID: 5879401278051982017}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -345,7 +347,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -409,7 +411,7 @@ Animator:
   m_GameObject: {fileID: 3112285042763756907}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28ccae2d4e6af6c458827e0a268120f8, type: 2}
+  m_Controller: {fileID: 9100000, guid: b91eb95c32c4cea4ab9f9a489a622145, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -420,6 +422,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5423048303417446572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112285042763756907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c4174be4de55442aae389136818843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5879401278051982017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112285042763756907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b13305c3a9ba54a8e4ddb60d46d916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5354850043354810528
 GameObject:
   m_ObjectHideFlags: 0
