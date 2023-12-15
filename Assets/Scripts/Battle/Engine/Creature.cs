@@ -12,7 +12,7 @@ public abstract class Creature : Battler
         Element = element;
     }
 
-    protected Tuple<int, int> DamageTaken(Attack attack)
+    public Tuple<int, int> GetDamageTaken(Attack attack)
     {
         if (battle.Cheats[(int)Cheats.InfiniteDamage])
         {

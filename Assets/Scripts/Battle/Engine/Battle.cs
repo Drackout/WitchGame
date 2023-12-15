@@ -17,6 +17,7 @@ public class Battle
 
     public static int CompareElements(Element att, Element def)
     {
+        // TODO: matrix
         if (att == Element.Fire)
         {
             if (def == Element.Water)

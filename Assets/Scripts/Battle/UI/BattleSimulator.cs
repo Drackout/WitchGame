@@ -292,22 +292,14 @@ public class BattleSimulator : MonoBehaviour
     {
         CloseActiveDialog(index);
 
-        ////// WHEN CLICKED PLAY CARD
-     //   for (int i = 0; i < battle.Creatures.Count; i++)
-     //   {
-     //       Creature c = battle.Creatures[i];
-     //       creatureElements[c].setNumbersReceived(battle.Witch.Hand[index].Power, battle.Witch.Hand[index].Element);
-     //   }
-
-        //fk me
-        //foreach (KeyValuePair<Battler, UICreature> item in creatureElements)
-        //{
-        //    //Raw card Value
-        //    Battle.CompareElements(creatureElements[0].Element, battle.Witch.Hand[index].Element);
-        //    item.Value.setNumbers(battle.Witch.Hand[index].Power);
-        //}
-
-
+        for (int i = 0; i < battle.Creatures.Count; i++)
+        {
+            Creature c = battle.Creatures[i];
+            Card card = battle.Witch.Hand[index];
+            Attack attack = new Attack(card.Power, card.Element, new string[] {});
+            (int damage, int reactionType) = c.GetDamageTaken(attack);
+            creatureElements[c].setNumbersReceived(damage, attack.Element);
+        }
 
         input = new InputResponse(Intention.Play, index);
     }
