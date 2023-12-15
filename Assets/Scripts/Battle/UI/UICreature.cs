@@ -73,4 +73,5 @@ public class UICreature : MonoBehaviour
 
         NmbReceived.SetText("-" + nreceived.ToString());
     }
+
 }

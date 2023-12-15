@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using BattleEvents;
+using UnityEngine;
 
 public class Witch : Battler
 {
@@ -182,6 +184,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
+                battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
@@ -194,6 +197,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
+                battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
@@ -301,5 +305,10 @@ public class Witch : Battler
             battle.Rand.Shuffle(deck);
             battle.Logger.Log("Deck shuffled");
         }
+    }
+
+    public int ShowOneCard(int cardIndex)
+    {
+        return hand[cardIndex].Power;
     }
 }

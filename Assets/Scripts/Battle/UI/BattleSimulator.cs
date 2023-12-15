@@ -140,6 +140,7 @@ public class BattleSimulator : MonoBehaviour
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
+                        //ev.
                         Debug.Log("A CARD WAS SELECTED");
                         Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
@@ -275,6 +276,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardClick(int index, Button cardButton)
     {
+        Debug.Log("aaa - Card: " + index.ToString());
         CloseActiveDialog(index);
 
         RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
@@ -289,8 +291,24 @@ public class BattleSimulator : MonoBehaviour
     private void HandleSelection(int index)
     {
         CloseActiveDialog(index);
-        Debug.Log("pClick1");
-        //playCardAnimation("pClick1");
+
+        ////// WHEN CLICKED PLAY CARD
+     //   for (int i = 0; i < battle.Creatures.Count; i++)
+     //   {
+     //       Creature c = battle.Creatures[i];
+     //       creatureElements[c].setNumbersReceived(battle.Witch.Hand[index].Power, battle.Witch.Hand[index].Element);
+     //   }
+
+        //fk me
+        //foreach (KeyValuePair<Battler, UICreature> item in creatureElements)
+        //{
+        //    //Raw card Value
+        //    Battle.CompareElements(creatureElements[0].Element, battle.Witch.Hand[index].Element);
+        //    item.Value.setNumbers(battle.Witch.Hand[index].Power);
+        //}
+
+
+
         input = new InputResponse(Intention.Play, index);
     }
 
@@ -391,7 +409,7 @@ public class BattleSimulator : MonoBehaviour
 
 
             animString += extra;
-            Debug.Log("AAAAAAAAA - " + animString);
+            //Debug.Log("AAAAAAAAA - " + animString);
         }
 
         Animator.SetTrigger(animString);
