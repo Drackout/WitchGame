@@ -25,6 +25,10 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private GameObject neutralSword;
     [SerializeField] private GameObject neutralHeal;
     [SerializeField] private GameObject neutralShield;
+    
+    [SerializeField] private Color32 colorBlue;
+    [SerializeField] private Color32 colorRed;
+    [SerializeField] private Color32 colorGreen;
 
     [SerializeField] private TextMeshProUGUI powerNumber;
 
@@ -118,9 +122,17 @@ public class UICardCreation : MonoBehaviour
                 break;
         }
 
+
         activeIcon = Instantiate(icon, transform.position, Quaternion.identity, transform);
 
         powerNumber.text = toShow.Power.ToString();
+
+        if (toShow.Element == Element.Fire)
+            powerNumber.color = colorRed;
+        if (toShow.Element == Element.Grass)
+            powerNumber.color = colorGreen;
+        if (toShow.Element == Element.Water)
+            powerNumber.color = colorBlue;
 
         /*for (int i = 0; i < cardContainer.transform.childCount; i++)
         {

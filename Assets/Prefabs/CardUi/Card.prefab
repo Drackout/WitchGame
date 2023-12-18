@@ -398,6 +398,15 @@ MonoBehaviour:
   neutralSword: {fileID: 3937005764138764925, guid: 71ad3685dbd2fdc4ab60273766956e48, type: 3}
   neutralHeal: {fileID: 3221586903182277414, guid: b0cbb0dc0c31a564e98683ae03741eb6, type: 3}
   neutralShield: {fileID: 2679482062839487042, guid: 177e683fdfcd8e243bed4968f3622010, type: 3}
+  colorBlue:
+    serializedVersion: 2
+    rgba: 4289481538
+  colorRed:
+    serializedVersion: 2
+    rgba: 4280826993
+  colorGreen:
+    serializedVersion: 2
+    rgba: 4283271253
   powerNumber: {fileID: 2890655746303281700}
 --- !u!95 &6408011125794627694
 Animator:
@@ -409,7 +418,7 @@ Animator:
   m_GameObject: {fileID: 3112285042763756907}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28ccae2d4e6af6c458827e0a268120f8, type: 2}
+  m_Controller: {fileID: 9100000, guid: b91eb95c32c4cea4ab9f9a489a622145, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
