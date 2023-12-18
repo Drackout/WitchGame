@@ -30,7 +30,12 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Color32 colorRed;
     [SerializeField] private Color32 colorGreen;
 
+    [SerializeField] private Sprite circleWater;
+    [SerializeField] private Sprite circleFire;
+    [SerializeField] private Sprite circleGrass;
+
     [SerializeField] private TextMeshProUGUI powerNumber;
+    [SerializeField] private Image powerCircle;
 
     private GameObject activeIcon;
 
@@ -128,11 +133,20 @@ public class UICardCreation : MonoBehaviour
         powerNumber.text = toShow.Power.ToString();
 
         if (toShow.Element == Element.Fire)
-            powerNumber.color = colorRed;
+        {
+            //powerNumber.color = colorRed;
+            powerCircle.sprite = circleFire;
+        }
         if (toShow.Element == Element.Grass)
-            powerNumber.color = colorGreen;
+        {
+            //powerNumber.color = colorGreen;      
+            powerCircle.sprite = circleGrass;      
+        }
         if (toShow.Element == Element.Water)
-            powerNumber.color = colorBlue;
+        {
+            //powerNumber.color = colorBlue;            
+            powerCircle.sprite = circleWater;
+        }
 
         /*for (int i = 0; i < cardContainer.transform.childCount; i++)
         {

@@ -407,7 +407,11 @@ MonoBehaviour:
   colorGreen:
     serializedVersion: 2
     rgba: 4283271253
+  circleWater: {fileID: 21300000, guid: 40d263da50fbcef4ab56ec15e9cb32c5, type: 3}
+  circleFire: {fileID: 21300000, guid: 84b6fadbaf2660347ae53fe3bbfc6d88, type: 3}
+  circleGrass: {fileID: 21300000, guid: a00599b479b377343a4ab3a35b6a53ee, type: 3}
   powerNumber: {fileID: 2890655746303281700}
+  powerCircle: {fileID: 4109224838232236262}
 --- !u!95 &6408011125794627694
 Animator:
   serializedVersion: 5
