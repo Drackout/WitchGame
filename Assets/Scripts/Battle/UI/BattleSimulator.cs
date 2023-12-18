@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using BattleEvents;
 using TMPro;
 
@@ -24,6 +25,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
+    [SerializeField] private DropNotifier playDropZone;
+    [SerializeField] private DropNotifier holdDropZone;
+    [SerializeField] private Transform pendingCardTransform;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -102,14 +106,23 @@ public class BattleSimulator : MonoBehaviour
             creatureElements[c].Element = c.Element;
             creatureElements[c].TargetButton.onClick.AddListener(
                 () => HandleSelection(iCopy));
+
+            DropNotifier dn = cc.GetComponentInChildren<DropNotifier>();
+            Debug.Log(dn);
+            dn.Dropped += (PointerEventData data) => HandleDropOnEnemy(iCopy, data);
         }
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
+            Transform cardObj = cardContainer.transform.GetChild(i);
             int iCopy = i;
-            Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
+
+            Button b = cardObj.GetComponent<Button>();
             b.onClick.AddListener(() => HandleCardClick(iCopy, b));
             b.interactable = false;
+
+            UICard uiCard = cardObj.GetComponent<UICard>();
+            uiCard.Index = i;
         }
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
@@ -120,13 +133,16 @@ public class BattleSimulator : MonoBehaviour
         slots.Slots = battle.Witch.Slots;
         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
+        holdDropZone.Dropped += HandleDropOnHold;
+        holdDropZone.gameObject.SetActive(false);
+
         StartCoroutine(RunBattle(battle));
     }
 
     private IEnumerator RunBattle(Battle battle)
     {
         IEnumerable<BattleEvent> battleIter = battle.Run();
-        
+
         foreach (BattleEvent battleEvent in battleIter)
         {
             switch (battleEvent)
@@ -137,12 +153,14 @@ public class BattleSimulator : MonoBehaviour
                         Debug.Log("[DEBUG] Choose a card");
                         ToggleCards(true);
                         endTurnButton.interactable = true;
+                        holdDropZone.gameObject.SetActive(true);
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
                         Debug.Log("A CARD WAS SELECTED");
                         Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
+                        holdDropZone.gameObject.SetActive(false);
                     }
                     input = new InputResponse();
                     yield return new WaitUntil(() => input.Intention != Intention.None);
@@ -151,10 +169,12 @@ public class BattleSimulator : MonoBehaviour
                     {
                         ToggleCards(false);
                         endTurnButton.interactable = false;
+                        holdDropZone.gameObject.SetActive(false);
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
                         ToggleTargets(false);
+                        holdDropZone.gameObject.SetActive(false);
                     }
                     break;
                 case DrawEvent ev:
@@ -262,6 +282,8 @@ public class BattleSimulator : MonoBehaviour
             Transform card = cardContainer.transform.GetChild(i);
             Button b = card.GetComponent<Button>();
             b.interactable = state;
+            UICard uiCard = card.GetComponent<UICard>();
+            uiCard.enabled = state;
         }
     }
 
@@ -300,6 +322,36 @@ public class BattleSimulator : MonoBehaviour
         Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
         anim.SetTrigger("pHold");
         input = new InputResponse(Intention.Hold, index);
+    }
+
+    private void HandleDropOnEnemy(int index, PointerEventData data)
+    {
+        Debug.Log("Dropped on enemy");
+        UICard card = data.pointerDrag.GetComponent<UICard>();
+        if (card == null)
+        {
+            return;
+        }
+
+        StartCoroutine(SelectCardAndEnemy(card.Index, index));
+    }
+
+    private IEnumerator SelectCardAndEnemy(int card, int enemy)
+    {
+        HandleSelection(card);
+        yield return null;
+        HandleSelection(enemy);
+    }
+
+    private void HandleDropOnHold(PointerEventData data)
+    {
+        UICard card = data.pointerDrag.GetComponent<UICard>();
+        if (card == null)
+        {
+            return;
+        }
+
+        HandleHoldCard(card.Index);
     }
 
     private void CloseActiveDialog(int index)
@@ -364,7 +416,7 @@ public class BattleSimulator : MonoBehaviour
 
         if (dmgHeal == "Damage")
             NmbReceived.SetText("-" + nreceived.ToString());
-        else     
+        else
             NmbReceived.SetText("+" + nreceived.ToString());
 
         Debug.Log(dmgHeal+ ": "+reactionType);

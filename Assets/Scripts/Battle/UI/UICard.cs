@@ -8,11 +8,15 @@ public class UICard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Vector3 startingPosition;
     private Animator animator;
     private Button button;
+    private Image image;
+
+    public int Index { get; set; }
 
     public void OnBeginDrag(PointerEventData data)
     {
         animator.enabled = false;
         button.enabled = false;
+        image.raycastTarget = false;
         startingPosition = transform.position;
         transform.position = Input.mousePosition;
         Debug.Log("Drag start");
@@ -27,6 +31,7 @@ public class UICard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         animator.enabled = true;
         button.enabled = true;
+        image.raycastTarget = true;
         transform.position = startingPosition;
         Debug.Log($"Drag end, {data.pointerDrag}");
     }
@@ -35,5 +40,6 @@ public class UICard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         animator = GetComponent<Animator>();
         button = GetComponent<Button>();
+        image = GetComponent<Image>();
     }
 }
