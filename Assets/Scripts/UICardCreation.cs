@@ -36,6 +36,8 @@ public class UICardCreation : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI powerNumber;
     [SerializeField] private Image powerCircle;
+    
+    [SerializeField] private TextMeshProUGUI tooltipText;
 
     private GameObject activeIcon;
 
@@ -54,14 +56,17 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireShield;
+                    tooltipText.text = "Grass Immunity";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassShield;
+                    tooltipText.text = "Water Immunity";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterShield;
+                    tooltipText.text = "Fire Immunity";
                 }
                 else
                 {
