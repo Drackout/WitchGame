@@ -36,8 +36,14 @@ public class UICardCreation : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI powerNumber;
     [SerializeField] private Image powerCircle;
+    
+    [SerializeField] private TextMeshProUGUI tooltipText;
+
+    [SerializeField] private Animator cardAnimator;
 
     private GameObject activeIcon;
+    private int strongDmg;
+    private int weakDmg;
 
     public void Create(Card toShow)
     {
@@ -47,6 +53,9 @@ public class UICardCreation : MonoBehaviour
         }
 
         GameObject icon = null;
+        strongDmg = Convert.ToInt16(powerNumber.text)*2;
+        weakDmg = Convert.ToInt16(powerNumber.text)/2;
+        // cardAnimator.SetTrigger("pNormal"); // Breaks the animations
 
         switch (toShow.Type)
         {
@@ -54,14 +63,17 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireShield;
+                    tooltipText.text = "Grass Immunity";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassShield;
+                    tooltipText.text = "Water Immunity";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterShield;
+                    tooltipText.text = "Fire Immunity";
                 }
                 else
                 {
@@ -73,18 +85,22 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireHeal;
+                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Grass Shield\n {weakDmg} w/ Water Shield ";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassHeal;
+                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Water Shield\n {weakDmg} w/ Fire Shield ";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterHeal;
+                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Fire Shield\n {weakDmg} w/ Grass Shield ";
                 }
                 else
                 {
                     icon = neutralHeal;
+                    tooltipText.text = $"{powerNumber.text} Heal";
                 }
                 break;
 
@@ -92,18 +108,22 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireSword;
+                    tooltipText.text = $"{powerNumber.text} Fire Damage\n {strongDmg} VS Grass\n {weakDmg} VS Water";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassSword;
+                    tooltipText.text = $"{powerNumber.text} Grass Damage\n {strongDmg} VS Water\n {weakDmg} VS Fire";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterSword;
+                    tooltipText.text = $"{powerNumber.text} Water Damage\n {strongDmg} VS Fire\n {weakDmg} VS Grass";
                 }
                 else
                 {
                     icon = neutralSword;
+                    tooltipText.text = $"{powerNumber.text} Damage";
                 }
                 break;
 
@@ -111,18 +131,22 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireBook;
+                    tooltipText.text = $"{powerNumber.text} Fire Damage\n {strongDmg} VS Grass\n {weakDmg} VS Water";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassBook;
+                    tooltipText.text = $"{powerNumber.text} Grass Damage\n {strongDmg} VS Water\n {weakDmg} VS Fire";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterBook;
+                    tooltipText.text = $"{powerNumber.text} Water Damage\n {strongDmg} VS Fire\n {weakDmg} VS Grass";
                 }
                 else
                 {
                     icon = neutralBook;
+                    tooltipText.text = $"{powerNumber.text} Damage";
                 }
                 break;
         }

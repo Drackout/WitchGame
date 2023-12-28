@@ -277,7 +277,7 @@ public class BattleSimulator : MonoBehaviour
     private void HandleCardClick(int index, Button cardButton)
     {
         Debug.Log("aaa - Card: " + index.ToString());
-        CloseActiveDialog(index);
+        CloseActiveDialog(index, false);
 
         RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
         activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
@@ -285,12 +285,12 @@ public class BattleSimulator : MonoBehaviour
 
         activeCardActionDialog.OnPlay += () => HandleSelection(index);
         activeCardActionDialog.OnHold += () => HandleHoldCard(index);
-        activeCardActionDialog.OnClose += () => CloseActiveDialog(index);
+        activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
     }
 
     private void HandleSelection(int index)
     {
-        CloseActiveDialog(index);
+        CloseActiveDialog(index, false);
 
         for (int i = 0; i < battle.Creatures.Count; i++)
         {
@@ -306,17 +306,22 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleHoldCard(int index)
     {
-        CloseActiveDialog(index);
+        CloseActiveDialog(index, false);
         Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
         anim.SetTrigger("pHold");
         input = new InputResponse(Intention.Hold, index);
     }
 
-    private void CloseActiveDialog(int index)
+    private void CloseActiveDialog(int index, bool animation = true)
     {
         if (activeCardActionDialog != null)
         {
             Destroy(activeCardActionDialog.gameObject);
+            if (animation == true)
+            {
+                Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+                anim.SetTrigger("pNormal");
+            }
         }
     }
 
