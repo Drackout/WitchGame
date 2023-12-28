@@ -39,6 +39,8 @@ public class UICardCreation : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI tooltipText;
 
+    [SerializeField] private Animator cardAnimator;
+
     private GameObject activeIcon;
     private int strongDmg;
     private int weakDmg;
@@ -53,6 +55,7 @@ public class UICardCreation : MonoBehaviour
         GameObject icon = null;
         strongDmg = Convert.ToInt16(powerNumber.text)*2;
         weakDmg = Convert.ToInt16(powerNumber.text)/2;
+        // cardAnimator.SetTrigger("pNormal"); // Breaks the animations
 
         switch (toShow.Type)
         {

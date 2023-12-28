@@ -414,6 +414,7 @@ MonoBehaviour:
   powerNumber: {fileID: 2890655746303281700}
   powerCircle: {fileID: 4109224838232236262}
   tooltipText: {fileID: 178527063768192478}
+  cardAnimator: {fileID: 6408011125794627694}
 --- !u!95 &6408011125794627694
 Animator:
   serializedVersion: 5
