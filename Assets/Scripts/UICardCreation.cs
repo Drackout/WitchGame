@@ -42,20 +42,14 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Animator cardAnimator;
 
     private GameObject activeIcon;
-    private int strongDmg;
-    private int weakDmg;
+    private int cardNumber;
 
     public void Create(Card toShow)
     {
         if (activeIcon != null)
-        {
             Destroy(activeIcon);
-        }
 
         GameObject icon = null;
-        strongDmg = Convert.ToInt16(powerNumber.text)*2;
-        weakDmg = Convert.ToInt16(powerNumber.text)/2;
-        // cardAnimator.SetTrigger("pNormal"); // Breaks the animations
 
         switch (toShow.Type)
         {
@@ -85,22 +79,18 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireHeal;
-                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Grass Shield\n {weakDmg} w/ Water Shield ";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassHeal;
-                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Water Shield\n {weakDmg} w/ Fire Shield ";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterHeal;
-                    tooltipText.text = $"{powerNumber.text} Heal\n {strongDmg} w/ Fire Shield\n {weakDmg} w/ Grass Shield ";
                 }
                 else
                 {
                     icon = neutralHeal;
-                    tooltipText.text = $"{powerNumber.text} Heal";
                 }
                 break;
 
@@ -108,22 +98,18 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireSword;
-                    tooltipText.text = $"{powerNumber.text} Fire Damage\n {strongDmg} VS Grass\n {weakDmg} VS Water";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassSword;
-                    tooltipText.text = $"{powerNumber.text} Grass Damage\n {strongDmg} VS Water\n {weakDmg} VS Fire";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterSword;
-                    tooltipText.text = $"{powerNumber.text} Water Damage\n {strongDmg} VS Fire\n {weakDmg} VS Grass";
                 }
                 else
                 {
                     icon = neutralSword;
-                    tooltipText.text = $"{powerNumber.text} Damage";
                 }
                 break;
 
@@ -131,46 +117,71 @@ public class UICardCreation : MonoBehaviour
                 if (toShow.Element == Element.Fire)
                 {
                     icon = fireBook;
-                    tooltipText.text = $"{powerNumber.text} Fire Damage\n {strongDmg} VS Grass\n {weakDmg} VS Water";
                 }
                 else if (toShow.Element == Element.Grass)
                 {
                     icon = grassBook;
-                    tooltipText.text = $"{powerNumber.text} Grass Damage\n {strongDmg} VS Water\n {weakDmg} VS Fire";
                 }
                 else if (toShow.Element == Element.Water)
                 {
                     icon = waterBook;
-                    tooltipText.text = $"{powerNumber.text} Water Damage\n {strongDmg} VS Fire\n {weakDmg} VS Grass";
                 }
                 else
                 {
                     icon = neutralBook;
-                    tooltipText.text = $"{powerNumber.text} Damage";
                 }
                 break;
         }
 
-
         activeIcon = Instantiate(icon, transform.position, Quaternion.identity, transform);
-
         powerNumber.text = toShow.Power.ToString();
 
         if (toShow.Element == Element.Fire)
-        {
-            //powerNumber.color = colorRed;
             powerCircle.sprite = circleFire;
-        }
         if (toShow.Element == Element.Grass)
-        {
-            //powerNumber.color = colorGreen;      
             powerCircle.sprite = circleGrass;      
-        }
         if (toShow.Element == Element.Water)
-        {
-            //powerNumber.color = colorBlue;            
             powerCircle.sprite = circleWater;
+
+        cardNumber = Convert.ToInt16(powerNumber.text);
+
+        // Doesn't work up there, the last card always gets wrong numbers..  
+        switch (toShow.Type)
+        {
+            case CardType.Heal:
+                if (toShow.Element == Element.Fire)
+                    tooltipText.text = $"{cardNumber} Heal\n {cardNumber*2} w/ Grass Shield\n {cardNumber/2} w/ Water Shield ";
+                else if (toShow.Element == Element.Grass)
+                    tooltipText.text = $"{cardNumber} Heal\n {cardNumber*2} w/ Water Shield\n {cardNumber/2} w/ Fire Shield ";
+                else if (toShow.Element == Element.Water)
+                    tooltipText.text = $"{cardNumber} Heal\n {cardNumber*2} w/ Fire Shield\n {cardNumber/2} w/ Grass Shield ";
+                else
+                    tooltipText.text = $"{cardNumber} Heal";
+                break;
+
+            case CardType.Sword:
+                if (toShow.Element == Element.Fire)
+                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} VS Grass\n {cardNumber/2} VS Water";
+                else if (toShow.Element == Element.Grass)
+                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} VS Water\n {cardNumber/2} VS Fire";
+                else if (toShow.Element == Element.Water)
+                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} VS Fire\n {cardNumber/2} VS Grass";
+                else
+                    tooltipText.text = $"{cardNumber} Damage";
+                break;
+
+            case CardType.Spell:
+                if (toShow.Element == Element.Fire)
+                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} VS Grass\n {cardNumber/2} VS Water";
+                else if (toShow.Element == Element.Grass)
+                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} VS Water\n {cardNumber/2} VS Fire";
+                else if (toShow.Element == Element.Water)
+                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} VS Fire\n {cardNumber/2} VS Grass";
+                else
+                    tooltipText.text = $"{cardNumber} Damage";
+                break;
         }
+
 
         /*for (int i = 0; i < cardContainer.transform.childCount; i++)
         {

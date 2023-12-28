@@ -11611,7 +11611,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 178527063768192478, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 0
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Name
@@ -11621,6 +11621,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b91eb95c32c4cea4ab9f9a489a622145, type: 2}
+    - target: {fileID: 6643367286949423624, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350779362707391378, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

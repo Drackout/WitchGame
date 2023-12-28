@@ -276,7 +276,6 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardClick(int index, Button cardButton)
     {
-        Debug.Log("aaa - Card: " + index.ToString());
         CloseActiveDialog(index, false);
 
         RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
@@ -403,7 +402,6 @@ public class BattleSimulator : MonoBehaviour
                 reactions.text = "Weak..";
             else
                 reactions.text = "Stronk!";
-
 
             animString += extra;
             //Debug.Log("AAAAAAAAA - " + animString);
