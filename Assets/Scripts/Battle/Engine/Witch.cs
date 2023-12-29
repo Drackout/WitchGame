@@ -110,6 +110,12 @@ public class Witch : Battler
                 }
                 else
                 {
+                    // for (int i = 0; i < hand.Count; i++)
+                    // {
+                    //     battle.Logger.Log("CARD on witch: " + i);
+                    //     // Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+                    //     // anim.SetTrigger("pNormal");
+                    // }
                     break;
                 }
             }
@@ -237,8 +243,17 @@ public class Witch : Battler
                 hand[i] = c;
                 deck.RemoveAt(0);
                 yield return new DrawEvent(c);
+                battle.Logger.Log("DRAW!!");
             }
         }
+        // battle.Logger.Log("Finish refill hand!!");
+
+        // for (int i = 0; i < hand.Count; i++)
+        // {
+        //     battle.Logger.Log("CARD on witch: " + i);
+        //     // Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+        //     // anim.SetTrigger("pNormal");
+        // }
     }
 
     private Tuple<int, int> GetEffectiveHeal(Card card)

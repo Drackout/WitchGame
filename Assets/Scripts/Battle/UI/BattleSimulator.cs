@@ -110,6 +110,7 @@ public class BattleSimulator : MonoBehaviour
             Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
             b.onClick.AddListener(() => HandleCardClick(iCopy, b));
             b.interactable = false;
+
         }
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
@@ -126,7 +127,6 @@ public class BattleSimulator : MonoBehaviour
     private IEnumerator RunBattle(Battle battle)
     {
         IEnumerable<BattleEvent> battleIter = battle.Run();
-        
         foreach (BattleEvent battleEvent in battleIter)
         {
             switch (battleEvent)
@@ -160,6 +160,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case DrawEvent ev:
                     ShowHand(battle);
+                        Debug.Log("A");
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case PlayCardEvent ev:
@@ -170,11 +171,21 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case DiscardEvent ev:
                     ShowHand(battle);
+                        Debug.Log("B");
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case SlotsEvent ev:
                     slots.Slots = ev.Current;
                     ShowHand(battle);
+
+                    // Force all cards to starting position
+                    for (int i = 0; i < cardContainer.transform.childCount; i++)
+                    {
+                        Debug.Log("CARD: " + i);
+                        Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+                        anim.SetTrigger("pNormal");
+                    }
+
                     break;
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
@@ -207,25 +218,35 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case ShieldEvent ev:
+                    // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
                     playAnimation("Shield", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
+                    // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
-                    //Debug.Log(" :D - " + ev.ReactionType);
                     playAnimation("Heal", ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
+                    // SHIELD BLOCK/BREAK
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
-                    playAnimation("Block", battle.Witch.Shield.Element.ToString());
+                    if (battle.Witch.Shield.Charges == 0)
+                    {
+                        playAnimation("Break", battle.Witch.Shield.Element.ToString());
+                    }
+                    else
+                    {
+                        playAnimation("Block", battle.Witch.Shield.Element.ToString());
+                    }
+                    
                     playerShield.Shield = battle.Witch.Shield;
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:
-                    Debug.Log($"[DEBUG] {ev.Warning}");
+                    Debug.Log($"[DEBUG] EMPTY? AAAAAAAAA {ev.Warning}");
                     yield return new WaitForSeconds(2.0f);
                     break;
                 default:
@@ -301,6 +322,7 @@ public class BattleSimulator : MonoBehaviour
         }
 
         input = new InputResponse(Intention.Play, index);
+        Debug.Log("Index .play: " + index);
     }
 
     private void HandleHoldCard(int index)
@@ -309,6 +331,7 @@ public class BattleSimulator : MonoBehaviour
         Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
         anim.SetTrigger("pHold");
         input = new InputResponse(Intention.Hold, index);
+        Debug.Log("Index .hold: " + index);
     }
 
     private void CloseActiveDialog(int index, bool animation = true)
@@ -328,14 +351,6 @@ public class BattleSimulator : MonoBehaviour
     {
         input = new InputResponse(Intention.EndTurn);
         playAnimation("Turn", "");
-
-        // Force all cards to starting position
-        for (int i = 0; i < cardContainer.transform.childCount; i++)
-        {
-            Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
-            anim.SetTrigger("pNormal");
-        }
-
     }
 
     private void Update()
