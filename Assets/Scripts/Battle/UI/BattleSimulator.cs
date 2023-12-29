@@ -160,7 +160,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case DrawEvent ev:
                     ShowHand(battle);
-                        Debug.Log("A");
+                    // Debug.Log("A");
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case PlayCardEvent ev:
@@ -171,7 +171,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case DiscardEvent ev:
                     ShowHand(battle);
-                        Debug.Log("B");
+                    // Debug.Log("B");
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case SlotsEvent ev:
@@ -181,7 +181,6 @@ public class BattleSimulator : MonoBehaviour
                     // Force all cards to starting position
                     for (int i = 0; i < cardContainer.transform.childCount; i++)
                     {
-                        Debug.Log("CARD: " + i);
                         Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
                         anim.SetTrigger("pNormal");
                     }
@@ -190,6 +189,7 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
+                        Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
                         playAnimation("Hurt", "");
@@ -246,7 +246,7 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:
-                    Debug.Log($"[DEBUG] EMPTY? AAAAAAAAA {ev.Warning}");
+                    Debug.Log($"[DEBUG] {ev.Warning}");
                     yield return new WaitForSeconds(2.0f);
                     break;
                 default:
