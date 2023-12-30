@@ -140,7 +140,6 @@ public class BattleSimulator : MonoBehaviour
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
-                        //ev.
                         Debug.Log("A CARD WAS SELECTED");
                         Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
@@ -164,6 +163,12 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case MoveEvent ev:
+                    // ENEMY TURN (1 by 1)
+                    for (int i = 0; i < battle.Creatures.Count; i++)
+                    {
+                        if (battle.Creatures[i].Name == ev.Battler.Name)
+                            creatureElements[battle.Creatures[i]].playAnimation("Attack", 99);
+                    }
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case PlayCardEvent ev:
@@ -192,16 +197,14 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
-                        Debug.Log("Target: " + ev.Target);
+                        // Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
                         playAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
-                        {
                             playAnimation("Loss", "");
-                        }
                     }
                     else
                     {
@@ -325,7 +328,7 @@ public class BattleSimulator : MonoBehaviour
         }
 
         input = new InputResponse(Intention.Play, index);
-        Debug.Log("Index .play: " + index);
+        // Debug.Log("Index .play: " + index);
     }
 
     private void HandleHoldCard(int index)

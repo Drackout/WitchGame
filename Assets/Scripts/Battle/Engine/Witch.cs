@@ -110,12 +110,6 @@ public class Witch : Battler
                 }
                 else
                 {
-                    // for (int i = 0; i < hand.Count; i++)
-                    // {
-                    //     battle.Logger.Log("CARD on witch: " + i);
-                    //     // Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
-                    //     // anim.SetTrigger("pNormal");
-                    // }
                     break;
                 }
             }
@@ -190,7 +184,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
-                battle.Logger.Log("CARD::: " + card.ToString());
+                //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
@@ -203,7 +197,7 @@ public class Witch : Battler
         {
             yield return new InputRequestEvent(InputRequestType.Target);
             yield return new PlayCardEvent(card);
-                battle.Logger.Log("CARD::: " + card.ToString());
+                //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
 
@@ -243,7 +237,7 @@ public class Witch : Battler
                 hand[i] = c;
                 deck.RemoveAt(0);
                 yield return new DrawEvent(c);
-                battle.Logger.Log("DRAW!!");
+                //battle.Logger.Log("DRAW!!");
             }
         }
         // battle.Logger.Log("Finish refill hand!!");
