@@ -1195,7 +1195,7 @@ RectTransform:
   m_GameObject: {fileID: 137967538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 582971957}
@@ -5237,7 +5237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468143000784700305, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278245631
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1991943166898995725, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11609,6 +11609,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1001960178}
     m_Modifications:
+    - target: {fileID: 178527063768192478, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Name
       value: Card
@@ -11617,6 +11621,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b91eb95c32c4cea4ab9f9a489a622145, type: 2}
+    - target: {fileID: 6643367286949423624, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350779362707391378, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

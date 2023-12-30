@@ -15,8 +15,6 @@ public class BattleLog : MonoBehaviour, ILogger
             _svContent.text += text;
         else
             _svContent.text += "\n"+text;
-        // Force scroll down
-        //_svScrollRect.verticalNormalizedPosition = 0 ;
         StartCoroutine(ScrollDown());
     }
 
