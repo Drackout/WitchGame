@@ -11,6 +11,7 @@ public class Dummy : Creature
     public override IEnumerable<BattleEvent> Act()
     {
         battle.Logger.Log($"{Name} attacks you!");
+        yield return new MoveEvent(this);
         BattleEvent ev = battle.Witch.Hurt(new Attack(2, Element, new List<string>()));
         yield return ev;
     }

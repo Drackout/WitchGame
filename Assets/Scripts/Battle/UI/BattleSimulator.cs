@@ -162,6 +162,9 @@ public class BattleSimulator : MonoBehaviour
                     ShowHand(battle);
                     yield return new WaitForSeconds(0.5f);
                     break;
+                case MoveEvent ev:
+                    yield return new WaitForSeconds(0.5f);
+                    break;
                 case PlayCardEvent ev:
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     logText = $"Played {ev.Card}";
