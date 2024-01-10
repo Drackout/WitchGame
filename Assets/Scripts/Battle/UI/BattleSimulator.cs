@@ -380,10 +380,11 @@ public class BattleSimulator : MonoBehaviour
         if (defeated == total)
         {
             playAnimation("Win", "");
-            PlayerResources.Gold = PlayerResources.Gold + 42;
-            PlayerResources.SetStones(Element.Fire, PlayerResources.GetStones(Element.Fire) + 2);
-            PlayerResources.SetStones(Element.Water, PlayerResources.GetStones(Element.Water) + 1);
-            PlayerResources.SetStones(Element.Grass, PlayerResources.GetStones(Element.Grass) + 1);
+            PlayerResources pr = PlayerResources.Instance;
+            pr.Gold = pr.Gold + 42;
+            pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
+            pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
+            pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
         }
     }
 

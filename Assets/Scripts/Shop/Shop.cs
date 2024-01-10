@@ -16,10 +16,12 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        goldText.text = $"Gold: {PlayerResources.Gold}";
+        PlayerResources pr = PlayerResources.Instance;
 
-        fireStonesText.text = $"Fire stones: {PlayerResources.GetStones(Element.Fire)}";
-        waterStonesText.text = $"Water stones: {PlayerResources.GetStones(Element.Water)}";
-        grassStonesText.text = $"Grass stones: {PlayerResources.GetStones(Element.Grass)}";
+        goldText.text = $"Gold: {pr.Gold}";
+
+        fireStonesText.text = $"Fire stones: {pr.GetStones(Element.Fire)}";
+        waterStonesText.text = $"Water stones: {pr.GetStones(Element.Water)}";
+        grassStonesText.text = $"Grass stones: {pr.GetStones(Element.Grass)}";
     }
 }

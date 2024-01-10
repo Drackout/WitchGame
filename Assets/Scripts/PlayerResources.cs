@@ -1,11 +1,14 @@
 using System;
+using UnityEngine;
 
-public static class PlayerResources
+public class PlayerResources : MonoBehaviour
 {
-    private static int[] stones;
-    private static int gold;
+    private int[] stones;
+    private int gold;
 
-    public static int Gold
+    public static PlayerResources Instance { get; private set; }
+
+    public int Gold
     {
         get => gold;
         set
@@ -14,18 +17,27 @@ public static class PlayerResources
         }
     }
 
-    static PlayerResources()
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         int elementCount = Enum.GetNames(typeof(Element)).Length;
         stones = new int[elementCount];
     }
 
-    public static int GetStones(Element element)
+    public int GetStones(Element element)
     {
         return stones[(int)element];
     }
 
-    public static void SetStones(Element element, int value)
+    public void SetStones(Element element, int value)
     {
         stones[(int)element] = Math.Max(0, value);
     }
