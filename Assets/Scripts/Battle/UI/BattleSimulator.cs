@@ -423,7 +423,7 @@ public class BattleSimulator : MonoBehaviour
             if (extra == "-1")
                 reactions.text = "Weak..";
             else
-                reactions.text = "Stronk!";
+                reactions.text = "Strong!";
 
             animString += extra;
             //Debug.Log("AAAAAAAAA - " + animString);
