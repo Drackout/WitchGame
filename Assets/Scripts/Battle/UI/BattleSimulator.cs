@@ -361,6 +361,8 @@ public class BattleSimulator : MonoBehaviour
             pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
             pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
             pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
+            pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
+            pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
         }
     }
 

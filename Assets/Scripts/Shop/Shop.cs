@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private TMP_Text fireStonesText;
     [SerializeField] private TMP_Text waterStonesText;
     [SerializeField] private TMP_Text grassStonesText;
+    [SerializeField] private TMP_Text neutralCardsText;
 
     public void GoToMainMenu()
     {
@@ -23,5 +24,7 @@ public class Shop : MonoBehaviour
         fireStonesText.text = $"Fire stones: {pr.GetStones(Element.Fire)}";
         waterStonesText.text = $"Water stones: {pr.GetStones(Element.Water)}";
         grassStonesText.text = $"Grass stones: {pr.GetStones(Element.Grass)}";
+
+        neutralCardsText.text = string.Join("\n", pr.NeutralCards);
     }
 }
