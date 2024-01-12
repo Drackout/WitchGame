@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -47,37 +48,7 @@ public class BattleSimulator : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
 
-        IList<Card> cards = new List<Card>
-        {
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Heal, Element.Fire, 2),
-            new Card(CardType.Sword, Element.Water, 3),
-            new Card(CardType.Heal, Element.Grass, 2),
-            new Card(CardType.Sword, Element.Grass, 3),
-            new Card(CardType.Shield, Element.Grass, 2),
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Sword, Element.Water, 2),
-            new Card(CardType.Heal, Element.Fire, 2),
-            new Card(CardType.Shield, Element.Grass, 1),
-            new Card(CardType.Sword, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Water, 3),
-            new Card(CardType.Spell, Element.Grass, 3),
-            new Card(CardType.Spell, Element.Water, 2),
-            new Card(CardType.Spell, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Water, 3),
-            new Card(CardType.Shield, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Fire, 3),
-            new Card(CardType.Heal, Element.Water, 2),
-            new Card(CardType.Sword, Element.Grass, 2),
-            new Card(CardType.Spell, Element.Grass, 2),
-            new Card(CardType.Heal, Element.Grass, 2),
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Shield, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Grass, 3),
-            new Card(CardType.Sword, Element.Fire, 3),
-            new Card(CardType.Shield, Element.Grass, 2),
-            new Card(CardType.Heal, Element.Grass, 2)
-        };
+        IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]);
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
 
