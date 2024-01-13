@@ -48,17 +48,17 @@ public class BattleSimulator : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
 
-        IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
+        //IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
 
         //Testing purrrposes, dont erase.. yet
-       // IList<Card> cards = new List<Card>{
-       //     new Card(CardType.Shield, Element.Water, 2),
-       //     new Card(CardType.Sword, Element.Water, 3),
-       //     new Card(CardType.Heal, Element.Fire, 2),
-       //     new Card(CardType.Spell, Element.Fire, 3),
-       //     new Card(CardType.Heal, Element.Grass, 2),
-       //     new Card(CardType.Sword, Element.Grass, 3),
-       // };
+        IList<Card> cards = new List<Card>{
+            new Card(CardType.Shield, Element.Water, 2),
+            new Card(CardType.Sword, Element.Water, 3),
+            new Card(CardType.Heal, Element.Fire, 2),
+            new Card(CardType.Spell, Element.Fire, 3),
+            new Card(CardType.Heal, Element.Grass, 2),
+            new Card(CardType.Sword, Element.Grass, 3),
+        };
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
 
