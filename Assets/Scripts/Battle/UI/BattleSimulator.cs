@@ -48,7 +48,7 @@ public class BattleSimulator : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
 
-        //IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
+        // IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
 
         //Testing purrrposes, dont erase.. yet
         IList<Card> cards = new List<Card>{
