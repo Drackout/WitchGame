@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeckManager.unity
     guid: 1f8e7308a85e1be4e84d2d129a142c17
+  - enabled: 1
+    path: Assets/Scenes/RodryTests.unity
+    guid: 05cb00bc69fdefc4ca4559485ad1cb89
   m_configObjects: {}
