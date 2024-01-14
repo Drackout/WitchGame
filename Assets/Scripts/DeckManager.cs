@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,8 +8,10 @@ public class DeckManager : MonoBehaviour
 {
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private CardGrid cardGrid;
+    [SerializeField] private GameObject deckListRoot;
     [SerializeField] private ElementalStone[] stones;
     [SerializeField] private GameObject stoneDragMarkerPrefab;
+    [SerializeField] private DeckCard deckCardPrefab;
     [SerializeField] private Sprite fireIcon;
     [SerializeField] private Sprite grassIcon;
     [SerializeField] private Sprite waterIcon;
@@ -26,6 +29,28 @@ public class DeckManager : MonoBehaviour
         {
             s.OnStonePickup += StonePickedUp;
             s.OnStoneDrop += StoneDropped;
+        }
+
+        InstantiateDeckList();
+    }
+
+    private void InstantiateDeckList()
+    {
+        IDictionary<Card, int> cards = new Dictionary<Card, int>();
+        for (int i = 0; i < pr.Decks[0].Count; i++)
+        {
+            if (!cards.ContainsKey(pr.Decks[0][i]))
+            {
+                cards[pr.Decks[0][i]] = 0;
+            }
+            cards[pr.Decks[0][i]] += 1;
+        }
+
+        foreach (Card k in cards.Keys)
+        {
+            DeckCard deckCard = Instantiate(deckCardPrefab, deckListRoot.transform);
+            deckCard.Card = k;
+            deckCard.Amount = cards[k];
         }
     }
 

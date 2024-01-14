@@ -49,6 +49,17 @@ public class PlayerResources : MonoBehaviour
 
         OwnedCards = new List<Card>
         {
+            new Card(CardType.Shield, Element.None, 2),
+            new Card(CardType.Heal, Element.None, 2),
+            new Card(CardType.Shield, Element.None, 2),
+            new Card(CardType.Heal, Element.None, 2),
+            new Card(CardType.Sword, Element.None, 3)
+        };
+
+        decks = new IList<Card>[totalDecks];
+
+        decks[0] = new List<Card>
+        {
             new Card(CardType.Shield, Element.Water, 2),
             new Card(CardType.Heal, Element.Fire, 2),
             new Card(CardType.Sword, Element.Water, 3),
@@ -78,10 +89,6 @@ public class PlayerResources : MonoBehaviour
             new Card(CardType.Shield, Element.Grass, 2),
             new Card(CardType.Heal, Element.Grass, 2)
         };
-
-        decks = new IList<Card>[totalDecks];
-
-        decks[0] = OwnedCards.Take(20).ToList();
     }
 
     public int GetStones(Element element)
