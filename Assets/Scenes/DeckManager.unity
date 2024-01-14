@@ -2133,6 +2133,10 @@ MonoBehaviour:
   - {fileID: 867238155522698927}
   - {fileID: 1878785739}
   - {fileID: 627821930}
+  stoneDragMarkerPrefab: {fileID: 4768807412755325612, guid: 9430b3d17607c6e4da595ff5cff11d36, type: 3}
+  fireIcon: {fileID: 21300000, guid: 57c9ad787c54e514facd13e95ee2d7f4, type: 3}
+  grassIcon: {fileID: 21300000, guid: 0a2aae7cd28dccf43befa3df8daf1805, type: 3}
+  waterIcon: {fileID: 21300000, guid: 41349376eee330f43996b42f33346319, type: 3}
 --- !u!1 &2142759753
 GameObject:
   m_ObjectHideFlags: 0
