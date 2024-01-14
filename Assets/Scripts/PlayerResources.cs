@@ -26,6 +26,7 @@ public class PlayerResources : MonoBehaviour
     public IList<Card> OwnedCards { get; private set; }
     public IList<Card>[] Decks => decks;
     public IList<Card> NeutralCards => neutralCards;
+    public int[] Stones => stones;
 
     private void Awake()
     {
@@ -40,6 +41,9 @@ public class PlayerResources : MonoBehaviour
 
         int elementCount = Enum.GetNames(typeof(Element)).Length;
         stones = new int[elementCount];
+        stones[(int)Element.Fire] = 3;
+        stones[(int)Element.Grass] = 2;
+        stones[(int)Element.Water] = 2;
 
         neutralCards = new List<Card>();
 
