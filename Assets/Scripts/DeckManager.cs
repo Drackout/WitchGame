@@ -15,6 +15,9 @@ public class DeckManager : MonoBehaviour
     [SerializeField] private Sprite fireIcon;
     [SerializeField] private Sprite grassIcon;
     [SerializeField] private Sprite waterIcon;
+    [SerializeField] private EnchantDialog enchantDialogPrefab;
+    [SerializeField] private GameObject dialogCanvas;
+    [SerializeField] private GameObject darkOverlay;
 
     private PlayerResources pr;
     private GameObject dragMarker;
@@ -24,7 +27,7 @@ public class DeckManager : MonoBehaviour
         pr = PlayerResources.Instance;
 
         mainMenuButton.onClick.AddListener(LoadMainMenu);
-        cardGrid.OnStonePlaced += EnchantCard;
+        cardGrid.OnStonePlaced += StonePlaced;
         foreach (ElementalStone s in stones)
         {
             s.OnStonePickup += StonePickedUp;
@@ -59,7 +62,7 @@ public class DeckManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void EnchantCard(Element element, int index)
+    private void StonePlaced(Element element, int index)
     {
         if (pr.GetStones(element) <= 0)
         {
@@ -72,8 +75,23 @@ public class DeckManager : MonoBehaviour
             return;
         }
 
-        pr.OwnedCards[index] = new Card(card.Type, element, card.Power);
+        EnchantDialog dialog = Instantiate(enchantDialogPrefab, dialogCanvas.transform);
+        dialog.SourceCard = card;
+        dialog.ResultCard = new Card(card.Type, element, card.Power);
+        dialog.Stone = GetStoneIcon(element);
+        dialog.OnConfirm += () => ConfirmEnchant(dialog.gameObject, element, index);
+        dialog.OnCancel += () => CancelEnchant(dialog.gameObject);
 
+        darkOverlay.SetActive(true);
+    }
+
+    private void ConfirmEnchant(GameObject dialog, Element element, int index)
+    {
+        Destroy(dialog);
+        darkOverlay.SetActive(false);
+
+        Card card = pr.OwnedCards[index];
+        pr.OwnedCards[index] = new Card(card.Type, element, card.Power);
         pr.SetStones(element, pr.GetStones(element) - 1);
 
         cardGrid.UpdateCard(index);
@@ -81,6 +99,12 @@ public class DeckManager : MonoBehaviour
         {
             s.UpdateAmount();
         }
+    }
+
+    private void CancelEnchant(GameObject dialog)
+    {
+        Destroy(dialog);
+        darkOverlay.SetActive(false);
     }
 
     private void StonePickedUp(Element element)
@@ -92,13 +116,7 @@ public class DeckManager : MonoBehaviour
 
         dragMarker = Instantiate(stoneDragMarkerPrefab, transform);
         Image image = dragMarker.GetComponent<Image>();
-        image.sprite = element switch
-        {
-            Element.Fire => fireIcon,
-            Element.Grass => grassIcon,
-            Element.Water => waterIcon,
-            _ => throw new ArgumentException("Unknown element!")
-        };
+        image.sprite = GetStoneIcon(element);
     }
 
     private void StoneDropped()
@@ -108,5 +126,16 @@ public class DeckManager : MonoBehaviour
             Destroy(dragMarker);
             dragMarker = null;
         }
+    }
+
+    private Sprite GetStoneIcon(Element element)
+    {
+        return element switch
+        {
+            Element.Fire => fireIcon,
+            Element.Grass => grassIcon,
+            Element.Water => waterIcon,
+            _ => throw new ArgumentException("Unknown element!")
+        };
     }
 }
