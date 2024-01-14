@@ -14,6 +14,20 @@ public class ScrollRectWithSlider : MonoBehaviour
         scrollRect.onValueChanged.AddListener(UpdateSlider);
     }
 
+    private void Update()
+    {
+        float contentHeight = scrollRect.content.rect.height;
+        float viewportHeight = scrollRect.viewport.rect.height;
+        if (contentHeight > viewportHeight)
+        {
+            slider.gameObject.SetActive(true);
+        }
+        else
+        {
+            slider.gameObject.SetActive(false);
+        }
+    }
+
     private void ScrollView(float value)
     {
         scrollRect.verticalNormalizedPosition = 1f - value;
