@@ -42,6 +42,11 @@ public class DeckManager : MonoBehaviour
         }
 
         Card card = pr.OwnedCards[index];
+        if (card.Element != Element.None)
+        {
+            return;
+        }
+
         pr.OwnedCards[index] = new Card(card.Type, element, card.Power);
 
         pr.SetStones(element, pr.GetStones(element) - 1);
