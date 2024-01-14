@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 708830f387dffda4cbbcfd26cc72cc39
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI Scene.unity
     guid: 995bf4134b5184e4d9fdeef0d72cce37
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Bestiary.unity
     guid: f9b2d20f0cb770649bc4f7687b736c82
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Shop.unity
     guid: 5aa94b0becfa4cd4cb1efb9f6bea1b03
+  - enabled: 1
+    path: Assets/Scenes/BrunoQuarto.unity
+    guid: 80d59e2212f96bd459a7cf871de8a102
   m_configObjects: {}
