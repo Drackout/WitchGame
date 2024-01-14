@@ -1115,7 +1115,7 @@ PrefabInstance:
     - target: {fileID: 6125001027245561478, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41349376eee330f43996b42f33346319, type: 3}
+      objectReference: {fileID: 21300000, guid: bd598aa839fd4c747b01baa5a10a2aa3, type: 3}
     - target: {fileID: 8841667318447833363, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_Name
       value: StoneWater
@@ -3240,7 +3240,7 @@ PrefabInstance:
     - target: {fileID: 6125001027245561478, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0a2aae7cd28dccf43befa3df8daf1805, type: 3}
+      objectReference: {fileID: 21300000, guid: f6de4f6493a2c6a4f9dd1145f6175dbe, type: 3}
     - target: {fileID: 8841667318447833363, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_Name
       value: StoneGrass
@@ -3691,9 +3691,9 @@ MonoBehaviour:
   - {fileID: 627821930}
   stoneDragMarkerPrefab: {fileID: 4768807412755325612, guid: 9430b3d17607c6e4da595ff5cff11d36, type: 3}
   deckCardPrefab: {fileID: -3623517364459128520, guid: fd9ab7932307fab4bb230e64da576289, type: 3}
-  fireIcon: {fileID: 21300000, guid: 57c9ad787c54e514facd13e95ee2d7f4, type: 3}
-  grassIcon: {fileID: 21300000, guid: 0a2aae7cd28dccf43befa3df8daf1805, type: 3}
-  waterIcon: {fileID: 21300000, guid: 41349376eee330f43996b42f33346319, type: 3}
+  fireIcon: {fileID: 21300000, guid: d23117911a550c143b5ba6853ea008bb, type: 3}
+  grassIcon: {fileID: 21300000, guid: f6de4f6493a2c6a4f9dd1145f6175dbe, type: 3}
+  waterIcon: {fileID: 21300000, guid: bd598aa839fd4c747b01baa5a10a2aa3, type: 3}
 --- !u!1 &2142759753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3749,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 6125001027245561478, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d23117911a550c143b5ba6853ea008bb, type: 3}
     - target: {fileID: 8841667318447833363, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_Name
       value: StoneFire
