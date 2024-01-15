@@ -48,6 +48,8 @@ public class BattleSimulator : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
 
+        BattleSettings battleSettings = BattleSettings.Instance;
+
         // IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
 
         //Testing purrrposes, dont erase.. yet
@@ -62,31 +64,26 @@ public class BattleSimulator : MonoBehaviour
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
 
-        IList<Creature> creatures = new List<Creature>
+        IList<Creature> creatures = new List<Creature>();
+        foreach (EnemyCreature c in battleSettings.CurrentEncounter.enemies)
         {
-            new Dummy("Dummy 1", 10, Element.Grass),
-            new Dummy("Dummy 2", 15, Element.Fire),
-            new Dummy("Dummy 3", 10, Element.Water)
-        };
+            creatures.Add(new Dummy("Dummy", c.health, c.element));
+        }
 
         ILogger logger = new UnityLogger();
 
         battle = new Battle(witch, creatures, battleLogger);
 
-        // Hide creature UI elements at the start
-        for (int i = 0; i < creatureContainer.transform.childCount; i++)
-        {
-            Transform cc = creatureContainer.transform.GetChild(i);
-            cc.gameObject.SetActive(false);
-        }
-
         for (int i = 0; i < battle.Creatures.Count; i++)
         {
             int iCopy = i;
             Creature c = battle.Creatures[i];
-            Transform cc = creatureContainer.transform.GetChild(i);
-            cc.gameObject.SetActive(true);
-            creatureElements[c] = cc.GetComponent<UICreature>();
+
+            Transform slot = creatureContainer.transform.GetChild(i);
+            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
+                slot);
+
+            creatureElements[c] = uiCreature;
             creatureElements[c].SetHealth(c.Health, c.MaxHealth);
             creatureElements[c].Element = c.Element;
             creatureElements[c].TargetButton.onClick.AddListener(
@@ -381,6 +378,9 @@ public class BattleSimulator : MonoBehaviour
             pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
             pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
             pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
+
+            BattleSettings battleSettings = BattleSettings.Instance;
+            battleSettings.NextEncounter();
         }
     }
 
