@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SpriteOutlineGalho
-  m_Shader: {fileID: -6465566751694194690, guid: 365d52fbe5d97fb40b952c6e40d8d62d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 86ef7adac3d746a4681e0c6098b9083a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -94,6 +94,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
+    - Vector1_8dd6492e16194799b37d5efeb9926b89: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -106,6 +107,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DitherTexelSize: 1
+    - _DitherThreshold: 0
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnableExternalAlpha: 0
@@ -117,6 +120,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset: 0.01
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -136,6 +140,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_e33122dd1341407eb6ef24a34b660f09: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Direction: {r: 1, g: 0, b: 0, a: 0}
