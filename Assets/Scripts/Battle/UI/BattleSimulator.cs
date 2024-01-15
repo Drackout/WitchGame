@@ -25,6 +25,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
+    [SerializeField] private AudioSource audioSrc;
+    [SerializeField] private AudioSource audioSrc2;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -427,4 +429,15 @@ public class BattleSimulator : MonoBehaviour
 
         Animator.SetTrigger(animString);
     }
+
+    public void playWinSound()
+    {
+        audioSrc.Play();
+    }
+    
+    public void stopSounds()
+    {
+        audioSrc2.Stop();
+    }
+
 }
