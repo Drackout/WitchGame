@@ -73,11 +73,19 @@ public class BattleSimulator : MonoBehaviour
 
         battle = new Battle(witch, creatures, battleLogger);
 
+        // Hide creature UI elements at the start
+        for (int i = 0; i < creatureContainer.transform.childCount; i++)
+        {
+            Transform cc = creatureContainer.transform.GetChild(i);
+            cc.gameObject.SetActive(false);
+        }
+
         for (int i = 0; i < battle.Creatures.Count; i++)
         {
             int iCopy = i;
             Creature c = battle.Creatures[i];
             Transform cc = creatureContainer.transform.GetChild(i);
+            cc.gameObject.SetActive(true);
             creatureElements[c] = cc.GetComponent<UICreature>();
             creatureElements[c].SetHealth(c.Health, c.MaxHealth);
             creatureElements[c].Element = c.Element;
@@ -230,7 +238,7 @@ public class BattleSimulator : MonoBehaviour
                     {
                         playAnimation("Block", battle.Witch.Shield.Element.ToString());
                     }
-                    
+
                     playerShield.Shield = battle.Witch.Shield;
                     yield return new WaitForSeconds(2.0f);
                     break;
@@ -388,7 +396,7 @@ public class BattleSimulator : MonoBehaviour
 
         if (dmgHeal == "Damage")
             NmbReceived.SetText("-" + nreceived.ToString());
-        else     
+        else
             NmbReceived.SetText("+" + nreceived.ToString());
 
         Debug.Log(dmgHeal+ ": "+reactionType);
