@@ -13,6 +13,7 @@ public class EnemyCreature : ScriptableObject
     public string whatHits;
     public string specialEffect;
     public string[] drops;
+    public UICreature prefab;
 
     // Start is called before the first frame update
     void Start()
