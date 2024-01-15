@@ -40,6 +40,8 @@ public class PlayerResources : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         int elementCount = Enum.GetNames(typeof(Element)).Length;
+        
+        gold = 25;
         stones = new int[elementCount];
         stones[(int)Element.Fire] = 3;
         stones[(int)Element.Grass] = 2;

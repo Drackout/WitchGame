@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
     
     private void LoadShopScene()
     {
-        SceneManager.LoadScene("RodryTests");
+        SceneManager.LoadScene("Shop");
     }
 
     private void LoadCrafting()
