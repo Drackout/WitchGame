@@ -18,6 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: 5aa94b0becfa4cd4cb1efb9f6bea1b03
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/BrunoQuarto.unity
     guid: 80d59e2212f96bd459a7cf871de8a102
+=======
+    path: Assets/Scenes/DeckManager.unity
+    guid: 1f8e7308a85e1be4e84d2d129a142c17
+  - enabled: 1
+    path: Assets/Scenes/RodryTests.unity
+    guid: 05cb00bc69fdefc4ca4559485ad1cb89
+>>>>>>> 111a5e1213abc887df9aea6eba00ad086f93f979
   m_configObjects: {}
