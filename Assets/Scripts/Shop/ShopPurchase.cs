@@ -25,7 +25,6 @@ public class ShopPurchase : MonoBehaviour
             pr.Gold = totalGold - cost;
             // ADD CARD to Owned Cards
             imgSold.SetActive(true);
-
             pr.OwnedCards.Add(new Card(type, element, power));
         }
     }
