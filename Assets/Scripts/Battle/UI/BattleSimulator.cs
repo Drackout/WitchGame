@@ -15,6 +15,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private ResourceBar playerHealthBar;
     [SerializeField] private UIShield playerShield;
     [SerializeField] private GameObject creatureContainer;
+    [SerializeField] private GameObject creature3dContainer;
+    [SerializeField] private GameObject creature3dPrefab;
     [SerializeField] private Button endTurnButton;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
@@ -76,21 +78,7 @@ public class BattleSimulator : MonoBehaviour
 
         battle = new Battle(witch, creatures, battleLogger);
 
-        for (int i = 0; i < battle.Creatures.Count; i++)
-        {
-            int iCopy = i;
-            Creature c = battle.Creatures[i];
-
-            Transform slot = creatureContainer.transform.GetChild(i);
-            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
-                slot);
-
-            creatureElements[c] = uiCreature;
-            creatureElements[c].SetHealth(c.Health, c.MaxHealth);
-            creatureElements[c].Element = c.Element;
-            creatureElements[c].TargetButton.onClick.AddListener(
-                () => HandleSelection(iCopy));
-        }
+        InitCreatures();
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
@@ -110,6 +98,31 @@ public class BattleSimulator : MonoBehaviour
         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
         StartCoroutine(RunBattle(battle));
+    }
+
+    private void InitCreatures()
+    {
+        BattleSettings battleSettings = BattleSettings.Instance;
+
+        for (int i = 0; i < battle.Creatures.Count; i++)
+        {
+            int iCopy = i;
+            Creature c = battle.Creatures[i];
+
+            Transform slot = creatureContainer.transform.GetChild(i);
+            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
+                slot);
+
+            creatureElements[c] = uiCreature;
+            creatureElements[c].SetHealth(c.Health, c.MaxHealth);
+            creatureElements[c].Element = c.Element;
+            creatureElements[c].TargetButton.onClick.AddListener(
+                () => HandleSelection(iCopy));
+
+            Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
+            GameObject creature3d = Instantiate(battleSettings.CurrentEncounter.enemies[i].meshPrefab,
+                creature3dSlot);
+        }
     }
 
     private IEnumerator RunBattle(Battle battle)
@@ -434,7 +447,7 @@ public class BattleSimulator : MonoBehaviour
     {
         audioSrc.Play();
     }
-    
+
     public void stopSounds()
     {
         audioSrc2.Stop();
