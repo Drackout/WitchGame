@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2466115400104647536}
+  - component: {fileID: 3083345715122292652}
   m_Layer: 5
   m_Name: WaterHealIcon
   m_TagString: Untagged
@@ -37,6 +38,27 @@ RectTransform:
   m_AnchoredPosition: {x: 487, y: 15.8573}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &3083345715122292652
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337564734320401144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33b863eab7087d94c8bc6c483aa9563c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4883509069063265541
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +93,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.566, y: -18}
+  m_AnchoredPosition: {x: -2, y: -18}
   m_SizeDelta: {x: 221.774, y: 221.774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7149691639697303037
