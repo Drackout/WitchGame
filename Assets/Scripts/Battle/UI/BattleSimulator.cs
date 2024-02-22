@@ -29,9 +29,11 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Image animationShield;
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
+    [SerializeField] private LayerMask enemiesMask;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
+    private IList<Creature3D> creature3dElements;
 
     private InputResponse input;
 
@@ -45,9 +47,15 @@ public class BattleSimulator : MonoBehaviour
 
     private CardAnimation cardAnimation;
 
+    private Camera mainCamera;
+
+    private bool selectingTarget;
+
     private void Start()
     {
         creatureElements = new Dictionary<Battler, UICreature>();
+        creature3dElements = new List<Creature3D>();
+
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
@@ -97,6 +105,8 @@ public class BattleSimulator : MonoBehaviour
         slots.Slots = battle.Witch.Slots;
         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
+        mainCamera = Camera.main;
+
         StartCoroutine(RunBattle(battle));
     }
 
@@ -122,6 +132,7 @@ public class BattleSimulator : MonoBehaviour
             Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
             GameObject creature3d = Instantiate(battleSettings.CurrentEncounter.enemies[i].meshPrefab,
                 creature3dSlot);
+            creature3dElements.Add(creature3d.GetComponent<Creature3D>());
         }
     }
 
@@ -302,6 +313,13 @@ public class BattleSimulator : MonoBehaviour
         {
             item.Value.TargetButton.interactable = state;
         }
+
+        foreach (Creature3D c in creature3dElements)
+        {
+            c.ToggleTarget(state);
+        }
+        
+        selectingTarget = state;
     }
 
     private void HandleCardClick(int index, Button cardButton)
@@ -378,6 +396,23 @@ public class BattleSimulator : MonoBehaviour
         {
             battle.Cheats[(int)Cheats.InfiniteDamage] = !battle.Cheats[(int)Cheats.InfiniteDamage];
             Debug.Log($"Infinite damage: battle.Cheats[(int)Cheats.InfiniteDamage]");
+        }
+
+        if (selectingTarget)
+        {
+            foreach (Creature3D c in creature3dElements)
+            {
+                c.ToggleHover(false);
+            }
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 10f, enemiesMask))
+            {
+                var creature = hit.collider.GetComponent<Creature3D>();
+                creature.ToggleHover(true);
+            }
         }
     }
 

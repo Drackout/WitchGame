@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HomemDoGalho
-  m_Shader: {fileID: -6465566751694194690, guid: edabca49f2d3d8640a3d409b0ccf59cf, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 589ff709a1a3c0449b016e0106fcf3a8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -147,6 +147,7 @@ Material:
     - _DiffuseStep: 0
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
+    - _Draw_Outline: 0
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnableExternalAlpha: 0
@@ -215,6 +216,7 @@ Material:
     - _StencilRef: 0
     - _StepViaRampTexture: 0
     - _Surface: 0
+    - _Thickness: 0.05
     - _UseRampColor: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

@@ -16290,6 +16290,9 @@ MonoBehaviour:
   animationShield: {fileID: 137967540}
   audioSrc: {fileID: 1546705394}
   audioSrc2: {fileID: 2060908819}
+  enemiesMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &1985428022
 Animator:
   serializedVersion: 5
