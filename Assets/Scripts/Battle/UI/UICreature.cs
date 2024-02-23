@@ -45,15 +45,15 @@ public class UICreature : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
     }
 
-    public void playAnimation(string animString, int extra)
+    public void PlayAnimation(string animString, int extra)
     {
         if (extra != 99)
         {
             if (extra == -1)
                 reactions.text = "weak..";
             else if (extra == 1)
-                reactions.text = "Strong!";       
-                
+                reactions.text = "Strong!";
+
             animString += extra.ToString();
         }
 

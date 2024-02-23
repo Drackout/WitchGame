@@ -33,7 +33,7 @@ public class BattleSimulator : MonoBehaviour
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
-    private IList<Creature3D> creature3dElements;
+    private IDictionary<Battler, Creature3D> creature3dElements;
 
     private InputResponse input;
 
@@ -54,7 +54,7 @@ public class BattleSimulator : MonoBehaviour
     private void Start()
     {
         creatureElements = new Dictionary<Battler, UICreature>();
-        creature3dElements = new List<Creature3D>();
+        creature3dElements = new Dictionary<Battler, Creature3D>();
 
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
@@ -132,7 +132,7 @@ public class BattleSimulator : MonoBehaviour
             Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
             GameObject creature3d = Instantiate(battleSettings.CurrentEncounter.enemies[i].meshPrefab,
                 creature3dSlot);
-            creature3dElements.Add(creature3d.GetComponent<Creature3D>());
+            creature3dElements[c] = creature3d.GetComponent<Creature3D>();
         }
     }
 
@@ -179,7 +179,10 @@ public class BattleSimulator : MonoBehaviour
                     for (int i = 0; i < battle.Creatures.Count; i++)
                     {
                         if (battle.Creatures[i].Name == ev.Battler.Name)
-                            creatureElements[battle.Creatures[i]].playAnimation("Attack", 99);
+                        {
+                            creatureElements[battle.Creatures[i]].PlayAnimation("Attack", 99);
+                            creature3dElements[battle.Creatures[i]].PlayAnimation("Attack");
+                        }
                     }
                     yield return new WaitForSeconds(0.5f);
                     break;
@@ -214,11 +217,11 @@ public class BattleSimulator : MonoBehaviour
                         // Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        playAnimation("Hurt", "");
+                        PlayAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
-                            playAnimation("Loss", "");
+                            PlayAnimation("Loss", "");
                     }
                     else
                     {
@@ -226,28 +229,31 @@ public class BattleSimulator : MonoBehaviour
                         creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
                         if (ev.Target.Health == 0)
                         {
-                            creatureElements[ev.Target].playAnimation("Dead", 99); //99 used for NON-Reactions
+                            creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
                             yield return new WaitForSeconds(2.0f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
                             CheckEnemiesDefeated(enemiesDefeated, creatureElements.Count);
                         }
                         else
-                            creatureElements[ev.Target].playAnimation("Hurt", ev.ReactionType);
+                        {
+                            creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
+                            creature3dElements[ev.Target].PlayAnimation("Hurt");
+                        }
                     }
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    playAnimation("Shield", ev.Shield.Element.ToString());
+                    PlayAnimation("Shield", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
                     // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
-                    playAnimation("Heal", ev.ReactionType.ToString());
+                    PlayAnimation("Heal", ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
                     // SHIELD BLOCK/BREAK
@@ -255,11 +261,11 @@ public class BattleSimulator : MonoBehaviour
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
                     if (battle.Witch.Shield.Charges == 0)
                     {
-                        playAnimation("Break", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("Break", battle.Witch.Shield.Element.ToString());
                     }
                     else
                     {
-                        playAnimation("Block", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("Block", battle.Witch.Shield.Element.ToString());
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
@@ -314,11 +320,11 @@ public class BattleSimulator : MonoBehaviour
             item.Value.TargetButton.interactable = state;
         }
 
-        foreach (Creature3D c in creature3dElements)
+        foreach (Creature3D c in creature3dElements.Values)
         {
             c.ToggleTarget(state);
         }
-        
+
         selectingTarget = state;
     }
 
@@ -380,7 +386,7 @@ public class BattleSimulator : MonoBehaviour
     private void HandleEndTurnClick()
     {
         input = new InputResponse(Intention.EndTurn);
-        playAnimation("Turn", "");
+        PlayAnimation("Turn", "");
     }
 
     private void Update()
@@ -400,7 +406,7 @@ public class BattleSimulator : MonoBehaviour
 
         if (selectingTarget)
         {
-            foreach (Creature3D c in creature3dElements)
+            foreach (Creature3D c in creature3dElements.Values)
             {
                 c.ToggleHover(false);
             }
@@ -420,7 +426,7 @@ public class BattleSimulator : MonoBehaviour
     {
         if (defeated == total)
         {
-            playAnimation("Win", "");
+            PlayAnimation("Win", "");
             PlayerResources pr = PlayerResources.Instance;
             pr.Gold = pr.Gold + 42;
             pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
@@ -452,7 +458,7 @@ public class BattleSimulator : MonoBehaviour
         Debug.Log(dmgHeal+ ": "+reactionType);
     }
 
-    public void playAnimation(string animString, string extra)
+    public void PlayAnimation(string animString, string extra)
     {
         if (extra != "")
         {
