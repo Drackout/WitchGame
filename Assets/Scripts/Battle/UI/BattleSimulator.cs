@@ -15,6 +15,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private ResourceBar playerHealthBar;
     [SerializeField] private UIShield playerShield;
     [SerializeField] private GameObject creatureContainer;
+    [SerializeField] private GameObject creature3dContainer;
+    [SerializeField] private GameObject creature3dPrefab;
     [SerializeField] private Button endTurnButton;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
@@ -27,9 +29,11 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Image animationShield;
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
+    [SerializeField] private LayerMask enemiesMask;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
+    private IDictionary<Battler, Creature3D> creature3dElements;
 
     private InputResponse input;
 
@@ -43,9 +47,15 @@ public class BattleSimulator : MonoBehaviour
 
     private CardAnimation cardAnimation;
 
+    private Camera mainCamera;
+
+    private bool selectingTarget;
+
     private void Start()
     {
         creatureElements = new Dictionary<Battler, UICreature>();
+        creature3dElements = new Dictionary<Battler, Creature3D>();
+
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
@@ -76,21 +86,7 @@ public class BattleSimulator : MonoBehaviour
 
         battle = new Battle(witch, creatures, battleLogger);
 
-        for (int i = 0; i < battle.Creatures.Count; i++)
-        {
-            int iCopy = i;
-            Creature c = battle.Creatures[i];
-
-            Transform slot = creatureContainer.transform.GetChild(i);
-            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
-                slot);
-
-            creatureElements[c] = uiCreature;
-            creatureElements[c].SetHealth(c.Health, c.MaxHealth);
-            creatureElements[c].Element = c.Element;
-            creatureElements[c].TargetButton.onClick.AddListener(
-                () => HandleSelection(iCopy));
-        }
+        InitCreatures();
 
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
@@ -109,7 +105,35 @@ public class BattleSimulator : MonoBehaviour
         slots.Slots = battle.Witch.Slots;
         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
+        mainCamera = Camera.main;
+
         StartCoroutine(RunBattle(battle));
+    }
+
+    private void InitCreatures()
+    {
+        BattleSettings battleSettings = BattleSettings.Instance;
+
+        for (int i = 0; i < battle.Creatures.Count; i++)
+        {
+            int iCopy = i;
+            Creature c = battle.Creatures[i];
+
+            Transform slot = creatureContainer.transform.GetChild(i);
+            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
+                slot);
+
+            creatureElements[c] = uiCreature;
+            creatureElements[c].SetHealth(c.Health, c.MaxHealth);
+            creatureElements[c].Element = c.Element;
+            creatureElements[c].TargetButton.onClick.AddListener(
+                () => HandleSelection(iCopy));
+
+            Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
+            GameObject creature3d = Instantiate(battleSettings.CurrentEncounter.enemies[i].meshPrefab,
+                creature3dSlot);
+            creature3dElements[c] = creature3d.GetComponent<Creature3D>();
+        }
     }
 
     private IEnumerator RunBattle(Battle battle)
@@ -155,7 +179,10 @@ public class BattleSimulator : MonoBehaviour
                     for (int i = 0; i < battle.Creatures.Count; i++)
                     {
                         if (battle.Creatures[i].Name == ev.Battler.Name)
-                            creatureElements[battle.Creatures[i]].playAnimation("Attack", 99);
+                        {
+                            creatureElements[battle.Creatures[i]].PlayAnimation("Attack", 99);
+                            creature3dElements[battle.Creatures[i]].PlayAnimation("Attack");
+                        }
                     }
                     yield return new WaitForSeconds(0.5f);
                     break;
@@ -190,11 +217,11 @@ public class BattleSimulator : MonoBehaviour
                         // Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        playAnimation("Hurt", "");
+                        PlayAnimation("Hurt", "");
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
-                            playAnimation("Loss", "");
+                            PlayAnimation("Loss", "");
                     }
                     else
                     {
@@ -202,28 +229,33 @@ public class BattleSimulator : MonoBehaviour
                         creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
                         if (ev.Target.Health == 0)
                         {
-                            creatureElements[ev.Target].playAnimation("Dead", 99); //99 used for NON-Reactions
+                            creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
+                            creature3dElements[ev.Target].PlayAnimation("Dead");
                             yield return new WaitForSeconds(2.0f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
+                            creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
                             CheckEnemiesDefeated(enemiesDefeated, creatureElements.Count);
                         }
                         else
-                            creatureElements[ev.Target].playAnimation("Hurt", ev.ReactionType);
+                        {
+                            creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
+                            creature3dElements[ev.Target].PlayAnimation("Hurt");
+                        }
                     }
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    playAnimation("Shield", ev.Shield.Element.ToString());
+                    PlayAnimation("Shield", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
                     // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
-                    playAnimation("Heal", ev.ReactionType.ToString());
+                    PlayAnimation("Heal", ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
                     // SHIELD BLOCK/BREAK
@@ -231,11 +263,11 @@ public class BattleSimulator : MonoBehaviour
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
                     if (battle.Witch.Shield.Charges == 0)
                     {
-                        playAnimation("Break", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("Break", battle.Witch.Shield.Element.ToString());
                     }
                     else
                     {
-                        playAnimation("Block", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("Block", battle.Witch.Shield.Element.ToString());
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
@@ -289,6 +321,13 @@ public class BattleSimulator : MonoBehaviour
         {
             item.Value.TargetButton.interactable = state;
         }
+
+        foreach (Creature3D c in creature3dElements.Values)
+        {
+            c.ToggleTarget(state);
+        }
+
+        selectingTarget = state;
     }
 
     private void HandleCardClick(int index, Button cardButton)
@@ -349,7 +388,7 @@ public class BattleSimulator : MonoBehaviour
     private void HandleEndTurnClick()
     {
         input = new InputResponse(Intention.EndTurn);
-        playAnimation("Turn", "");
+        PlayAnimation("Turn", "");
     }
 
     private void Update()
@@ -366,13 +405,30 @@ public class BattleSimulator : MonoBehaviour
             battle.Cheats[(int)Cheats.InfiniteDamage] = !battle.Cheats[(int)Cheats.InfiniteDamage];
             Debug.Log($"Infinite damage: battle.Cheats[(int)Cheats.InfiniteDamage]");
         }
+
+        if (selectingTarget)
+        {
+            foreach (Creature3D c in creature3dElements.Values)
+            {
+                c.ToggleHover(false);
+            }
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 10f, enemiesMask))
+            {
+                var creature = hit.collider.GetComponent<Creature3D>();
+                creature.ToggleHover(true);
+            }
+        }
     }
 
     private void CheckEnemiesDefeated(int defeated, int total)
     {
         if (defeated == total)
         {
-            playAnimation("Win", "");
+            PlayAnimation("Win", "");
             PlayerResources pr = PlayerResources.Instance;
             pr.Gold = pr.Gold + 42;
             pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
@@ -404,7 +460,7 @@ public class BattleSimulator : MonoBehaviour
         Debug.Log(dmgHeal+ ": "+reactionType);
     }
 
-    public void playAnimation(string animString, string extra)
+    public void PlayAnimation(string animString, string extra)
     {
         if (extra != "")
         {
@@ -434,7 +490,7 @@ public class BattleSimulator : MonoBehaviour
     {
         audioSrc.Play();
     }
-    
+
     public void stopSounds()
     {
         audioSrc2.Stop();

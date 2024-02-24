@@ -20,3 +20,4 @@ MonoBehaviour:
   specialEffect: 
   drops: []
   prefab: {fileID: 4211786009676591601, guid: a2ac9e042df58694583b5a2b6bf202a2, type: 3}
+  meshPrefab: {fileID: 7922995388823394268, guid: fefea1031d0d52e44878f41ab82465b1, type: 3}
