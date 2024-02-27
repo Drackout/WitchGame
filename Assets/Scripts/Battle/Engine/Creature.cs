@@ -1,7 +1,4 @@
 using System;
-using System.Diagnostics;
-using Unity.VisualScripting;
-using UnityEngine.EventSystems;
 
 public abstract class Creature : Battler
 {
