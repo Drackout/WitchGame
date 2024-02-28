@@ -1598,8 +1598,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 906.0,
-            "y": 607.0,
+            "x": 899.3333740234375,
+            "y": 608.0,
             "width": 56.0,
             "height": 24.0
         }
@@ -2097,10 +2097,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 615.0000610351563,
-            "y": 562.0,
-            "width": 127.99981689453125,
-            "height": 94.00006103515625
+            "x": 727.3333740234375,
+            "y": 562.6666259765625,
+            "width": 129.33331298828126,
+            "height": 96.0
         }
     },
     "m_Slots": [
@@ -2573,7 +2573,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.009999999776482582,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
