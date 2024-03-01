@@ -35,6 +35,9 @@ public class BattleSimulator : MonoBehaviour
     private IDictionary<Battler, UICreature> creatureElements;
     private IDictionary<Battler, Creature3D> creature3dElements;
 
+    private RequestData request;
+    private int encounterIndex;
+
     private InputResponse input;
 
     private CardActionsDialog activeCardActionDialog;
@@ -60,6 +63,8 @@ public class BattleSimulator : MonoBehaviour
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
 
+        encounterIndex = 0;
+
         BattleSettings battleSettings = BattleSettings.Instance;
 
         IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
@@ -76,8 +81,10 @@ public class BattleSimulator : MonoBehaviour
 
         Witch witch = new Witch("Witch", 20, cards, 5, 4);
 
+        request = battleSettings.CurrentRequest;
+
         IList<Creature> creatures = new List<Creature>();
-        foreach (EnemyCreature c in battleSettings.CurrentEncounter.enemies)
+        foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
         {
             creatures.Add(new Dummy("Dummy", c.health, c.element));
         }
@@ -120,8 +127,8 @@ public class BattleSimulator : MonoBehaviour
             Creature c = battle.Creatures[i];
 
             Transform slot = creatureContainer.transform.GetChild(i);
-            UICreature uiCreature = Instantiate(battleSettings.CurrentEncounter.enemies[i].prefab,
-                slot);
+            EnemyCreature creatureData = request.encounters[encounterIndex].enemies[i];
+            UICreature uiCreature = Instantiate(creatureData.prefab, slot);
 
             creatureElements[c] = uiCreature;
             creatureElements[c].SetHealth(c.Health, c.MaxHealth);
@@ -130,8 +137,8 @@ public class BattleSimulator : MonoBehaviour
                 () => HandleSelection(iCopy));
 
             Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
-            GameObject creature3d = Instantiate(battleSettings.CurrentEncounter.enemies[i].meshPrefab,
-                creature3dSlot);
+            GameObject creature3d = Instantiate(creatureData.meshPrefab, creature3dSlot);
+
             creature3dElements[c] = creature3d.GetComponent<Creature3D>();
         }
     }
@@ -428,17 +435,35 @@ public class BattleSimulator : MonoBehaviour
     {
         if (defeated == total)
         {
-            PlayAnimation("Win", "");
-            PlayerResources pr = PlayerResources.Instance;
-            pr.Gold = pr.Gold + 42;
-            pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
-            pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
-            pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
-            pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
-            pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
+            encounterIndex += 1;
 
-            BattleSettings battleSettings = BattleSettings.Instance;
-            battleSettings.NextEncounter();
+            if (encounterIndex >= request.encounters.Length)
+            {
+                encounterIndex = 0;
+                BattleSettings bs = BattleSettings.Instance;
+                bs.NextStage();
+
+                PlayAnimation("Win", "");
+                PlayerResources pr = PlayerResources.Instance;
+                pr.Gold = pr.Gold + 42;
+                pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
+                pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
+                pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
+                pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
+                pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
+            }
+            else
+            {
+                IList<Creature> creatures = new List<Creature>();
+                foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
+                {
+                    creatures.Add(new Dummy("Dummy", c.health, c.element));
+                }
+
+                battle = new Battle(battle.Witch, creatures, battleLogger);
+                InitCreatures();
+                StartCoroutine(RunBattle(battle));
+            }
         }
     }
 
