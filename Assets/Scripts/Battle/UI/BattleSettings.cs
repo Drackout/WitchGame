@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class BattleSettings : MonoBehaviour
 {
-    [SerializeField] private EncounterData[] encounters;
+    [SerializeField] private RequestStage[] stages;
 
     private static BattleSettings instance;
-    private int encounterIndex;
+    private RequestData currentRequest;
+    private int stageIndex;
 
     public static BattleSettings Instance => instance;
     public bool ShuffleDeck { get; set; }
 
-    public EncounterData CurrentEncounter => encounters[encounterIndex];
+    public RequestData CurrentRequest => currentRequest;
 
-    public EncounterData NextEncounter()
+    public void NextStage()
     {
-        encounterIndex = Math.Min(encounters.Length - 1, encounterIndex + 1);
-        return CurrentEncounter;
+        stageIndex = Math.Min(stages.Length - 1, stageIndex + 1);
+        currentRequest = stages[stageIndex].GetRequest(RequestDifficulty.Easy);
+    }
+
+    public void ChooseRequest(RequestDifficulty difficulty)
+    {
+        currentRequest = stages[stageIndex].GetRequest(difficulty);
     }
 
     private void Awake()
@@ -34,6 +40,7 @@ public class BattleSettings : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         ShuffleDeck = true;
-        encounterIndex = 0;
+        stageIndex = 0;
+        currentRequest = stages[0].GetRequest(RequestDifficulty.Easy);
     }
 }
