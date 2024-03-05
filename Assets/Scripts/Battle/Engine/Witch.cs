@@ -13,6 +13,7 @@ public class Witch : Battler
     public int CardsPlayed { get; private set; }
     public InputResponse Input { get; set; }
     public IList<int> HeldCards { get; private set; }
+    public int MaxActions { get; private set; }
 
     public IList<Card> Hand => hand;
     public IList<Card> DiscardPile => discardPile;
@@ -23,10 +24,11 @@ public class Witch : Battler
     private IList<Card> discardPile;
 
     public Witch(string name, int maxHealth, IEnumerable<Card> cards,
-        int maxSlots, int startingSlots) : base(name, maxHealth)
+        int maxSlots, int startingSlots, int maxActions) : base(name, maxHealth)
     {
         MaxSlots = maxSlots;
         Slots = startingSlots;
+        MaxActions = maxActions;
         CardsPlayed = 0;
         Input = new InputResponse();
         Shield = new Shield();
@@ -47,6 +49,7 @@ public class Witch : Battler
     public override IEnumerable<BattleEvent> Act()
     {
         int actionsDone = 0;
+        bool actionDone = false;
 
         // Refill hand
         foreach (BattleEvent ev in RefillHand())
@@ -54,63 +57,85 @@ public class Witch : Battler
             yield return ev;
         }
 
-        while (actionsDone < 3)
+        while (actionsDone < MaxActions)
         {
-            yield return new InputRequestEvent(InputRequestType.Play);
+            actionDone = false;
 
-            if (Input.Intention == Intention.Play)
+            while (!actionDone)
             {
-                Card card = hand[Input.Selection];
+                yield return new InputRequestEvent(InputRequestType.Play);
 
-                if (CardsPlayed >= 2)
+                if (Input.Intention == Intention.Play)
                 {
-                    battle.Logger.Log("You can only play up to 2 cards per turn!");
-                }
-                else if (HeldCards.Contains(Input.Selection))
-                {
-                    battle.Logger.Log($"{card} is being held!");
-                }
-                else
-                {
-                    Discard(Input.Selection);
+                    int cardIndex = Input.Selection;
 
-                    foreach (BattleEvent ev in PlayCard(card))
+                    Card card = hand[cardIndex];
+
+                    if (CardsPlayed >= 2)
                     {
-                        yield return ev;
+                        battle.Logger.Log("You can only play up to 2 cards per turn!");
                     }
-
-                    if (battle.IsOver())
+                    else if (HeldCards.Contains(cardIndex))
                     {
-                        break;
+                        battle.Logger.Log($"{card} is being held!");
                     }
+                    else
+                    {
+                        foreach (BattleEvent ev in PlayCard(card))
+                        {
+                            if (ev is PlayCardEvent)
+                            {
+                                CardsPlayed += 1;
+                                actionDone = true;
+                            }
+                            yield return ev;
+                        }
 
-                    actionsDone += 1;
-                }
-            }
-            else if (Input.Intention == Intention.Hold)
-            {
-                if (HeldCards.Count >= 1)
-                {
-                    battle.Logger.Log("You can only hold a single card!");
-                }
-                else
-                {
-                    int cardIdx = Input.Selection;
-                    HeldCards.Add(cardIdx);
-                    battle.Logger.Log($"{hand[cardIdx]} was held...");
+                        if (!actionDone)
+                        {
+                            continue;
+                        }
 
-                    actionsDone += 1;
+                        if (battle.IsOver())
+                        {
+                            break;
+                        }
+
+                        actionsDone += 1;
+
+                        foreach (BattleEvent ev in Discard(cardIndex))
+                        {
+                            yield return ev;
+                        }
+                    }
                 }
-            }
-            else if (Input.Intention == Intention.EndTurn)
-            {
-                if (CardsPlayed <= 0)
+                else if (Input.Intention == Intention.Hold)
                 {
-                    battle.Logger.Log("You must play at least 1 card!");
+                    if (HeldCards.Count >= 1)
+                    {
+                        battle.Logger.Log("You can only hold a single card!");
+                    }
+                    else
+                    {
+                        int cardIdx = Input.Selection;
+                        HeldCards.Add(cardIdx);
+                        battle.Logger.Log($"{hand[cardIdx]} was held...");
+
+                        actionDone = true;
+                        actionsDone += 1;
+                    }
                 }
-                else
+                else if (Input.Intention == Intention.EndTurn)
                 {
-                    break;
+                    if (CardsPlayed <= 0)
+                    {
+                        battle.Logger.Log("You must play at least 1 card!");
+                    }
+                    else
+                    {
+                        actionDone = true;
+                        actionsDone = MaxActions;
+                    }
                 }
             }
         }
@@ -121,8 +146,10 @@ public class Witch : Battler
             if (hand[i].Type != CardType.None && !HeldCards.Contains(i))
             {
                 Card c = hand[i];
-                Discard(i);
-                yield return new DiscardEvent(c, i);
+                foreach (BattleEvent ev in Discard(i))
+                {
+                    yield return ev;
+                }
             }
         }
 
@@ -178,11 +205,13 @@ public class Witch : Battler
 
     private IEnumerable<BattleEvent> PlayCard(Card card)
     {
-        CardsPlayed += 1;
-
         if (card.Type == CardType.Sword)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
+            if (Input.Intention == Intention.Cancel)
+            {
+                yield break;
+            }
             yield return new PlayCardEvent(card);
                 //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
@@ -196,6 +225,10 @@ public class Witch : Battler
         else if (card.Type == CardType.Spell)
         {
             yield return new InputRequestEvent(InputRequestType.Target);
+            if (Input.Intention == Intention.Cancel)
+            {
+                yield break;
+            }
             yield return new PlayCardEvent(card);
                 //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
@@ -293,11 +326,12 @@ public class Witch : Battler
         }
     }
 
-    private void Discard(int index)
+    private IEnumerable<BattleEvent> Discard(int index)
     {
         Card c = hand[index];
         hand[index] = Card.None;
         discardPile.Add(c);
+        yield return new DiscardEvent(c, index);
     }
 
     private void LogHand()

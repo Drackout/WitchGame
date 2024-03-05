@@ -18,6 +18,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject creature3dContainer;
     [SerializeField] private GameObject creature3dPrefab;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private Button cancelButton;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
@@ -79,7 +80,7 @@ public class BattleSimulator : MonoBehaviour
         //    new Card(CardType.Sword, Element.Grass, 3),
         //};
 
-        Witch witch = new Witch("Witch", 20, cards, 5, 4);
+        Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
 
         request = battleSettings.CurrentRequest;
 
@@ -106,6 +107,9 @@ public class BattleSimulator : MonoBehaviour
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
+
+        cancelButton.onClick.AddListener(HandleCancelClick);
+        cancelButton.gameObject.SetActive(false);
 
         playerShield.Shield = new Shield();
 
@@ -334,6 +338,8 @@ public class BattleSimulator : MonoBehaviour
             c.ToggleTarget(state);
         }
 
+        cancelButton.gameObject.SetActive(state);
+
         selectingTarget = state;
     }
 
@@ -396,6 +402,11 @@ public class BattleSimulator : MonoBehaviour
     {
         input = new InputResponse(Intention.EndTurn);
         PlayAnimation("Turn", "");
+    }
+
+    private void HandleCancelClick()
+    {
+        input = new InputResponse(Intention.Cancel);
     }
 
     private void Update()
