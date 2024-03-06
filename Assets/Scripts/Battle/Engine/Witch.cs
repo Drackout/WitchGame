@@ -125,6 +125,13 @@ public class Witch : Battler
                         actionsDone += 1;
                     }
                 }
+                else if (Input.Intention == Intention.Unhold)
+                {
+                    HeldCards.Remove(Input.Selection);
+
+                    actionDone = true;
+                    actionsDone -= 1;
+                }
                 else if (Input.Intention == Intention.EndTurn)
                 {
                     if (CardsPlayed <= 0)

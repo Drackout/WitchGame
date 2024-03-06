@@ -354,15 +354,24 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardClick(int index, Button cardButton)
     {
-        CloseActiveDialog(index, false);
+        if (battle.Witch.HeldCards.Contains(index))
+        {
+            input = new InputResponse(Intention.Unhold, index);
+            Animator animator = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+            animator.SetTrigger("pNormal");
+        }
+        else
+        {
+            CloseActiveDialog(index, false);
 
-        RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
-        activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
-            Quaternion.identity, transform);
+            RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
+            activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
+                Quaternion.identity, transform);
 
-        activeCardActionDialog.OnPlay += () => HandleSelection(index);
-        activeCardActionDialog.OnHold += () => HandleHoldCard(index);
-        activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
+            activeCardActionDialog.OnPlay += () => HandleSelection(index);
+            activeCardActionDialog.OnHold += () => HandleHoldCard(index);
+            activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
+        }
     }
 
     private void HandleSelection(int index)
