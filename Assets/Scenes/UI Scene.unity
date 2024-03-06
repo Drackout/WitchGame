@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36612922, g: 0.21639097, b: 0.36319837, a: 1}
+  m_IndirectSpecularColor: {r: 0.3661282, g: 0.2163904, b: 0.36319757, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16293,6 +16293,9 @@ MonoBehaviour:
   enemiesMask:
     serializedVersion: 2
     m_Bits: 64
+  waterShield: {fileID: 21300000, guid: ab417461f1ae47a4aa8a1d2c71eb43bd, type: 3}
+  grassShield: {fileID: 21300000, guid: 41274a970c3d8e74783308c683f14abb, type: 3}
+  fireShield: {fileID: 21300000, guid: 6ecb7c451c481184ab389899d43ae427, type: 3}
 --- !u!95 &1985428022
 Animator:
   serializedVersion: 5

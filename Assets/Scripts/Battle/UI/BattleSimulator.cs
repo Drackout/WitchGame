@@ -30,6 +30,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
     [SerializeField] private LayerMask enemiesMask;
+    [SerializeField] private Sprite waterShield;
+    [SerializeField] private Sprite grassShield;
+    [SerializeField] private Sprite fireShield;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -490,11 +493,11 @@ public class BattleSimulator : MonoBehaviour
         if (extra != "")
         {
             if (extra == "Fire")
-                animationShield.color = Color.red;
+                animationShield.sprite = fireShield;
             if (extra == "Water")
-                animationShield.color = Color.cyan;
+                animationShield.sprite = waterShield;
             if (extra == "Grass")
-                animationShield.color = Color.green;
+                animationShield.sprite = grassShield;
         }
 
         if (animString == "Heal")
@@ -510,6 +513,7 @@ public class BattleSimulator : MonoBehaviour
 
         Animator.SetTrigger(animString);
     }
+
 
     public void playWinSound()
     {
