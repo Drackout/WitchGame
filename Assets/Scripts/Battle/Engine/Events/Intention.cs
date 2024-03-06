@@ -5,6 +5,8 @@ namespace BattleEvents
         None,
         Play,
         Hold,
-        EndTurn
+        Unhold,
+        EndTurn,
+        Cancel
     }
 }

@@ -18,6 +18,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject creature3dContainer;
     [SerializeField] private GameObject creature3dPrefab;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private Button cancelButton;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
@@ -82,7 +83,7 @@ public class BattleSimulator : MonoBehaviour
         //    new Card(CardType.Sword, Element.Grass, 3),
         //};
 
-        Witch witch = new Witch("Witch", 20, cards, 5, 4);
+        Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
 
         request = battleSettings.CurrentRequest;
 
@@ -109,6 +110,9 @@ public class BattleSimulator : MonoBehaviour
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
+
+        cancelButton.onClick.AddListener(HandleCancelClick);
+        cancelButton.gameObject.SetActive(false);
 
         playerShield.Shield = new Shield();
 
@@ -177,6 +181,15 @@ public class BattleSimulator : MonoBehaviour
                     else if (ev.Type == InputRequestType.Target)
                     {
                         ToggleTargets(false);
+                        if (input.Intention == Intention.Cancel)
+                        {
+                            for (int i = 0; i < cardContainer.transform.childCount; i++)
+                            {
+                                Animator anim = cardContainer.transform.GetChild(i)
+                                    .GetComponent<Animator>();
+                                anim.SetTrigger("pNormal");
+                            }
+                        }
                     }
                     break;
                 case DrawEvent ev:
@@ -337,20 +350,31 @@ public class BattleSimulator : MonoBehaviour
             c.ToggleTarget(state);
         }
 
+        cancelButton.gameObject.SetActive(state);
+
         selectingTarget = state;
     }
 
     private void HandleCardClick(int index, Button cardButton)
     {
-        CloseActiveDialog(index, false);
+        if (battle.Witch.HeldCards.Contains(index))
+        {
+            input = new InputResponse(Intention.Unhold, index);
+            Animator animator = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+            animator.SetTrigger("pNormal");
+        }
+        else
+        {
+            CloseActiveDialog(index, false);
 
-        RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
-        activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
-            Quaternion.identity, transform);
+            RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
+            activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
+                Quaternion.identity, transform);
 
-        activeCardActionDialog.OnPlay += () => HandleSelection(index);
-        activeCardActionDialog.OnHold += () => HandleHoldCard(index);
-        activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
+            activeCardActionDialog.OnPlay += () => HandleSelection(index);
+            activeCardActionDialog.OnHold += () => HandleHoldCard(index);
+            activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
+        }
     }
 
     private void HandleSelection(int index)
@@ -399,6 +423,11 @@ public class BattleSimulator : MonoBehaviour
     {
         input = new InputResponse(Intention.EndTurn);
         PlayAnimation("Turn", "");
+    }
+
+    private void HandleCancelClick()
+    {
+        input = new InputResponse(Intention.Cancel);
     }
 
     private void Update()
