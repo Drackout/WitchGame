@@ -178,6 +178,15 @@ public class BattleSimulator : MonoBehaviour
                     else if (ev.Type == InputRequestType.Target)
                     {
                         ToggleTargets(false);
+                        if (input.Intention == Intention.Cancel)
+                        {
+                            for (int i = 0; i < cardContainer.transform.childCount; i++)
+                            {
+                                Animator anim = cardContainer.transform.GetChild(i)
+                                    .GetComponent<Animator>();
+                                anim.SetTrigger("pNormal");
+                            }
+                        }
                     }
                     break;
                 case DrawEvent ev:
