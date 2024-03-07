@@ -72,12 +72,13 @@ public class Battle
 
     public IEnumerable<BattleEvent> Run()
     {
-        while (!IsOver())
+        while (true)
         {
             IEnumerable<BattleEvent> turnIter = turnOrder[turnCounter].Act();
             foreach (BattleEvent ev in turnIter)
             {
                 yield return ev;
+
                 RetireDeadCreatures();
 
                 if (IsOver())
