@@ -414,7 +414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 329312645}
   - component: {fileID: 329312644}
-  - component: {fileID: 329312643}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -422,14 +421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &329312643
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329312642}
-  m_Enabled: 1
 --- !u!82 &329312644
 AudioSource:
   m_ObjectHideFlags: 0
@@ -720,6 +711,10 @@ PrefabInstance:
     - target: {fileID: 8496897173245505464, guid: 97ad1b8f670b2ee449e747919c9af1e7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542434606548182366, guid: 97ad1b8f670b2ee449e747919c9af1e7, type: 3}
+      propertyPath: m_text
+      value: Requests
       objectReference: {fileID: 0}
     - target: {fileID: 8883133725251438148, guid: 97ad1b8f670b2ee449e747919c9af1e7, type: 3}
       propertyPath: m_SizeDelta.x

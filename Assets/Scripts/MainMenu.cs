@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
 
     private void LoadBattleScene()
     {
-        SceneManager.LoadScene("UI Scene");
+        SceneManager.LoadScene("RequestsScreen");
     }
 
     private void LoadBestiaryScene()

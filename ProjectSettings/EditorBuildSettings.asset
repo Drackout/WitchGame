@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 80d59e2212f96bd459a7cf871de8a102
   - enabled: 1
+    path: Assets/Scenes/RequestsScreen.unity
+    guid: 14548f4ba07ba71449e65fbdabbd17a0
+  - enabled: 1
     path: Assets/Scenes/UI Scene.unity
     guid: 995bf4134b5184e4d9fdeef0d72cce37
   - enabled: 1

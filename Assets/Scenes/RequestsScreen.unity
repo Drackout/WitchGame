@@ -423,8 +423,76 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1093106720453975676, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 931942875347068468}
   m_SourcePrefab: {fileID: 100100000, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+--- !u!1 &931942875347068463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1093106720453975676, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+  m_PrefabInstance: {fileID: 931942875347068462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &931942875347068464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4850911477346050791, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+  m_PrefabInstance: {fileID: 931942875347068462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &931942875347068465 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5679478396456288293, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+  m_PrefabInstance: {fileID: 931942875347068462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &931942875347068466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1400974576669880135, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+  m_PrefabInstance: {fileID: 931942875347068462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &931942875347068467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3935885080855405899, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+  m_PrefabInstance: {fileID: 931942875347068462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &931942875347068468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931942875347068463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec875de9efc7cbc4f858d254889c35c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easyButton: {fileID: 931942875347068467}
+  mediumButton: {fileID: 931942875347068466}
+  hardButton: {fileID: 931942875347068465}
+  mainMenuButton: {fileID: 931942875347068464}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
