@@ -80,11 +80,11 @@ public class Battle
                 yield return ev;
 
                 RetireDeadCreatures();
+            }
 
-                if (IsOver())
-                {
-                    yield break;
-                }
+            if (IsOver())
+            {
+                yield break;
             }
 
             turnCounter = (turnCounter + 1) % turnOrder.Count;

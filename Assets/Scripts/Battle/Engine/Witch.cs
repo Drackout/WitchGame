@@ -96,17 +96,17 @@ public class Witch : Battler
                             continue;
                         }
 
-                        if (battle.IsOver())
-                        {
-                            break;
-                        }
-
-                        actionsDone += 1;
-
                         foreach (BattleEvent ev in Discard(cardIndex))
                         {
                             yield return ev;
                         }
+
+                        if (battle.IsOver())
+                        {
+                            yield break;
+                        }
+
+                        actionsDone += 1;
                     }
                 }
                 else if (Input.Intention == Intention.Hold)

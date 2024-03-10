@@ -71,41 +71,12 @@ public class BattleSimulator : MonoBehaviour
 
         BattleSettings battleSettings = BattleSettings.Instance;
 
-        IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]); // DAR ENABLE A ISTO DPS
-
-        //Testing purrrposes, dont erase.. yet
-        //IList<Card> cards = new List<Card>{
-        //    new Card(CardType.Shield, Element.Water, 2),
-        //    new Card(CardType.Sword, Element.Water, 3),
-        //    new Card(CardType.Heal, Element.Fire, 2),
-        //    new Card(CardType.Spell, Element.Fire, 3),
-        //    new Card(CardType.Heal, Element.Grass, 2),
-        //    new Card(CardType.Sword, Element.Grass, 3),
-        //};
-
-        Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
-
-        request = battleSettings.CurrentRequest;
-
-        IList<Creature> creatures = new List<Creature>();
-        foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
-        {
-            creatures.Add(new Dummy("Dummy", c.health, c.element));
-        }
-
-        ILogger logger = new UnityLogger();
-
-        battle = new Battle(witch, creatures, battleLogger);
-
-        InitCreatures();
-
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             int iCopy = i;
             Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
             b.onClick.AddListener(() => HandleCardClick(iCopy, b));
             b.interactable = false;
-
         }
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
@@ -116,12 +87,9 @@ public class BattleSimulator : MonoBehaviour
 
         playerShield.Shield = new Shield();
 
-        slots.Slots = battle.Witch.Slots;
-        playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
-
         mainCamera = Camera.main;
 
-        StartCoroutine(RunBattle(battle));
+        StartCoroutine(RunRequest());
     }
 
     private void InitCreatures()
@@ -148,6 +116,34 @@ public class BattleSimulator : MonoBehaviour
 
             creature3dElements[c] = creature3d.GetComponent<Creature3D>();
         }
+    }
+
+    private IEnumerator RunRequest()
+    {
+        request = BattleSettings.Instance.CurrentRequest;
+
+        IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]);
+        Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
+
+        foreach (EncounterData encounter in request.encounters)
+        {
+            IList<Creature> creatures = new List<Creature>();
+            foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
+            {
+                creatures.Add(new Dummy("Dummy", c.health, c.element));
+            }
+
+            battle = new Battle(witch, creatures, battleLogger);
+
+            InitCreatures();
+
+            slots.Slots = battle.Witch.Slots;
+            playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
+
+            yield return RunBattle(battle);
+        }
+
+        FinishRequest();
     }
 
     private IEnumerator RunBattle(Battle battle)
@@ -258,7 +254,6 @@ public class BattleSimulator : MonoBehaviour
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
-                            CheckEnemiesDefeated(enemiesDefeated, creatureElements.Count);
                         }
                         else
                         {
@@ -463,40 +458,25 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
-    private void CheckEnemiesDefeated(int defeated, int total)
+    private bool CheckEnemiesDefeated(int defeated, int total)
     {
-        if (defeated == total)
-        {
-            encounterIndex += 1;
+        return defeated == total;
+    }
 
-            if (encounterIndex >= request.encounters.Length)
-            {
-                encounterIndex = 0;
-                BattleSettings bs = BattleSettings.Instance;
-                bs.NextStage();
+    private void FinishRequest()
+    {
+        encounterIndex = 0;
+        BattleSettings bs = BattleSettings.Instance;
+        bs.NextStage();
 
-                PlayAnimation("Win", "");
-                PlayerResources pr = PlayerResources.Instance;
-                pr.Gold = pr.Gold + 42;
-                pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
-                pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
-                pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
-                pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
-                pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
-            }
-            else
-            {
-                IList<Creature> creatures = new List<Creature>();
-                foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
-                {
-                    creatures.Add(new Dummy("Dummy", c.health, c.element));
-                }
-
-                battle = new Battle(battle.Witch, creatures, battleLogger);
-                InitCreatures();
-                StartCoroutine(RunBattle(battle));
-            }
-        }
+        PlayAnimation("Win", "");
+        PlayerResources pr = PlayerResources.Instance;
+        pr.Gold = pr.Gold + 42;
+        pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
+        pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
+        pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
+        pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
+        pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
     }
 
     public void setNumbersReceived(int nreceived, Element element, string dmgHeal, int reactionType)
