@@ -101,11 +101,6 @@ public class Witch : Battler
                             yield return ev;
                         }
 
-                        if (battle.IsOver())
-                        {
-                            yield break;
-                        }
-
                         actionsDone += 1;
                     }
                 }
