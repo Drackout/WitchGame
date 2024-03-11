@@ -132,7 +132,9 @@ public class BattleSimulator : MonoBehaviour
             IList<Creature> creatures = new List<Creature>();
             foreach (EnemyCreature c in encounter.enemies)
             {
-                creatures.Add(new Dummy("Dummy", c.health, c.element));
+                Creature dummy = new Dummy("Dummy", c.health, c.element,
+                    c.attackMin, c.attackMax);
+                creatures.Add(dummy);
             }
 
             battle = new Battle(witch, creatures, battleLogger);

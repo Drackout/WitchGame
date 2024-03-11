@@ -4,15 +4,25 @@ using BattleEvents;
 
 public class Dummy : Creature
 {
-    public Dummy(string name, int maxHealth, Element element) : base(name, maxHealth, element)
+    public int MinDamage { get; private set; }
+    public int MaxDamage { get; private set; }
+
+    public Dummy(string name, int maxHealth, Element element,
+        int minDamage, int maxDamage) : base(name, maxHealth, element)
     {
+        MinDamage = minDamage;
+        MaxDamage = maxDamage;
     }
 
     public override IEnumerable<BattleEvent> Act()
     {
         battle.Logger.Log($"{Name} attacks you!");
+
         yield return new MoveEvent(this);
-        BattleEvent ev = battle.Witch.Hurt(new Attack(2, Element, new List<string>()));
+
+        int damage = battle.Rand.Next(MinDamage, MaxDamage + 1);
+        Attack attack = new Attack(damage, Element, new List<string>());
+        BattleEvent ev = battle.Witch.Hurt(attack);
         yield return ev;
     }
 
