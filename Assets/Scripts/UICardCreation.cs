@@ -161,22 +161,22 @@ public class UICardCreation : MonoBehaviour
 
             case CardType.Sword:
                 if (toShow.Element == Element.Fire)
-                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} VS Grass\n {cardNumber/2} VS Water";
+                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} vs Grass\n {cardNumber/2} vs Water";
                 else if (toShow.Element == Element.Grass)
-                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} VS Water\n {cardNumber/2} VS Fire";
+                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} vs Water\n {cardNumber/2} vs Fire";
                 else if (toShow.Element == Element.Water)
-                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} VS Fire\n {cardNumber/2} VS Grass";
+                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} vs Fire\n {cardNumber/2} vs Grass";
                 else
                     tooltipText.text = $"{cardNumber} Damage";
                 break;
 
             case CardType.Spell:
                 if (toShow.Element == Element.Fire)
-                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} VS Grass\n {cardNumber/2} VS Water";
+                    tooltipText.text = $"{cardNumber} Fire Damage\n {cardNumber*2} vs Grass\n {cardNumber/2} vs Water";
                 else if (toShow.Element == Element.Grass)
-                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} VS Water\n {cardNumber/2} VS Fire";
+                    tooltipText.text = $"{cardNumber} Grass Damage\n {cardNumber*2} vs Water\n {cardNumber/2} vs Fire";
                 else if (toShow.Element == Element.Water)
-                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} VS Fire\n {cardNumber/2} VS Grass";
+                    tooltipText.text = $"{cardNumber} Water Damage\n {cardNumber*2} vs Fire\n {cardNumber/2} vs Grass";
                 else
                     tooltipText.text = $"{cardNumber} Damage";
                 break;
