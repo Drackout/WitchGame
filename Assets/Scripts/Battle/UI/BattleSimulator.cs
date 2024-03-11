@@ -125,6 +125,8 @@ public class BattleSimulator : MonoBehaviour
         IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]);
         Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
 
+        int counter = 0;
+
         foreach (EncounterData encounter in request.encounters)
         {
             IList<Creature> creatures = new List<Creature>();
@@ -140,15 +142,17 @@ public class BattleSimulator : MonoBehaviour
             slots.Slots = battle.Witch.Slots;
             playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
-            yield return RunBattle(battle);
+            yield return RunBattle(battle, counter >= request.encounters.Length - 1);
+            counter += 1;
         }
 
         FinishRequest();
     }
 
-    private IEnumerator RunBattle(Battle battle)
+    private IEnumerator RunBattle(Battle battle, bool last)
     {
         IEnumerable<BattleEvent> battleIter = battle.Run();
+
         foreach (BattleEvent battleEvent in battleIter)
         {
             switch (battleEvent)
@@ -298,6 +302,11 @@ public class BattleSimulator : MonoBehaviour
                 default:
                     Debug.Log($"[DEBUG] {battleEvent.GetType()}");
                     break;
+            }
+
+            if (last && battle.IsOver())
+            {
+                break;
             }
         }
     }
