@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using BattleEvents;
 using UnityEngine;
@@ -57,8 +56,9 @@ public class Witch : Battler
             yield return ev;
         }
 
-        while (actionsDone < MaxActions)
+        while (GetHandCount() > 0 && actionsDone < MaxActions)
         {
+            Debug.Log($"Witch action - {actionsDone}/{MaxActions} actions - {GetHandCount()} cards in hand");
             actionDone = false;
 
             while (!actionDone)
@@ -334,6 +334,11 @@ public class Witch : Battler
         hand[index] = Card.None;
         discardPile.Add(c);
         yield return new DiscardEvent(c, index);
+    }
+
+    private int GetHandCount()
+    {
+        return hand.Where((Card c) => c.Type != CardType.None).Count();
     }
 
     private void LogHand()
