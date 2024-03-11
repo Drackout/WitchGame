@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9907aa045be9a7445900177c3f0c5cff, type: 3}
   m_Name: Stage3
   m_EditorClassIdentifier: 
-  easy: {fileID: 11400000, guid: adaa7440b25d5cb44b2cf003df90d7b1, type: 2}
-  medium: {fileID: 11400000, guid: af64b82f7ea5e0d458caa162a004042e, type: 2}
-  hard: {fileID: 11400000, guid: cd347542f81cfc64784cdaf9e54a04b4, type: 2}
+  easy: {fileID: 11400000, guid: 53e3b9da6b40ffb4d85651fc1aac94fb, type: 2}
+  medium: {fileID: 11400000, guid: 025b99ef1939a664fa32fbbf9a3a82fb, type: 2}
+  hard: {fileID: 11400000, guid: f77fee0ab840335459b79c7087ef283d, type: 2}
