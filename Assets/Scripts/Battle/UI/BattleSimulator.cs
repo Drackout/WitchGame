@@ -92,7 +92,7 @@ public class BattleSimulator : MonoBehaviour
         StartCoroutine(RunRequest());
     }
 
-    private void InitCreatures()
+    private void InitCreatures(EncounterData encounter)
     {
         BattleSettings battleSettings = BattleSettings.Instance;
 
@@ -102,7 +102,7 @@ public class BattleSimulator : MonoBehaviour
             Creature c = battle.Creatures[i];
 
             Transform slot = creatureContainer.transform.GetChild(i);
-            EnemyCreature creatureData = request.encounters[encounterIndex].enemies[i];
+            EnemyCreature creatureData = encounter.enemies[i];
             UICreature uiCreature = Instantiate(creatureData.prefab, slot);
 
             creatureElements[c] = uiCreature;
@@ -128,14 +128,14 @@ public class BattleSimulator : MonoBehaviour
         foreach (EncounterData encounter in request.encounters)
         {
             IList<Creature> creatures = new List<Creature>();
-            foreach (EnemyCreature c in request.encounters[encounterIndex].enemies)
+            foreach (EnemyCreature c in encounter.enemies)
             {
                 creatures.Add(new Dummy("Dummy", c.health, c.element));
             }
 
             battle = new Battle(witch, creatures, battleLogger);
 
-            InitCreatures();
+            InitCreatures(encounter);
 
             slots.Slots = battle.Witch.Slots;
             playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
