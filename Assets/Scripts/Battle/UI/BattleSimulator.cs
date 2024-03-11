@@ -203,7 +203,7 @@ public class BattleSimulator : MonoBehaviour
                     // ENEMY TURN (1 by 1)
                     for (int i = 0; i < battle.Creatures.Count; i++)
                     {
-                        if (battle.Creatures[i].Name == ev.Battler.Name)
+                        if (battle.Creatures[i] == ev.Battler)
                         {
                             creatureElements[battle.Creatures[i]].PlayAnimation("Attack", 99);
                             creature3dElements[battle.Creatures[i]].PlayAnimation("Attack");
