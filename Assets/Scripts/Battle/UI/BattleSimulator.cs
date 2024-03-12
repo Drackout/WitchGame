@@ -373,6 +373,26 @@ public class BattleSimulator : MonoBehaviour
         {
             CloseActiveDialog(index, false);
 
+            // Force all cards down when clicking in another card, reset triggers
+            for (int i = 0; i < cardContainer.transform.childCount; i++)
+            {
+                Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+                if(i != index)
+                {
+                    anim.ResetTrigger("pClick1");
+                    anim.SetTrigger("pNormal");
+                }
+                else
+                {
+                    anim.ResetTrigger("pNormal");
+                    anim.SetTrigger("pClick1");
+                }
+            }
+        
+
+            //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+            //anim.SetTrigger("pClick1");
+
             RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
             activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
                 Quaternion.identity, transform);
@@ -380,6 +400,7 @@ public class BattleSimulator : MonoBehaviour
             activeCardActionDialog.OnPlay += () => HandleSelection(index);
             activeCardActionDialog.OnHold += () => HandleHoldCard(index);
             activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
+            Debug.Log("A2");
         }
     }
 
