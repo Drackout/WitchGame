@@ -6678,7 +6678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &779370133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16547,7 +16547,7 @@ MonoBehaviour:
   creature3dContainer: {fileID: 1099184295}
   creature3dPrefab: {fileID: 2012025679203453030, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
   endTurnButton: {fileID: 963290059}
-  cancelButton: {fileID: 779370133}
+  cancelButtonPrefab: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
   infiniteHealthText: {fileID: 1224018431}
   drawPileTotalText: {fileID: 145472615}
   discardPileTotalText: {fileID: 1684519397}

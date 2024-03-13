@@ -18,7 +18,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject creature3dContainer;
     [SerializeField] private GameObject creature3dPrefab;
     [SerializeField] private Button endTurnButton;
-    [SerializeField] private Button cancelButton;
+    [SerializeField] private Button cancelButtonPrefab;
     [SerializeField] private TMP_Text infiniteHealthText;
     [SerializeField] private TMP_Text drawPileTotalText;
     [SerializeField] private TMP_Text discardPileTotalText;
@@ -81,9 +81,6 @@ public class BattleSimulator : MonoBehaviour
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
-
-        cancelButton.onClick.AddListener(HandleCancelClick);
-        cancelButton.gameObject.SetActive(false);
 
         playerShield.Shield = new Shield();
 
@@ -162,14 +159,11 @@ public class BattleSimulator : MonoBehaviour
                 case InputRequestEvent ev:
                     if (ev.Type == InputRequestType.Play)
                     {
-                        Debug.Log("[DEBUG] Choose a card");
                         ToggleCards(true);
                         endTurnButton.interactable = true;
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
-                        Debug.Log("A CARD WAS SELECTED");
-                        Debug.Log("[DEBUG] Choose a target");
                         ToggleTargets(true);
                     }
                     input = new InputResponse();
@@ -179,18 +173,23 @@ public class BattleSimulator : MonoBehaviour
                     {
                         ToggleCards(false);
                         endTurnButton.interactable = false;
+                        if (input.Intention == Intention.Play)
+                        {
+                            Debug.Log($"Playing card {input.Selection}");
+                            int selectedCard = input.Selection;
+                            UICardCreation uiCard = cardContainer.transform
+                                .GetChild(input.Selection).GetComponent<UICardCreation>();
+                            uiCard.ToggleCancelButton(true);
+                        }
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
                         ToggleTargets(false);
                         if (input.Intention == Intention.Cancel)
                         {
-                            for (int i = 0; i < cardContainer.transform.childCount; i++)
-                            {
-                                Animator anim = cardContainer.transform.GetChild(i)
-                                    .GetComponent<Animator>();
-                                anim.SetTrigger("pNormal");
-                            }
+                            Animator anim = cardContainer.transform.GetChild(input.Selection)
+                                .GetComponent<Animator>();
+                            anim.SetTrigger("pNormal");
                         }
                     }
                     break;
@@ -320,10 +319,12 @@ public class BattleSimulator : MonoBehaviour
             Transform cardButton = cardContainer.transform.GetChild(i);
             if (i < battle.Witch.Hand.Count && battle.Witch.Hand[i].Type != CardType.None)
             {
+                int iCopy = i;
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
                 UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
                 uicard.Create(c);
+                uicard.SetCancelEventListener(() => HandleCancelClick(iCopy, uicard));
             }
             else
             {
@@ -356,8 +357,6 @@ public class BattleSimulator : MonoBehaviour
             c.ToggleTarget(state);
         }
 
-        cancelButton.gameObject.SetActive(state);
-
         selectingTarget = state;
     }
 
@@ -377,7 +376,7 @@ public class BattleSimulator : MonoBehaviour
             for (int i = 0; i < cardContainer.transform.childCount; i++)
             {
                 Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
-                if(i != index)
+                if (!battle.Witch.HeldCards.Contains(i) && i != index)
                 {
                     anim.ResetTrigger("pClick1");
                     anim.SetTrigger("pNormal");
@@ -386,9 +385,10 @@ public class BattleSimulator : MonoBehaviour
                 {
                     anim.ResetTrigger("pNormal");
                     anim.SetTrigger("pClick1");
+                    Debug.Log($"Reset animation on card {index}");
                 }
             }
-        
+
 
             //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
             //anim.SetTrigger("pClick1");
@@ -452,9 +452,13 @@ public class BattleSimulator : MonoBehaviour
         PlayAnimation("Turn", "");
     }
 
-    private void HandleCancelClick()
+    private void HandleCancelClick(int index, UICardCreation uiCard)
     {
-        input = new InputResponse(Intention.Cancel);
+        Debug.Log($"Canceled card {index}");
+        uiCard.ToggleCancelButton(false);
+        input = new InputResponse(Intention.Cancel, input.Selection);
+        Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+        anim.SetTrigger("pNormal");
     }
 
     private void Update()

@@ -36,10 +36,13 @@ public class UICardCreation : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI powerNumber;
     [SerializeField] private Image powerCircle;
-    
+
     [SerializeField] private TextMeshProUGUI tooltipText;
 
     [SerializeField] private Animator cardAnimator;
+    [SerializeField] private Transform iconSpace;
+
+    [SerializeField] private Button cancelButton;
 
     private GameObject activeIcon;
     private int cardNumber;
@@ -133,7 +136,7 @@ public class UICardCreation : MonoBehaviour
                 break;
         }
 
-        activeIcon = Instantiate(icon, transform.position, Quaternion.identity, transform);
+        activeIcon = Instantiate(icon, transform.position, Quaternion.identity, iconSpace);
         powerNumber.text = toShow.Power.ToString();
 
         if (toShow.Element == Element.Fire)
@@ -199,5 +202,17 @@ public class UICardCreation : MonoBehaviour
         }
         drawPileTotalText.text = $"{battle.Witch.Deck.Count}";
         discardPileTotalText.text = $"{battle.Witch.DiscardPile.Count}";*/
+
+        ToggleCancelButton(false);
+    }
+
+    public void SetCancelEventListener(UnityAction listener)
+    {
+        cancelButton.onClick.AddListener(listener);
+    }
+
+    public void ToggleCancelButton(bool state)
+    {
+        cancelButton.gameObject.SetActive(state);
     }
 }
