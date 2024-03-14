@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c412928dfcc14a92194abfb98ac6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTint: {r: 0.7830189, g: 0.5003732, b: 0.19575472, a: 1}
-  grassTint: {r: 0.39670017, g: 0.617, b: 0.25975698, a: 1}
-  waterTint: {r: 0.3507031, g: 0.45353797, b: 0.6698113, a: 1}
+  fireTint: {r: 0.6745098, g: 0.28235295, b: 0.2784314, a: 1}
+  grassTint: {r: 0.5137255, g: 0.76470596, b: 0.25882354, a: 1}
+  waterTint: {r: 0.48235297, g: 0.61960787, b: 0.92549026, a: 1}
   cardNameText: {fileID: 8563305615659213938}
   amountText: {fileID: 1830397475475657049}
   background: {fileID: 5638885782498130080}
