@@ -45,12 +45,18 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Button cancelButton;
     
     [SerializeField] private Sprite[] cardImages;
+    [SerializeField] private Image Image;
 
     private GameObject activeIcon;
     private int cardNumber;
 
     public void Create(Card toShow)
     {
+        if (cardImages.Length > 0)
+        {
+            Image.sprite = cardImages[UnityEngine.Random.Range(0, cardImages.Length)];
+        }
+        
         if (activeIcon != null)
             Destroy(activeIcon);
 
