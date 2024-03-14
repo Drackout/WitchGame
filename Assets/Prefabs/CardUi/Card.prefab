@@ -418,6 +418,12 @@ MonoBehaviour:
   cardAnimator: {fileID: 6408011125794627694}
   iconSpace: {fileID: 260168823243018159}
   cancelButton: {fileID: 1301134679849445628}
+  cardImages:
+  - {fileID: 21300000, guid: 38a6610d064ad244b876f4de4ce2fa49, type: 3}
+  - {fileID: 21300000, guid: a850e638770246b4286d375e7779eaa1, type: 3}
+  - {fileID: 21300000, guid: 705bbf55b3df5d441b408210c2ec717a, type: 3}
+  - {fileID: 21300000, guid: b677d2eac9fdcdb4a9dcddb63be5d0f8, type: 3}
+  - {fileID: 21300000, guid: a0f6fc28a003b4d4ea11afe54ee48b64, type: 3}
 --- !u!95 &6408011125794627694
 Animator:
   serializedVersion: 5

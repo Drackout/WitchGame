@@ -43,6 +43,8 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Transform iconSpace;
 
     [SerializeField] private Button cancelButton;
+    
+    [SerializeField] private Sprite[] cardImages;
 
     private GameObject activeIcon;
     private int cardNumber;
