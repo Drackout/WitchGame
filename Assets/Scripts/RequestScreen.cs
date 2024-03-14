@@ -7,7 +7,6 @@ public class RequestScreen : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
-    [SerializeField] private Button mainMenuButton;
 
     private void Start()
     {
