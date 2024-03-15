@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Request3Easy
   m_EditorClassIdentifier: 
   encounters:
-  - {fileID: 11400000, guid: dd04b5a8ed50cd34a940dcd7219455eb, type: 2}
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
+  - {fileID: 11400000, guid: 4ec1082cb5742f740b12939c2ec1bbf2, type: 2}
+  - {fileID: 11400000, guid: 3289c4ff98afdd342b46d141a813b9f0, type: 2}
+  battleScene: UI scene

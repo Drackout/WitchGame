@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Request2Hard
   m_EditorClassIdentifier: 
   encounters:
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
+  - {fileID: 11400000, guid: 4ec1082cb5742f740b12939c2ec1bbf2, type: 2}
+  - {fileID: 11400000, guid: 5c05d6776cffc2d4ab51d2c2069962f6, type: 2}
+  - {fileID: 11400000, guid: a8addcaefb4d58345ad8a861fa98928b, type: 2}
+  battleScene: UI Cool Metro

@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48046b8a6f7c1ef488459658c9522c46, type: 3}
-  m_Name: Request1Medium
+  m_Script: {fileID: 11500000, guid: fe1d19f15579b044fa3e865b0a82bb7e, type: 3}
+  m_Name: 1G1T
   m_EditorClassIdentifier: 
-  encounters:
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  battleScene: UI Scene
+  enemies:
+  - {fileID: 11400000, guid: 1c41b7b0d206f034f8f1ac265f17fe58, type: 2}
+  - {fileID: 11400000, guid: ee338a6501b925f4e9c710c9c6069d43, type: 2}

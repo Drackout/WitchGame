@@ -15,3 +15,4 @@ MonoBehaviour:
   encounters:
   - {fileID: 11400000, guid: 5c05d6776cffc2d4ab51d2c2069962f6, type: 2}
   - {fileID: 11400000, guid: 268885e69a3e91c488e449d44d1e2514, type: 2}
+  battleScene: UI Metro scene
