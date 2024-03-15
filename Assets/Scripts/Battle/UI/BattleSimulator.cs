@@ -134,7 +134,13 @@ public class BattleSimulator : MonoBehaviour
                 creatures.Add(dummy);
             }
 
-            battle = new Battle(witch, creatures, battleLogger);
+            ElementConfig elementConfig = BattleSettings.Instance.ElementConfig;
+
+            battle = new Battle(witch, creatures, battleLogger, elementConfig.ElementTable);
+            battle.SetModifiers(elementConfig.DamagePositiveMod,
+                elementConfig.DamageNegativeMod,
+                elementConfig.HealPositiveMod,
+                elementConfig.HealNegativeMod);
 
             InitCreatures(encounter);
 
