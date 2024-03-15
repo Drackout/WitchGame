@@ -4,4 +4,5 @@ using UnityEngine;
 public class RequestData : ScriptableObject
 {
     public EncounterData[] encounters;
+    public string battleScene;
 }

@@ -17,7 +17,11 @@ public class RequestScreen : MonoBehaviour
 
     private void LoadRequest(RequestDifficulty difficulty)
     {
-        BattleSettings.Instance.ChooseRequest(difficulty);
-        SceneManager.LoadScene("UI Scene");
+        BattleSettings settings = BattleSettings.Instance;
+
+        settings.ChooseRequest(difficulty);
+
+        RequestData request = settings.CurrentRequest;
+        SceneManager.LoadScene(request.battleScene);
     }
 }
