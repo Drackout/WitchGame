@@ -40,7 +40,6 @@ public class BattleSimulator : MonoBehaviour
     private IDictionary<Battler, Creature3D> creature3dElements;
 
     private RequestData request;
-    private int encounterIndex;
 
     private InputResponse input;
 
@@ -66,8 +65,6 @@ public class BattleSimulator : MonoBehaviour
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
-
-        encounterIndex = 0;
 
         BattleSettings battleSettings = BattleSettings.Instance;
 
@@ -134,7 +131,13 @@ public class BattleSimulator : MonoBehaviour
                 creatures.Add(dummy);
             }
 
-            battle = new Battle(witch, creatures, battleLogger);
+            ElementConfig elementConfig = BattleSettings.Instance.ElementConfig;
+
+            battle = new Battle(witch, creatures, battleLogger, elementConfig.ElementTable);
+            battle.SetModifiers(elementConfig.DamagePositiveMod,
+                elementConfig.DamageNegativeMod,
+                elementConfig.HealPositiveMod,
+                elementConfig.HealNegativeMod);
 
             InitCreatures(encounter);
 
@@ -426,6 +429,17 @@ public class BattleSimulator : MonoBehaviour
         {
             Creature c = battle.Creatures[i];
             Card card = battle.Witch.Hand[index];
+
+            // This method is used for both card and enemy selection.
+            // Checking for type advantage if the selection is of an enemy
+            // can create issues if the index is the same as a `None` card.
+            //
+            // Continue if index matches a `None` card as a temporary fix.
+            if (card.Type == CardType.None)
+            {
+                continue;
+            }
+
             Attack attack = new Attack(card.Power, card.Element, new string[] {});
             (int damage, int reactionType) = c.GetDamageTaken(attack);
             creatureElements[c].setNumbersReceived(damage, attack.Element);
@@ -513,7 +527,6 @@ public class BattleSimulator : MonoBehaviour
 
     private void FinishRequest()
     {
-        encounterIndex = 0;
         BattleSettings bs = BattleSettings.Instance;
         bs.NextStage();
 

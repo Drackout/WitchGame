@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BattleEvents;
-using UnityEngine;
 
 public class Witch : Battler
 {
@@ -58,7 +57,6 @@ public class Witch : Battler
 
         while (GetHandCount() > 0 && actionsDone < MaxActions)
         {
-            Debug.Log($"Witch action - {actionsDone}/{MaxActions} actions - {GetHandCount()} cards in hand");
             actionDone = false;
 
             while (!actionDone)
@@ -185,7 +183,7 @@ public class Witch : Battler
     {
         if (Shield.Charges > 0)
         {
-            int advantage = Battle.CompareElements(attack.Element, Shield.Element);
+            int advantage = battle.CompareElements(attack.Element, Shield.Element);
             battle.Logger.Log($"Checking shield - {attack.Element} vs {Shield.Element}");
             if (advantage < 0)
             {
@@ -299,17 +297,17 @@ public class Witch : Battler
             return Tuple.Create(card.Power, reactionType);
         }
 
-        int advantage = Battle.CompareElements(card.Element, Shield.Element);
+        int advantage = battle.CompareElements(card.Element, Shield.Element);
         int restored = card.Power;
 
         if (advantage > 0)
         {
-            restored *= 2;
+            restored = (int)MathF.Floor(restored * battle.HealPositiveMod);
             reactionType = 1;
         }
         else if (advantage < 0)
         {
-            restored /= 2;
+            restored = (int)MathF.Floor(restored * battle.HealNegativeMod);
             reactionType = -1;
         }
 
