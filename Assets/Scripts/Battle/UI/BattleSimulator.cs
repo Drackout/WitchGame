@@ -40,7 +40,6 @@ public class BattleSimulator : MonoBehaviour
     private IDictionary<Battler, Creature3D> creature3dElements;
 
     private RequestData request;
-    private int encounterIndex;
 
     private InputResponse input;
 
@@ -66,8 +65,6 @@ public class BattleSimulator : MonoBehaviour
         System.Random rnd = new System.Random();
         Animator = gameObject.GetComponentInChildren<Animator>();
         enemiesDefeated = 0;
-
-        encounterIndex = 0;
 
         BattleSettings battleSettings = BattleSettings.Instance;
 
@@ -530,7 +527,6 @@ public class BattleSimulator : MonoBehaviour
 
     private void FinishRequest()
     {
-        encounterIndex = 0;
         BattleSettings bs = BattleSettings.Instance;
         bs.NextStage();
 
