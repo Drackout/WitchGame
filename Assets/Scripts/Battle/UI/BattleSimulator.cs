@@ -218,6 +218,20 @@ public class BattleSimulator : MonoBehaviour
                     // Material cardPlayerMat = ev.Card.ima ent<Material>()
                     ShowHand(battle);
                     break;
+                case HoldEvent ev:
+                {
+                    Animator anim = cardContainer.transform.GetChild(ev.HeldCard)
+                        .GetComponent<Animator>();
+                    if (ev.Success)
+                    {
+                        anim.SetTrigger("pHold");
+                    }
+                    else
+                    {
+                        anim.SetTrigger("pNormal");
+                    }
+                }
+                    break;
                 case DiscardEvent ev:
                     ShowHand(battle);
                     // Debug.Log("B");
@@ -427,8 +441,6 @@ public class BattleSimulator : MonoBehaviour
     private void HandleHoldCard(int index)
     {
         CloseActiveDialog(index, false);
-        Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
-        anim.SetTrigger("pHold");
         input = new InputResponse(Intention.Hold, index);
         Debug.Log("Index .hold: " + index);
     }

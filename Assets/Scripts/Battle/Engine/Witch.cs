@@ -106,15 +106,20 @@ public class Witch : Battler
                 }
                 else if (Input.Intention == Intention.Hold)
                 {
+                    int cardIdx = Input.Selection;
+
                     if (HeldCards.Count >= 1)
                     {
                         battle.Logger.Log("You can only hold a single card!");
+
+                        yield return new HoldEvent(cardIdx, false);
                     }
                     else
                     {
-                        int cardIdx = Input.Selection;
                         HeldCards.Add(cardIdx);
                         battle.Logger.Log($"{hand[cardIdx]} was held...");
+
+                        yield return new HoldEvent(cardIdx, true);
 
                         actionDone = true;
                         actionsDone += 1;
