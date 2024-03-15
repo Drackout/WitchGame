@@ -10,46 +10,27 @@ public class Battle
     public ILogger Logger { get; private set; }
     public Random Rand { get; }
     public IList<bool> Cheats => cheats;
+    public float DamagePositiveMod { get; private set; }
+    public float DamageNegativeMod { get; private set; }
+    public float HealPositiveMod { get; private set; }
+    public float HealNegativeMod { get; private set; }
 
     private IList<Battler> turnOrder;
     private int turnCounter;
     private bool[] cheats;
+    private MatrixInt typeChart;
 
-    public static int CompareElements(Element att, Element def)
+    public int CompareElements(Element att, Element def)
     {
-        // TODO: matrix
-        if (att == Element.Fire)
-        {
-            if (def == Element.Water)
-                return -1;
-            else if (def == Element.Grass)
-                return 1;
-            return 0;
-        }
-        else if (att == Element.Water)
-        {
-            if (def == Element.Grass)
-                return -1;
-            else if (def == Element.Fire)
-                return 1;
-            return 0;
-        }
-        else if (att == Element.Grass)
-        {
-            if (def == Element.Fire)
-                return -1;
-            else if (def == Element.Water)
-                return 1;
-            return 0;
-        }
-        return 0;
+        return typeChart.At((int)att - 1, (int)def - 1);
     }
 
-    public Battle(Witch witch, IList<Creature> creatures, ILogger logger)
+    public Battle(Witch witch, IList<Creature> creatures, ILogger logger, MatrixInt typeChart)
     {
         Witch = witch;
         Creatures = creatures;
         Logger = logger;
+        this.typeChart = typeChart;
 
         Rand = new Random();
 
@@ -68,6 +49,15 @@ public class Battle
         turnCounter = 0;
 
         cheats = new bool[Enum.GetNames(typeof(Cheats)).Length];
+    }
+
+    public void SetModifiers(float damagePositive, float damageNegative,
+        float healPositive, float healNegative)
+    {
+        DamagePositiveMod = damagePositive;
+        DamageNegativeMod = damageNegative;
+        HealPositiveMod = healPositive;
+        HealNegativeMod = healNegative;
     }
 
     public IEnumerable<BattleEvent> Run()

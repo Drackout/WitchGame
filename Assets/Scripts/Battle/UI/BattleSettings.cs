@@ -6,6 +6,7 @@ using UnityEngine;
 public class BattleSettings : MonoBehaviour
 {
     [SerializeField] private RequestStage[] stages;
+    [SerializeField] private ElementConfig elementConfig;
 
     private static BattleSettings instance;
     private RequestData currentRequest;
@@ -13,6 +14,8 @@ public class BattleSettings : MonoBehaviour
 
     public static BattleSettings Instance => instance;
     public bool ShuffleDeck { get; set; }
+
+    public ElementConfig ElementConfig => elementConfig;
 
     public RequestData CurrentRequest => currentRequest;
 
