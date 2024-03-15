@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0059824735, g: 0.060181595, b: 0.1952416, a: 1}
+  m_IndirectSpecularColor: {r: 0.0060012867, g: 0.060221743, b: 0.19527264, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17803,6 +17803,7 @@ GameObject:
   - component: {fileID: 2060908820}
   - component: {fileID: 2060908819}
   - component: {fileID: 2060908821}
+  - component: {fileID: 2060908822}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -17930,6 +17931,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060908818}
   m_Enabled: 1
+--- !u!114 &2060908822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060908818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b046389a4f9609944a866b8c31a1c035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 2060908819}
 --- !u!1001 &2070149452
 PrefabInstance:
   m_ObjectHideFlags: 0
