@@ -432,6 +432,17 @@ public class BattleSimulator : MonoBehaviour
         {
             Creature c = battle.Creatures[i];
             Card card = battle.Witch.Hand[index];
+
+            // This method is used for both card and enemy selection.
+            // Checking for type advantage if the selection is of an enemy
+            // can create issues if the index is the same as a `None` card.
+            //
+            // Continue if index matches a `None` card as a temporary fix.
+            if (card.Type == CardType.None)
+            {
+                continue;
+            }
+
             Attack attack = new Attack(card.Power, card.Element, new string[] {});
             (int damage, int reactionType) = c.GetDamageTaken(attack);
             creatureElements[c].setNumbersReceived(damage, attack.Element);

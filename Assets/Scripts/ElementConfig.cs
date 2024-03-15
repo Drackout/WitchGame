@@ -11,7 +11,7 @@ public class ElementConfig : ScriptableObject
 
     public MatrixInt ElementTable => elementTable;
     public float DamagePositiveMod => damagePositiveMod;
-    public float DamageNegativeMod => damagePositiveMod;
+    public float DamageNegativeMod => damageNegativeMod;
     public float HealPositiveMod => healPositiveMod;
     public float HealNegativeMod => healNegativeMod;
 }
