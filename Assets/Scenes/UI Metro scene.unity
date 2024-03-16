@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.051275644, g: 0.046467345, b: 0.046894267, a: 1}
+  m_IndirectSpecularColor: {r: 0.05127563, g: 0.04646734, b: 0.046894267, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -402,6 +402,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metro
       objectReference: {fileID: 0}
+    - target: {fileID: 1676013180312256669, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 240c8295af5e1f741b256f23cd047f08, type: 2}
+    - target: {fileID: 1963254822387945897, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ebb91c6d6e57d948ad59762525a2268, type: 2}
     - target: {fileID: 5182094291787005940, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.9006195
@@ -442,6 +450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7639881216812381236, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ebb91c6d6e57d948ad59762525a2268, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
