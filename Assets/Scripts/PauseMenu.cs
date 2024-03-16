@@ -14,6 +14,14 @@ public class PauseMenu : MonoBehaviour, IPointerClickHandler
         animChangeBool();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            animChangeBool();
+        }
+    }
+    
     public void animChangeBool()
     {
         if (anim.GetBool("Active") == false)
@@ -21,5 +29,6 @@ public class PauseMenu : MonoBehaviour, IPointerClickHandler
         else
             anim.SetBool("Active", false);
     }
+
 
 }
