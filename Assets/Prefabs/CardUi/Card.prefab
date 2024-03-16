@@ -823,6 +823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CancelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2299706881393631061, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3912172058931701957, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
       propertyPath: m_text
       value: Cancel

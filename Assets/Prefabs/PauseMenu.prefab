@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5645c6482b48cb4586e716e3ae2395e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: {fileID: 5108977805080396306}
   anim: {fileID: 4817519995449699038}
 --- !u!1 &2683613894430951802
 GameObject:
@@ -1246,8 +1245,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2186270390473514271}
   - {fileID: 3757274410669020688}
+  - {fileID: 2186270390473514271}
   - {fileID: 3990655889150151346}
   - {fileID: 4618928280849769365}
   m_Father: {fileID: 791138036034235457}
@@ -1348,7 +1347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Resume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8547757f8b96df145991462c5f9e7638, type: 2}
   m_sharedMaterial: {fileID: 7164519296133618887, guid: 8547757f8b96df145991462c5f9e7638, type: 2}
@@ -1752,7 +1751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df0f33016c76f9147aeeb99859a04a60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e51de2a6cb003504db356af2047598a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1899,12 +1898,12 @@ GameObject:
   - component: {fileID: 7269847903765761468}
   - component: {fileID: 3804615564337850866}
   m_Layer: 5
-  m_Name: BtnOptions
+  m_Name: BtnResume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3757274410669020688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1920,9 +1919,9 @@ RectTransform:
   - {fileID: 3800210774844717260}
   m_Father: {fileID: 5264982331723149389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -373.9}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7416345133341113951
@@ -2006,4 +2005,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7269847903765761468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 566285600124585172}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: animChangeBool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

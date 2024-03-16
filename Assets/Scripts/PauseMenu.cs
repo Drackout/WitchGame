@@ -7,16 +7,19 @@ using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] Button pauseButton;
     [SerializeField] Animator anim;
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {        
+        animChangeBool();
+    }
+
+    public void animChangeBool()
+    {
         if (anim.GetBool("Active") == false)
             anim.SetBool("Active", true);
         else
             anim.SetBool("Active", false);
-
     }
 
 }
