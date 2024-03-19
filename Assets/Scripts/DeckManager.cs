@@ -11,6 +11,7 @@ public class DeckManager : MonoBehaviour
     [SerializeField] private GameObject deckListRoot;
     [SerializeField] private ElementalStone[] stones;
     [SerializeField] private GameObject stoneDragMarkerPrefab;
+    [SerializeField] private UICardCreation cardPrefab;
     [SerializeField] private DeckCard deckCardPrefab;
     [SerializeField] private Sprite fireIcon;
     [SerializeField] private Sprite grassIcon;
@@ -25,6 +26,8 @@ public class DeckManager : MonoBehaviour
     private void Start()
     {
         pr = PlayerResources.Instance;
+        pr.OnDeckChange += HandleDeckChange;
+        pr.OnOwnedChange += HandleOwnedChange;
 
         mainMenuButton.onClick.AddListener(LoadMainMenu);
         cardGrid.OnStonePlaced += StonePlaced;
@@ -54,6 +57,8 @@ public class DeckManager : MonoBehaviour
             DeckCard deckCard = Instantiate(deckCardPrefab, deckListRoot.transform);
             deckCard.Card = k;
             deckCard.Amount = cards[k];
+            deckCard.OnDeckCardDrag += HandleDeckCardDrag;
+            deckCard.OnDeckCardEndDrag += HandleDeckCardEndDrag;
         }
     }
 
@@ -137,5 +142,44 @@ public class DeckManager : MonoBehaviour
             Element.Water => waterIcon,
             _ => throw new ArgumentException("Unknown element!")
         };
+    }
+
+    private void HandleDeckChange(int deck)
+    {
+        foreach (Transform t in deckListRoot.transform)
+        {
+            Destroy(t.gameObject);
+        }
+
+        InstantiateDeckList();
+    }
+
+    private void HandleOwnedChange()
+    {
+        cardGrid.BuildGrid();
+    }
+
+    private void HandleDeckCardDrag(Card card)
+    {
+        UICardCreation uiCard = Instantiate(cardPrefab);
+        uiCard.Create(card);
+
+        dragMarker = uiCard.gameObject;
+        dragMarker.AddComponent<FollowMouse>();
+    }
+
+    private void HandleDeckCardEndDrag()
+    {
+        if (dragMarker != null)
+        {
+            Destroy(dragMarker);
+            dragMarker = null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        pr.OnDeckChange -= HandleDeckChange;
+        pr.OnOwnedChange -= HandleOwnedChange;
     }
 }

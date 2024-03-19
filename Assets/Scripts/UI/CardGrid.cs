@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardGrid : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CardGrid : MonoBehaviour
     [SerializeField] private UICardCreation cardPrefab;
 
     private PlayerResources pr;
+    private GameObject cardDragIndicator;
 
     public void UpdateCard(int index)
     {
@@ -15,14 +17,24 @@ public class CardGrid : MonoBehaviour
         uiCard.Create(pr.OwnedCards[index]);
     }
 
-    private void Start()
+    public void BuildGrid()
     {
+        foreach (Transform t in gridRoot.transform)
+        {
+            Destroy(t.gameObject);
+        }
+
         pr = PlayerResources.Instance;
 
         for (int i = 0; i < pr.OwnedCards.Count; i++)
         {
             InstantiateCard(i);
         }
+    }
+
+    private void Start()
+    {
+        BuildGrid();
     }
 
     private void InstantiateCard(int index)
@@ -35,6 +47,30 @@ public class CardGrid : MonoBehaviour
         var enchantHandler = uiCard.GetComponent<EnchantHandler>();
         enchantHandler.CardIndex = index;
         enchantHandler.OnStonePlaced += (Element el, int i) => OnStonePlaced?.Invoke(el, i);
+
+        var ownedCard = uiCard.GetComponent<OwnedCard>();
+        ownedCard.Index = index;
+        ownedCard.OnOwnedCardDrag += HandleDrag;
+        ownedCard.OnOwnedCardDrop += HandleDrop;
+    }
+
+    private void HandleDrag(int index)
+    {
+        UICardCreation uiCard = Instantiate(cardPrefab, transform);
+        uiCard.Create(pr.OwnedCards[index]);
+
+        cardDragIndicator = uiCard.gameObject;
+
+        Image image = cardDragIndicator.GetComponent<Image>();
+        image.raycastTarget = false;
+
+        cardDragIndicator.AddComponent<FollowMouse>();
+    }
+
+    private void HandleDrop()
+    {
+        Destroy(cardDragIndicator);
+        cardDragIndicator = null;
     }
 
     public event Action<Element, int> OnStonePlaced;

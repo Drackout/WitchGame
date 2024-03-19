@@ -93,6 +93,30 @@ public class PlayerResources : MonoBehaviour
         };
     }
 
+    public void AddCardToDeck(int deck, Card card)
+    {
+        Decks[deck].Add(card);
+        OnDeckChange?.Invoke(deck);
+    }
+
+    public void RemoveCardFromDeck(int deck, int index)
+    {
+        Decks[deck].RemoveAt(index);
+        OnDeckChange?.Invoke(deck);
+    }
+
+    public void AddCardToOwned(Card card)
+    {
+        OwnedCards.Add(card);
+        OnOwnedChange?.Invoke();
+    }
+
+    public void RemoveCardFromOwned(int index)
+    {
+        OwnedCards.RemoveAt(index);
+        OnOwnedChange?.Invoke();
+    }
+
     public int GetStones(Element element)
     {
         return stones[(int)element];
@@ -102,4 +126,7 @@ public class PlayerResources : MonoBehaviour
     {
         stones[(int)element] = Math.Max(0, value);
     }
+
+    public event Action<int> OnDeckChange;
+    public event Action OnOwnedChange;
 }
