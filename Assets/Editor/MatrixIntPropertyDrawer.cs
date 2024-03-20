@@ -33,6 +33,13 @@ public class MatrixIntPropertyDrawer : PropertyDrawer
         return foldout;
     }
 
+    protected virtual VisualElement MakeLabel(int index)
+    {
+        Label rowNumber = new Label($"{index}");
+
+        return rowNumber;
+    }
+
     private void SetDimensions(SerializedProperty property, int dim)
     {
         int size = dim * dim;
@@ -62,9 +69,9 @@ public class MatrixIntPropertyDrawer : PropertyDrawer
         // Add labels with column number
         for (int i = 0; i < dim; i++)
         {
-            Label colNumber = new Label($"{i}");
-            colNumber.style.width = 50;
-            header.Add(colNumber);
+            VisualElement colLabel = MakeLabel(i);
+            colLabel.style.width = 50;
+            header.Add(colLabel);
         }
 
         root.Add(header);
@@ -77,9 +84,9 @@ public class MatrixIntPropertyDrawer : PropertyDrawer
             row.style.justifyContent = Justify.FlexEnd;
 
             // Add label with row number
-            Label rowNumber = new Label($"{i}");
-            rowNumber.style.width = 20;
-            row.Add(rowNumber);
+            VisualElement rowLabel = MakeLabel(i);
+            rowLabel.style.width = 20;
+            row.Add(rowLabel);
 
             // Create columns
             for (int j = 0; j < dim; j++)

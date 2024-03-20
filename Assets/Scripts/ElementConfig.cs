@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName="New Element Config", menuName="ScriptableObjects/Element Config")]
 public class ElementConfig : ScriptableObject
 {
-    [SerializeField] private MatrixInt elementTable;
+    [SerializeField] private ElementTable elementTable;
     [SerializeField] private float damagePositiveMod = 2f;
     [SerializeField] private float damageNegativeMod = 0.5f;
     [SerializeField] private float healPositiveMod = 2f;
