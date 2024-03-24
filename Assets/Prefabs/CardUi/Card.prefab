@@ -419,7 +419,6 @@ MonoBehaviour:
   iconSpace: {fileID: 260168823243018159}
   cancelButton: {fileID: 1301134679849445628}
   cardImages:
-  - {fileID: 21300000, guid: 38a6610d064ad244b876f4de4ce2fa49, type: 3}
   - {fileID: 21300000, guid: a850e638770246b4286d375e7779eaa1, type: 3}
   - {fileID: 21300000, guid: 705bbf55b3df5d441b408210c2ec717a, type: 3}
   - {fileID: 21300000, guid: 35674c2d7e908084faa5598a1b7103bd, type: 3}
