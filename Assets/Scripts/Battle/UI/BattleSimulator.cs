@@ -28,12 +28,16 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
+    [SerializeField] private Image animationShieldEffect;
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
     [SerializeField] private LayerMask enemiesMask;
     [SerializeField] private Sprite waterShield;
     [SerializeField] private Sprite grassShield;
     [SerializeField] private Sprite fireShield;
+    [SerializeField] private Sprite waterShieldEff;
+    [SerializeField] private Sprite grassShieldEff;
+    [SerializeField] private Sprite fireShieldEff;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -289,6 +293,7 @@ public class BattleSimulator : MonoBehaviour
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
                     PlayAnimation("Shield", ev.Shield.Element.ToString());
+                    //PlayAnimation("ShieldBall", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
@@ -563,11 +568,20 @@ public class BattleSimulator : MonoBehaviour
         if (extra != "")
         {
             if (extra == "Fire")
+            {
                 animationShield.sprite = fireShield;
+                animationShieldEffect.sprite = fireShieldEff;
+            }
             if (extra == "Water")
+            {
                 animationShield.sprite = waterShield;
+                animationShieldEffect.sprite = waterShieldEff;
+            }
             if (extra == "Grass")
+            {
                 animationShield.sprite = grassShield;
+                animationShieldEffect.sprite = waterShieldEff;
+            }
         }
 
         if (animString == "Heal")
