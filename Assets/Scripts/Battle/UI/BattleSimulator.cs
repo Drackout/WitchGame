@@ -29,6 +29,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private UISlots slots;
     [SerializeField] private Image animationShield;
     [SerializeField] private Image animationShieldEffect;
+    [SerializeField] private Image animationShieldEffectSH;
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
     [SerializeField] private LayerMask enemiesMask;
@@ -38,6 +39,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Sprite waterShieldEff;
     [SerializeField] private Sprite grassShieldEff;
     [SerializeField] private Sprite fireShieldEff;
+    [SerializeField] private GameObject ShieldBall;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -292,7 +294,11 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
+                    ShieldBall.SetActive(false);
                     PlayAnimation("Shield", ev.Shield.Element.ToString());
+                    yield return new WaitForSeconds(1.0f);
+                    ShieldBall.SetActive(true);
+                    //ShieldAnimator.SetTrigger("ShieldOn");
                     //PlayAnimation("ShieldBall", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(2.0f);
                     break;
@@ -309,6 +315,7 @@ public class BattleSimulator : MonoBehaviour
                     if (battle.Witch.Shield.Charges == 0)
                     {
                         PlayAnimation("Break", battle.Witch.Shield.Element.ToString());
+                        ShieldBall.SetActive(false);
                     }
                     else
                     {
@@ -570,17 +577,20 @@ public class BattleSimulator : MonoBehaviour
             if (extra == "Fire")
             {
                 animationShield.sprite = fireShield;
-                animationShieldEffect.sprite = fireShieldEff;
+                animationShieldEffect.sprite = fireShieldEff;       // Loop effect
+                animationShieldEffectSH.sprite = fireShieldEff;     // Show/Hide
             }
             if (extra == "Water")
             {
                 animationShield.sprite = waterShield;
                 animationShieldEffect.sprite = waterShieldEff;
+                animationShieldEffectSH.sprite = waterShieldEff;
             }
             if (extra == "Grass")
             {
                 animationShield.sprite = grassShield;
-                animationShieldEffect.sprite = waterShieldEff;
+                animationShieldEffect.sprite = grassShieldEff;
+                animationShieldEffectSH.sprite = grassShieldEff;
             }
         }
 
