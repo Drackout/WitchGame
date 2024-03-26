@@ -50,8 +50,6 @@ public class CardGrid : MonoBehaviour
 
         var ownedCard = uiCard.GetComponent<OwnedCard>();
         ownedCard.Index = index;
-        ownedCard.OnOwnedCardDrag += HandleDrag;
-        ownedCard.OnOwnedCardDrop += HandleDrop;
     }
 
     private void HandleDrag(int index)

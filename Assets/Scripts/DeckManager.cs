@@ -57,8 +57,6 @@ public class DeckManager : MonoBehaviour
             DeckCard deckCard = Instantiate(deckCardPrefab, deckListRoot.transform);
             deckCard.Card = k;
             deckCard.Amount = cards[k];
-            deckCard.OnDeckCardDrag += HandleDeckCardDrag;
-            deckCard.OnDeckCardEndDrag += HandleDeckCardEndDrag;
         }
     }
 

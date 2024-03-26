@@ -738,9 +738,9 @@ GameObject:
   - component: {fileID: 239871881}
   - component: {fileID: 239871884}
   - component: {fileID: 239871883}
-  - component: {fileID: 239871882}
+  - component: {fileID: 239871885}
   m_Layer: 5
-  m_Name: CardDropZone
+  m_Name: DropArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -762,21 +762,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.2570953, y: 22.72931}
+  m_AnchoredPosition: {x: -3.2570953, y: 22.729248}
   m_SizeDelta: {x: 253.4874, y: 789.3029}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &239871882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239871880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e99b5bafe766f940a39b3aa84f470a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &239871883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +803,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239871880}
   m_CullTransparentMesh: 1
+--- !u!114 &239871885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239871880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e99b5bafe766f940a39b3aa84f470a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: deck
 --- !u!1 &285232672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1552,58 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &794278266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794278267}
+  - component: {fileID: 794278268}
+  m_Layer: 5
+  m_Name: DragAndDropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &794278267
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794278266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1191274801}
+  - {fileID: 905107140}
+  - {fileID: 1377076084}
+  - {fileID: 2142759754}
+  m_Father: {fileID: 2085339635}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &794278268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794278266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419dfd512a2b71143bc5911a768b2856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &817369159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,7 +1847,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905107139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1803,8 +1856,7 @@ RectTransform:
   - {fileID: 2070055917}
   - {fileID: 1353612558}
   - {fileID: 817369160}
-  - {fileID: 1377076084}
-  m_Father: {fileID: 2085339635}
+  m_Father: {fileID: 794278267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -1824,7 +1876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridRoot: {fileID: 1573984745}
-  cardPrefab: {fileID: 5313065801378165914, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
+  cardPrefab: {fileID: 7618045648578481880, guid: 9564fda5a6d89cf409897ae12cec6e16, type: 3}
 --- !u!114 &905107142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,7 +2137,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191274800}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2093,7 +2145,7 @@ RectTransform:
   - {fileID: 1718062118}
   - {fileID: 1296301213}
   - {fileID: 239871881}
-  m_Father: {fileID: 2085339635}
+  m_Father: {fileID: 794278267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -2385,7 +2437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 19.428}
+  m_AnchoredPosition: {x: 0, y: 19.427979}
   m_SizeDelta: {x: 261.4368, y: 815.2986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296301214
@@ -2683,7 +2735,7 @@ GameObject:
   - component: {fileID: 1377076085}
   - component: {fileID: 1377076087}
   m_Layer: 5
-  m_Name: CardDropZone
+  m_Name: DropArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2696,16 +2748,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377076083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 905107140}
+  m_Father: {fileID: 794278267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28.1688, y: 9.806}
+  m_AnchoredPosition: {x: -24.6688, y: -46.44403}
   m_SizeDelta: {x: 1047.7931, y: 902.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1377076085
@@ -2758,6 +2810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dfc45f2f83f174388de6867ffc4053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: owned
 --- !u!1 &1440337270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,7 +3363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4226,9 +4279,7 @@ RectTransform:
   - {fileID: 1476970020}
   - {fileID: 1808032617}
   - {fileID: 391577063}
-  - {fileID: 1191274801}
-  - {fileID: 905107140}
-  - {fileID: 2142759754}
+  - {fileID: 794278267}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4256,7 +4307,7 @@ MonoBehaviour:
   - {fileID: 1878785739}
   - {fileID: 627821930}
   stoneDragMarkerPrefab: {fileID: 4768807412755325612, guid: 9430b3d17607c6e4da595ff5cff11d36, type: 3}
-  cardPrefab: {fileID: 5313065801378165914, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
+  cardPrefab: {fileID: 7618045648578481880, guid: 9564fda5a6d89cf409897ae12cec6e16, type: 3}
   deckCardPrefab: {fileID: -3623517364459128520, guid: fd9ab7932307fab4bb230e64da576289, type: 3}
   fireIcon: {fileID: 21300000, guid: d23117911a550c143b5ba6853ea008bb, type: 3}
   grassIcon: {fileID: 21300000, guid: f6de4f6493a2c6a4f9dd1145f6175dbe, type: 3}
@@ -4383,14 +4434,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142759753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 569378536}
   - {fileID: 785562598}
-  m_Father: {fileID: 2085339635}
+  m_Father: {fileID: 794278267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}

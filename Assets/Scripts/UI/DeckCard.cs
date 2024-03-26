@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class DeckCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DeckCard : MonoBehaviour
 {
     [SerializeField] private Color fireTint = Color.white;
     [SerializeField] private Color grassTint = Color.white;
@@ -41,21 +41,4 @@ public class DeckCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             amountText.text = $"x{value}";
         }
     }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        OnDeckCardDrag?.Invoke(Card);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        OnDeckCardEndDrag?.Invoke();
-    }
-
-    public event Action<Card> OnDeckCardDrag;
-    public event Action OnDeckCardEndDrag;
 }

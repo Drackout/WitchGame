@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardGridDropZone : MonoBehaviour, IDropHandler
+public class CardGridDropArea : DropArea
 {
-    public void OnDrop(PointerEventData eventData)
+    protected override void Dropped(GameObject obj)
     {
+        Debug.Log($" -- CardGrid: dropped: <{obj.name}>");
         PlayerResources pr = PlayerResources.Instance;
 
-        var deckCard = eventData.pointerDrag.GetComponent<DeckCard>();
+        var deckCard = obj.GetComponent<DeckCard>();
         if (deckCard == null)
         {
             return;

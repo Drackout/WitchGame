@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DeckPanelDropZone : MonoBehaviour, IDropHandler
+public class DeckPanelDropArea : DropArea
 {
-    public void OnDrop(PointerEventData eventData)
+    protected override void Dropped(GameObject obj)
     {
-        var ownedCard = eventData.pointerDrag.GetComponent<OwnedCard>();
+        Debug.Log($" -- DeckPanel: dropped: <{obj.name}>");
+        var ownedCard = obj.GetComponent<OwnedCard>();
+        Debug.Log($" -- DeckPanel: OwnedCard in obj <{ownedCard != null}>");
         if (ownedCard == null)
         {
             return;
@@ -14,6 +16,7 @@ public class DeckPanelDropZone : MonoBehaviour, IDropHandler
         PlayerResources pr = PlayerResources.Instance;
 
         Card card = pr.OwnedCards[ownedCard.Index];
+        Debug.Log($" -- DeckPanel: card element <{card.Element}>");
         if (card.Element == Element.None)
         {
             return;
