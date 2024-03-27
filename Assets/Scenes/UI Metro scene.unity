@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 65765232987730972, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 128858024717363809, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -155,6 +159,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9ebb91c6d6e57d948ad59762525a2268, type: 2}
+    - target: {fileID: 2808638465053118670, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2832526452281524427, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -259,11 +267,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5574927121754283910, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5952558912888424188, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6145398385382570715, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214221282585300753, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709881749656072607, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -330,6 +350,8 @@ PrefabInstance:
     - {fileID: 5296147802874161842, guid: 780be12d95764a846ab96915279da0d4, type: 3}
     - {fileID: 7129550832488475165, guid: 780be12d95764a846ab96915279da0d4, type: 3}
     - {fileID: 4332121713227401621, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+    - {fileID: 441725435923551849, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+    - {fileID: 4383475908834452719, guid: 780be12d95764a846ab96915279da0d4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5182094291787005940, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       insertIndex: 2
@@ -624,6 +646,10 @@ PrefabInstance:
     - target: {fileID: 270526251799976412, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Name
       value: PlayerHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 270526251799976412, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 665004280374720831, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.x
