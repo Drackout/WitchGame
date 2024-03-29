@@ -291,6 +291,7 @@ MonoBehaviour:
   grassShieldEff: {fileID: 21300000, guid: 5f9f03293ba12044e9a1f34e32a4d1a6, type: 3}
   fireShieldEff: {fileID: 21300000, guid: add1a4b8f3be51f4ead78dc1a86cb5e5, type: 3}
   ShieldBall: {fileID: 2687881842420601478}
+  PanelAnimator: {fileID: 1841024737505272164}
 --- !u!95 &7533437836276320818
 Animator:
   serializedVersion: 5

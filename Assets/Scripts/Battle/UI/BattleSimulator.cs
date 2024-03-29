@@ -40,6 +40,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Sprite grassShieldEff;
     [SerializeField] private Sprite fireShieldEff;
     [SerializeField] private GameObject ShieldBall;
+    [SerializeField] private Animator PanelAnimator;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -209,8 +210,11 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case MoveEvent ev:
                     // ENEMY TURN (1 by 1)
+                    PanelAnimator.ResetTrigger("PanelShow");
+                    PanelAnimator.SetTrigger("PanelHide");
                     for (int i = 0; i < battle.Creatures.Count; i++)
                     {
+                        Debug.Log("ev.battler1 " + ev.Battler);
                         if (battle.Creatures[i] == ev.Battler)
                         {
                             creatureElements[battle.Creatures[i]].PlayAnimation("Attack", 99);
@@ -343,6 +347,8 @@ public class BattleSimulator : MonoBehaviour
 
     private void ShowHand(Battle battle)
     {
+        // PanelAnimator.SetTrigger("PanelShow");
+        //Debug.Log("ShowHand 1 ");
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             Transform cardButton = cardContainer.transform.GetChild(i);
@@ -354,6 +360,13 @@ public class BattleSimulator : MonoBehaviour
                 UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
                 uicard.Create(c);
                 uicard.SetCancelEventListener(() => HandleCancelClick(iCopy, uicard));
+
+                // When all cards in hand put panel back up
+                if (i+1 == 1)
+                {
+                    PanelAnimator.ResetTrigger("PanelHide");
+                    PanelAnimator.SetTrigger("PanelShow");
+                }
             }
             else
             {
