@@ -14,16 +14,16 @@ public class RequestButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
    public void OnPointerEnter(PointerEventData eventData)
    {
-      Debug.Log("pOver");
-      //Animator.ResetTrigger("pExit");
-      //Animator.SetTrigger("pOver");
+      //Debug.Log("pOver");
+      Animator.ResetTrigger("rbHide");
+      Animator.SetTrigger("rbShow");
    }
 
    public void OnPointerExit(PointerEventData eventData)
    {
       Debug.Log("pExit");
-      //Animator.ResetTrigger("pOver");
-      //Animator.SetTrigger("pExit");
+      Animator.ResetTrigger("rbShow");
+      Animator.SetTrigger("rbHide");
    }
    
 
