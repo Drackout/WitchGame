@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -18,6 +19,8 @@ public abstract class DropArea : MonoBehaviour, IDropHandler
     {
         Debug.Log($"DropArea: object dropped; {eventData.pointerDrag.name}");
         Dropped(eventData.pointerDrag);
+
+        OnDropItem?.Invoke(eventData.pointerDrag);
     }
 
     protected abstract void Dropped(GameObject obj);
@@ -36,4 +39,6 @@ public abstract class DropArea : MonoBehaviour, IDropHandler
     {
         manager.Deregister(this, group);
     }
+
+    public event Action<GameObject> OnDropItem;
 }

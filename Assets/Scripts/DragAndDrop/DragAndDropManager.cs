@@ -19,6 +19,8 @@ public class DragAndDropManager : MonoBehaviour
         }
 
         areaGroups[group].Add(component);
+
+        component.OnDropItem += HandleDrop;
     }
 
     public void Deregister(Draggable component, string group)
@@ -59,6 +61,16 @@ public class DragAndDropManager : MonoBehaviour
     {
         Debug.Log($"DragAndDropManager: drag end; <{draggable.gameObject.name}>");
 
+        DisableAllAreas();
+    }
+
+    private void HandleDrop(GameObject obj)
+    {
+        DisableAllAreas();
+    }
+
+    private void DisableAllAreas()
+    {
         foreach (string group in areaGroups.Keys)
         {
             foreach (DropArea a in areaGroups[group])
