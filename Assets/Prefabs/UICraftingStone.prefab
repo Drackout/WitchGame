@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2907287153529304045}
   - component: {fileID: 1596976773258816569}
   - component: {fileID: -8889394442578568744}
+  - component: {fileID: 2496887372698777060}
   m_Layer: 5
   m_Name: UICraftingStone
   m_TagString: Untagged
@@ -379,3 +380,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: 1
   amountText: {fileID: 3301331238896978094}
+--- !u!114 &2496887372698777060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841667318447833363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9eacb5fb710f34592467341367a569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: enchant
+  trackerPrefab: {fileID: 0}

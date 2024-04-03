@@ -44,9 +44,9 @@ public class CardGrid : MonoBehaviour
         UICardCreation uiCard = Instantiate(cardPrefab, gridRoot.transform);
         uiCard.Create(card);
 
-        var enchantHandler = uiCard.GetComponent<EnchantHandler>();
-        enchantHandler.CardIndex = index;
-        enchantHandler.OnStonePlaced += (Element el, int i) => OnStonePlaced?.Invoke(el, i);
+        var enchantDropArea = uiCard.GetComponentInChildren<EnchantDropArea>();
+        enchantDropArea.CardIndex = index;
+        enchantDropArea.OnStonePlaced += (Element el, int i) => OnStonePlaced?.Invoke(el, i);
 
         var ownedCard = uiCard.GetComponent<OwnedCard>();
         ownedCard.Index = index;
