@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9974991
       objectReference: {fileID: 0}
+    - target: {fileID: 2953026563221763443, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: requestDifficulty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3666075051008709341, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -459,6 +463,10 @@ PrefabInstance:
     - target: {fileID: 6241864381315550016, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
       propertyPath: m_text
       value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456510461056817681, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: requestDifficulty
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9169168787093732560, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
       propertyPath: m_Name
