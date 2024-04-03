@@ -105,6 +105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardDeck
       objectReference: {fileID: 0}
+    - target: {fileID: 6408011125794627694, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 917e81b638ce1ef4593fd1b62b94061f, type: 2}
     - target: {fileID: 8350779362707391378, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -186,7 +190,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6408011125794627694, guid: c18049246718b5c4d818803cb9527207, type: 3}
     - {fileID: 8869052064253337736, guid: c18049246718b5c4d818803cb9527207, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -237,3 +240,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: deck
   trackerPrefab: {fileID: 0}
+  animator: {fileID: 0}

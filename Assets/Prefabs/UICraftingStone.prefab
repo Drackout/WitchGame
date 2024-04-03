@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 1596976773258816569}
   - component: {fileID: -8889394442578568744}
   - component: {fileID: 2496887372698777060}
+  - component: {fileID: 4791820445579141368}
   m_Layer: 5
   m_Name: UICraftingStone
   m_TagString: Untagged
@@ -394,3 +395,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: enchant
   trackerPrefab: {fileID: 0}
+--- !u!95 &4791820445579141368
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841667318447833363}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ab7d6ef7b1b6c5448f6daaf61775b77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
