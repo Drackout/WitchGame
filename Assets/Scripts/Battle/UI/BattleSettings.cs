@@ -46,4 +46,25 @@ public class BattleSettings : MonoBehaviour
         stageIndex = 0;
         currentRequest = stages[0].GetRequest(RequestDifficulty.Easy);
     }
+    
+    public void GetAllEnemiesRequests(RequestData currentRequest)
+    {
+        for (int i = 0; i < currentRequest.encounters.Length; i++)
+        {
+            for (int j = 0; j < currentRequest.encounters[i].enemies.Length; j++)
+            {
+                Debug.Log("Scene "+ i + ", Enemy "+j+": "+ currentRequest.encounters[i].enemies[j].ToString());
+            }
+        }
+    }
+
+    public EnemyCreature[] GetEnemiesFirstRequest(RequestData currentRequest)
+    {
+        for (int i = 0; i < currentRequest.encounters[0].enemies.Length; i++)
+        {
+            Debug.Log("Enemy "+i+": "+ currentRequest.encounters[0].enemies[i].ToString());
+        }
+
+        return currentRequest.encounters[0].enemies;
+    }
 }
