@@ -202,7 +202,7 @@ PrefabInstance:
       addedObject: {fileID: 2558425473089479033}
     - targetCorrespondingSourceObject: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -3415848855816292792}
+      addedObject: {fileID: 3935430980999074555}
   m_SourcePrefab: {fileID: 100100000, guid: c18049246718b5c4d818803cb9527207, type: 3}
 --- !u!224 &4060493974224386752 stripped
 RectTransform:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2686e229346644daecbdc09eed66e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3415848855816292792
+--- !u!114 &3935430980999074555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,9 +235,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6956696475764362297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9eacb5fb710f34592467341367a569, type: 3}
+  m_Script: {fileID: 11500000, guid: 34a541b93c4268e4bbadaaaf104037d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   group: deck
-  trackerPrefab: {fileID: 0}
-  animator: {fileID: 0}
+  trackerPrefab: {fileID: 4650062839060723323, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}

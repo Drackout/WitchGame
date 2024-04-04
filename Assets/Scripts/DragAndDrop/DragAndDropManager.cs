@@ -4,6 +4,7 @@ using UnityEngine;
 public class DragAndDropManager : MonoBehaviour
 {
     private IDictionary<string, IList<DropArea>> areaGroups;
+    private GameObject tracker;
 
     public void Register(Draggable component, string group)
     {
@@ -55,6 +56,10 @@ public class DragAndDropManager : MonoBehaviour
         {
             a.Toggle(true);
         }
+
+        tracker = draggable.CreateTracker();
+        tracker.transform.SetParent(transform);
+        tracker.AddComponent<FollowMouse>();
     }
 
     private void HandleDragEnd(Draggable draggable)
@@ -62,11 +67,23 @@ public class DragAndDropManager : MonoBehaviour
         Debug.Log($"DragAndDropManager: drag end; <{draggable.gameObject.name}>");
 
         DisableAllAreas();
+
+        if (tracker != null)
+        {
+            Destroy(tracker);
+            tracker = null;
+        }
     }
 
     private void HandleDrop(GameObject obj)
     {
         DisableAllAreas();
+
+        if (tracker != null)
+        {
+            Destroy(tracker);
+            tracker = null;
+        }
     }
 
     private void DisableAllAreas()

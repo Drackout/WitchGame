@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour,
@@ -10,11 +11,33 @@ public class Draggable : MonoBehaviour,
     IPointerExitHandler
 {
     [SerializeField] private string group;
-    [SerializeField] private GameObject trackerPrefab;
+
+    private GameObject tracker;
 
     private Animator animator;
 
     public string Group => group;
+
+    public virtual GameObject CreateTracker()
+    {
+        GameObject tracker = Instantiate(gameObject);
+
+        tracker.GetComponent<Draggable>().enabled = false;
+
+        // Disable all raycast targets
+        Image trackerImage = tracker.GetComponent<Image>();
+        if (trackerImage != null)
+        {
+            tracker.GetComponent<Image>().raycastTarget = false;
+        }
+
+        foreach (Image image in tracker.GetComponentsInChildren<Image>())
+        {
+            image.raycastTarget = false;
+        }
+
+        return tracker;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
