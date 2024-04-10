@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38906977, g: 0.7282788, b: 0.73263454, a: 1}
+  m_IndirectSpecularColor: {r: 0.3890872, g: 0.7282914, b: 0.73263985, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10502,17 +10502,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
-    - target: {fileID: 665004280374720831, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 665004280374720831, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 665004280374720831, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
+    - target: {fileID: 815650032907714251, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000936538
       objectReference: {fileID: 0}
     - target: {fileID: 1319180115568317504, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Pivot.x
@@ -10600,6 +10592,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026606399747774911, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026606399747774911, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2931285882200435432, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
