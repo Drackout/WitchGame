@@ -58,7 +58,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -86,7 +86,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -99,7 +99,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4229028799
+      path: 1478692702
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -108,7 +108,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 4229028799
+      path: 1478692702
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -164,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -212,7 +212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -260,7 +260,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -308,7 +308,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: PlayerHUD/Block
+    path: DragAndDropManager/PlayerHUD/Block
     classID: 224
     script: {fileID: 0}
     flags: 0
