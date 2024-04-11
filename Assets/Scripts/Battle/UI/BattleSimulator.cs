@@ -117,6 +117,9 @@ public class BattleSimulator : MonoBehaviour
             creatureElements[c].TargetButton.onClick.AddListener(
                 () => HandleSelection(iCopy));
 
+            var creatureDropArea = creatureElements[c].GetComponentInChildren<EnemyDropArea>();
+            creatureDropArea.OnEnemyTarget += HandleEnemyDrop;
+
             Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
             GameObject creature3d = Instantiate(creatureData.meshPrefab, creature3dSlot);
 
@@ -451,15 +454,20 @@ public class BattleSimulator : MonoBehaviour
             //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
             //anim.SetTrigger("pClick1");
 
-            RectTransform cardTransform = cardButton.GetComponent<RectTransform>();
-            activeCardActionDialog = Instantiate(cardActionDialogPrefab, cardTransform.position,
-                Quaternion.identity, transform);
-
-            activeCardActionDialog.OnPlay += () => HandleSelection(index);
-            activeCardActionDialog.OnHold += () => HandleHoldCard(index);
-            activeCardActionDialog.OnClose += () => CloseActiveDialog(index, true);
             Debug.Log("A2");
         }
+    }
+
+    private void HandleEnemyDrop(int card, int target)
+    {
+        StartCoroutine(SelectCardAndTarget(card, target));
+    }
+
+    private IEnumerator SelectCardAndTarget(int card, int target)
+    {
+        HandleSelection(card);
+        yield return null;
+        HandleSelection(target);
     }
 
     private void HandleSelection(int index)
