@@ -41,6 +41,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Sprite fireShieldEff;
     [SerializeField] private GameObject ShieldBall;
     [SerializeField] private Animator PanelAnimator;
+    [SerializeField] private Animator player3dAnimator;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -619,6 +620,7 @@ public class BattleSimulator : MonoBehaviour
         }
 
         Animator.SetTrigger(animString);
+        player3dAnimator.SetTrigger(animString);
     }
 
 
