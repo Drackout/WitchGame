@@ -47,8 +47,12 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Sprite[] cardImages;
     [SerializeField] private Image Image;
 
+    [SerializeField] public Material material;
+    public Slider SliderDissolver;
+
     private GameObject activeIcon;
     private int cardNumber;
+
 
     public void Create(Card toShow)
     {
