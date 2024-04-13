@@ -9,13 +9,9 @@ public class UICardDissolve_Runtime : MonoBehaviour
     public Slider SliderDissolver;
 
 
-    private void Start()
-    {
-        material = GetComponent<Renderer>().sharedMaterial;
-    }
-
     private void Update()
     {
+        //Debug.Log(SliderDissolver.value);
         material.SetFloat("_Level", SliderDissolver.value);
     }
 }

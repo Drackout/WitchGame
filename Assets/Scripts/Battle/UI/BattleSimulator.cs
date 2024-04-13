@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using BattleEvents;
 using TMPro;
+using Unity.VisualScripting;
 
 public class BattleSimulator : MonoBehaviour
 {
@@ -206,7 +207,16 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case DrawEvent ev:
                     ShowHand(battle);
-                    // Debug.Log("A");
+                    Slider sliders;
+                    //Debug.Log("Aaa: " + ev);
+
+                    //Set every Card slider to value 0 (for dissolve)
+                    for (int i = 0; i < cardContainer.transform.childCount; i++)
+                    {
+                        //Debug.Log("Card: " + i);
+                        sliders = cardContainer.transform.GetChild(i).GetComponentInChildren<Slider>();
+                        sliders.value = 0;
+                    }
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case MoveEvent ev:
@@ -225,9 +235,15 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case PlayCardEvent ev:
-                    // yield return new WaitForSeconds(1f);  // time with card dissolve
+                    Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
+                    // Change the 1 for the played card ID  
+                    Animator anima = cardContainer.transform.GetChild(1).GetComponent<Animator>();
+                    anima.SetTrigger("Played");
+                    yield return new WaitForSeconds(1f);  // time with card dissolve
+                    anima.ResetTrigger("Played");
+                    
                     Debug.Log($"[DEBUG] Played {ev.Card}");
-                    Debug.Log($"Element: {ev.Card.Element}");
+                    //Debug.Log($"Element: {ev.Card.Element}");
                     logText = $"Played {ev.Card}";
                     // Material cardPlayerMat = ev.Card.ima ent<Material>()
                     ShowHand(battle);
