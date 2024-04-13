@@ -47,11 +47,9 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Sprite[] cardImages;
     [SerializeField] private Image Image;
 
-    [SerializeField] public Material material;
-    public Slider SliderDissolver;
-
     private GameObject activeIcon;
     private int cardNumber;
+
 
 
     public void Create(Card toShow)
@@ -59,12 +57,14 @@ public class UICardCreation : MonoBehaviour
         if (cardImages.Length > 0)
         {
             Image.sprite = cardImages[UnityEngine.Random.Range(0, cardImages.Length)];
+            
         }
         
         if (activeIcon != null)
             Destroy(activeIcon);
 
         GameObject icon = null;
+        
 
         switch (toShow.Type)
         {
@@ -159,8 +159,8 @@ public class UICardCreation : MonoBehaviour
             powerCircle.sprite = circleWater;
 
         cardNumber = Convert.ToInt16(powerNumber.text);
+        
 
-        // Doesn't work up there, the last card always gets wrong numbers..  
         switch (toShow.Type)
         {
             case CardType.Heal:
