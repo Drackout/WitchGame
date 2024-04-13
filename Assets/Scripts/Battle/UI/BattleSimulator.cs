@@ -46,6 +46,8 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private GameObject ShieldBall;
     [SerializeField] private Animator PanelAnimator;
     [SerializeField] private Animator player3dAnimator;
+    [SerializeField] private HoldDropArea holdDropArea;
+    [SerializeField] private PlayerDropArea playerDropArea;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -90,6 +92,9 @@ public class BattleSimulator : MonoBehaviour
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
+
+        holdDropArea.OnCardDrop += HandleHoldCard;
+        playerDropArea.OnCardDrop += HandleSelection;
 
         playerShield.Shield = new Shield();
 
@@ -423,39 +428,30 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardClick(int index, Button cardButton)
     {
-        if (battle.Witch.HeldCards.Contains(index))
-        {
-            input = new InputResponse(Intention.Unhold, index);
-            Animator animator = cardContainer.transform.GetChild(index).GetComponent<Animator>();
-            animator.SetTrigger("pNormal");
-        }
-        else
-        {
-            CloseActiveDialog(index, false);
+        CloseActiveDialog(index, false);
 
-            // Force all cards down when clicking in another card, reset triggers
-            for (int i = 0; i < cardContainer.transform.childCount; i++)
+        // Force all cards down when clicking in another card, reset triggers
+        for (int i = 0; i < cardContainer.transform.childCount; i++)
+        {
+            Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+            if (!battle.Witch.HeldCards.Contains(i) && i != index)
             {
-                Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
-                if (!battle.Witch.HeldCards.Contains(i) && i != index)
-                {
-                    anim.ResetTrigger("pClick1");
-                    anim.SetTrigger("pNormal");
-                }
-                else
-                {
-                    anim.ResetTrigger("pNormal");
-                    anim.SetTrigger("pClick1");
-                    Debug.Log($"Reset animation on card {index}");
-                }
+                anim.ResetTrigger("pClick1");
+                anim.SetTrigger("pNormal");
             }
-
-
-            //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
-            //anim.SetTrigger("pClick1");
-
-            Debug.Log("A2");
+            else
+            {
+                anim.ResetTrigger("pNormal");
+                anim.SetTrigger("pClick1");
+                Debug.Log($"Reset animation on card {index}");
+            }
         }
+
+
+        //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+        //anim.SetTrigger("pClick1");
+
+        Debug.Log("A2");
     }
 
     private void HandleEnemyDrop(int card, int target)

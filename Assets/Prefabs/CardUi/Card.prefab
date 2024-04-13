@@ -426,6 +426,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35674c2d7e908084faa5598a1b7103bd, type: 3}
   - {fileID: 21300000, guid: a0f6fc28a003b4d4ea11afe54ee48b64, type: 3}
   Image: {fileID: 8825192593047844841}
+  material: {fileID: 0}
+  SliderDissolver: {fileID: 0}
 --- !u!95 &6408011125794627694
 Animator:
   serializedVersion: 5

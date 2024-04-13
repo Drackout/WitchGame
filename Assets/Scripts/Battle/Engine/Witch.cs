@@ -73,12 +73,14 @@ public class Witch : Battler
                     {
                         battle.Logger.Log("You can only play up to 2 cards per turn!");
                     }
-                    else if (HeldCards.Contains(cardIndex))
-                    {
-                        battle.Logger.Log($"{card} is being held!");
-                    }
                     else
                     {
+                        if (HeldCards.Contains(cardIndex))
+                        {
+                            HeldCards.Remove(cardIndex);
+                            actionsDone -= 1;
+                        }
+
                         foreach (BattleEvent ev in PlayCard(card))
                         {
                             if (ev is PlayCardEvent)
