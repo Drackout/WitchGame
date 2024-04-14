@@ -37,6 +37,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Sprite waterShield;
     [SerializeField] private Sprite grassShield;
     [SerializeField] private Sprite fireShield;
+    [SerializeField] private Material waterShieldMAT;
+    [SerializeField] private Material grassShieldMAT;
+    [SerializeField] private Material fireShieldMAT;
     [SerializeField] private Sprite waterShieldEff;
     [SerializeField] private Sprite grassShieldEff;
     [SerializeField] private Sprite fireShieldEff;
@@ -239,6 +242,7 @@ public class BattleSimulator : MonoBehaviour
                     // Change the 1 for the played card ID  
                     Animator anima = cardContainer.transform.GetChild(1).GetComponent<Animator>();
                     anima.SetTrigger("Played");
+                    yield return new WaitForSeconds(1f);
                     anima.ResetTrigger("Played");
                     
                     Debug.Log($"[DEBUG] Played {ev.Card}");
