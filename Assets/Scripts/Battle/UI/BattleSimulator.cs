@@ -232,14 +232,13 @@ public class BattleSimulator : MonoBehaviour
                             creature3dElements[battle.Creatures[i]].PlayAnimation("Attack");
                         }
                     }
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(1.5f);
                     break;
                 case PlayCardEvent ev:
                     Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
                     // Change the 1 for the played card ID  
                     Animator anima = cardContainer.transform.GetChild(1).GetComponent<Animator>();
                     anima.SetTrigger("Played");
-                    yield return new WaitForSeconds(1f);  // time with card dissolve
                     anima.ResetTrigger("Played");
                     
                     Debug.Log($"[DEBUG] Played {ev.Card}");
@@ -299,7 +298,7 @@ public class BattleSimulator : MonoBehaviour
                         {
                             creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
                             creature3dElements[ev.Target].PlayAnimation("Dead");
-                            yield return new WaitForSeconds(2.0f);
+                            yield return new WaitForSeconds(1.5f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
@@ -310,7 +309,6 @@ public class BattleSimulator : MonoBehaviour
                             creature3dElements[ev.Target].PlayAnimation("Hurt");
                         }
                     }
-                    yield return new WaitForSeconds(2.0f);
                     break;
                 case ShieldEvent ev:
                     // GET SHIELD
@@ -321,7 +319,6 @@ public class BattleSimulator : MonoBehaviour
                     ShieldBall.SetActive(true);
                     //ShieldAnimator.SetTrigger("ShieldOn");
                     //PlayAnimation("ShieldBall", ev.Shield.Element.ToString());
-                    yield return new WaitForSeconds(2.0f);
                     break;
                 case HealEvent ev:
                     // HEALING
@@ -344,11 +341,9 @@ public class BattleSimulator : MonoBehaviour
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
-                    yield return new WaitForSeconds(2.0f);
                     break;
                 case EmptyEvent ev:
                     Debug.Log($"[DEBUG] {ev.Warning}");
-                    yield return new WaitForSeconds(2.0f);
                     break;
                 default:
                     Debug.Log($"[DEBUG] {battleEvent.GetType()}");
