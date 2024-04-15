@@ -81,7 +81,7 @@ public class Witch : Battler
                             actionsDone -= 1;
                         }
 
-                        foreach (BattleEvent ev in PlayCard(card))
+                        foreach (BattleEvent ev in PlayCard(card, cardIndex))
                         {
                             if (ev is PlayCardEvent)
                             {
@@ -210,7 +210,7 @@ public class Witch : Battler
         return new DamageEvent(this, damage, attack.Element, 0); // 0: Cause witch doesnt React on dmg taken
     }
 
-    private IEnumerable<BattleEvent> PlayCard(Card card)
+    private IEnumerable<BattleEvent> PlayCard(Card card, int index)
     {
         if (card.Type == CardType.Sword)
         {
@@ -219,7 +219,7 @@ public class Witch : Battler
             {
                 yield break;
             }
-            yield return new PlayCardEvent(card);
+            yield return new PlayCardEvent(card, index);
                 //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
@@ -236,7 +236,7 @@ public class Witch : Battler
             {
                 yield break;
             }
-            yield return new PlayCardEvent(card);
+            yield return new PlayCardEvent(card, index);
                 //battle.Logger.Log("CARD::: " + card.ToString());
             int targetIdx = Input.Selection;
             Battler target = battle.Creatures[targetIdx];
@@ -248,14 +248,14 @@ public class Witch : Battler
         }
         else if (card.Type == CardType.Shield)
         {
-            yield return new PlayCardEvent(card);
+            yield return new PlayCardEvent(card, index);
             Shield = new Shield(card.Power, card.Element);
             battle.Logger.Log($"You used [{card}]! Got {Shield.Charges} charges of {Shield.Element} shield");
             yield return new ShieldEvent(Shield, Shield.Element);
         }
         else if (card.Type == CardType.Heal)
         {
-            yield return new PlayCardEvent(card);
+            yield return new PlayCardEvent(card, index);
             int restored = GetEffectiveHeal(card).Item1;
             int reactionType = GetEffectiveHeal(card).Item2;
             battle.Logger.Log($"Healing for {restored}");

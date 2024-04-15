@@ -57,9 +57,12 @@ public class DragAndDropManager : MonoBehaviour
             a.Toggle(true);
         }
 
-        tracker = draggable.CreateTracker();
-        tracker.transform.SetParent(transform);
-        tracker.AddComponent<FollowMouse>();
+        if (draggable.UsesTracker)
+        {
+            tracker = draggable.CreateTracker();
+            tracker.transform.SetParent(transform);
+            tracker.AddComponent<FollowMouse>();
+        }
     }
 
     private void HandleDragEnd(Draggable draggable)

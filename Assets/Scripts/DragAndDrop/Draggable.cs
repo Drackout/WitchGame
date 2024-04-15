@@ -11,12 +11,14 @@ public class Draggable : MonoBehaviour,
     IPointerExitHandler
 {
     [SerializeField] private string group;
+    [SerializeField] private bool usesTracker = true;
 
     private GameObject tracker;
 
     private Animator animator;
 
     public string Group => group;
+    public bool UsesTracker => usesTracker;
 
     public virtual GameObject CreateTracker()
     {
@@ -55,15 +57,21 @@ public class Draggable : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        animator.SetTrigger("MouseEnter");
+        if (animator != null)
+        {
+            animator.SetTrigger("MouseEnter");
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        animator.SetTrigger("MouseExit");
+        if (animator != null)
+        {
+            animator.SetTrigger("MouseExit");
+        }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
 

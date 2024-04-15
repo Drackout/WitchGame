@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RequestsScreen.unity
     guid: 14548f4ba07ba71449e65fbdabbd17a0
+  - enabled: 1
+    path: Assets/Scenes/UI Scene_D&DTest.unity
+    guid: 07b0294d2b439444cb2a7f0da798a31c
   m_configObjects: {}

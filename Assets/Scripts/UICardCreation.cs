@@ -49,11 +49,16 @@ public class UICardCreation : MonoBehaviour
 
     private GameObject activeIcon;
     private int cardNumber;
+    private Card card;
+
+    public Card CurrentCard => card;
 
 
 
     public void Create(Card toShow)
     {
+        card = toShow;
+
         if (cardImages.Length > 0)
         {
             Image.sprite = cardImages[UnityEngine.Random.Range(0, cardImages.Length)];

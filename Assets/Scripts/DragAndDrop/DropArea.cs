@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public abstract class DropArea : MonoBehaviour, IDropHandler
+public class DropArea : MonoBehaviour, IDropHandler
 {
     [SerializeField] private string group;
 
@@ -23,7 +23,8 @@ public abstract class DropArea : MonoBehaviour, IDropHandler
         OnDropItem?.Invoke(eventData.pointerDrag);
     }
 
-    protected abstract void Dropped(GameObject obj);
+    protected virtual void Dropped(GameObject obj)
+    {}
 
     private void Start()
     {

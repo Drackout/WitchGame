@@ -48,6 +48,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Animator player3dAnimator;
     [SerializeField] private HoldDropArea holdDropArea;
     [SerializeField] private PlayerDropArea playerDropArea;
+    [SerializeField] private DropArea defaultDropArea;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -82,19 +83,12 @@ public class BattleSimulator : MonoBehaviour
 
         BattleSettings battleSettings = BattleSettings.Instance;
 
-        for (int i = 0; i < cardContainer.transform.childCount; i++)
-        {
-            int iCopy = i;
-            Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
-            b.onClick.AddListener(() => HandleCardClick(iCopy, b));
-            b.interactable = false;
-        }
-
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
 
         holdDropArea.OnCardDrop += HandleHoldCard;
         playerDropArea.OnCardDrop += HandleSelection;
+        defaultDropArea.OnDropItem += HandleReleaseCard;
 
         playerShield.Shield = new Shield();
 
@@ -202,7 +196,6 @@ public class BattleSimulator : MonoBehaviour
                             int selectedCard = input.Selection;
                             UICardCreation uiCard = cardContainer.transform
                                 .GetChild(input.Selection).GetComponent<UICardCreation>();
-                            uiCard.ToggleCancelButton(true);
                         }
                     }
                     else if (ev.Type == InputRequestType.Target)
@@ -246,26 +239,44 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                     break;
                 case PlayCardEvent ev:
+                {
                     Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
                     // Change the 1 for the played card ID  
-                    Animator anima = cardContainer.transform.GetChild(1).GetComponent<Animator>();
+                    Animator anima = cardContainer.transform
+                        .GetChild(ev.Index)
+                        .GetComponentInChildren<Animator>();
                     anima.SetTrigger("Played");
+
                     yield return new WaitForSeconds(1f);
+
+                    var canvasGroup = cardContainer.transform
+                        .GetChild(ev.Index)
+                        .GetComponent<CanvasGroup>();
+                    canvasGroup.alpha = 0f;
+
+                    var cardDraggable = cardContainer.transform
+                        .GetChild(ev.Index)
+                        .GetComponent<CardBattleDraggable>();
+                    cardDraggable.ReturnToHand();
+
                     anima.ResetTrigger("Played");
-                    
+
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     //Debug.Log($"Element: {ev.Card.Element}");
                     logText = $"Played {ev.Card}";
                     // Material cardPlayerMat = ev.Card.ima ent<Material>()
                     ShowHand(battle);
                     break;
+                }
                 case HoldEvent ev:
                 {
-                    Animator anim = cardContainer.transform.GetChild(ev.HeldCard)
-                        .GetComponent<Animator>();
+                    Transform cardObject = cardContainer.transform.GetChild(ev.HeldCard);
+                    Animator anim = cardObject.GetComponentInChildren<Animator>();
                     if (ev.Success)
                     {
                         anim.SetTrigger("pHold");
+                        var cardDraggable = cardObject.GetComponent<CardBattleDraggable>();
+                        cardDraggable.ReturnToHand();
                     }
                     else
                     {
@@ -285,7 +296,9 @@ public class BattleSimulator : MonoBehaviour
                     // Force all cards to starting position
                     for (int i = 0; i < cardContainer.transform.childCount; i++)
                     {
-                        Animator anim = cardContainer.transform.GetChild(i).GetComponent<Animator>();
+                        Animator anim = cardContainer.transform
+                            .GetChild(i)
+                            .GetComponentInChildren<Animator>();
                         anim.SetTrigger("pNormal");
                     }
 
@@ -376,14 +389,18 @@ public class BattleSimulator : MonoBehaviour
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             Transform cardButton = cardContainer.transform.GetChild(i);
+
+            var canvasGroup = cardButton.GetComponent<CanvasGroup>();
+            canvasGroup.alpha = 1f;
+
             if (i < battle.Witch.Hand.Count && battle.Witch.Hand[i].Type != CardType.None)
             {
                 int iCopy = i;
                 cardButton.gameObject.SetActive(true);
                 Card c = battle.Witch.Hand[i];
-                UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
-                uicard.Create(c);
-                uicard.SetCancelEventListener(() => HandleCancelClick(iCopy, uicard));
+                BattleCard card = cardButton.GetComponent<BattleCard>();
+                card.UICard.Create(c);
+                card.UICard.SetCancelEventListener(() => HandleCancelClick(iCopy, card.UICard));
 
                 // When all cards in hand put panel back up
                 if (i+1 == 1)
@@ -406,8 +423,8 @@ public class BattleSimulator : MonoBehaviour
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             Transform card = cardContainer.transform.GetChild(i);
-            Button b = card.GetComponent<Button>();
-            b.interactable = state;
+            CanvasGroup b = card.GetComponent<CanvasGroup>();
+            b.blocksRaycasts = state;
         }
     }
 
@@ -502,6 +519,12 @@ public class BattleSimulator : MonoBehaviour
         CloseActiveDialog(index, false);
         input = new InputResponse(Intention.Hold, index);
         Debug.Log("Index .hold: " + index);
+    }
+
+    private void HandleReleaseCard(GameObject draggable)
+    {
+        var cardDraggable = draggable.GetComponent<CardBattleDraggable>();
+        cardDraggable.ReturnToHand();
     }
 
     private void CloseActiveDialog(int index, bool animation = true)
