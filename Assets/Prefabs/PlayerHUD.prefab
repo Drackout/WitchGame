@@ -285,9 +285,10 @@ MonoBehaviour:
   waterShield: {fileID: 21300000, guid: cdbff795269afdf4faa160e8678eae4d, type: 3}
   grassShield: {fileID: 21300000, guid: 798d0b8f74da5f04587970b1e6a6ec26, type: 3}
   fireShield: {fileID: 21300000, guid: 4b793ad1155be48468f32504e496abc0, type: 3}
-  waterShieldMAT: {fileID: 2100000, guid: 5b43a676aa487464ba9fcb227b26a7f3, type: 2}
-  grassShieldMAT: {fileID: 2100000, guid: e49a6552fddb6f04da21df33f5d993ef, type: 2}
-  fireShieldMAT: {fileID: 2100000, guid: 4aed7c0ddd2cbc14d803d485ba99a610, type: 2}
+  shieldMat: {fileID: 0}
+  waterShieldMat: {fileID: 2100000, guid: 5b43a676aa487464ba9fcb227b26a7f3, type: 2}
+  grassShieldMat: {fileID: 2100000, guid: e49a6552fddb6f04da21df33f5d993ef, type: 2}
+  fireShieldMat: {fileID: 2100000, guid: 4aed7c0ddd2cbc14d803d485ba99a610, type: 2}
   waterShieldEff: {fileID: 21300000, guid: 117e21d147a54764b8beefdbfa815d3e, type: 3}
   grassShieldEff: {fileID: 21300000, guid: 5f9f03293ba12044e9a1f34e32a4d1a6, type: 3}
   fireShieldEff: {fileID: 21300000, guid: add1a4b8f3be51f4ead78dc1a86cb5e5, type: 3}

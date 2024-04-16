@@ -615,6 +615,16 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7246429975892184952, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 399467312}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &399467314 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3570385160384688173, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &399467315 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &501984862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1001,6 +1011,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: shieldMat
+      value: 
+      objectReference: {fileID: 399467314}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: shieldAnimator
+      value: 
+      objectReference: {fileID: 399467315}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: player3dAnimator
       value: 
