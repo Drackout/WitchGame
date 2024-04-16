@@ -28,24 +28,16 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private CardActionsDialog cardActionDialogPrefab;
     [SerializeField] private BattleLog battleLogger;
     [SerializeField] private UISlots slots;
-    [SerializeField] private Image animationShield;
-    [SerializeField] private Image animationShieldEffect;
-    [SerializeField] private Image animationShieldEffectSH;
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioSource audioSrc2;
     [SerializeField] private LayerMask enemiesMask;
-    [SerializeField] private Sprite waterShield;
-    [SerializeField] private Sprite grassShield;
-    [SerializeField] private Sprite fireShield;
-    [SerializeField] private Material waterShieldMAT;
-    [SerializeField] private Material grassShieldMAT;
-    [SerializeField] private Material fireShieldMAT;
-    [SerializeField] private Sprite waterShieldEff;
-    [SerializeField] private Sprite grassShieldEff;
-    [SerializeField] private Sprite fireShieldEff;
-    [SerializeField] private GameObject ShieldBall;
+    [SerializeField] private SpriteRenderer shieldMat;
+    [SerializeField] private Material waterShieldMat;
+    [SerializeField] private Material grassShieldMat;
+    [SerializeField] private Material fireShieldMat;
     [SerializeField] private Animator PanelAnimator;
     [SerializeField] private Animator player3dAnimator;
+    [SerializeField] private Animator shieldAnimator;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -317,12 +309,9 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    ShieldBall.SetActive(false);
-                    PlayAnimation("Shield", ev.Shield.Element.ToString());
+                    PlayAnimation("getShield", ev.Shield.Element.ToString());
                     yield return new WaitForSeconds(1.0f);
-                    ShieldBall.SetActive(true);
-                    //ShieldAnimator.SetTrigger("ShieldOn");
-                    //PlayAnimation("ShieldBall", ev.Shield.Element.ToString());
+
                     break;
                 case HealEvent ev:
                     // HEALING
@@ -336,12 +325,13 @@ public class BattleSimulator : MonoBehaviour
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
                     if (battle.Witch.Shield.Charges == 0)
                     {
-                        PlayAnimation("Break", battle.Witch.Shield.Element.ToString());
-                        ShieldBall.SetActive(false);
+                        PlayAnimation("loseShield", battle.Witch.Shield.Element.ToString());
+                        yield return new WaitForSeconds(1f);
+                        shieldAnimator.ResetTrigger("getShield");
                     }
                     else
                     {
-                        PlayAnimation("Block", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("blockShield", battle.Witch.Shield.Element.ToString());
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
@@ -605,22 +595,18 @@ public class BattleSimulator : MonoBehaviour
         {
             if (extra == "Fire")
             {
-                animationShield.sprite = fireShield;
-                animationShieldEffect.sprite = fireShieldEff;       // Loop effect
-                animationShieldEffectSH.sprite = fireShieldEff;     // Show/Hide
+                shieldMat.material = fireShieldMat;
             }
             if (extra == "Water")
             {
-                animationShield.sprite = waterShield;
-                animationShieldEffect.sprite = waterShieldEff;
-                animationShieldEffectSH.sprite = waterShieldEff;
+                shieldMat.material = waterShieldMat;
             }
             if (extra == "Grass")
             {
-                animationShield.sprite = grassShield;
-                animationShieldEffect.sprite = grassShieldEff;
-                animationShieldEffectSH.sprite = grassShieldEff;
+                shieldMat.material = grassShieldMat;
             }
+            Debug.Log("Shield Animation <-> ");
+            shieldAnimator.SetTrigger(animString);
         }
 
         if (animString == "Heal")
