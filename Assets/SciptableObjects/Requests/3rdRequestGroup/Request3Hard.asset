@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
   - {fileID: 11400000, guid: 2bb1a70ecc07a7c4f9bb182f320508d5, type: 2}
   - {fileID: 11400000, guid: 0d94bae7f674549429d12aa3222152e1, type: 2}
-  battleScene: UI Metro scene
+  battleScene: Amadora Metro
