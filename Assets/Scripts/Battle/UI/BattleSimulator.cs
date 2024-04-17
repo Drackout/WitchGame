@@ -75,8 +75,15 @@ public class BattleSimulator : MonoBehaviour
         for (int i = 0; i < cardContainer.transform.childCount; i++)
         {
             int iCopy = i;
-            Button b = cardContainer.transform.GetChild(i).GetComponent<Button>();
+
+            Transform cardObject = cardContainer.transform.GetChild(i);
+
+            Button b = cardObject.GetComponent<Button>();
             b.onClick.AddListener(() => HandleCardClick(iCopy, b));
+
+            var uiCard = cardObject.GetComponent<UICardCreation>();
+            uiCard.SetCancelEventListener(() => HandleCancelClick(iCopy, uiCard));
+
             b.interactable = false;
         }
 
@@ -365,7 +372,6 @@ public class BattleSimulator : MonoBehaviour
                 Card c = battle.Witch.Hand[i];
                 UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
                 uicard.Create(c);
-                uicard.SetCancelEventListener(() => HandleCancelClick(iCopy, uicard));
 
                 // When all cards in hand put panel back up
                 if (i+1 == 1)
