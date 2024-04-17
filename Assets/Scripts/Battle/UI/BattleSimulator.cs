@@ -237,19 +237,29 @@ public class BattleSimulator : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                     break;
                 case PlayCardEvent ev:
+                {
                     Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
-                    // Change the 1 for the played card ID  
-                    Animator anima = cardContainer.transform.GetChild(1).GetComponent<Animator>();
+                    // Change the 1 for the played card ID
+
+                    Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
+
+                    Animator anima = cardTransform.GetComponent<Animator>();
                     anima.SetTrigger("Played");
+
+                    UICardCreation uiCard = cardTransform.GetComponent<UICardCreation>();
+                    uiCard.ToggleCancelButton(false);
+
                     yield return new WaitForSeconds(1f);
+
                     anima.ResetTrigger("Played");
-                    
+
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     //Debug.Log($"Element: {ev.Card.Element}");
                     logText = $"Played {ev.Card}";
                     // Material cardPlayerMat = ev.Card.ima ent<Material>()
                     ShowHand(battle);
                     break;
+                }
                 case HoldEvent ev:
                 {
                     Animator anim = cardContainer.transform.GetChild(ev.HeldCard)
