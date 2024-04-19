@@ -38,6 +38,10 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Animator PanelAnimator;
     [SerializeField] private Animator player3dAnimator;
     [SerializeField] private Animator shieldAnimator;
+    [SerializeField] private Animator healAnimator;
+    [SerializeField] private ParticleSystem healFire;
+    [SerializeField] private ParticleSystem healWater;
+    [SerializeField] private ParticleSystem healGrass;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -297,11 +301,11 @@ public class BattleSimulator : MonoBehaviour
                         // Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        PlayAnimation("Hurt", "");
+                        PlayAnimation("Hurt", "", "");
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
-                            PlayAnimation("Loss", "");
+                            PlayAnimation("Loss", "", "");
                     }
                     else
                     {
@@ -326,7 +330,7 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    PlayAnimation("getShield", ev.Shield.Element.ToString());
+                    PlayAnimation("getShield", ev.Shield.Element.ToString(), "");
                     yield return new WaitForSeconds(1.0f);
 
                     break;
@@ -334,7 +338,7 @@ public class BattleSimulator : MonoBehaviour
                     // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
-                    PlayAnimation("Heal", ev.ReactionType.ToString());
+                    PlayAnimation("Heal", ev.Element.ToString(), ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
                     // SHIELD BLOCK/BREAK
@@ -342,13 +346,13 @@ public class BattleSimulator : MonoBehaviour
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
                     if (battle.Witch.Shield.Charges == 0)
                     {
-                        PlayAnimation("loseShield", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("loseShield", battle.Witch.Shield.Element.ToString(), "");
                         yield return new WaitForSeconds(1f);
                         shieldAnimator.ResetTrigger("getShield");
                     }
                     else
                     {
-                        PlayAnimation("blockShield", battle.Witch.Shield.Element.ToString());
+                        PlayAnimation("blockShield", battle.Witch.Shield.Element.ToString(), "");
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
@@ -522,7 +526,7 @@ public class BattleSimulator : MonoBehaviour
     private void HandleEndTurnClick()
     {
         input = new InputResponse(Intention.EndTurn);
-        PlayAnimation("Turn", "");
+        PlayAnimation("Turn", "", "");
     }
 
     private void HandleCancelClick(int index, UICardCreation uiCard)
@@ -577,7 +581,7 @@ public class BattleSimulator : MonoBehaviour
         BattleSettings bs = BattleSettings.Instance;
         bs.NextStage();
 
-        PlayAnimation("Win", "");
+        PlayAnimation("Win", "", "");
         PlayerResources pr = PlayerResources.Instance;
         pr.Gold = pr.Gold + 42;
         pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
@@ -605,34 +609,82 @@ public class BattleSimulator : MonoBehaviour
         Debug.Log(dmgHeal+ ": "+reactionType);
     }
 
-    public void PlayAnimation(string animString, string extra)
+    public void PlayAnimation(string animString, string element, string reaction)
     {
-        if (extra != "")
+        if (animString == "loseShield" || animString == "getShield")
         {
-            if (extra == "Fire")
+            if (element == "Fire")
             {
                 shieldMat.material = fireShieldMat;
             }
-            if (extra == "Water")
+            if (element == "Water")
             {
                 shieldMat.material = waterShieldMat;
             }
-            if (extra == "Grass")
+            if (element == "Grass")
             {
                 shieldMat.material = grassShieldMat;
             }
-            Debug.Log("Shield Animation <-> ");
             shieldAnimator.SetTrigger(animString);
         }
 
         if (animString == "Heal")
         {
-            if (extra == "-1")
-                reactions.text = "Weak..";
-            else
-                reactions.text = "Strong!";
+            if (element == "Fire")
+            {
+                healFire.Play(true);
+            }
+            if (element == "Water")
+            {
+                healWater.Play(true);
+            }
+            if (element == "Grass")
+            {
+                healGrass.Play(true);
+            }
 
-            animString += extra;
+
+            if (reaction == "-1")
+            {
+                reactions.text = "Weak..";
+                if (element == "Fire")
+                {
+                    var emission = healFire.emission;
+                    emission.rateOverTime = 5;
+                }
+                if (element == "Water")
+                {
+                    var emission = healWater.emission;
+                    emission.rateOverTime = 5;
+                }
+                if (element == "Grass")
+                {
+                    var emission = healGrass.emission;
+                    emission.rateOverTime = 5;
+                }
+            }
+            else
+            {
+                reactions.text = "Strong!";
+                if (element == "Fire")
+                {
+                    var emission = healFire.emission;
+                    emission.rateOverTime = 25;
+                }
+                if (element == "Water")
+                {
+                    var emission = healWater.emission;
+                    emission.rateOverTime = 25;
+                }
+                if (element == "Grass")
+                {
+                    var emission = healGrass.emission;
+                    emission.rateOverTime = 25;
+                }
+            }
+
+            animString += reaction;
+            healAnimator.SetTrigger(element);
             //Debug.Log("AAAAAAAAA - " + animString);
         }
 

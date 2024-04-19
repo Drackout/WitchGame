@@ -625,6 +625,26 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 399467312}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &399467316 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3085275421285934506, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &399467317 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3259990216210027885, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &399467318 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3239571787346044208, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &399467319 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1124222692831606564, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 399467312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &501984862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1012,9 +1032,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healFire
+      value: 
+      objectReference: {fileID: 399467318}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healGrass
+      value: 
+      objectReference: {fileID: 399467317}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healWater
+      value: 
+      objectReference: {fileID: 399467316}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: shieldMat
       value: 
       objectReference: {fileID: 399467314}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healAnimator
+      value: 
+      objectReference: {fileID: 399467319}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: shieldAnimator
       value: 

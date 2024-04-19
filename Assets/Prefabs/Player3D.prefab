@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3281700178877903701}
+  - component: {fileID: 1124222692831606564}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -34,6 +35,27 @@ Transform:
   - {fileID: 3272688103168758716}
   m_Father: {fileID: 1542065453394024629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1124222692831606564
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666264263328899077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4dd5e9523e3f3c4fb53b38248cfaa88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1197490944669344164
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +402,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6980999114435165868, guid: fba05b7e435d0384b90dc6ca4990196b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6417983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980999114435165868, guid: fba05b7e435d0384b90dc6ca4990196b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6417981
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -449,6 +479,18 @@ PrefabInstance:
     - target: {fileID: 91820397271509056, guid: 1dc878ad4811775458b7d44b1ba846b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447285529482480201, guid: 1dc878ad4811775458b7d44b1ba846b7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2664734
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447285529482480201, guid: 1dc878ad4811775458b7d44b1ba846b7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5374367
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141171589165644407, guid: 1dc878ad4811775458b7d44b1ba846b7, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8360589567419595825, guid: 1dc878ad4811775458b7d44b1ba846b7, type: 3}
       propertyPath: m_Name
