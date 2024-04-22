@@ -454,12 +454,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112285042763756907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 093862b80983ad343bf1b2b0775b5252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 827e53a932043434686f2a759a7e0ac5, type: 2}
   SliderDissolver: {fileID: 7796500276182111951}
 --- !u!1 &3139771507234042649
 GameObject:

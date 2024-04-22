@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class UICardDissolve_Runtime : MonoBehaviour
 {
-    [SerializeField] public Material material;
     public Slider SliderDissolver;
+    private Material material;
+
+    private void Start()
+    {
+        Image image = GetComponent<Image>();
+        material = new Material(image.material);
+        image.material = material;
+    }
 
 
     private void Update()
