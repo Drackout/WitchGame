@@ -29,4 +29,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RequestsScreen.unity
     guid: 14548f4ba07ba71449e65fbdabbd17a0
+  - enabled: 0
+    path: Assets/Scenes/Forest_01.unity
+    guid: caf109453a4efe746ae99f21bca7f7cb
+  - enabled: 1
+    path: Assets/Scenes/Baixa-Chiado Metro.unity
+    guid: a2e0cc857a7ceb741b1b5e5173fd3121
+  - enabled: 1
+    path: Assets/Scenes/Amadora Metro.unity
+    guid: a9e10c80bab2e2a4f9b44000993d240a
+  - enabled: 0
+    path: Assets/Scenes/Street_03.unity
+    guid: b2fb1ace8331d7c49b91505ae4c163fd
   m_configObjects: {}
