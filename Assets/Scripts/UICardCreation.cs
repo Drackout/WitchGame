@@ -262,4 +262,9 @@ public class UICardCreation : MonoBehaviour
     {
         cancelButton.gameObject.SetActive(state);
     }
+
+    public void changeMaterialEdge(float val)
+    {
+        material.SetFloat("_Edges", val);
+    }
 }

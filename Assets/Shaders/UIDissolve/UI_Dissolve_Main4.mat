@@ -34,7 +34,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Edges: 0.05
+    - _Edges: 0
     - _Level: 0
     - _Stencil: 0
     - _StencilComp: 8

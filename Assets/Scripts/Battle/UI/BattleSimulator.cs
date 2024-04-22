@@ -244,9 +244,6 @@ public class BattleSimulator : MonoBehaviour
                 {
                     Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
                     // Change the 1 for the played card ID
-                    //Material material;
-                    //material = cardContainer.transform.GetChild(ev.Index).GetComponent<Material>();
-                    //material.SetFloat("_Edges", 0.1f);
 
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
 
@@ -255,9 +252,11 @@ public class BattleSimulator : MonoBehaviour
 
                     UICardCreation uiCard = cardTransform.GetComponent<UICardCreation>();
                     uiCard.ToggleCancelButton(false);
+                    uiCard.changeMaterialEdge(0.1f);
 
                     yield return new WaitForSeconds(1f);
 
+                    uiCard.changeMaterialEdge(0f);
                     anima.ResetTrigger("Played");
 
                     Debug.Log($"[DEBUG] Played {ev.Card}");
