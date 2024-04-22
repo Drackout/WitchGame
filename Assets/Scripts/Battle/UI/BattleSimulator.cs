@@ -244,6 +244,9 @@ public class BattleSimulator : MonoBehaviour
                 {
                     Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
                     // Change the 1 for the played card ID
+                    //Material material;
+                    //material = cardContainer.transform.GetChild(ev.Index).GetComponent<Material>();
+                    //material.SetFloat("_Edges", 0.1f);
 
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
 
@@ -611,38 +614,25 @@ public class BattleSimulator : MonoBehaviour
 
     public void PlayAnimation(string animString, string element, string reaction)
     {
-        if (animString == "loseShield" || animString == "getShield")
+        if (animString == "loseShield" || animString == "getShield" || animString == "blockShield")
         {
             if (element == "Fire")
-            {
                 shieldMat.material = fireShieldMat;
-            }
             if (element == "Water")
-            {
                 shieldMat.material = waterShieldMat;
-            }
             if (element == "Grass")
-            {
                 shieldMat.material = grassShieldMat;
-            }
             shieldAnimator.SetTrigger(animString);
         }
 
         if (animString == "Heal")
         {
-            if (element == "Fire")
-            {
-                healFire.Play(true);
-            }
-            if (element == "Water")
-            {
-                healWater.Play(true);
-            }
-            if (element == "Grass")
-            {
-                healGrass.Play(true);
-            }
-
+            //if (element == "Fire")
+            //    healFire.Play(true);
+            //if (element == "Water")
+            //    healWater.Play(true);
+            //if (element == "Grass")
+            //    healGrass.Play(true);
 
             if (reaction == "-1")
             {
@@ -650,17 +640,17 @@ public class BattleSimulator : MonoBehaviour
                 if (element == "Fire")
                 {
                     var emission = healFire.emission;
-                    emission.rateOverTime = 5;
+                    emission.rateOverTime = 4;
                 }
                 if (element == "Water")
                 {
                     var emission = healWater.emission;
-                    emission.rateOverTime = 5;
+                    emission.rateOverTime = 4;
                 }
                 if (element == "Grass")
                 {
                     var emission = healGrass.emission;
-                    emission.rateOverTime = 5;
+                    emission.rateOverTime = 4;
                 }
             }
             else
@@ -669,17 +659,17 @@ public class BattleSimulator : MonoBehaviour
                 if (element == "Fire")
                 {
                     var emission = healFire.emission;
-                    emission.rateOverTime = 25;
+                    emission.rateOverTime = 10;
                 }
                 if (element == "Water")
                 {
                     var emission = healWater.emission;
-                    emission.rateOverTime = 25;
+                    emission.rateOverTime = 10;
                 }
                 if (element == "Grass")
                 {
                     var emission = healGrass.emission;
-                    emission.rateOverTime = 25;
+                    emission.rateOverTime = 10;
                 }
             }
 
