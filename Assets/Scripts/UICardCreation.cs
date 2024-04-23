@@ -29,6 +29,13 @@ public class UICardCreation : MonoBehaviour
     [SerializeField] private Color32 colorBlue;
     [SerializeField] private Color32 colorRed;
     [SerializeField] private Color32 colorGreen;
+    
+    [SerializeField] private Color32 FireEdge1;
+    [SerializeField] private Color32 FireEdge2;
+    [SerializeField] private Color32 WaterEdge1;
+    [SerializeField] private Color32 WaterEdge2;
+    [SerializeField] private Color32 GrassEdge1;
+    [SerializeField] private Color32 GrassEdge2;
 
     [SerializeField] private Sprite circleWater;
     [SerializeField] private Sprite circleFire;
@@ -50,6 +57,22 @@ public class UICardCreation : MonoBehaviour
     private GameObject activeIcon;
     private int cardNumber;
 
+    public Slider SliderDissolver;
+    private Material material;
+
+
+    private void Start()
+    {
+        Image image = GetComponent<Image>();
+        material = new Material(image.material);
+        image.material = material;
+    }
+
+    private void Update()
+    {
+        //Debug.Log(SliderDissolver.value);
+        material.SetFloat("_Level", SliderDissolver.value);
+    }
 
 
     public void Create(Card toShow)
@@ -152,11 +175,23 @@ public class UICardCreation : MonoBehaviour
         powerNumber.text = toShow.Power.ToString();
 
         if (toShow.Element == Element.Fire)
+        {
             powerCircle.sprite = circleFire;
+            material.SetColor("_EdgeColour1", FireEdge1); 
+            material.SetColor("_EdgeColour2", FireEdge2); 
+        }
         if (toShow.Element == Element.Grass)
-            powerCircle.sprite = circleGrass;      
+         {
+            powerCircle.sprite = circleGrass;   
+            material.SetColor("_EdgeColour1", GrassEdge1); 
+            material.SetColor("_EdgeColour2", GrassEdge2); 
+         }   
         if (toShow.Element == Element.Water)
+        {
             powerCircle.sprite = circleWater;
+            material.SetColor("_EdgeColour1", WaterEdge1); 
+            material.SetColor("_EdgeColour2", WaterEdge2); 
+        }
 
         cardNumber = Convert.ToInt16(powerNumber.text);
         
@@ -226,5 +261,10 @@ public class UICardCreation : MonoBehaviour
     public void ToggleCancelButton(bool state)
     {
         cancelButton.gameObject.SetActive(state);
+    }
+
+    public void changeMaterialEdge(float val)
+    {
+        material.SetFloat("_Edges", val);
     }
 }

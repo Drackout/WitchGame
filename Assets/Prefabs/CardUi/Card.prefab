@@ -411,6 +411,24 @@ MonoBehaviour:
   colorGreen:
     serializedVersion: 2
     rgba: 4283271253
+  FireEdge1:
+    serializedVersion: 2
+    rgba: 4278321407
+  FireEdge2:
+    serializedVersion: 2
+    rgba: 4280098132
+  WaterEdge1:
+    serializedVersion: 2
+    rgba: 4294967040
+  WaterEdge2:
+    serializedVersion: 2
+    rgba: 4294901760
+  GrassEdge1:
+    serializedVersion: 2
+    rgba: 4278236939
+  GrassEdge2:
+    serializedVersion: 2
+    rgba: 4280112158
   circleWater: {fileID: 21300000, guid: 40d263da50fbcef4ab56ec15e9cb32c5, type: 3}
   circleFire: {fileID: 21300000, guid: 84b6fadbaf2660347ae53fe3bbfc6d88, type: 3}
   circleGrass: {fileID: 21300000, guid: a00599b479b377343a4ab3a35b6a53ee, type: 3}
@@ -426,6 +444,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35674c2d7e908084faa5598a1b7103bd, type: 3}
   - {fileID: 21300000, guid: a0f6fc28a003b4d4ea11afe54ee48b64, type: 3}
   Image: {fileID: 8825192593047844841}
+  SliderDissolver: {fileID: 7796500276182111951}
 --- !u!95 &6408011125794627694
 Animator:
   serializedVersion: 5
@@ -459,7 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093862b80983ad343bf1b2b0775b5252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SliderDissolver: {fileID: 7796500276182111951}
 --- !u!1 &3139771507234042649
 GameObject:
   m_ObjectHideFlags: 0
