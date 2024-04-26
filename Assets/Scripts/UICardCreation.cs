@@ -61,7 +61,7 @@ public class UICardCreation : MonoBehaviour
     private Material material;
 
 
-    private void Start()
+    private void Awake()
     {
         Image image = GetComponent<Image>();
         material = new Material(image.material);

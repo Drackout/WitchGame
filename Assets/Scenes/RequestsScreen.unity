@@ -468,6 +468,22 @@ PrefabInstance:
       propertyPath: requestDifficulty
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8543765913793977295, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543765913793977295, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543765913793977295, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -819
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543765913793977295, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 251
+      objectReference: {fileID: 0}
     - target: {fileID: 9169168787093732560, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
       propertyPath: m_Name
       value: BackButton

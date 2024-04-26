@@ -311,6 +311,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8321959792431587512, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_Name
+      value: Global Volume Metro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321959792431587512, guid: 780be12d95764a846ab96915279da0d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8422114923334809354, guid: 780be12d95764a846ab96915279da0d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.78
