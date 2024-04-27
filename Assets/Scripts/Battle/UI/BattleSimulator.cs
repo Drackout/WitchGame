@@ -43,6 +43,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private ParticleSystem healWater;
     [SerializeField] private ParticleSystem healGrass;
     [SerializeField] private CreatureDropArea[] creatureDropAreas;
+    [SerializeField] private PlayerDropArea playerDropArea;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -109,6 +110,9 @@ public class BattleSimulator : MonoBehaviour
             area.OnCreatureTarget += HandleCreatureTarget;
             area.gameObject.SetActive(false);
         }
+
+        playerDropArea.OnPlayerTarget += HandlePlayerTarget;
+        playerDropArea.gameObject.SetActive(false);
 
         StartCoroutine(RunRequest());
     }
@@ -721,6 +725,10 @@ public class BattleSimulator : MonoBehaviour
                 }
             }
         }
+        else if (card.Type == CardType.Shield || card.Type == CardType.Heal)
+        {
+            playerDropArea.gameObject.SetActive(true);
+        }
     }
 
     private IEnumerator SelectCardAndCreature(int cardIndex, int creatureIndex)
@@ -741,11 +749,20 @@ public class BattleSimulator : MonoBehaviour
         ));
     }
 
+    private void HandlePlayerTarget(BattleCard battleCard)
+    {
+        HandleSelection(battleCard.Index);
+
+        Debug.Log($"Dropped {battleCard.CurrentCard} on player");
+    }
+
     private void HandleCardEndDrag(Card card)
     {
         foreach (CreatureDropArea area in creatureDropAreas)
         {
             area.gameObject.SetActive(false);
         }
+
+        playerDropArea.gameObject.SetActive(false);
     }
 }
