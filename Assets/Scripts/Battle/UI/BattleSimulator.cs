@@ -42,6 +42,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private ParticleSystem healFire;
     [SerializeField] private ParticleSystem healWater;
     [SerializeField] private ParticleSystem healGrass;
+    [SerializeField] private CreatureDropArea[] creatureDropAreas;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -88,6 +89,10 @@ public class BattleSimulator : MonoBehaviour
             var uiCard = cardObject.GetComponent<UICardCreation>();
             uiCard.SetCancelEventListener(() => HandleCancelClick(iCopy, uiCard));
 
+            var battleCard = cardObject.GetComponent<BattleCard>();
+            battleCard.Index = iCopy;
+            battleCard.OnCardBeginDrag += HandleCardBeginDrag;
+
             b.interactable = false;
         }
 
@@ -97,6 +102,12 @@ public class BattleSimulator : MonoBehaviour
         playerShield.Shield = new Shield();
 
         mainCamera = Camera.main;
+
+        foreach (CreatureDropArea area in creatureDropAreas)
+        {
+            area.OnCreatureTarget += HandleCreatureTarget;
+            area.gameObject.SetActive(false);
+        }
 
         StartCoroutine(RunRequest());
     }
@@ -113,6 +124,9 @@ public class BattleSimulator : MonoBehaviour
             Transform slot = creatureContainer.transform.GetChild(i);
             EnemyCreature creatureData = encounter.enemies[i];
             UICreature uiCreature = Instantiate(creatureData.prefab, slot);
+
+            // Draw creatures behind drop areas
+            uiCreature.transform.SetSiblingIndex(0);
 
             creatureElements[c] = uiCreature;
             creatureElements[c].SetHealth(c.Health, c.MaxHealth);
@@ -692,6 +706,34 @@ public class BattleSimulator : MonoBehaviour
     public void stopSounds()
     {
         audioSrc2.Stop();
+    }
+
+    private void HandleCardBeginDrag(Card card)
+    {
+        if (card.Type == CardType.Sword || card.Type == CardType.Spell)
+        {
+            for (int i = 0; i < battle.Creatures.Count; i++)
+            {
+                if (battle.Creatures[i].Health > 0)
+                {
+                    creatureDropAreas[i].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void HandleCreatureTarget(BattleCard battleCard, int creatureIndex)
+    {
+        Debug.Log(String.Format("Dropped {0} in slot {1} on enemy {2}",
+            battleCard.CurrentCard,
+            battleCard.Index,
+            creatureIndex
+        ));
+
+        foreach (CreatureDropArea area in creatureDropAreas)
+        {
+            area.gameObject.SetActive(false);
+        }
     }
 
 }

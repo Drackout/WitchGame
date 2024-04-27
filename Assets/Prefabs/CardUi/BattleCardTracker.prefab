@@ -12,12 +12,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 999180484979224995, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Name
       value: BattleCardTracker
       objectReference: {fileID: 0}
     - target: {fileID: 6408011125794627694, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477356322887240084, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8350779362707391378, guid: c18049246718b5c4d818803cb9527207, type: 3}
@@ -115,6 +123,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2940798931293233460}
+    - targetCorrespondingSourceObject: {fileID: 3112285042763756907, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8112141367509042637}
   m_SourcePrefab: {fileID: 100100000, guid: c18049246718b5c4d818803cb9527207, type: 3}
 --- !u!1 &8339213625351943183 stripped
 GameObject:
@@ -133,3 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01955c78ace7ac94faed1ecafe8797e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &8112141367509042637
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339213625351943183}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,11 +10,13 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private GameObject activeTracker;
 
     public Card CurrentCard { get; set; }
+    public int Index { get; set; }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         initialPosition = transform.position;
         CreateTracker();
+        OnCardBeginDrag?.Invoke(CurrentCard);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -26,6 +29,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         transform.position = initialPosition;
         Destroy(activeTracker);
         activeTracker = null;
+        OnCardEndDrag?.Invoke(CurrentCard);
     }
 
     private void Start()
@@ -38,4 +42,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         var uiCard = activeTracker.GetComponent<UICardCreation>();
         uiCard.Create(CurrentCard);
     }
+
+    public event Action<Card> OnCardBeginDrag;
+    public event Action<Card> OnCardEndDrag;
 }
