@@ -722,8 +722,17 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
+    private IEnumerator SelectCardAndCreature(int cardIndex, int creatureIndex)
+    {
+        HandleSelection(cardIndex);
+        yield return null;
+        HandleSelection(creatureIndex);
+    }
+
     private void HandleCreatureTarget(BattleCard battleCard, int creatureIndex)
     {
+        StartCoroutine(SelectCardAndCreature(battleCard.Index, creatureIndex));
+
         Debug.Log(String.Format("Dropped {0} in slot {1} on enemy {2}",
             battleCard.CurrentCard,
             battleCard.Index,
