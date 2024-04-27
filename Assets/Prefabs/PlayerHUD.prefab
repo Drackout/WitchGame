@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3218233774216354461}
   - component: {fileID: 5945844036399449933}
   - component: {fileID: 7533437836276320818}
+  - component: {fileID: 7447526253511518291}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -274,27 +275,22 @@ MonoBehaviour:
   cardActionDialogPrefab: {fileID: -6523471175437217999, guid: a9fe9d150aaa2424c97480668a578557, type: 3}
   battleLogger: {fileID: 5360433510245393377}
   slots: {fileID: 8795279981582682345}
-  animationShield: {fileID: 1788662265165857651}
-  animationShieldEffect: {fileID: 211746383505599511}
-  animationShieldEffectSH: {fileID: 1023475680851022598}
   audioSrc: {fileID: 0}
   audioSrc2: {fileID: 0}
   enemiesMask:
     serializedVersion: 2
     m_Bits: 64
-  waterShield: {fileID: 21300000, guid: cdbff795269afdf4faa160e8678eae4d, type: 3}
-  grassShield: {fileID: 21300000, guid: 798d0b8f74da5f04587970b1e6a6ec26, type: 3}
-  fireShield: {fileID: 21300000, guid: 4b793ad1155be48468f32504e496abc0, type: 3}
   shieldMat: {fileID: 0}
   waterShieldMat: {fileID: 2100000, guid: 5b43a676aa487464ba9fcb227b26a7f3, type: 2}
   grassShieldMat: {fileID: 2100000, guid: e49a6552fddb6f04da21df33f5d993ef, type: 2}
   fireShieldMat: {fileID: 2100000, guid: 4aed7c0ddd2cbc14d803d485ba99a610, type: 2}
-  waterShieldEff: {fileID: 21300000, guid: 117e21d147a54764b8beefdbfa815d3e, type: 3}
-  grassShieldEff: {fileID: 21300000, guid: 5f9f03293ba12044e9a1f34e32a4d1a6, type: 3}
-  fireShieldEff: {fileID: 21300000, guid: add1a4b8f3be51f4ead78dc1a86cb5e5, type: 3}
-  ShieldBall: {fileID: 2687881842420601478}
   PanelAnimator: {fileID: 4532828654929084968}
   player3dAnimator: {fileID: 0}
+  shieldAnimator: {fileID: 0}
+  healAnimator: {fileID: 0}
+  healFire: {fileID: 0}
+  healWater: {fileID: 0}
+  healGrass: {fileID: 0}
 --- !u!95 &7533437836276320818
 Animator:
   serializedVersion: 5
@@ -316,6 +312,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7447526253511518291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270526251799976412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419dfd512a2b71143bc5911a768b2856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &345613659722914037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5936,6 +5944,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerPrefab
+      value: 
+      objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
     - target: {fileID: 824698358124080185, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6364,6 +6376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerPrefab
+      value: 
+      objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
     - target: {fileID: 178527063768192478, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
@@ -6447,6 +6463,10 @@ PrefabInstance:
     - target: {fileID: 4857854702935411850, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408011125794627694, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408011125794627694, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_Controller
@@ -7070,6 +7090,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerPrefab
+      value: 
+      objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
     - target: {fileID: 824698358124080185, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7381,6 +7405,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerPrefab
+      value: 
+      objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
     - target: {fileID: 824698358124080185, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8305,6 +8333,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerPrefab
+      value: 
+      objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
     - target: {fileID: 824698358124080185, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

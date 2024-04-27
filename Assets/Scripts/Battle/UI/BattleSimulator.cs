@@ -388,6 +388,8 @@ public class BattleSimulator : MonoBehaviour
                 Card c = battle.Witch.Hand[i];
                 UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
                 uicard.Create(c);
+                BattleCard battleCard = cardButton.GetComponent<BattleCard>();
+                battleCard.CurrentCard = c;
 
                 // When all cards in hand put panel back up
                 if (i+1 == 1)
