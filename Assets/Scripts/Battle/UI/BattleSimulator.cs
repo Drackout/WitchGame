@@ -92,6 +92,7 @@ public class BattleSimulator : MonoBehaviour
             var battleCard = cardObject.GetComponent<BattleCard>();
             battleCard.Index = iCopy;
             battleCard.OnCardBeginDrag += HandleCardBeginDrag;
+            battleCard.OnCardEndDrag += HandleCardEndDrag;
 
             b.interactable = false;
         }
@@ -738,11 +739,13 @@ public class BattleSimulator : MonoBehaviour
             battleCard.Index,
             creatureIndex
         ));
+    }
 
+    private void HandleCardEndDrag(Card card)
+    {
         foreach (CreatureDropArea area in creatureDropAreas)
         {
             area.gameObject.SetActive(false);
         }
     }
-
 }
