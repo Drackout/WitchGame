@@ -350,6 +350,8 @@ public class BattleSimulator : MonoBehaviour
                             creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
                             creature3dElements[ev.Target].PlayAnimation("Hurt");
                         }
+                        // INSERT HERE SLASH OR BLAST
+                        // PLAYER HUD use the monster position to spawn the slash effect etc etc
                     }
                     break;
                 case ShieldEvent ev:
