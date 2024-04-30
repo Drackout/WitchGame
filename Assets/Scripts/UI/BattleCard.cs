@@ -8,6 +8,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     private Vector3 initialPosition;
     private GameObject activeTracker;
+    private Animator animator;
 
     public Card CurrentCard { get; set; }
     public int Index { get; set; }
@@ -16,6 +17,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         initialPosition = transform.position;
         CreateTracker();
+        animator.SetBool("Dragged", true);
         OnCardBeginDrag?.Invoke(CurrentCard);
     }
 
@@ -29,11 +31,13 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         transform.position = initialPosition;
         Destroy(activeTracker);
         activeTracker = null;
+        animator.SetBool("Dragged", false);
         OnCardEndDrag?.Invoke(CurrentCard);
     }
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     private void CreateTracker()
