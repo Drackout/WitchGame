@@ -350,8 +350,19 @@ public class BattleSimulator : MonoBehaviour
                             creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
                             creature3dElements[ev.Target].PlayAnimation("Hurt");
                         }
-                        // INSERT HERE SLASH OR BLAST
-                        // PLAYER HUD use the monster position to spawn the slash effect etc etc
+
+                        Animator[] EnemyAllAnimators;
+                        EnemyAllAnimators = creature3dElements[ev.Target].GetComponentsInChildren<Animator>();
+                        
+                        // So far getting parent and child cause of getComponent
+                        // Need to know if slash or blast yet
+                        if (ev.Element.ToString() == "Fire")
+                            EnemyAllAnimators[1].SetTrigger("Fire");
+                        if (ev.Element.ToString() == "Water")
+                            EnemyAllAnimators[1].SetTrigger("Water");
+                        if (ev.Element.ToString() == "Grass")
+                            EnemyAllAnimators[1].SetTrigger("Grass");
+
                     }
                     break;
                 case ShieldEvent ev:
