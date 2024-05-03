@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 844450132349443374, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1011
+      objectReference: {fileID: 0}
     - target: {fileID: 867137387239239580, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Size.x
       value: 0.12518255
@@ -24,10 +28,26 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.1029405
       objectReference: {fileID: 0}
+    - target: {fileID: 1003643353193583441, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003643353193583441, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003643353193583441, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1423908296571951963, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: b16acf7683a664e4a92686b1e45e71ad, type: 2}
+    - target: {fileID: 1793611424313988944, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1011
+      objectReference: {fileID: 0}
     - target: {fileID: 2012025679203453030, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Name
       value: Tentacle3D
@@ -36,10 +56,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.123
       objectReference: {fileID: 0}
+    - target: {fileID: 5541480347840030136, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1011
+      objectReference: {fileID: 0}
     - target: {fileID: 5782287051207476456, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 363b416c778fcd148b4d02469dd15b3c, type: 3}
+    - target: {fileID: 6011124606209910177, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011124606209910177, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167847395530014451, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.14
+      objectReference: {fileID: 0}
     - target: {fileID: 6394930189309249604, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.0926
@@ -51,6 +87,14 @@ PrefabInstance:
     - target: {fileID: 6475834629144288017, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.0926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540781250730141553, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540781250730141553, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8435725835176766854, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91,6 +135,10 @@ PrefabInstance:
     - target: {fileID: 8435725835176766854, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021182547577439415, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

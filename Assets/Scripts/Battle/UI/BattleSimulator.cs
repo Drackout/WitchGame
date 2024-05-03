@@ -323,7 +323,6 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
-                        // Debug.Log("Target: " + ev.Target);
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
                         PlayAnimation("Hurt", "", "");
@@ -353,16 +352,26 @@ public class BattleSimulator : MonoBehaviour
 
                         Animator[] EnemyAllAnimators;
                         EnemyAllAnimators = creature3dElements[ev.Target].GetComponentsInChildren<Animator>();
-                        
                         // So far getting parent and child cause of getComponent
-                        // Need to know if slash or blast yet
-                        if (ev.Element.ToString() == "Fire")
-                            EnemyAllAnimators[1].SetTrigger("Fire");
-                        if (ev.Element.ToString() == "Water")
-                            EnemyAllAnimators[1].SetTrigger("Water");
-                        if (ev.Element.ToString() == "Grass")
-                            EnemyAllAnimators[1].SetTrigger("Grass");
-
+                        // Attack animations
+                        if (ev.DamageTag == "melee")
+                        {
+                            if (ev.Element.ToString() == "Fire")
+                                EnemyAllAnimators[1].SetTrigger("FireSlash");
+                            else if (ev.Element.ToString() == "Water")
+                                EnemyAllAnimators[1].SetTrigger("WaterSlash");
+                            else if (ev.Element.ToString() == "Grass")
+                                EnemyAllAnimators[1].SetTrigger("GrassSlash");
+                        }
+                        else if (ev.DamageTag == "ranged")
+                        {
+                            if (ev.Element.ToString() == "Fire")
+                                EnemyAllAnimators[1].SetTrigger("FireExplosion");
+                            else if (ev.Element.ToString() == "Water")
+                                EnemyAllAnimators[1].SetTrigger("WaterExplosion");
+                            else if (ev.Element.ToString() == "Grass")
+                                EnemyAllAnimators[1].SetTrigger("GrassExplosion");
+                        }
                     }
                     break;
                 case ShieldEvent ev:
@@ -531,7 +540,7 @@ public class BattleSimulator : MonoBehaviour
                 continue;
             }
 
-            Attack attack = new Attack(card.Power, card.Element, new string[] {});
+            Attack attack = new Attack(card.Power, card.Element, new string[] {"REEEEE"});
             (int damage, int reactionType) = c.GetDamageTaken(attack);
             creatureElements[c].setNumbersReceived(damage, attack.Element);
 

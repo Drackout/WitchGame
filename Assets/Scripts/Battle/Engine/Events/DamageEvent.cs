@@ -6,13 +6,15 @@ namespace BattleEvents
         public Battler Target { get; }
         public Element Element { get; }
         public int ReactionType { get; }
+        public string DamageTag { get; }
 
-        public DamageEvent(Battler target, int damage, Element element, int reactionType)
+        public DamageEvent(Battler target, int damage, Element element, int reactionType, string damageTag)
         {
             Target = target;
             Damage = damage;
             Element = element;
             ReactionType = reactionType;
+            DamageTag = damageTag;
         }
     }
 }

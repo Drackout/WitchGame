@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BattleEvents;
 
 public class Dummy : Creature
@@ -31,8 +32,9 @@ public class Dummy : Creature
         Tuple<int, int> dmgTaken = GetDamageTaken(attack);
         int damage = dmgTaken.Item1;
         int reactionType = dmgTaken.Item2;
+        string dmgType = attack.Tags.First();
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"{Name} took {damage} damage!");
-        return new DamageEvent(this, damage, attack.Element, reactionType);
+        return new DamageEvent(this, damage, attack.Element, reactionType, dmgType);
     }
 }

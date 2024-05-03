@@ -207,7 +207,7 @@ public class Witch : Battler
         }
         Health = Math.Max(0, Health - damage);
         battle.Logger.Log($"You took {damage} damage!");
-        return new DamageEvent(this, damage, attack.Element, 0); // 0: Cause witch doesnt React on dmg taken
+        return new DamageEvent(this, damage, attack.Element, 0, "none"); // 0: Cause witch doesnt React on dmg taken
     }
 
     private IEnumerable<BattleEvent> PlayCard(Card card, int index)
