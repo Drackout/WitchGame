@@ -72,6 +72,8 @@ public class Battle
                 RetireDeadCreatures();
             }
 
+            yield return new EndTurnEvent(turnOrder[turnCounter]);
+
             if (IsOver())
             {
                 yield break;
