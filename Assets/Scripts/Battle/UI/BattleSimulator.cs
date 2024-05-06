@@ -45,6 +45,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private CreatureDropArea[] creatureDropAreas;
     [SerializeField] private PlayerDropArea playerDropArea;
     [SerializeField] private HoldDropArea holdDropArea;
+    [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private TMP_Text playedCardsCounter;
 
     private Battle battle;
@@ -118,6 +119,9 @@ public class BattleSimulator : MonoBehaviour
 
         holdDropArea.OnCardHold += HandleCardHold;
         holdDropArea.gameObject.SetActive(false);
+
+        fallbackDropArea.OnCardDrop += HandleCardFallbackDrop;
+        fallbackDropArea.gameObject.SetActive(false);
 
         StartCoroutine(RunRequest());
     }
@@ -755,6 +759,7 @@ public class BattleSimulator : MonoBehaviour
         Card card = battleCard.CurrentCard;
 
         holdDropArea.gameObject.SetActive(true);
+        fallbackDropArea.gameObject.SetActive(true);
 
         if (card.Type == CardType.Sword || card.Type == CardType.Spell)
         {
@@ -802,6 +807,18 @@ public class BattleSimulator : MonoBehaviour
         HandleHoldCard(battleCard.Index);
     }
 
+    private void HandleCardFallbackDrop(BattleCard battleCard)
+    {
+        int index = battleCard.Index;
+
+        if (battle.Witch.HeldCards.Contains(index))
+        {
+            input = new InputResponse(Intention.Unhold, index);
+            Animator animator = cardContainer.transform.GetChild(index).GetComponent<Animator>();
+            animator.SetTrigger("pNormal");
+        }
+    }
+
     private void HandleCardEndDrag(BattleCard battleCard)
     {
         foreach (CreatureDropArea area in creatureDropAreas)
@@ -811,5 +828,6 @@ public class BattleSimulator : MonoBehaviour
 
         playerDropArea.gameObject.SetActive(false);
         holdDropArea.gameObject.SetActive(false);
+        fallbackDropArea.gameObject.SetActive(false);
     }
 }
