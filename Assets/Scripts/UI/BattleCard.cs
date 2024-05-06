@@ -18,7 +18,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         initialPosition = transform.position;
         CreateTracker();
         animator.SetBool("Dragged", true);
-        OnCardBeginDrag?.Invoke(CurrentCard);
+        OnCardBeginDrag?.Invoke(this);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,7 +32,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         Destroy(activeTracker);
         activeTracker = null;
         animator.SetBool("Dragged", false);
-        OnCardEndDrag?.Invoke(CurrentCard);
+        OnCardEndDrag?.Invoke(this);
     }
 
     private void Start()
@@ -47,6 +47,6 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         uiCard.Create(CurrentCard);
     }
 
-    public event Action<Card> OnCardBeginDrag;
-    public event Action<Card> OnCardEndDrag;
+    public event Action<BattleCard> OnCardBeginDrag;
+    public event Action<BattleCard> OnCardEndDrag;
 }

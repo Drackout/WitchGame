@@ -96,9 +96,9 @@ public class BattleSimulator : MonoBehaviour
             battleCard.Index = iCopy;
             battleCard.OnCardBeginDrag += HandleCardBeginDrag;
             battleCard.OnCardEndDrag += HandleCardEndDrag;
-
-            b.interactable = false;
         }
+
+        ToggleCards(false);
 
         endTurnButton.onClick.AddListener(HandleEndTurnClick);
         endTurnButton.interactable = false;
@@ -467,6 +467,9 @@ public class BattleSimulator : MonoBehaviour
             Transform card = cardContainer.transform.GetChild(i);
             Button b = card.GetComponent<Button>();
             b.interactable = state;
+
+            var canvasGroup = card.GetComponent<CanvasGroup>();
+            canvasGroup.blocksRaycasts = state;
         }
     }
 
@@ -747,8 +750,10 @@ public class BattleSimulator : MonoBehaviour
         audioSrc2.Stop();
     }
 
-    private void HandleCardBeginDrag(Card card)
+    private void HandleCardBeginDrag(BattleCard battleCard)
     {
+        Card card = battleCard.CurrentCard;
+
         holdDropArea.gameObject.SetActive(true);
 
         if (card.Type == CardType.Sword || card.Type == CardType.Spell)
@@ -797,7 +802,7 @@ public class BattleSimulator : MonoBehaviour
         HandleHoldCard(battleCard.Index);
     }
 
-    private void HandleCardEndDrag(Card card)
+    private void HandleCardEndDrag(BattleCard battleCard)
     {
         foreach (CreatureDropArea area in creatureDropAreas)
         {
