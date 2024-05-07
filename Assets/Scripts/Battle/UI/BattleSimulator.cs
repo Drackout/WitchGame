@@ -340,27 +340,12 @@ public class BattleSimulator : MonoBehaviour
                     }
                     else
                     {
-                        creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
-                        creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
-                        if (ev.Target.Health == 0)
-                        {
-                            creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
-                            creature3dElements[ev.Target].PlayAnimation("Dead");
-                            yield return new WaitForSeconds(1.5f);
-                            creatureElements[ev.Target].gameObject.SetActive(false);
-                            creature3dElements[ev.Target].gameObject.SetActive(false);
-                            enemiesDefeated++;
-                        }
-                        else
-                        {
-                            creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
-                            creature3dElements[ev.Target].PlayAnimation("Hurt");
-                        }
 
                         Animator[] EnemyAllAnimators;
                         EnemyAllAnimators = creature3dElements[ev.Target].GetComponentsInChildren<Animator>();
                         // So far getting parent and child cause of getComponent
                         // Attack animations
+                        Debug.Log("REEEE: " + ev.DamageTag);
                         if (ev.DamageTag == "melee")
                         {
                             if (ev.Element.ToString() == "Fire")
@@ -379,6 +364,24 @@ public class BattleSimulator : MonoBehaviour
                             else if (ev.Element.ToString() == "Grass")
                                 EnemyAllAnimators[1].SetTrigger("GrassExplosion");
                         }
+                        
+                        creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
+                        creatureElements[ev.Target].setNumbersReceived(ev.Damage, ev.Element);
+                        if (ev.Target.Health == 0)
+                        {
+                            creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
+                            creature3dElements[ev.Target].PlayAnimation("Dead");
+                            yield return new WaitForSeconds(1.5f);
+                            creatureElements[ev.Target].gameObject.SetActive(false);
+                            creature3dElements[ev.Target].gameObject.SetActive(false);
+                            enemiesDefeated++;
+                        }
+                        else
+                        {
+                            creatureElements[ev.Target].PlayAnimation("Hurt", ev.ReactionType);
+                            creature3dElements[ev.Target].PlayAnimation("Hurt");
+                        }
+
                     }
                     break;
                 case ShieldEvent ev:
