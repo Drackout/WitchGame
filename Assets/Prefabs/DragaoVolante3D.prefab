@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.08659999
       objectReference: {fileID: 0}
+    - target: {fileID: 1979837620888922369, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2012025679203453030, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Name
       value: DragaoVolante3D
@@ -127,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 4490565909979355149, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928258790645222925, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5541480347840030136, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalScale.x
@@ -203,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 6475834629144288017, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.236
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868212328340168646, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8435725835176766854, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.x
