@@ -12787,7 +12787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 3
-  m_UsePipelineSettings: 1
+  m_UsePipelineSettings: 0
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_RenderingLayers: 1
@@ -12810,9 +12810,9 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.93066037, b: 0.7688679, a: 1}
   m_Intensity: 146.75
-  m_Range: 13.67
+  m_Range: 11.3
   m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_InnerSpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -12868,7 +12868,7 @@ Transform:
   m_GameObject: {fileID: 2113659131}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7110348, y: 0.44927922, z: 0.24340148, w: 0.48304608}
-  m_LocalPosition: {x: -4.663, y: 2.04, z: 2.524}
+  m_LocalPosition: {x: -5.05, y: 2.27, z: 2.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
