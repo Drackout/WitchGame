@@ -14,6 +14,7 @@ public class BattleSettings : MonoBehaviour
 
     public static BattleSettings Instance => instance;
     public bool ShuffleDeck { get; set; }
+    public IList<RequestStage> Stages => stages;
 
     public ElementConfig ElementConfig => elementConfig;
 
@@ -28,6 +29,11 @@ public class BattleSettings : MonoBehaviour
     public void ChooseRequest(RequestDifficulty difficulty)
     {
         currentRequest = stages[stageIndex].GetRequest(difficulty);
+    }
+
+    public void ForceRequest(RequestData request)
+    {
+        currentRequest = request;
     }
 
     private void Awake()
