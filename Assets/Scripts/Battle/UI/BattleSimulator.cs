@@ -46,7 +46,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private PlayerDropArea playerDropArea;
     [SerializeField] private HoldDropArea holdDropArea;
     [SerializeField] private FallbackDropArea fallbackDropArea;
-    [SerializeField] private TMP_Text playedCardsCounter;
+    [SerializeField] private CardCounter playedCardsCounter;
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -287,7 +287,7 @@ public class BattleSimulator : MonoBehaviour
                     uiCard.changeMaterialEdge(0f);
                     anima.ResetTrigger("Played");
 
-                    playedCardsCounter.text = $"{battle.Witch.CardsPlayed}/2";
+                    playedCardsCounter.Set(battle.Witch.CardsPlayed);
 
                     Debug.Log($"[DEBUG] Played {ev.Card}");
                     //Debug.Log($"Element: {ev.Card.Element}");
@@ -416,7 +416,7 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case EndTurnEvent ev:
                 {
-                    playedCardsCounter.text = "0/2";
+                    playedCardsCounter.Set(0);
                     break;
                 }
                 case EmptyEvent ev:
