@@ -87,9 +87,6 @@ public class BattleSimulator : MonoBehaviour
 
             Transform cardObject = cardContainer.transform.GetChild(i);
 
-            Button b = cardObject.GetComponent<Button>();
-            b.onClick.AddListener(() => HandleCardClick(iCopy, b));
-
             var uiCard = cardObject.GetComponent<UICardCreation>();
             uiCard.SetCancelEventListener(() => HandleCancelClick(iCopy, uiCard));
 
