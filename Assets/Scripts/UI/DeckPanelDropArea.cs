@@ -22,7 +22,10 @@ public class DeckPanelDropArea : DropArea
             return;
         }
 
-        pr.AddCardToDeck(0, card);
-        pr.RemoveCardFromOwned(ownedCard.Index);
+        bool success = pr.AddCardToDeck(0, card);
+        if (success)
+        {
+            pr.RemoveCardFromOwned(ownedCard.Index);
+        }
     }
 }
