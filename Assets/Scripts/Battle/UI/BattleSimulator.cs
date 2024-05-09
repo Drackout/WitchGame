@@ -203,7 +203,10 @@ public class BattleSimulator : MonoBehaviour
                     if (ev.Type == InputRequestType.Play)
                     {
                         ToggleCards(true);
-                        endTurnButton.interactable = true;
+                        if (battle.Witch.CardsPlayed >= 1)
+                        {
+                            endTurnButton.interactable = true;
+                        }
                     }
                     else if (ev.Type == InputRequestType.Target)
                     {
