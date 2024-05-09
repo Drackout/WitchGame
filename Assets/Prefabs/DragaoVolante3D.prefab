@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 40004474111079259, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 844450132349443374, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -119,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 2262567853514995918, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170358113597775520, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4490565909979355149, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: ShapeModule.radius.value
