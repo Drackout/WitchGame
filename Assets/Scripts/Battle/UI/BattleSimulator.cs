@@ -761,6 +761,11 @@ public class BattleSimulator : MonoBehaviour
         holdDropArea.gameObject.SetActive(true);
         fallbackDropArea.gameObject.SetActive(true);
 
+        if (battle.Witch.CardsPlayed >= 2)
+        {
+            return;
+        }
+
         if (card.Type == CardType.Sword || card.Type == CardType.Spell)
         {
             for (int i = 0; i < battle.Creatures.Count; i++)
