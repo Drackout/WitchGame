@@ -7,6 +7,12 @@ public class PlayerResources : MonoBehaviour
 {
     [SerializeField] private int totalDecks = 3;
 
+    [Min(0)]
+    [SerializeField] private int minCardsInDeck;
+
+    [Min(1)]
+    [SerializeField] private int maxCardsInDeck;
+
     private int[] stones;
     private int gold;
     private IList<Card>[] decks;
@@ -93,16 +99,28 @@ public class PlayerResources : MonoBehaviour
         };
     }
 
-    public void AddCardToDeck(int deck, Card card)
+    public bool AddCardToDeck(int deck, Card card)
     {
+        if (Decks[deck].Count + 1 > maxCardsInDeck)
+        {
+            return false;
+        }
+
         Decks[deck].Add(card);
         OnDeckChange?.Invoke(deck);
+        return true;
     }
 
-    public void RemoveCardFromDeck(int deck, int index)
+    public bool RemoveCardFromDeck(int deck, int index)
     {
+        if (Decks[deck].Count - 1 < minCardsInDeck)
+        {
+            return false;
+        }
+
         Decks[deck].RemoveAt(index);
         OnDeckChange?.Invoke(deck);
+        return true;
     }
 
     public void AddCardToOwned(Card card)

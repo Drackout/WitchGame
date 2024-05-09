@@ -29,9 +29,6 @@ public class CardAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
    public void OnPointerClick(PointerEventData eventData)
    {
-      //Debug.Log("pClick1");
-      Animator.ResetTrigger("pOver");
-      Animator.SetTrigger("pClick1");
    }
 
    public void ClickHold()

@@ -14,8 +14,11 @@ public class CardGridDropArea : DropArea
             return;
         }
 
-        pr.AddCardToOwned(deckCard.Card);
         int index = pr.Decks[0].IndexOf(deckCard.Card);
-        pr.RemoveCardFromDeck(0, index);
+        bool success = pr.RemoveCardFromDeck(0, index);
+        if (success)
+        {
+            pr.AddCardToOwned(deckCard.Card);
+        }
     }
 }
