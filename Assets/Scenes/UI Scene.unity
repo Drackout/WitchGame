@@ -13054,6 +13054,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 67735170648071156, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d0b8c17070ebb948bc373e05d98511f, type: 3}
     - target: {fileID: 270526251799976412, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Name
       value: PlayerHUD
@@ -13092,7 +13096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815650032907714251, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000094890594
+      value: -0.00007247925
       objectReference: {fileID: 0}
     - target: {fileID: 1108346884858910284, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13430,6 +13434,14 @@ PrefabInstance:
       propertyPath: creature3dContainer
       value: 
       objectReference: {fileID: 1099184295}
+    - target: {fileID: 6072570449020832682, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b9f62e9d39dbc1449220726f8e9b6b4, type: 3}
+    - target: {fileID: 6164015832127491771, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cca258d638de21549876b372785a5ce3, type: 3}
     - target: {fileID: 6249799773741815036, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -13498,6 +13510,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8497308194172928595, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e4bd80ef48e1f941a29d8c4bb52f2ca, type: 3}
     - target: {fileID: 8827976373844137900, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
