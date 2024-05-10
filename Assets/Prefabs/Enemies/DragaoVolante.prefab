@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 984533352227675693, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1991943166898995725, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -92,6 +96,10 @@ PrefabInstance:
       propertyPath: reactions
       value: 
       objectReference: {fileID: 2251419673367429873}
+    - target: {fileID: 4548719138335326220, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4748794750349189062, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -115,6 +123,22 @@ PrefabInstance:
     - target: {fileID: 4955045057483499494, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146463894022274410, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a1224a7e7ff78b42b6560ed509d7c1e, type: 3}
+    - target: {fileID: 5146463894022274410, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146463894022274410, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146463894022274410, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649021422066314172, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -184,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragaoVolante
       objectReference: {fileID: 0}
+    - target: {fileID: 5811350913523083040, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6556083726108159778, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -232,6 +260,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7137216253333756738, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7456796367408837055, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.9
@@ -240,8 +272,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -83
       objectReference: {fileID: 0}
+    - target: {fileID: 7570622603000070711, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602113146023368625, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144111702092189333, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8781538936272975142, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876184423523031713, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
