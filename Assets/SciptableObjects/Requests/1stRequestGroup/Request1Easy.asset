@@ -16,3 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd04b5a8ed50cd34a940dcd7219455eb, type: 2}
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
   battleScene: UI Scene
+  location: Forest
+  story: Odio aut est voluptatum esse. Aspernatur ducimus enim perspiciatis molestiae
+    sed. Magnam consequatur dolorum quia. Laudantium reiciendis placeat optio velit
+    animi. Voluptates dignissimos molestiae asperiores illo.
+  thumbnail: {fileID: 21300000, guid: 9c1abfc757a6bb2459405edefd1ade5c, type: 3}

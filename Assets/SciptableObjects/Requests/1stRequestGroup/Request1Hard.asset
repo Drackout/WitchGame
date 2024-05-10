@@ -17,3 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
   - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
   battleScene: UI Scene
+  location: Forest
+  story: Cupiditate qui incidunt eum quos iure sint doloremque. Nisi fugit magnam
+    facilis praesentium harum nobis. Delectus cumque enim consectetur est ea rerum.
+  thumbnail: {fileID: 21300000, guid: 9c1abfc757a6bb2459405edefd1ade5c, type: 3}

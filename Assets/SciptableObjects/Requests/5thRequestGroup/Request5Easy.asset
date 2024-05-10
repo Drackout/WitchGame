@@ -16,3 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd04b5a8ed50cd34a940dcd7219455eb, type: 2}
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
   battleScene: PracaComercio
+  location: "Pra\xE7a do Com\xE9rcio"
+  thumbnail: {fileID: 0}

@@ -17,3 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5c05d6776cffc2d4ab51d2c2069962f6, type: 2}
   - {fileID: 11400000, guid: a8addcaefb4d58345ad8a861fa98928b, type: 2}
   battleScene: UI Cool Metro
+  location: Olaias Metro
+  thumbnail: {fileID: 0}
