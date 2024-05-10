@@ -4254,6 +4254,10 @@ PrefabInstance:
       propertyPath: player3dAnimator
       value: 
       objectReference: {fileID: 2052985244}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: creature3dContainer
+      value: 
+      objectReference: {fileID: 1099184295}
     - target: {fileID: 6856728454829495602, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
