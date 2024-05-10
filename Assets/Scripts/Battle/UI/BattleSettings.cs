@@ -53,15 +53,19 @@ public class BattleSettings : MonoBehaviour
         currentRequest = stages[0].GetRequest(RequestDifficulty.Easy);
     }
     
-    public void GetAllEnemiesRequests(RequestData currentRequest)
+    public IList<EnemyCreature> GetAllEnemiesRequests(RequestData currentRequest)
     {
+        IList<EnemyCreature> enemies = new List<EnemyCreature>();
+
         for (int i = 0; i < currentRequest.encounters.Length; i++)
         {
             for (int j = 0; j < currentRequest.encounters[i].enemies.Length; j++)
             {
-                Debug.Log("Scene "+ i + ", Enemy "+j+": "+ currentRequest.encounters[i].enemies[j].ToString());
+                enemies.Add(currentRequest.encounters[i].enemies[j]);
             }
         }
+
+        return enemies;
     }
 
     public EnemyCreature[] GetEnemiesFirstRequest(RequestData currentRequest)
