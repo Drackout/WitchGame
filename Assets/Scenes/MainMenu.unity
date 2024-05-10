@@ -19,7 +19,7 @@ RenderSettings:
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 301
+  m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -1099,14 +1099,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDecks: 3
-<<<<<<< HEAD
-  minCardsInDeck: 0
-  maxCardsInDeck: 0
-=======
   minCardsInDeck: 20
   maxCardsInDeck: 30
->>>>>>> b3718d41e9b6b98acfc3ad394a6deab336d13f2c
---- !u!4 &278635429
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
