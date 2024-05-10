@@ -1295,6 +1295,7 @@ MonoBehaviour:
   totalDecks: 3
   minCardsInDeck: 20
   maxCardsInDeck: 30
+  maxCopies: 3
 --- !u!4 &278635429
 Transform:
   m_ObjectHideFlags: 0

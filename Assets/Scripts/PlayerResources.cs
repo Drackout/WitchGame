@@ -13,6 +13,9 @@ public class PlayerResources : MonoBehaviour
     [Min(1)]
     [SerializeField] private int maxCardsInDeck;
 
+    [Min(0)]
+    [SerializeField] private int maxCopies;
+
     private int[] stones;
     private int gold;
     private IList<Card>[] decks;
@@ -35,6 +38,7 @@ public class PlayerResources : MonoBehaviour
     public int[] Stones => stones;
     public int MinCardsInDeck => minCardsInDeck;
     public int MaxCardsInDeck => maxCardsInDeck;
+    public int MaxCopies => maxCopies;
 
     private void Awake()
     {
@@ -101,28 +105,36 @@ public class PlayerResources : MonoBehaviour
         };
     }
 
-    public bool AddCardToDeck(int deck, Card card)
+    public DeckChangeResult AddCardToDeck(int deck, Card card)
     {
         if (Decks[deck].Count + 1 > maxCardsInDeck)
         {
-            return false;
+            return DeckChangeResult.TooManyCards;
+        }
+
+        int cardsOfTypeInDeck = Decks[deck]
+            .Where((Card c) => c.Equals(card))
+            .Count();
+        if (cardsOfTypeInDeck + 1 > maxCopies)
+        {
+            return DeckChangeResult.TooManyCopies;
         }
 
         Decks[deck].Add(card);
         OnDeckChange?.Invoke(deck);
-        return true;
+        return DeckChangeResult.Success;
     }
 
-    public bool RemoveCardFromDeck(int deck, int index)
+    public DeckChangeResult RemoveCardFromDeck(int deck, int index)
     {
         if (Decks[deck].Count - 1 < minCardsInDeck)
         {
-            return false;
+            return DeckChangeResult.NotEnoughCards;
         }
 
         Decks[deck].RemoveAt(index);
         OnDeckChange?.Invoke(deck);
-        return true;
+        return DeckChangeResult.Success;
     }
 
     public void AddCardToOwned(Card card)

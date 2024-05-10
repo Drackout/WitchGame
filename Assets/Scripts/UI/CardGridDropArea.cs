@@ -17,12 +17,12 @@ public class CardGridDropArea : DropArea
         }
 
         int index = pr.Decks[0].IndexOf(deckCard.Card);
-        bool success = pr.RemoveCardFromDeck(0, index);
-        if (success)
+        DeckChangeResult result = pr.RemoveCardFromDeck(0, index);
+        if (result == DeckChangeResult.Success)
         {
             pr.AddCardToOwned(deckCard.Card);
         }
-        else
+        else if (result == DeckChangeResult.NotEnoughCards)
         {
             string text = string.Format(
                 "You must have at least {0} cards in your deck!",
