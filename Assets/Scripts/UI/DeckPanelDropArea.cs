@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class DeckPanelDropArea : DropArea
 {
+    [SerializeField] private MessageBox warningMessage;
+
     protected override void Dropped(GameObject obj)
     {
         Debug.Log($" -- DeckPanel: dropped: <{obj.name}>");
@@ -26,6 +28,13 @@ public class DeckPanelDropArea : DropArea
         if (success)
         {
             pr.RemoveCardFromOwned(ownedCard.Index);
+        }
+        else
+        {
+            string text = string.Format(
+                "You can have at most {0} cards in your deck!",
+                pr.MaxCardsInDeck);
+            warningMessage.Show(text);
         }
     }
 }

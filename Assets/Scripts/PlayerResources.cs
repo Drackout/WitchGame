@@ -33,6 +33,8 @@ public class PlayerResources : MonoBehaviour
     public IList<Card>[] Decks => decks;
     public IList<Card> NeutralCards => neutralCards;
     public int[] Stones => stones;
+    public int MinCardsInDeck => minCardsInDeck;
+    public int MaxCardsInDeck => maxCardsInDeck;
 
     private void Awake()
     {

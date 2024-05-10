@@ -1099,8 +1099,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDecks: 3
+<<<<<<< HEAD
   minCardsInDeck: 0
   maxCardsInDeck: 0
+=======
+  minCardsInDeck: 20
+  maxCardsInDeck: 30
+>>>>>>> b3718d41e9b6b98acfc3ad394a6deab336d13f2c
 --- !u!4 &278635429
 Transform:
   m_ObjectHideFlags: 0
