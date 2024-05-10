@@ -387,7 +387,8 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    PlayAnimation("getShield", ev.Shield.Element.ToString(), "");
+                    
+                    PlayAnimation("get", ev.Shield.Element.ToString(), "shield");
                     yield return new WaitForSeconds(1.0f);
 
                     break;
@@ -403,13 +404,15 @@ public class BattleSimulator : MonoBehaviour
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
                     if (battle.Witch.Shield.Charges == 0)
                     {
-                        PlayAnimation("loseShield", battle.Witch.Shield.Element.ToString(), "");
+                        PlayAnimation("lose", battle.Witch.Shield.Element.ToString(), "shield");
                         yield return new WaitForSeconds(1f);
-                        shieldAnimator.ResetTrigger("getShield");
+                        shieldAnimator.ResetTrigger("getGrass");
+                        shieldAnimator.ResetTrigger("getFire");
+                        //shieldAnimator.ResetTrigger("getWater");
                     }
                     else
                     {
-                        PlayAnimation("blockShield", battle.Witch.Shield.Element.ToString(), "");
+                        PlayAnimation("block", battle.Witch.Shield.Element.ToString(), "shield");
                     }
 
                     playerShield.Shield = battle.Witch.Shield;
@@ -678,15 +681,13 @@ public class BattleSimulator : MonoBehaviour
 
     public void PlayAnimation(string animString, string element, string reaction)
     {
-        if (animString == "loseShield" || animString == "getShield" || animString == "blockShield")
+        if (reaction == "shield")
         {
-            if (element == "Fire")
-                shieldMat.material = fireShieldMat;
-            if (element == "Water")
-                shieldMat.material = waterShieldMat;
-            if (element == "Grass")
-                shieldMat.material = grassShieldMat;
-            shieldAnimator.SetTrigger(animString);
+            string shieldString;
+            shieldString = animString + element;
+            //Debug.Log("REEE: " + shieldString);
+
+            shieldAnimator.SetTrigger(shieldString);    
         }
 
         if (animString == "Heal")
