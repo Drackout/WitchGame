@@ -24,16 +24,24 @@ public class DeckPanelDropArea : DropArea
             return;
         }
 
-        bool success = pr.AddCardToDeck(0, card);
-        if (success)
+        DeckChangeResult result = pr.AddCardToDeck(0, card);
+        if (result == DeckChangeResult.Success)
         {
             pr.RemoveCardFromOwned(ownedCard.Index);
         }
-        else
+        else if (result == DeckChangeResult.TooManyCards)
         {
             string text = string.Format(
                 "You can have at most {0} cards in your deck!",
                 pr.MaxCardsInDeck);
+            warningMessage.Show(text);
+        }
+        else if (result == DeckChangeResult.TooManyCopies)
+        {
+            string text = string.Format(
+                "You can have at most {0} of {1}!",
+                pr.MaxCopies,
+                card.ToString());
             warningMessage.Show(text);
         }
     }
