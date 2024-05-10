@@ -1573,6 +1573,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healFire
+      value: 
+      objectReference: {fileID: 674235393}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healGrass
+      value: 
+      objectReference: {fileID: 674235392}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healWater
+      value: 
+      objectReference: {fileID: 674235392}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: healAnimator
+      value: 
+      objectReference: {fileID: 674235394}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: shieldAnimator
+      value: 
+      objectReference: {fileID: 674235391}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: player3dAnimator
       value: 
       objectReference: {fileID: 674235390}
@@ -1737,6 +1757,26 @@ PrefabInstance:
 --- !u!95 &674235390 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7246429975892184952, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 674235389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &674235391 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 674235389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &674235392 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3085275421285934506, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 674235389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &674235393 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3239571787346044208, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 674235389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &674235394 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1124222692831606564, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 674235389}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &997647999
