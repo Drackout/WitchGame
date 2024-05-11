@@ -372,7 +372,7 @@ public class BattleSimulator : MonoBehaviour
                         {
                             creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
                             creature3dElements[ev.Target].PlayAnimation("Dead");
-                            yield return new WaitForSeconds(1.5f);
+                            yield return new WaitForSeconds(2f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
