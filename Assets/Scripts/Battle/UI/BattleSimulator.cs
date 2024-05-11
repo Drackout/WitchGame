@@ -49,6 +49,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
 
+    //Sounds
+    [SerializeField] private AudioClip damageSoundClip;
+
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
     private IDictionary<Battler, Creature3D> creature3dElements;
@@ -336,8 +339,12 @@ public class BattleSimulator : MonoBehaviour
                         PlayAnimation("Hurt", "", "");
                         yield return new WaitForSeconds(1.0f);
 
+                        //play soundFX
+                        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
+
                         if (battle.Witch.Health == 0)
                             PlayAnimation("Loss", "", "");
+
                     }
                     else
                     {
