@@ -289,6 +289,7 @@ MonoBehaviour:
   fireShieldMat: {fileID: 2100000, guid: 4aed7c0ddd2cbc14d803d485ba99a610, type: 2}
   PanelAnimator: {fileID: 4532828654929084968}
   player3dAnimator: {fileID: 0}
+  playerSprite: {fileID: 0}
   shieldAnimator: {fileID: 0}
   healAnimator: {fileID: 0}
   healFire: {fileID: 0}
@@ -6566,6 +6567,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
     - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerParent
+      value: 
+      objectReference: {fileID: 270526251799976412}
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: trackerPrefab
       value: 
       objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
@@ -6997,6 +7002,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerParent
+      value: 
+      objectReference: {fileID: 270526251799976412}
     - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: trackerPrefab
       value: 
@@ -7833,6 +7842,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
     - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerParent
+      value: 
+      objectReference: {fileID: 270526251799976412}
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: trackerPrefab
       value: 
       objectReference: {fileID: 8339213625351943183, guid: fb668a08c8518b04296be07b5b3c4f82, type: 3}
@@ -8151,6 +8164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerParent
+      value: 
+      objectReference: {fileID: 270526251799976412}
     - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: trackerPrefab
       value: 
@@ -9203,6 +9220,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1625200705901483945}
     m_Modifications:
+    - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
+      propertyPath: trackerParent
+      value: 
+      objectReference: {fileID: 270526251799976412}
     - target: {fileID: -5122592055565597274, guid: c18049246718b5c4d818803cb9527207, type: 3}
       propertyPath: trackerPrefab
       value: 
