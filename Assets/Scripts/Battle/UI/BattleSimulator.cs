@@ -48,6 +48,14 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
 
+    //Audio
+    [SerializeField] private AudioClip[] damageSoundClips;
+    [SerializeField] private AudioClip[] healSoundClips;
+    [SerializeField] private AudioClip[] shieldSoundClips;
+    [SerializeField] private AudioClip[] blockSoundClips;
+    [SerializeField] private AudioClip[] dissolveSoundClips;
+  
+
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
     private IDictionary<Battler, Creature3D> creature3dElements;
@@ -273,6 +281,9 @@ public class BattleSimulator : MonoBehaviour
 
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
 
+                    //play soundfx
+                    SoundFXManager.instance.PlayRandomSoundFXClip(dissolveSoundClips, transform, 0.5f);
+
                     Animator anima = cardTransform.GetComponent<Animator>();
                     anima.SetTrigger("Played");
 
@@ -330,7 +341,9 @@ public class BattleSimulator : MonoBehaviour
                     {
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        PlayAnimation("Hurt", "", "");
+                        PlayAnimation("Hurt", "", "");                        
+                        //play soundFXs
+                        SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
@@ -352,6 +365,9 @@ public class BattleSimulator : MonoBehaviour
                                 EnemyAllAnimators[1].SetTrigger("WaterSlash");
                             else if (ev.Element.ToString() == "Grass")
                                 EnemyAllAnimators[1].SetTrigger("GrassSlash");
+                            
+                            //play soundFXs
+                            SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         }
                         else if (ev.DamageTag == "ranged")
                         {
@@ -361,6 +377,9 @@ public class BattleSimulator : MonoBehaviour
                                 EnemyAllAnimators[1].SetTrigger("WaterExplosion");
                             else if (ev.Element.ToString() == "Grass")
                                 EnemyAllAnimators[1].SetTrigger("GrassExplosion");
+
+                            //play soundFXs
+                            SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         }
                         
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
@@ -385,7 +404,7 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    
+                    SoundFXManager.instance.PlayRandomSoundFXClip(shieldSoundClips, transform, 1f);
                     PlayAnimation("get", ev.Shield.Element.ToString(), "shield");
                     yield return new WaitForSeconds(1.0f);
 
@@ -394,12 +413,14 @@ public class BattleSimulator : MonoBehaviour
                     // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
+                    SoundFXManager.instance.PlayRandomSoundFXClip(healSoundClips, transform, 1f);
                     PlayAnimation("Heal", ev.Element.ToString(), ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
                     // SHIELD BLOCK/BREAK
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
+                    SoundFXManager.instance.PlayRandomSoundFXClip(blockSoundClips, transform, 1f);
                     if (battle.Witch.Shield.Charges == 0)
                     {
                         PlayAnimation("lose", battle.Witch.Shield.Element.ToString(), "shield");
