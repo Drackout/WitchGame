@@ -17,4 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0523226124f63240bfb2d28d035b7e3, type: 2}
   battleScene: Street_03
   location: Street
-  thumbnail: {fileID: 0}
+  story: "My girlfriend and I were chilling at a viewpoint when out of nowhere we
+    heard monsters from a street nearby. We ran as fast as we could, but can someone
+    go stop \u2018em ?"
+  thumbnail: {fileID: 21300000, guid: 49a485f3a25af7a478bbc6dc7e38bd83, type: 3}

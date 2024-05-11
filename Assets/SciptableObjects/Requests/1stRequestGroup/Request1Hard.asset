@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
   battleScene: UI Scene
   location: Forest
-  story: "Um grande fogo apareceu na reserva natural, de clara origem m\xE1gica.
-    A cidade pede ajuda a todos os capazes por ajuda.\nNesta frente parece que o
-    fogo nunca mais acaba."
+  story: "A big fire with magical origins has appeared in the natural reserve. The
+    city asks for help from everyone. \r\nIt seems like nothing can put out this
+    fire\r\n"
   thumbnail: {fileID: 21300000, guid: a0cd217d10ba7484eb09821681861afb, type: 3}

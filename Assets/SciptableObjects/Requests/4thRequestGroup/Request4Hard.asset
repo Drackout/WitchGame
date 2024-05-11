@@ -18,4 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
   battleScene: Baixa-Chiado Metro
   location: Baixa-Chiado Metro
-  thumbnail: {fileID: 0}
+  story: I was going out to the club when suddenly something tried to attack me in
+    the subway. Someone please go stop it before it hurts anyone!
+  thumbnail: {fileID: 21300000, guid: 9af18f65927959c49aa323878555cc55, type: 3}
