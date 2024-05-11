@@ -41,7 +41,6 @@ public class UICreature : MonoBehaviour
 
     private void Awake()
     {
-        targetButton.interactable = false;
         Animator = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -73,5 +72,4 @@ public class UICreature : MonoBehaviour
 
         NmbReceived.SetText("-" + nreceived.ToString());
     }
-
 }
