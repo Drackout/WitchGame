@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private GameObject trackerPrefab;
+    [SerializeField] private GameObject trackerParent;
 
     private Vector3 initialPosition;
     private GameObject activeTracker;
@@ -42,7 +43,7 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     private void CreateTracker()
     {
-        activeTracker = Instantiate(trackerPrefab, transform.parent);
+        activeTracker = Instantiate(trackerPrefab, trackerParent.transform);
         var uiCard = activeTracker.GetComponent<UICardCreation>();
         uiCard.Create(CurrentCard);
     }

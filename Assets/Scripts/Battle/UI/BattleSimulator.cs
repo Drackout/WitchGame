@@ -43,7 +43,6 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private ParticleSystem healFire;
     [SerializeField] private ParticleSystem healWater;
     [SerializeField] private ParticleSystem healGrass;
-    [SerializeField] private CreatureDropArea[] creatureDropAreas;
     [SerializeField] private PlayerDropArea playerDropArea;
     [SerializeField] private HoldDropArea holdDropArea;
     [SerializeField] private FallbackDropArea fallbackDropArea;
@@ -113,12 +112,6 @@ public class BattleSimulator : MonoBehaviour
 
         mainCamera = Camera.main;
 
-        foreach (CreatureDropArea area in creatureDropAreas)
-        {
-            area.OnCreatureTarget += HandleCreatureTarget;
-            area.gameObject.SetActive(false);
-        }
-
         playerDropArea.OnPlayerTarget += HandlePlayerTarget;
         playerDropArea.gameObject.SetActive(false);
 
@@ -150,8 +143,12 @@ public class BattleSimulator : MonoBehaviour
             creatureElements[c] = uiCreature;
             creatureElements[c].SetHealth(c.Health, c.MaxHealth);
             creatureElements[c].Element = c.Element;
-            creatureElements[c].TargetButton.onClick.AddListener(
-                () => HandleSelection(iCopy));
+            creatureElements[c].TargetButton.interactable = false;
+
+            var dropArea = creatureElements[c].GetComponent<CreatureDropArea>();
+            dropArea.Index = i;
+            dropArea.OnCreatureTarget += HandleCreatureTarget;
+            dropArea.enabled = false;
 
             Transform creature3dSlot = creature3dContainer.transform.GetChild(i);
             GameObject creature3d = Instantiate(creatureData.meshPrefab, creature3dSlot);
@@ -387,7 +384,7 @@ public class BattleSimulator : MonoBehaviour
                         {
                             creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
                             creature3dElements[ev.Target].PlayAnimation("Dead");
-                            yield return new WaitForSeconds(1.5f);
+                            yield return new WaitForSeconds(2f);
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
@@ -503,11 +500,6 @@ public class BattleSimulator : MonoBehaviour
 
     private void ToggleTargets(bool state)
     {
-        foreach (KeyValuePair<Battler, UICreature> item in creatureElements)
-        {
-            item.Value.TargetButton.interactable = state;
-        }
-
         foreach (Creature3D c in creature3dElements.Values)
         {
             c.ToggleTarget(state);
@@ -578,10 +570,6 @@ public class BattleSimulator : MonoBehaviour
             {
                 continue;
             }
-
-            Attack attack = new Attack(card.Power, card.Element, new string[] {"REEEEE"});
-            (int damage, int reactionType) = c.GetDamageTaken(attack);
-            creatureElements[c].setNumbersReceived(damage, attack.Element);
 
             //Animator anim = cardContainer.transform.GetChild(index).GetComponent<Animator>();
             //anim.SetTrigger("Played");
@@ -794,8 +782,14 @@ public class BattleSimulator : MonoBehaviour
             {
                 if (battle.Creatures[i].Health > 0)
                 {
-                    creatureDropAreas[i].gameObject.SetActive(true);
+                    creatureElements[battle.Creatures[i]].GetComponent<CreatureDropArea>().enabled = true;
                     creature3dElements[battle.Creatures[i]].ToggleTarget(true);
+
+                    Attack attack = new Attack(card.Power, card.Element, new string[] {""});
+                    (int damage, int reactionType) = battle.Creatures[i].GetDamageTaken(attack);
+                    creatureElements[battle.Creatures[i]].setNumbersReceived(damage, attack.Element);
+
+                    creatureElements[battle.Creatures[i]].TargetButton.interactable = true;
                 }
             }
         }
@@ -853,14 +847,11 @@ public class BattleSimulator : MonoBehaviour
 
     private void HandleCardEndDrag(BattleCard battleCard)
     {
-        foreach (CreatureDropArea area in creatureDropAreas)
-        {
-            area.gameObject.SetActive(false);
-        }
-
         foreach (Creature c in battle.Creatures)
         {
             creature3dElements[c].ToggleTarget(false);
+            creatureElements[c].TargetButton.interactable = false;
+            creatureElements[c].GetComponent<CreatureDropArea>().enabled = false;
         }
 
         playerSprite.ToggleTarget(false);
