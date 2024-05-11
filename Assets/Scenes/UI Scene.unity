@@ -13992,7 +13992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815650032907714251, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00011634827
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 1015534526100467192, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Sprite
@@ -14422,6 +14422,22 @@ PrefabInstance:
       propertyPath: creature3dContainer
       value: 
       objectReference: {fileID: 1099184295}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: damageSoundClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: damageSoundClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 595c22a851e7fcc43bfb4f6b09bcc83b, type: 3}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: damageSoundClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a5c5abfbd50c00947945a06a5d1a6f00, type: 3}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: damageSoundClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 300403a96e57c354397bcd86e4fb80c3, type: 3}
     - target: {fileID: 6072570449020832682, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Sprite
       value: 

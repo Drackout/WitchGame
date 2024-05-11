@@ -49,8 +49,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
 
-    //Sounds
-    [SerializeField] private AudioClip damageSoundClip;
+    //Audio
+    [SerializeField] private AudioClip[] damageSoundClips;
+  
 
     private Battle battle;
     private IDictionary<Battler, UICreature> creatureElements;
@@ -336,15 +337,13 @@ public class BattleSimulator : MonoBehaviour
                     {
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        PlayAnimation("Hurt", "", "");
+                        PlayAnimation("Hurt", "", "");                        
+                        //play soundFXs
+                        SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         yield return new WaitForSeconds(1.0f);
-
-                        //play soundFX
-                        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
 
                         if (battle.Witch.Health == 0)
                             PlayAnimation("Loss", "", "");
-
                     }
                     else
                     {
@@ -362,6 +361,9 @@ public class BattleSimulator : MonoBehaviour
                                 EnemyAllAnimators[1].SetTrigger("WaterSlash");
                             else if (ev.Element.ToString() == "Grass")
                                 EnemyAllAnimators[1].SetTrigger("GrassSlash");
+                            
+                            //play soundFXs
+                            SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         }
                         else if (ev.DamageTag == "ranged")
                         {
@@ -371,6 +373,9 @@ public class BattleSimulator : MonoBehaviour
                                 EnemyAllAnimators[1].SetTrigger("WaterExplosion");
                             else if (ev.Element.ToString() == "Grass")
                                 EnemyAllAnimators[1].SetTrigger("GrassExplosion");
+
+                            //play soundFXs
+                            SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         }
                         
                         creatureElements[ev.Target].SetHealth(ev.Target.Health, ev.Target.MaxHealth);
