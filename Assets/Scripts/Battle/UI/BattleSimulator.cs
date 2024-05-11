@@ -53,6 +53,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private AudioClip[] healSoundClips;
     [SerializeField] private AudioClip[] shieldSoundClips;
     [SerializeField] private AudioClip[] blockSoundClips;
+    [SerializeField] private AudioClip[] dissolveSoundClips;
   
 
     private Battle battle;
@@ -279,6 +280,9 @@ public class BattleSimulator : MonoBehaviour
                     // Change the 1 for the played card ID
 
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
+
+                    //play soundfx
+                    SoundFXManager.instance.PlayRandomSoundFXClip(dissolveSoundClips, transform, 0.5f);
 
                     Animator anima = cardTransform.GetComponent<Animator>();
                     anima.SetTrigger("Played");

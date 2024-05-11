@@ -295,10 +295,6 @@ MonoBehaviour:
   healFire: {fileID: 0}
   healWater: {fileID: 0}
   healGrass: {fileID: 0}
-  creatureDropAreas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   playerDropArea: {fileID: 2111130558512168642}
   holdDropArea: {fileID: 6741354675506331968}
   fallbackDropArea: {fileID: 5611844449391818533}
@@ -313,6 +309,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3319f22e38c4464795599d11704708c, type: 3}
   blockSoundClips:
   - {fileID: 8300000, guid: 374a5cb1656ad3847aa3ffa9b5ee00f7, type: 3}
+  dissolveSoundClips:
+  - {fileID: 8300000, guid: 9e3d30518d638154fb44c60557d6b7b8, type: 3}
+  - {fileID: 8300000, guid: 2c63409e8fc280149b6dba2764e21940, type: 3}
+  - {fileID: 8300000, guid: 20508c9dc64d99b4daaac14eae857e8d, type: 3}
 --- !u!95 &7533437836276320818
 Animator:
   serializedVersion: 5
