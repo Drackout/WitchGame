@@ -51,6 +51,9 @@ public class BattleSimulator : MonoBehaviour
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
+    [SerializeField] private AudioClip[] healSoundClips;
+    [SerializeField] private AudioClip[] shieldSoundClips;
+    [SerializeField] private AudioClip[] blockSoundClips;
   
 
     private Battle battle;
@@ -400,7 +403,7 @@ public class BattleSimulator : MonoBehaviour
                 case ShieldEvent ev:
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
-                    
+                    SoundFXManager.instance.PlayRandomSoundFXClip(shieldSoundClips, transform, 1f);
                     PlayAnimation("get", ev.Shield.Element.ToString(), "shield");
                     yield return new WaitForSeconds(1.0f);
 
@@ -409,12 +412,14 @@ public class BattleSimulator : MonoBehaviour
                     // HEALING
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
+                    SoundFXManager.instance.PlayRandomSoundFXClip(healSoundClips, transform, 1f);
                     PlayAnimation("Heal", ev.Element.ToString(), ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:
                     // SHIELD BLOCK/BREAK
                     Debug.Log($"[DEBUG] Blocked {battle.Witch.Shield.Element}!");
                     logText = $"Blocked with {battle.Witch.Shield.Element} shield!";
+                    SoundFXManager.instance.PlayRandomSoundFXClip(blockSoundClips, transform, 1f);
                     if (battle.Witch.Shield.Charges == 0)
                     {
                         PlayAnimation("lose", battle.Witch.Shield.Element.ToString(), "shield");
