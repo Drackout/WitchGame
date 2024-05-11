@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DragaoVolante3D_V1
+  m_Controller: {fileID: 9100000, guid: d5e27b226faeada47ae687e7bbee3440, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b4e4ed81878817547a108feca00b30ab, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6093e3874f0b56c43aa83c8fb702cf57, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a15817fc9fcd2374488a4b899cfcda44, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52af0b3986a706141abf968f0d55d695, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4bf482ebd122e5f448dc42f675a79102, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fcdf78235c895884c8383349ca2e3fb2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ebaf09ba5f5a00242af2701da53eb224, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 45c236049ca56a746959b4d61a18eb9b, type: 2}

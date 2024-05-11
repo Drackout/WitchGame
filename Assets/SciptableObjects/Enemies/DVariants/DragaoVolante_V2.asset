@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9293325f63b5e5438e1fe7b09461571, type: 3}
+  m_Name: DragaoVolante_V2
+  m_EditorClassIdentifier: 
+  health: 20
+  attackMin: 2
+  attackMax: 3
+  element: 1
+  whatHits: 
+  specialEffect: 
+  drops: []
+  prefab: {fileID: 4133059990252159846, guid: 67a97334a418cb6418189281269e5035, type: 3}
+  meshPrefab: {fileID: 2873579830293227078, guid: 3fa4bd66d86b49a4284018b6c44a5334, type: 3}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9293325f63b5e5438e1fe7b09461571, type: 3}
+  m_Name: Tentaculo_V1
+  m_EditorClassIdentifier: 
+  health: 13
+  attackMin: 1
+  attackMax: 3
+  element: 3
+  whatHits: 
+  specialEffect: 
+  drops: []
+  prefab: {fileID: 720515084410140284, guid: d2821c0849ccf9b47be3cdc897c4c143, type: 3}
+  meshPrefab: {fileID: 6882140516957024467, guid: 0e7b12df4b33a9d4b9f06d8751ccc6f9, type: 3}
