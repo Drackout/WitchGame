@@ -28,8 +28,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 771292886332781556}
   - {fileID: 3409745454920494435}
+  - {fileID: 771292886332781556}
   m_Father: {fileID: 5649021422066314172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -221,8 +221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131.3, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 91.9, y: 0}
+  m_SizeDelta: {x: 75, y: 79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1981143173787480306
 CanvasRenderer:
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70c292091e56a93429680193543d482e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57c9ad787c54e514facd13e95ee2d7f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 862912844667693750, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -32.2
+      value: -189.8
       objectReference: {fileID: 0}
     - target: {fileID: 894098372121960350, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
       propertyPath: m_Pivot.x
@@ -1195,6 +1195,18 @@ PrefabInstance:
     - target: {fileID: 4626846675955493311, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228921112083451799, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228921112083451799, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228921112083451799, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7492437190585586971, guid: b4e361c768641bf47aa4c80dec6300a9, type: 3}
       propertyPath: m_AnchorMax.y
