@@ -14934,6 +14934,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4680757731159730826, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
   m_PrefabInstance: {fileID: 2019095325}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001966021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6925268877966514235, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 5724260418934378266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f909183cf7e3a45a4db3b9ddf55857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002003956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15625,6 +15636,10 @@ PrefabInstance:
       propertyPath: healAnimator
       value: 
       objectReference: {fileID: 5724260418934378270}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 2001966021}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: shieldAnimator
       value: 

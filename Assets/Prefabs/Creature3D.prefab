@@ -91,6 +91,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  spriteRenderer: {fileID: 5782287051207476456}
+  minThickness: 4
+  maxThickness: 15
+  animationSpeed: 5
 --- !u!1 &2227177420751948883
 GameObject:
   m_ObjectHideFlags: 0

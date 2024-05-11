@@ -11345,6 +11345,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1389181723}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 1389181725}
+    - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: shieldAnimator
       value: 
       objectReference: {fileID: 1389181724}
@@ -28387,6 +28391,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 1389181720}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1389181725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6925268877966514235, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_PrefabInstance: {fileID: 1389181720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f909183cf7e3a45a4db3b9ddf55857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1401854210
 PrefabInstance:
   m_ObjectHideFlags: 0

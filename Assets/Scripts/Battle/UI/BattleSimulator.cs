@@ -37,6 +37,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private Material fireShieldMat;
     [SerializeField] private Animator PanelAnimator;
     [SerializeField] private Animator player3dAnimator;
+    [SerializeField] private Creature3D playerSprite;
     [SerializeField] private Animator shieldAnimator;
     [SerializeField] private Animator healAnimator;
     [SerializeField] private ParticleSystem healFire;
@@ -777,12 +778,17 @@ public class BattleSimulator : MonoBehaviour
                 if (battle.Creatures[i].Health > 0)
                 {
                     creatureDropAreas[i].gameObject.SetActive(true);
+                    creature3dElements[battle.Creatures[i]].ToggleTarget(true);
                 }
             }
         }
         else if (card.Type == CardType.Shield || card.Type == CardType.Heal)
         {
             playerDropArea.gameObject.SetActive(true);
+            if (playerSprite != null)
+            {
+                playerSprite.ToggleTarget(true);
+            }
         }
     }
 
@@ -834,6 +840,13 @@ public class BattleSimulator : MonoBehaviour
         {
             area.gameObject.SetActive(false);
         }
+
+        foreach (Creature c in battle.Creatures)
+        {
+            creature3dElements[c].ToggleTarget(false);
+        }
+
+        playerSprite.ToggleTarget(false);
 
         playerDropArea.gameObject.SetActive(false);
         holdDropArea.gameObject.SetActive(false);

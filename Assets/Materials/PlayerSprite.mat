@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteShadowCast
+  m_Name: PlayerSprite
   m_Shader: {fileID: -6465566751694194690, guid: 589ff709a1a3c0449b016e0106fcf3a8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -110,7 +110,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Draw_Outline: 0
+    - _Draw_Outline: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnableExternalAlpha: 0
@@ -130,7 +130,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Thickness: 14
+    - _Thickness: 56.8
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
