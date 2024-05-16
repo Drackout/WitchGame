@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba68ef06c7efc0c4dbdf66c8b7204913, type: 3}
+  m_Name: LootTable
+  m_EditorClassIdentifier: 
+  entries:
+  - creature: {fileID: 11400000, guid: 2708e0b907670d940bf2897bf5e4fcf8, type: 2}
+    itemRates:
+    - item: {fileID: 11400000, guid: fc6143fe4ea0b304bb2f4419148be93e, type: 2}
+      amount: 1
+      rate: 0.6
+    - item: {fileID: 11400000, guid: fc6143fe4ea0b304bb2f4419148be93e, type: 2}
+      amount: 2
+      rate: 0.2
+    - item: {fileID: 11400000, guid: 21a47d3dec8d49649aeaade81e0c25ac, type: 2}
+      amount: 1
+      rate: 0.2
+  - creature: {fileID: 11400000, guid: 1c41b7b0d206f034f8f1ac265f17fe58, type: 2}
+    itemRates:
+    - item: {fileID: 11400000, guid: e03b00b6597d15b42a9625d455059195, type: 2}
+      amount: 1
+      rate: 1
+  - creature: {fileID: 11400000, guid: ee338a6501b925f4e9c710c9c6069d43, type: 2}
+    itemRates:
+    - item: {fileID: 11400000, guid: 0c8ad13e2f506664989a6581836d1a57, type: 2}
+      amount: 1
+      rate: 1
+  defaultItem: {fileID: 11400000, guid: c2d3beb7e02c97841be6b009fe88a4e3, type: 2}

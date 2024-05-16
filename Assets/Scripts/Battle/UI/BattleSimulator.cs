@@ -78,6 +78,8 @@ public class BattleSimulator : MonoBehaviour
 
     private bool selectingTarget;
 
+    private List<(Item, int)> lootObtained;
+
     private void Start()
     {
         creatureElements = new Dictionary<Battler, UICreature>();
@@ -121,6 +123,8 @@ public class BattleSimulator : MonoBehaviour
 
         fallbackDropArea.OnCardDrop += HandleCardFallbackDrop;
         fallbackDropArea.gameObject.SetActive(false);
+
+        lootObtained = new List<(Item, int)>();
 
         StartCoroutine(RunRequest());
     }
@@ -167,6 +171,8 @@ public class BattleSimulator : MonoBehaviour
 
         int counter = 0;
 
+        var creatureSources = new Dictionary<Battler, EnemyCreature>();
+
         foreach (EncounterData encounter in request.encounters)
         {
             IList<Creature> creatures = new List<Creature>();
@@ -175,6 +181,7 @@ public class BattleSimulator : MonoBehaviour
                 Creature dummy = new Dummy("Dummy", c.health, c.element,
                     c.attackMin, c.attackMax);
                 creatures.Add(dummy);
+                creatureSources[dummy] = c;
             }
 
             ElementConfig elementConfig = BattleSettings.Instance.ElementConfig;
@@ -190,14 +197,15 @@ public class BattleSimulator : MonoBehaviour
             slots.Slots = battle.Witch.Slots;
             playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
-            yield return RunBattle(battle, counter >= request.encounters.Length - 1);
+            yield return RunBattle(battle, counter >= request.encounters.Length - 1, creatureSources);
             counter += 1;
         }
 
         FinishRequest();
     }
 
-    private IEnumerator RunBattle(Battle battle, bool last)
+    private IEnumerator RunBattle(Battle battle, bool last,
+        IDictionary<Battler, EnemyCreature> creatureSources)
     {
         IEnumerable<BattleEvent> battleIter = battle.Run();
 
@@ -388,7 +396,13 @@ public class BattleSimulator : MonoBehaviour
                         {
                             creatureElements[ev.Target].PlayAnimation("Dead", 99); //99 used for NON-Reactions
                             creature3dElements[ev.Target].PlayAnimation("Dead");
+
+                            EnemyCreature creature = creatureSources[ev.Target];
+                            (Item item, int amount) = BattleSettings.Instance.LootTable.RollLoot(creature);
+                            lootObtained.Add((item, amount));
+
                             yield return new WaitForSeconds(2f);
+
                             creatureElements[ev.Target].gameObject.SetActive(false);
                             creature3dElements[ev.Target].gameObject.SetActive(false);
                             enemiesDefeated++;
@@ -662,13 +676,16 @@ public class BattleSimulator : MonoBehaviour
         bs.NextStage();
 
         PlayAnimation("Win", "", "");
+
         PlayerResources pr = PlayerResources.Instance;
-        pr.Gold = pr.Gold + 42;
-        pr.SetStones(Element.Fire, pr.GetStones(Element.Fire) + 2);
-        pr.SetStones(Element.Water, pr.GetStones(Element.Water) + 1);
-        pr.SetStones(Element.Grass, pr.GetStones(Element.Grass) + 1);
-        pr.NeutralCards.Add(new Card(CardType.Spell, Element.None, 2));
-        pr.NeutralCards.Add(new Card(CardType.Heal, Element.None, 1));
+        foreach ((Item item, int amount) in lootObtained)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                pr.Obtain(item);
+            }
+        }
+        lootObtained.Clear();
     }
 
     public void setNumbersReceived(int nreceived, Element element, string dmgHeal, int reactionType)

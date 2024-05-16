@@ -2562,6 +2562,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d53700959bb553449b86018ac3e15d49, type: 2}
   - {fileID: 11400000, guid: 90d7929b62f4d0748bedff6b23c0ad5d, type: 2}
   elementConfig: {fileID: 11400000, guid: c301a7b1c64af544f8d521f059d9c7b3, type: 2}
+  lootTable: {fileID: 11400000, guid: 77540f520afb22f44b98ca4fdba9c1c2, type: 2}
 --- !u!4 &620601477
 Transform:
   m_ObjectHideFlags: 0

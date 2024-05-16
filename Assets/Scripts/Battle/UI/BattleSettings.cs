@@ -7,6 +7,7 @@ public class BattleSettings : MonoBehaviour
 {
     [SerializeField] private RequestStage[] stages;
     [SerializeField] private ElementConfig elementConfig;
+    [SerializeField] private LootTable lootTable;
 
     private static BattleSettings instance;
     private RequestData currentRequest;
@@ -15,6 +16,7 @@ public class BattleSettings : MonoBehaviour
     public static BattleSettings Instance => instance;
     public bool ShuffleDeck { get; set; }
     public IList<RequestStage> Stages => stages;
+    public LootTable LootTable => lootTable;
 
     public ElementConfig ElementConfig => elementConfig;
 

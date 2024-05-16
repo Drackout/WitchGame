@@ -105,6 +105,23 @@ public class PlayerResources : MonoBehaviour
         };
     }
 
+    public bool Obtain(Item item)
+    {
+        Debug.Log($"Obtained {item}");
+
+        if (item is CardItem cardItem)
+        {
+            Card card = new Card(cardItem.type, cardItem.element, cardItem.power);
+            OwnedCards.Add(card);
+        }
+        else if (item is ElementalStoneItem stoneItem)
+        {
+            SetStones(stoneItem.element, GetStones(stoneItem.element) + 1);
+        }
+
+        return true;
+    }
+
     public DeckChangeResult AddCardToDeck(int deck, Card card)
     {
         if (Decks[deck].Count + 1 > maxCardsInDeck)
