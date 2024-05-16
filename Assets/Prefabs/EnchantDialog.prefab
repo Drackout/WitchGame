@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14d6995d2daf2a348b14a82996bc29c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7c1e8a6de6f3f84cb3c841ad1049b2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14d6995d2daf2a348b14a82996bc29c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7c1e8a6de6f3f84cb3c841ad1049b2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14d6995d2daf2a348b14a82996bc29c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7c1e8a6de6f3f84cb3c841ad1049b2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e9cb168f9b96f6498240c11cb60c14e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 279e28dfa6a758f4db1aa04cdb93042d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -858,6 +858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1037893874244069674}
     m_Modifications:
+    - target: {fileID: 1279084578375660793, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03f1d9c0b752e564783320cd4b3cfed3, type: 3}
     - target: {fileID: 1754913829102469250, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1112,6 +1116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6136393913016684179}
     m_Modifications:
+    - target: {fileID: 1279084578375660793, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a0f6fc28a003b4d4ea11afe54ee48b64, type: 3}
     - target: {fileID: 1754913829102469250, guid: 86cd2843aa105a547bf64f0aa07d9841, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
