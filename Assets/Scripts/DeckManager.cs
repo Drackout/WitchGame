@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -52,7 +53,11 @@ public class DeckManager : MonoBehaviour
             cards[pr.Decks[0][i]] += 1;
         }
 
-        foreach (Card k in cards.Keys)
+        IEnumerable<Card> sortedByElement = cards.Keys
+            .OrderBy((Card c) => (int)c.Element)
+            .ThenBy((Card c) => Enum.GetName(typeof(CardType), c.Type))
+            .ThenBy((Card c) => c.Power);
+        foreach (Card k in sortedByElement)
         {
             DeckCard deckCard = Instantiate(deckCardPrefab, deckListRoot.transform);
             deckCard.Card = k;
