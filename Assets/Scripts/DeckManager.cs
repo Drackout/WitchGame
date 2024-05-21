@@ -67,6 +67,15 @@ public class DeckManager : MonoBehaviour
 
     private void LoadMainMenu()
     {
+        var sm = SaveManager.Instance;
+        sm.SaveData.decks.Clear();
+        for (int i = 0; i < pr.Decks.Length; i++)
+        {
+            sm.SaveData.decks.Add(new DeckSerializable(pr.Decks[i]));
+        }
+        sm.SaveData.ownedCards = pr.OwnedCards.Select((Card c) => CardSerializable.FromCard(c)).ToList();
+        sm.Save();
+
         SceneManager.LoadScene("MainMenu");
     }
 

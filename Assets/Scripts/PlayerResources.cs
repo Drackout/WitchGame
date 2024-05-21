@@ -71,38 +71,26 @@ public class PlayerResources : MonoBehaviour
         };
 
         decks = new IList<Card>[totalDecks];
-
-        decks[0] = new List<Card>
+        for (int i = 0; i < totalDecks; i++)
         {
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Heal, Element.Fire, 2),
-            new Card(CardType.Sword, Element.Water, 3),
-            new Card(CardType.Heal, Element.Grass, 2),
-            new Card(CardType.Sword, Element.Grass, 3),
-            new Card(CardType.Shield, Element.Grass, 2),
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Sword, Element.Water, 2),
-            new Card(CardType.Heal, Element.Fire, 2),
-            new Card(CardType.Shield, Element.Grass, 1),
-            new Card(CardType.Sword, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Water, 3),
-            new Card(CardType.Spell, Element.Grass, 3),
-            new Card(CardType.Spell, Element.Water, 2),
-            new Card(CardType.Spell, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Water, 3),
-            new Card(CardType.Shield, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Fire, 3),
-            new Card(CardType.Heal, Element.Water, 2),
-            new Card(CardType.Sword, Element.Grass, 2),
-            new Card(CardType.Spell, Element.Grass, 2),
-            new Card(CardType.Heal, Element.Grass, 2),
-            new Card(CardType.Shield, Element.Water, 2),
-            new Card(CardType.Shield, Element.Fire, 2),
-            new Card(CardType.Spell, Element.Grass, 3),
-            new Card(CardType.Sword, Element.Fire, 3),
-            new Card(CardType.Shield, Element.Grass, 2),
-            new Card(CardType.Heal, Element.Grass, 2)
-        };
+            decks[i] = new List<Card>();
+        }
+    }
+
+    private void Start()
+    {
+        SaveData saveData = SaveManager.Instance.SaveData;
+
+        int i = 0;
+        foreach (DeckSerializable deck in saveData.decks)
+        {
+            if (deck != null)
+            {
+                decks[i++] = deck.cards.Select((CardSerializable c) => c.ToCard()).ToList();
+            }
+        }
+
+        OwnedCards = saveData.ownedCards.Select((CardSerializable c) => c.ToCard()).ToList();
     }
 
     public bool Obtain(Item item)
