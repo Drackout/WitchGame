@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba3f72017ded4643bce7c1639f7a5f4, type: 3}
+  m_Name: welp
+  m_EditorClassIdentifier: 
+  DialogueName: YOOOOOOOOOOO
+  dialogueNodes:
+  - guid: fe825098-b639-47a5-accb-cf3414e09191
+    dialogue: 
+    position:
+      serializedVersion: 2
+      x: 256.8
+      y: 64.8
+      width: 247.20001
+      height: 164.79999
+    isStart: 1
+    outPorts:
+    - choiceText: 
+      id: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
+    - choiceText: 
+      id: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
+  - guid: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
+    dialogue: 
+    position:
+      serializedVersion: 2
+      x: 544
+      y: 70.399994
+      width: 247.20001
+      height: 140.8
+    isStart: 0
+    outPorts:
+    - choiceText: 
+      id: 
