@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DController_working
   m_EditorClassIdentifier: 
   _dialogues:
-  - {fileID: 11400000, guid: f8066a5a4c53ebd47b3c77c35fcf002a, type: 2}
+  - {fileID: 11400000, guid: 246f360e31adbea418b329d1729cab77, type: 2}
   _defaultDialogue: 3

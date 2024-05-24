@@ -10,54 +10,69 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ba3f72017ded4643bce7c1639f7a5f4, type: 3}
-  m_Name: DialogueScript
+  m_Name: InitialName
   m_EditorClassIdentifier: 
-  DialogueName: AAA1
+  DialogueName: InitialName
   dialogueNodes:
   - presetName: 
-    guid: fe825098-b639-47a5-accb-cf3414e09191
-    dialogue: D1
+    guid: 35b0699d-b976-4835-aa7a-1fddd38a0f98
+    dialogue: some text yada yada
     position:
       serializedVersion: 2
-      x: 256.8
-      y: 64.8
-      width: 247.20001
-      height: 164.79999
+      x: 313
+      y: 104
+      width: 247
+      height: 142
     isStart: 1
     events: []
     outPorts:
-    - choiceText: 
-      id: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
-      <IsLocked>k__BackingField: 0
-      <IsHidden>k__BackingField: 0
-      _hideIDs: []
-    - choiceText: 
-      id: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
+    - choiceText: a1
+      id: 6d30491b-aa97-45e5-8d8d-5e269f061b5c
       <IsLocked>k__BackingField: 0
       <IsHidden>k__BackingField: 0
       _hideIDs: []
     <CustomFunctions>k__BackingField: []
-    <PresetName>k__BackingField: 0
+    <PresetName>k__BackingField: 1
     <ExpressionId>k__BackingField: 0
   - presetName: 
-    guid: e8fcabe3-58ac-4188-9e92-8bc04d3a7045
-    dialogue: D2
+    guid: 6d30491b-aa97-45e5-8d8d-5e269f061b5c
+    dialogue: make no sense
     position:
       serializedVersion: 2
-      x: 544
-      y: 70.399994
-      width: 247.20001
-      height: 140.8
+      x: 620
+      y: 207
+      width: 247
+      height: 142
     isStart: 0
     events: []
     outPorts:
-    - choiceText: 
+    - choiceText: a2
+      id: 72a4595c-dbdb-4c31-a672-1c7b73d8810d
+      <IsLocked>k__BackingField: 0
+      <IsHidden>k__BackingField: 0
+      _hideIDs: []
+    <CustomFunctions>k__BackingField: []
+    <PresetName>k__BackingField: 1
+    <ExpressionId>k__BackingField: 0
+  - presetName: 
+    guid: 72a4595c-dbdb-4c31-a672-1c7b73d8810d
+    dialogue: time to continue
+    position:
+      serializedVersion: 2
+      x: 928
+      y: 127
+      width: 247
+      height: 142
+    isStart: 0
+    events: []
+    outPorts:
+    - choiceText: continue!
       id: 
       <IsLocked>k__BackingField: 0
       <IsHidden>k__BackingField: 0
       _hideIDs: []
     <CustomFunctions>k__BackingField: []
-    <PresetName>k__BackingField: 0
+    <PresetName>k__BackingField: 1
     <ExpressionId>k__BackingField: 0
   references:
     version: 2

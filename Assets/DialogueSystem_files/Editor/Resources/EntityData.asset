@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomUnusedString: 
   data:
-  - <EntityName>k__BackingField: 
-    <Expressions>k__BackingField: {fileID: 0}
+  - <EntityName>k__BackingField: Moira
+    <Expressions>k__BackingField: {fileID: 11400000, guid: b8101893b68f087469df74edd7d3a973, type: 2}
     <Hidden>k__BackingField: 1
