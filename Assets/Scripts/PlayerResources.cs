@@ -29,6 +29,9 @@ public class PlayerResources : MonoBehaviour
         set
         {
             gold = Math.Max(0, value);
+
+            SaveData save = SaveManager.Instance.SaveData;
+            save.gold = gold;
         }
     }
 
@@ -91,6 +94,9 @@ public class PlayerResources : MonoBehaviour
         }
 
         OwnedCards = saveData.ownedCards.Select((CardSerializable c) => c.ToCard()).ToList();
+
+        stones = saveData.stones;
+        gold = saveData.gold;
     }
 
     public bool Obtain(Item item)
@@ -162,6 +168,9 @@ public class PlayerResources : MonoBehaviour
     public void SetStones(Element element, int value)
     {
         stones[(int)element] = Math.Max(0, value);
+
+        SaveData save = SaveManager.Instance.SaveData;
+        save.stones[(int)element] = stones[(int)element];
     }
 
     public event Action<int> OnDeckChange;

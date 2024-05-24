@@ -8,6 +8,8 @@ public class SaveData
     public List<DeckSerializable> decks;
     public List<CardSerializable> ownedCards;
     public int stage;
+    public int[] stones;
+    public int gold;
 
     public SaveData()
     {
@@ -49,5 +51,10 @@ public class SaveData
         ownedCards = new List<CardSerializable>();
 
         stage = 0;
+
+        int elementCount = Enum.GetNames(typeof(Element)).Length;
+        stones = new int[elementCount];
+
+        gold = 0;
     }
 }

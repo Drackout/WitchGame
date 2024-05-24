@@ -26,6 +26,9 @@ public class BattleSettings : MonoBehaviour
     {
         stageIndex = Math.Min(stages.Length - 1, stageIndex + 1);
         currentRequest = stages[stageIndex].GetRequest(RequestDifficulty.Easy);
+
+        SaveData save = SaveManager.Instance.SaveData;
+        save.stage = stageIndex;
     }
 
     public void ChooseRequest(RequestDifficulty difficulty)
@@ -53,6 +56,12 @@ public class BattleSettings : MonoBehaviour
         ShuffleDeck = true;
         stageIndex = 0;
         currentRequest = stages[0].GetRequest(RequestDifficulty.Easy);
+    }
+
+    private void Start()
+    {
+        SaveData save = SaveManager.Instance.SaveData;
+        stageIndex = save.stage;
     }
     
     public IList<EnemyCreature> GetAllEnemiesRequests(RequestData currentRequest)
