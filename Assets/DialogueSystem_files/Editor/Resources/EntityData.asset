@@ -17,3 +17,6 @@ MonoBehaviour:
   - <EntityName>k__BackingField: Moira
     <Expressions>k__BackingField: {fileID: 11400000, guid: b8101893b68f087469df74edd7d3a973, type: 2}
     <Hidden>k__BackingField: 1
+  - <EntityName>k__BackingField: Galho
+    <Expressions>k__BackingField: {fileID: 11400000, guid: 16380edc4b8dc2944a190d7d2d683957, type: 2}
+    <Hidden>k__BackingField: 1

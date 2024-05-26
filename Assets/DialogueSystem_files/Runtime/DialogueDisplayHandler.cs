@@ -4,6 +4,7 @@ using DialogueSystem;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Unity.VisualStudio.Editor;
 
 //Class responsible for the handling of the Dialogue Displaystudent council president, woman, serious, stern, smug, blond_hair, uniform, white eyes, white uniform, witch, evil, white cape,whiteeyes, naked, spreading pussy, pussy leaking, pussy, 
 public class DialogueDisplayHandler : MonoBehaviour
@@ -49,6 +50,12 @@ public class DialogueDisplayHandler : MonoBehaviour
 
     [SerializeField]
     private GameObject border;
+
+    [SerializeField]
+    private Image char1;
+
+    [SerializeField]
+    private Image char2;
 
 
     /// <summary>
