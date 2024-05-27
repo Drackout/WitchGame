@@ -61,8 +61,9 @@ public class BattleSettings : MonoBehaviour
 
     private void Start()
     {
-        SaveData save = SaveManager.Instance.SaveData;
-        stageIndex = save.stage;
+        SaveManager sm = SaveManager.Instance;
+        sm.onSaveClear += LoadFromSave;
+        LoadFromSave();
     }
     
     public IList<EnemyCreature> GetAllEnemiesRequests(RequestData currentRequest)
@@ -88,5 +89,11 @@ public class BattleSettings : MonoBehaviour
         }
 
         return currentRequest.encounters[0].enemies;
+    }
+
+    private void LoadFromSave()
+    {
+        SaveManager sm = SaveManager.Instance;
+        stageIndex = sm.SaveData.stage;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,13 @@ public class SaveManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(saveData);
         File.WriteAllText(SavePath, json);
+    }
+
+    public void ClearSave()
+    {
+        saveData = new SaveData();
+        Save();
+        onSaveClear?.Invoke();
     }
 
     private void Load()
@@ -48,4 +56,6 @@ public class SaveManager : MonoBehaviour
 
         Load();
     }
+
+    public event Action onSaveClear;
 }

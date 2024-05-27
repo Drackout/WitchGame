@@ -82,10 +82,17 @@ public class PlayerResources : MonoBehaviour
 
     private void Start()
     {
-        SaveData saveData = SaveManager.Instance.SaveData;
+        SaveManager sm = SaveManager.Instance;
+        sm.onSaveClear += LoadFromSave;
+        LoadFromSave();
+    }
+
+    private void LoadFromSave()
+    {
+        SaveManager sm = SaveManager.Instance;
 
         int i = 0;
-        foreach (DeckSerializable deck in saveData.decks)
+        foreach (DeckSerializable deck in sm.SaveData.decks)
         {
             if (deck != null)
             {
@@ -93,10 +100,10 @@ public class PlayerResources : MonoBehaviour
             }
         }
 
-        OwnedCards = saveData.ownedCards.Select((CardSerializable c) => c.ToCard()).ToList();
+        OwnedCards = sm.SaveData.ownedCards.Select((CardSerializable c) => c.ToCard()).ToList();
 
-        stones = saveData.stones;
-        gold = saveData.gold;
+        stones = sm.SaveData.stones;
+        gold = sm.SaveData.gold;
     }
 
     public bool Obtain(Item item)
