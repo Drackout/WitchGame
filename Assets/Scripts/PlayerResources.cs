@@ -106,7 +106,7 @@ public class PlayerResources : MonoBehaviour
         if (item is CardItem cardItem)
         {
             Card card = new Card(cardItem.type, cardItem.element, cardItem.power);
-            OwnedCards.Add(card);
+            AddCardToOwned(card);
         }
         else if (item is ElementalStoneItem stoneItem)
         {
@@ -152,12 +152,18 @@ public class PlayerResources : MonoBehaviour
     {
         OwnedCards.Add(card);
         OnOwnedChange?.Invoke();
+
+        SaveManager sm = SaveManager.Instance;
+        sm.SaveData.ownedCards = OwnedCards.Select((Card c) => CardSerializable.FromCard(c)).ToList();
     }
 
     public void RemoveCardFromOwned(int index)
     {
         OwnedCards.RemoveAt(index);
         OnOwnedChange?.Invoke();
+
+        SaveManager sm = SaveManager.Instance;
+        sm.SaveData.ownedCards = OwnedCards.Select((Card c) => CardSerializable.FromCard(c)).ToList();
     }
 
     public int GetStones(Element element)

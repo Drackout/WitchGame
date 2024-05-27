@@ -27,8 +27,9 @@ public class BattleSettings : MonoBehaviour
         stageIndex = Math.Min(stages.Length - 1, stageIndex + 1);
         currentRequest = stages[stageIndex].GetRequest(RequestDifficulty.Easy);
 
-        SaveData save = SaveManager.Instance.SaveData;
-        save.stage = stageIndex;
+        SaveManager sm = SaveManager.Instance;
+        sm.SaveData.stage = stageIndex;
+        sm.Save();
     }
 
     public void ChooseRequest(RequestDifficulty difficulty)

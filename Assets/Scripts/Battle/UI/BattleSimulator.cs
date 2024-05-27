@@ -672,9 +672,6 @@ public class BattleSimulator : MonoBehaviour
 
     private void FinishRequest()
     {
-        BattleSettings bs = BattleSettings.Instance;
-        bs.NextStage();
-
         PlayAnimation("Win", "", "");
 
         PlayerResources pr = PlayerResources.Instance;
@@ -686,6 +683,9 @@ public class BattleSimulator : MonoBehaviour
             }
         }
         lootObtained.Clear();
+
+        BattleSettings bs = BattleSettings.Instance;
+        bs.NextStage();
     }
 
     public void setNumbersReceived(int nreceived, Element element, string dmgHeal, int reactionType)
