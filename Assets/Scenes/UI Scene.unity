@@ -15444,8 +15444,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3085275421285934506, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3220134070615646694, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
       propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239571787346044208, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239571787346044208, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259990216210027885, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3975464592326475385, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
@@ -15460,9 +15476,37 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5523167369850460222, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.80908
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523167369850460222, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.80908
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523167369850460222, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.80908
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721678688193869575, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8227675969837452931, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077150409220085006, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077150409220085006, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077150409220085006, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
