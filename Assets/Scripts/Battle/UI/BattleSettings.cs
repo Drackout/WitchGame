@@ -27,8 +27,9 @@ public class BattleSettings : MonoBehaviour
         stageIndex = Math.Min(stages.Length - 1, stageIndex + 1);
         currentRequest = stages[stageIndex].GetRequest(RequestDifficulty.Easy);
 
-        SaveData save = SaveManager.Instance.SaveData;
-        save.stage = stageIndex;
+        SaveManager sm = SaveManager.Instance;
+        sm.SaveData.stage = stageIndex;
+        sm.Save();
     }
 
     public void ChooseRequest(RequestDifficulty difficulty)
@@ -60,8 +61,9 @@ public class BattleSettings : MonoBehaviour
 
     private void Start()
     {
-        SaveData save = SaveManager.Instance.SaveData;
-        stageIndex = save.stage;
+        SaveManager sm = SaveManager.Instance;
+        sm.onSaveClear += LoadFromSave;
+        LoadFromSave();
     }
     
     public IList<EnemyCreature> GetAllEnemiesRequests(RequestData currentRequest)
@@ -87,5 +89,11 @@ public class BattleSettings : MonoBehaviour
         }
 
         return currentRequest.encounters[0].enemies;
+    }
+
+    private void LoadFromSave()
+    {
+        SaveManager sm = SaveManager.Instance;
+        stageIndex = sm.SaveData.stage;
     }
 }
