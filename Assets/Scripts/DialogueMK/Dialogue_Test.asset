@@ -26,6 +26,6 @@ MonoBehaviour:
     CharEmotion: 3
     Dialogue: oh right... tree stuff
   - CharName: 2
-    CharEmotion: 0
+    CharEmotion: 2
     Dialogue: '[Nod, nod]'
   SceneToGo: UI Scene
