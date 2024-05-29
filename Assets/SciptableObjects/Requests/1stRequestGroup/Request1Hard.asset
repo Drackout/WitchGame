@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Request1Hard
   m_EditorClassIdentifier: 
   encounters:
+  - {fileID: 11400000, guid: c94956d7ec1c8e547b411bd191fd346a, type: 2}
+  - {fileID: 11400000, guid: 70271072263b73d489987cbdfd34b374, type: 2}
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
-  - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
   battleScene: UI Scene
   location: Forest
   story: "A big fire with magical origins has appeared in the natural reserve. The

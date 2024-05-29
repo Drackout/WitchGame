@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Request1Easy
   m_EditorClassIdentifier: 
   encounters:
-  - {fileID: 11400000, guid: dd04b5a8ed50cd34a940dcd7219455eb, type: 2}
-  - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
+  - {fileID: 11400000, guid: 7b9558ddc1571e34fb3e1d88a683a326, type: 2}
+  - {fileID: 11400000, guid: 2086093a62ec2594ebde12e8cd9e4df4, type: 2}
   battleScene: UI Scene
   location: Forest
   story: "A fire with magical origins has appeared in the natural reserve. The city

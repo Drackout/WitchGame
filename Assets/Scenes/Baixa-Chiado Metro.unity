@@ -4906,7 +4906,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1600750242 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4827832646444108628, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 1600750240}
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &1600750243 stripped

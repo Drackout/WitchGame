@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DragaoVolante_V1
   m_EditorClassIdentifier: 
   health: 10
-  attackMin: 2
-  attackMax: 4
+  attackMin: 1
+  attackMax: 2
   element: 1
   whatHits: 
   specialEffect: 

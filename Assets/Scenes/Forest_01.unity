@@ -16299,7 +16299,7 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &5724260418934378268 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4827832646444108628, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 5724260418934378266}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5724260418934378269 stripped

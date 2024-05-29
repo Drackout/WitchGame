@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   attackMin: 2
-  attackMax: 3
+  attackMax: 4
   element: 1
   whatHits: 
   specialEffect: 

@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe1d19f15579b044fa3e865b0a82bb7e, type: 3}
-  m_Name: 1G
+  m_Name: 2D1G v2_v2_base
   m_EditorClassIdentifier: 
   enemies:
+  - {fileID: 11400000, guid: 817eb3d7c7171964981d139157bc0393, type: 2}
   - {fileID: 11400000, guid: 1c41b7b0d206f034f8f1ac265f17fe58, type: 2}
+  - {fileID: 11400000, guid: 817eb3d7c7171964981d139157bc0393, type: 2}

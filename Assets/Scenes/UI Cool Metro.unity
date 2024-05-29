@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.05127563, g: 0.04646734, b: 0.046894267, a: 1}
+  m_IndirectSpecularColor: {r: 0.051275644, g: 0.046467345, b: 0.046894267, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1767,7 +1767,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2143644381 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4827832646444108628, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 2143644379}
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &2143644382 stripped
