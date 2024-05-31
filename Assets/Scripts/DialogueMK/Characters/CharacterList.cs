@@ -4,9 +4,9 @@ public enum CharacterList
     Moira,
     Galho,
     Helder,
-    NPC_1,
-    NPC_2,
-    NPC_3,
-    NPC_4,
-    NPC_5
+    Celinda,
+    NPC_A,
+    NPC_B,
+    NPC_C,
+    NPC_D
 }

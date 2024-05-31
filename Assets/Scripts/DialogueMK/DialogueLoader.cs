@@ -17,8 +17,10 @@ public class DialogueLoader : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtChar1;
     [SerializeField] TextMeshProUGUI txtChar2;
     
+    [SerializeField] GameObject charName1;
+    [SerializeField] GameObject charName2;
+    
     // Gotta be smart
-    [SerializeField] TextMeshProUGUI CharDialogue;
     [SerializeField] TextMeshProUGUI Dialogues;
 
     int DialoguePage;
@@ -70,7 +72,6 @@ public class DialogueLoader : MonoBehaviour
                 DialoguePage++;
 
             string charName = DialogueToLoad.AllDialogues[DialoguePage].CharName.ToString();
-            CharDialogue.text = charName + ":";
             Dialogues.text = DialogueToLoad.AllDialogues[DialoguePage].Dialogue;
             
             // If the name in the list is the same as one of the objects, use that object 
@@ -80,9 +81,17 @@ public class DialogueLoader : MonoBehaviour
 
             // 1st is change, 2nd to put normal (gets weird without)
             if (charName == txtChar1.text)
+            {
                 ChangeCharExpression(DialogueToLoad.Char1, DialogueToLoad.Char2, imgChar1, imgChar2);
+                charName1.SetActive(true);
+                charName2.SetActive(false);
+            }
             else if (charName == txtChar2.text)
+            {
                 ChangeCharExpression(DialogueToLoad.Char2, DialogueToLoad.Char1, imgChar2, imgChar1);
+                charName1.SetActive(false);
+                charName2.SetActive(true);
+            }
             else
                 Debug.Log("Check if names equal in CharacterList and ScriptableObject");
 
