@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueLoader : MonoBehaviour
 {
-    // Get the ScriptableObject
-    [SerializeField] DialogCreation DialogueToLoad;
+    // Get the ScriptableObject static
+    public static DialogCreation DialogueToLoad;
 
     // Fields to fill
     [SerializeField] Image background;
@@ -68,7 +69,9 @@ public class DialogueLoader : MonoBehaviour
             if (changePage == false && DialoguePage != 0)
                 DialoguePage--;
 
-            if (changePage == true && !(DialoguePage >= DialogueToLoad.AllDialogues.Count-1))
+            if (DialoguePage == DialogueToLoad.AllDialogues.Count-1)
+                SceneManager.LoadScene(DialogueToLoad.SceneToGo);
+            else if (changePage == true && !(DialoguePage > DialogueToLoad.AllDialogues.Count-1))
                 DialoguePage++;
 
             string charName = DialogueToLoad.AllDialogues[DialoguePage].CharName.ToString();

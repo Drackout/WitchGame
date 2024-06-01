@@ -14383,6 +14383,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5852005748223082566, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f4022ca13c854340858e97cbb9ce7a9, type: 2}
+    - target: {fileID: 5852005748223082566, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: audioSrc
       value: 
@@ -14478,6 +14486,18 @@ PrefabInstance:
     - target: {fileID: 7147594105984784649, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263340308412941045, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263340308412941045, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263340308412941045, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: DialogCreation, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7892070718083752496, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_AnchorMax.y

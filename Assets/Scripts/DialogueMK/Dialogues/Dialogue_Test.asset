@@ -28,4 +28,4 @@ MonoBehaviour:
   - CharName: 2
     CharEmotion: 2
     Dialogue: '[Nod, nod]'
-  SceneToGo: UI Scene
+  SceneToGo: MainMenu

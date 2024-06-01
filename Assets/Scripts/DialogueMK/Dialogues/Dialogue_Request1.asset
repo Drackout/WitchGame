@@ -28,4 +28,4 @@ MonoBehaviour:
   - CharName: 4
     CharEmotion: 0
     Dialogue: D4
-  SceneToGo: Scene End
+  SceneToGo: MainMenu
