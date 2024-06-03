@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DialogueMK.unity
     guid: a6ba4bece4c96894992161b7562e7134
+  - enabled: 1
+    path: Assets/Scenes/WitchAgram.unity
+    guid: 996524596e7e3e54880f91e374fbed02
   m_configObjects: {}

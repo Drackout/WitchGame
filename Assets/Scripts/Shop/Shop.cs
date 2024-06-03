@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button RequestScreenButton;
+    [SerializeField] private Button WitchAgramButton;
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private TMP_Text fireStonesText;
     [SerializeField] private TMP_Text waterStonesText;
@@ -14,14 +16,21 @@ public class Shop : MonoBehaviour
     
     PlayerResources pr = PlayerResources.Instance;
 
-    public void GoToMainMenu()
+    public void GoToRequests()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("RequestsScreen");
+    }    
+
+    public void GoToWitchAgram()
+    {
+        SceneManager.LoadScene("WitchAgram");
     }
 
     private void Start()
     {
         mainMenuButton.onClick.AddListener(LoadMainMenu);
+        RequestScreenButton.onClick.AddListener(GoToRequests);
+        WitchAgramButton.onClick.AddListener(GoToWitchAgram);
         //fireStonesText.text = $"Fire Stones: {pr.GetStones(Element.Fire)}";
         //waterStonesText.text = $"Water Stones: {pr.GetStones(Element.Water)}";
         //grassStonesText.text = $"Grass Stones: {pr.GetStones(Element.Grass)}";
@@ -31,7 +40,7 @@ public class Shop : MonoBehaviour
     private void Update()
     {
         //PlayerResources pr = PlayerResources.Instance;
-        goldText.text = $"{pr.Gold}";
+        //goldText.text = $"{pr.Gold}";
     }
     
     private void LoadMainMenu()
