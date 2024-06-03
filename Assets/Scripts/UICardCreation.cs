@@ -53,25 +53,32 @@ public class UICardCreation : MonoBehaviour
     
     [SerializeField] private Sprite[] cardImages;
     [SerializeField] private Image Image;
+    [SerializeField] private Image ImageShadow;
 
     private GameObject activeIcon;
     private int cardNumber;
 
     public Slider SliderDissolver;
     private Material material;
+    private Material materialShadow;
 
 
     private void Awake()
     {
-        Image image = GetComponent<Image>();
-        material = new Material(image.material);
-        image.material = material;
+        Image image2 = Image.GetComponent<Image>();
+        material = new Material(image2.material);
+        image2.material = material;
+        
+        Image imageS = ImageShadow.GetComponent<Image>();
+        materialShadow = new Material(imageS.material);
+        imageS.material = materialShadow;
     }
 
     private void Update()
     {
         //Debug.Log(SliderDissolver.value);
         material.SetFloat("_Level", SliderDissolver.value);
+        materialShadow.SetFloat("_Level", SliderDissolver.value);
     }
 
 
@@ -80,8 +87,9 @@ public class UICardCreation : MonoBehaviour
         if (cardImages.Length > 0)
         {
             Image.sprite = cardImages[UnityEngine.Random.Range(0, cardImages.Length)];
-            
+            ImageShadow.sprite = Image.sprite;
         }
+        
         
         if (activeIcon != null)
             Destroy(activeIcon);
@@ -179,18 +187,27 @@ public class UICardCreation : MonoBehaviour
             powerCircle.sprite = circleFire;
             material.SetColor("_EdgeColour1", FireEdge1); 
             material.SetColor("_EdgeColour2", FireEdge2); 
+            
+            materialShadow.SetColor("_EdgeColour1", Color.black); 
+            materialShadow.SetColor("_EdgeColour2", Color.black); 
         }
         if (toShow.Element == Element.Grass)
          {
             powerCircle.sprite = circleGrass;   
             material.SetColor("_EdgeColour1", GrassEdge1); 
             material.SetColor("_EdgeColour2", GrassEdge2); 
+            
+            materialShadow.SetColor("_EdgeColour1", Color.black); 
+            materialShadow.SetColor("_EdgeColour2", Color.black); 
          }   
         if (toShow.Element == Element.Water)
         {
             powerCircle.sprite = circleWater;
             material.SetColor("_EdgeColour1", WaterEdge1); 
             material.SetColor("_EdgeColour2", WaterEdge2); 
+            
+            materialShadow.SetColor("_EdgeColour1", Color.black); 
+            materialShadow.SetColor("_EdgeColour2", Color.black); 
         }
 
         cardNumber = Convert.ToInt16(powerNumber.text);
@@ -266,5 +283,6 @@ public class UICardCreation : MonoBehaviour
     public void changeMaterialEdge(float val)
     {
         material.SetFloat("_Edges", val);
+        materialShadow.SetFloat("_Edges", val);
     }
 }
