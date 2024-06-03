@@ -3377,6 +3377,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.76862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.8862745
+      objectReference: {fileID: 0}
     - target: {fileID: 3047449449335719066, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 10.5
