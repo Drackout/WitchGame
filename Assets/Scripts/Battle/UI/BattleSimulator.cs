@@ -199,6 +199,10 @@ public class BattleSimulator : MonoBehaviour
             playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
             yield return RunBattle(battle, counter >= request.encounters.Length - 1, creatureSources);
+            if (battle.Witch.Health == 0)
+            {
+                yield break;
+            }
             counter += 1;
         }
 
