@@ -3447,7 +3447,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 609314512606570452, guid: 3226f40e106e6ba41b520199dab2b0e1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1025079882219274712, guid: 3226f40e106e6ba41b520199dab2b0e1, type: 3}
       propertyPath: m_Sprite
@@ -3565,11 +3565,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6766639706320983938, guid: 3226f40e106e6ba41b520199dab2b0e1, type: 3}
       propertyPath: m_text
-      value: 999
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6882156754718985707, guid: 3226f40e106e6ba41b520199dab2b0e1, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6882156754718985707, guid: 3226f40e106e6ba41b520199dab2b0e1, type: 3}
       propertyPath: m_Colors.m_DisabledColor.a
