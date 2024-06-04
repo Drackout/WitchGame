@@ -8,6 +8,7 @@ public class LootTable : ScriptableObject
 {
     [SerializeField] private CreatureLootConfig[] entries;
     [SerializeField] private Item defaultItem;
+    [SerializeField] private Item goldItem;
 
     public (Item item, int amount) RollLoot(EnemyCreature creature)
     {
@@ -37,6 +38,19 @@ public class LootTable : ScriptableObject
         }
 
         return (defaultItem, 0);
+    }
+
+    public (Item item, int amount) GetGold(EnemyCreature creature)
+    {
+        CreatureLootConfig config = Array.Find(entries,
+            (CreatureLootConfig c) => c.creature == creature);
+
+        if (config == null)
+        {
+            return (goldItem, 0);
+        }
+
+        return (goldItem, config.gold);
     }
 
     private int CompareByRate(ItemRateEntry a, ItemRateEntry b)

@@ -401,6 +401,9 @@ public class BattleSimulator : MonoBehaviour
                             (Item item, int amount) = BattleSettings.Instance.LootTable.RollLoot(creature);
                             lootObtained.Add((item, amount));
 
+                            (Item goldItem, int gold) = BattleSettings.Instance.LootTable.GetGold(creature);
+                            lootObtained.Add((goldItem, gold));
+
                             yield return new WaitForSeconds(2f);
 
                             creatureElements[ev.Target].gameObject.SetActive(false);
@@ -677,9 +680,17 @@ public class BattleSimulator : MonoBehaviour
         PlayerResources pr = PlayerResources.Instance;
         foreach ((Item item, int amount) in lootObtained)
         {
-            for (int i = 0; i < amount; i++)
+            if (item is GoldItem gold)
             {
-                pr.Obtain(item);
+                pr.Gold = pr.Gold + amount;
+                Debug.Log($"Gained {amount} gold (total: {pr.Gold})");
+            }
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    pr.Obtain(item);
+                }
             }
         }
         lootObtained.Clear();
