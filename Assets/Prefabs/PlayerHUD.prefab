@@ -1971,11 +1971,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8540739927456451004}
         m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: LoadMainMenu
-        m_Mode: 1
+        m_MethodName: LoadCutscene
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 6927544f38654954382140c5470b9bfa, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DialogCreation, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6686,7 +6686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6694,15 +6694,15 @@ PrefabInstance:
       objectReference: {fileID: 8540739927456451004}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
+      value: LoadCutscene
       objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6927544f38654954382140c5470b9bfa, type: 2}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: DialogCreation, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5314446845681726573, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_AnchorMax.x
