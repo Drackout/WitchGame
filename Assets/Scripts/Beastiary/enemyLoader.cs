@@ -17,12 +17,12 @@ public class enemyLoader : MonoBehaviour
 
     IList<enemyList> myths = new List<enemyList>
     {
-        new enemyList("0", "Homem Galho", "Há relatos de uma estranha criatura que vive na floresta junto à aldeia do Pessegueiro. Chamam-lhe o “Homem Galho” e descrevem-no como um ser humanoide extremamente alto e magro, cujos membros se assemelham a galhos de árvores, tendo o rosto parcialmente coberto por musgo. \n\n Quem o viu, afirma que ele fica perplexo a olhar para as pessoas durante alguns instantes, antes de mergulhar na floresta, ouvindo-se sempre um ruído estranho.",
+        new enemyList("0", "Homem do Galho", "There are reports of a strange creature that lives in the woods near Pampilhosa da Serra. They call this creature “Homem do Galho” and describe him as a human-like figure, extremely tall and skinny. His limbs look like tree branches and his face is covered in moss. . \n\n Who claims to have seen him says he stands still looking at people for a few seconds before hiding back into the woods, he is always accompanied by a weird growl.",
         Element.Grass, Element.Water, Element.Fire),
 
-        new enemyList("1", "Dragão Volante", "É o nome que em Portugal se dá a um meteoro com a forma de um dragão voador. \n\n Chama-se também dragão volante ao fogo aceso em nuvens enroscadas que por vezes faiscam e formam a figura de um dragão.", Element.Fire, Element.Grass, Element.Water),
+        new enemyList("1", "Dragão Volante", "It used to be the common name by Portuguese people to meteors. They thought these were flying dragons, therefore the name. \n\n Nowadays people know what meteors are, but older generations still refer to them as “Dragões Volantes” ", Element.Fire, Element.Grass, Element.Water),
 
-        new enemyList("2", "Adamastor Tentacle", "Ameaçando os Portugueses com naufrágios, perdições de toda a sorte/Que o menor mal de todos seja a morte. \n\nEspera suma vingança de quem o descobriu.", Element.Water, Element.Fire, Element.Grass)
+        new enemyList("2", "Adamastor's Tentacle", "A threat to Portuguese sailors during the XV century. This creature was responsible for most of the shipwrecks in “Cabo das Tormentas” or as it is known now Cape of good hope. \n\n Sailors believe to have defeated Adamastor when they traversed the cape, but he is just waiting for his revenge.", Element.Water, Element.Fire, Element.Grass)
     };
 
 
