@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 771292886332781556, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 109.90001
+      value: -139
       objectReference: {fileID: 0}
     - target: {fileID: 984533352227675693, guid: f94afebb2e252e348ae6585ceb3278b5, type: 3}
       propertyPath: m_SortingLayer
