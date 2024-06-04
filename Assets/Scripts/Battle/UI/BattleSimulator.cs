@@ -47,6 +47,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private HoldDropArea holdDropArea;
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
+    [SerializeField] private LootWindow lootWindow;
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
@@ -671,6 +672,7 @@ public class BattleSimulator : MonoBehaviour
     private void FinishRequest()
     {
         PlayAnimation("Win", "", "");
+        lootWindow.Loot = lootObtained;
 
         PlayerResources pr = PlayerResources.Instance;
         foreach ((Item item, int amount) in lootObtained)

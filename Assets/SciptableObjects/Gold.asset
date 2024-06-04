@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43952f8cf1caa60459c27555e509b8bf, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 7701229636634820231, guid: 74751923b02b8c64fac3642afd900e4a, type: 3}

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebaf7b15ba556f458b50402c0a332c0, type: 3}
   m_Name: WaterStone
   m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 3685505199429715123, guid: 704a1b5a2f60d8648bfd866ed396566e, type: 3}
   element: 3
