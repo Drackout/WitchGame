@@ -284,9 +284,6 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case PlayCardEvent ev:
                 {
-                    Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
-                    // Change the 1 for the played card ID
-
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
 
                     //play soundfx
@@ -362,9 +359,7 @@ public class BattleSimulator : MonoBehaviour
 
                         Animator[] EnemyAllAnimators;
                         EnemyAllAnimators = creature3dElements[ev.Target].GetComponentsInChildren<Animator>();
-                        // So far getting parent and child cause of getComponent
                         // Attack animations
-                        Debug.Log("REEEE: " + ev.DamageTag);
                         if (ev.DamageTag == "melee")
                         {
                             if (ev.Element.ToString() == "Fire")
