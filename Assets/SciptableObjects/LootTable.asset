@@ -24,7 +24,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 3ffac99d38fb40f4cbca683dbcb03901, type: 2}
       amount: 1
       rate: 0.2
-    gold: 8
+    gold: 5
   - creature: {fileID: 11400000, guid: 1c41b7b0d206f034f8f1ac265f17fe58, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: e03b00b6597d15b42a9625d455059195, type: 2}
@@ -36,7 +36,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 7ae8bbf2ee43ed74088b33efad458943, type: 2}
       amount: 1
       rate: 0.5
-    gold: 0
+    gold: 10
   - creature: {fileID: 11400000, guid: ee338a6501b925f4e9c710c9c6069d43, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: 0c8ad13e2f506664989a6581836d1a57, type: 2}
@@ -45,7 +45,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: fcba88f8087643e429f463db880f48ed, type: 2}
       amount: 2
       rate: 0.5
-    gold: 0
+    gold: 2
   - creature: {fileID: 11400000, guid: abf17df78baf7bb4aae5ba63de0ba241, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: fc6143fe4ea0b304bb2f4419148be93e, type: 2}
@@ -57,7 +57,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 4d27e158655b6e04b8eef4a990197497, type: 2}
       amount: 1
       rate: 0.3
-    gold: 8
+    gold: 3
   - creature: {fileID: 11400000, guid: 2651b502ea7dba540ba368e58c1b70e6, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: e03b00b6597d15b42a9625d455059195, type: 2}
@@ -69,7 +69,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: d211220fe89ef824c8f8543fd7e9cf1c, type: 2}
       amount: 2
       rate: 0.5
-    gold: 0
+    gold: 5
   - creature: {fileID: 11400000, guid: 9cf801c0c710df24a9a66ca953cc7137, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: 0c8ad13e2f506664989a6581836d1a57, type: 2}
@@ -78,7 +78,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: fcba88f8087643e429f463db880f48ed, type: 2}
       amount: 1
       rate: 0.5
-    gold: 0
+    gold: 1
   - creature: {fileID: 11400000, guid: 817eb3d7c7171964981d139157bc0393, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: 0c8ad13e2f506664989a6581836d1a57, type: 2}
@@ -90,7 +90,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 44bf790acfa742141aa7a3d3c2d2c682, type: 2}
       amount: 2
       rate: 0.3
-    gold: 0
+    gold: 8
   - creature: {fileID: 11400000, guid: f442b874c90763e4f8cef8ffc8256337, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: e03b00b6597d15b42a9625d455059195, type: 2}
@@ -102,7 +102,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 7eefbad3b10f6084d88007303c81a0ee, type: 2}
       amount: 1
       rate: 0.2
-    gold: 0
+    gold: 15
   - creature: {fileID: 11400000, guid: be0d6b506431ea64188ff646d72ba75f, type: 2}
     itemRates:
     - item: {fileID: 11400000, guid: 0c8ad13e2f506664989a6581836d1a57, type: 2}
@@ -111,6 +111,6 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 7351ee20de5f4cb49870d56f402e7bbe, type: 2}
       amount: 1
       rate: 0.5
-    gold: 0
+    gold: 4
   defaultItem: {fileID: 11400000, guid: c2d3beb7e02c97841be6b009fe88a4e3, type: 2}
   goldItem: {fileID: 11400000, guid: 9107cc14906829e43b34d0fc91b88625, type: 2}

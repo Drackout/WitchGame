@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebaf7b15ba556f458b50402c0a332c0, type: 3}
   m_Name: FireStone
   m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 7498604782606591383, guid: 3529884b279273943a9e1a1683461254, type: 3}
   element: 1

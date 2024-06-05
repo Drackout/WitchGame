@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f909183cf7e3a45a4db3b9ddf55857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
   spriteRenderer: {fileID: 5782287051207476456}
   minThickness: 4
   maxThickness: 15

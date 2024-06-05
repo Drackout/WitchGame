@@ -47,6 +47,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private HoldDropArea holdDropArea;
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
+    [SerializeField] private LootWindow lootWindow;
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
@@ -198,6 +199,10 @@ public class BattleSimulator : MonoBehaviour
             playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
 
             yield return RunBattle(battle, counter >= request.encounters.Length - 1, creatureSources);
+            if (battle.Witch.Health == 0)
+            {
+                yield break;
+            }
             counter += 1;
         }
 
@@ -284,9 +289,6 @@ public class BattleSimulator : MonoBehaviour
                     break;
                 case PlayCardEvent ev:
                 {
-                    Debug.Log("PLAYING CARD!!: "); /////// DO the card dissolve borders next.. 
-                    // Change the 1 for the played card ID
-
                     Transform cardTransform = cardContainer.transform.GetChild(ev.Index);
 
                     //play soundfx
@@ -362,9 +364,7 @@ public class BattleSimulator : MonoBehaviour
 
                         Animator[] EnemyAllAnimators;
                         EnemyAllAnimators = creature3dElements[ev.Target].GetComponentsInChildren<Animator>();
-                        // So far getting parent and child cause of getComponent
                         // Attack animations
-                        Debug.Log("REEEE: " + ev.DamageTag);
                         if (ev.DamageTag == "melee")
                         {
                             if (ev.Element.ToString() == "Fire")
@@ -676,6 +676,7 @@ public class BattleSimulator : MonoBehaviour
     private void FinishRequest()
     {
         PlayAnimation("Win", "", "");
+        lootWindow.Loot = lootObtained;
 
         PlayerResources pr = PlayerResources.Instance;
         foreach ((Item item, int amount) in lootObtained)

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824bbdb370bb8334e9fa9d26a900f3e6, type: 3}
   m_Name: NeutralShield4
   m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 3652981798912151269, guid: 63fc38927919e6d42bd261e9588d73ca, type: 3}
   element: 0
   type: 3
   power: 4

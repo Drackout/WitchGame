@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private GameObject trackerPrefab;
     [SerializeField] private GameObject trackerParent;
+    [SerializeField] private GameObject imgToLock;
+    [SerializeField] private GameObject HoldBlink;
 
     private Vector3 initialPosition;
     private GameObject activeTracker;
@@ -16,6 +19,8 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        imgToLock.SetActive(true);
+        HoldBlink.SetActive(true);
         initialPosition = transform.position;
         CreateTracker();
         animator.SetBool("Dragged", true);
@@ -29,6 +34,8 @@ public class BattleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        imgToLock.SetActive(false);
+        HoldBlink.SetActive(false);
         transform.position = initialPosition;
         Destroy(activeTracker);
         activeTracker = null;

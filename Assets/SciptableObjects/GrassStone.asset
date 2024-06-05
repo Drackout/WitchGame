@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebaf7b15ba556f458b50402c0a332c0, type: 3}
   m_Name: GrassStone
   m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 2698151990225140831, guid: 951a027ce6ed5364fafe502a7ab3df19, type: 3}
   element: 2

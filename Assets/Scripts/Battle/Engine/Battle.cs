@@ -105,6 +105,11 @@ public class Battle
 
     private void RetireDeadCreatures()
     {
+        int prevCount = turnOrder.Count;
         turnOrder = new List<Battler>(turnOrder.Where(b => b.Health > 0));
+        if (prevCount != turnOrder.Count)
+        {
+            turnCounter = (turnCounter + 1) % turnOrder.Count;
+        }
     }
 }
