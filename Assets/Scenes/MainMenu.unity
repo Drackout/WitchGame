@@ -3307,7 +3307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a28dd09c665026942b4e9c6a362855c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.067
+      value: -4.054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a28dd09c665026942b4e9c6a362855c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5151,6 +5151,10 @@ PrefabInstance:
     - target: {fileID: -328051187951168644, guid: 7c37102c903d8384fbb445dc6ae34750, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -296133817489608207, guid: 7c37102c903d8384fbb445dc6ae34750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.842
       objectReference: {fileID: 0}
     - target: {fileID: -255056390806012802, guid: 7c37102c903d8384fbb445dc6ae34750, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11108,8 +11112,6 @@ MonoBehaviour:
   promptButton: {fileID: 1523957872}
   confirmButton: {fileID: 1106339781}
   cancelButton: {fileID: 1181006274}
-  promptText: {fileID: 822385969}
-  successText: {fileID: 22457767}
   states:
   - {fileID: 1364472238}
   - {fileID: 1460261891}
