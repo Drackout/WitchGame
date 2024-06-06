@@ -52,7 +52,7 @@ public class DialogueLoader : MonoBehaviour
         // Initial information Load
         background.sprite = DialogueToLoad.Background;
         imgChar1.sprite = DialogueToLoad.Char1.img_Normal;
-        imgChar2.sprite = DialogueToLoad.Char2.img_Normal;
+        imgChar2.sprite = DialogueToLoad.Char2.img_None;
         txtChar1.text = DialogueToLoad.Char1.Name;
         txtChar2.text = DialogueToLoad.Char2.Name;
         
@@ -70,7 +70,7 @@ public class DialogueLoader : MonoBehaviour
                 DialoguePage--;
 
             if (DialoguePage == DialogueToLoad.AllDialogues.Count-1)
-                SceneManager.LoadScene(DialogueToLoad.SceneToGo);
+                EndDialogue();
             else if (changePage == true && !(DialoguePage > DialogueToLoad.AllDialogues.Count-1))
                 DialoguePage++;
 
@@ -81,6 +81,11 @@ public class DialogueLoader : MonoBehaviour
             // Yes it sux if things aren't as == as should be
             Debug.Log("charDiag: " + charName + ", txtChar1: " + txtChar1.text);
             Debug.Log("charDiag: " + charName + ", txtChar2: " + txtChar2.text);
+
+            if (charName != "Moira")
+            {
+                txtChar2.text = charName;
+            }
 
             // 1st is change, 2nd to put normal (gets weird without)
             if (charName == txtChar1.text)
@@ -97,7 +102,6 @@ public class DialogueLoader : MonoBehaviour
             }
             else
                 Debug.Log("Check if names equal in CharacterList and ScriptableObject");
-
         }
         else
         {
@@ -118,9 +122,18 @@ public class DialogueLoader : MonoBehaviour
                 CharToEmote.sprite = CharacterEmote.img_Sad; break;
             case CharacterEmotions.Angry:
                 CharToEmote.sprite = CharacterEmote.img_Angry; break;
+            case CharacterEmotions.None:
+                CharToEmote.sprite = CharacterEmote.img_None; break;
             default:
                 CharToEmote.sprite = CharacterEmote.img_Normal; break;
         }
-        CharToNormal.sprite = CharacterNormal.img_Normal; 
+        // If it needs the char not talking to reset to normal
+        //CharToNormal.sprite = CharacterNormal.img_Normal; 
     }
+
+    public void EndDialogue()
+    {
+        SceneManager.LoadScene(DialogueToLoad.SceneToGo);
+    }
+
 }

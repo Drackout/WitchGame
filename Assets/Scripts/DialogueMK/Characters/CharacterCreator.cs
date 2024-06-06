@@ -11,4 +11,5 @@ public class CharacterCreator : Item
     public Sprite img_Happy;
     public Sprite img_Angry;
     public Sprite img_Sad;
+    public Sprite img_None;
 }

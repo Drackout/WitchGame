@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_02_Medium
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: 1335f06989f70d5458a35070221f580f, type: 2}
+  Background: {fileID: 21300000, guid: 27a18ff31458f6c40a13db2eb862bfff, type: 3}
+  AllDialogues:
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[A Subway worker appears after Moira defeats all the monsters.]'
+  - CharName: 6
+    CharEmotion: 0
+    Dialogue: Thanks miss, that was a really weird situation.
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "You\u2019re welcome\u2026 I\u2019m glad I was able to help!"
+  - CharName: 6
+    CharEmotion: 0
+    Dialogue: Would you help me mop all this water too?
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "Ahm\u2026 yeah no that\u2019s not really my department\u2026 I kind
+      of only fight monsters\u2026"
+  - CharName: 6
+    CharEmotion: 0
+    Dialogue: '[NPC slowly takes out a mop]'
+  - CharName: 6
+    CharEmotion: 0
+    Dialogue: "No one ever helps me clean but they all expect everything to be sparkl\u2019ng\u2026"
+  SceneToGo: MainMenu

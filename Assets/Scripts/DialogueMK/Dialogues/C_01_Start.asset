@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_01_Start
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: b388bb0dd1e648d4e88d1027d2fee998, type: 2}
+  Background: {fileID: 21300000, guid: 299f9cc81f00e6e4998f92fae7a9f0c8, type: 3}
+  AllDialogues:
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "Moira! You\u2019ve finally arrived, I was waiting for you."
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "Come on in, I\u2019ve already prepared most of your room, all you
+      need to do is unpack the rest."
+  - CharName: 1
+    CharEmotion: 1
+    Dialogue: "Grandma! We haven\u2019t talked in so long, how have you been?"
+  - CharName: 1
+    CharEmotion: 1
+    Dialogue: 'Oh and thank you soooo much for helping me settle in! '
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "You already know dear, can\u2019t go all that far nowadays. Oh but
+      believe me! I used to go everywhere I could."
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "I still remember all the stories you used to tell me, I guess I couldn\u2019t
+      resist staying away from them any longer!"
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "You\u2019re such a sweetheart. Here I'll make you some cookies and
+      we ca-."
+  - CharName: 4
+    CharEmotion: 0
+    Dialogue: "And the fire is still raging on, the firefighters are all positioned
+      further ahead to prevent the spread but there\u2019s some fronts here left
+      unguarded. We have issued some requests already, hoping some magic users can
+      come help."
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "Oh geez that seems quite troubling, hmm I would go but I can\u2019t
+      really help much in my old age."
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "No worries Grandma, I can go! I\u2019m here for a couple of hours
+      and I\u2019m already helping out!"
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "Yes dear but please be careful, don\u2019t throw yourself at something
+      you can\u2019t "
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "Don\u2019t worry grandma I got this!"
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "[Moira opens an Internet browser on her computer as fast as she can]
+      Let me just check where the fire is\u2026"
+  SceneToGo: UI Scene

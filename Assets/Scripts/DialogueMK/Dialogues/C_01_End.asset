@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_01_End
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: 16116366cc646bf43bf237e2dd179cba, type: 2}
+  Background: {fileID: 21300000, guid: d9066c55c07353b49b933cd25719d57d, type: 3}
+  AllDialogues:
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "Those little fire balls were tough\u2026"
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[Moira takes a deep breath composing herself as journalists rush towards
+      her]'
+  - CharName: 5
+    CharEmotion: 4
+    Dialogue: "And here we have another brave magic user who just put out this whole
+      front by herself! -Excuse me, ma\u2019am! How did you manage to do it?"
+  - CharName: 1
+    CharEmotion: 1
+    Dialogue: Oh ahh hi! It was nothing really, just the least I could do.
+  - CharName: 6
+    CharEmotion: 4
+    Dialogue: Such a modest person you are! What 's your name?
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "Oh I\u2019m Moira, I\u2026"
+  - CharName: 5
+    CharEmotion: 4
+    Dialogue: Celinda ! Celinda! Over here
+  - CharName: 4
+    CharEmotion: 0
+    Dialogue: '[The woman ignores them and gets closer to Moira]'
+  - CharName: 4
+    CharEmotion: 0
+    Dialogue: "Moira you say? Moira here did a lovely job. If it wasn\u2019t for
+      her this could have definitely gotten ugly! Luckily we were both here right
+      Moira?"
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[Moira is  surprised, but plays along]'
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: Oh, Celinda! Is Moira your new apprentice? Was she helping you with
+      the fire?
+  - CharName: 4
+    CharEmotion: 0
+    Dialogue: "Well no, I guess we were just both here\u2026 right place, right time
+      I suppose. But let\u2019s not focus on me when we have a real hero here!"
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[As the journalists continue their questions, Moira exchanges a look
+      with Celinda]'
+  SceneToGo: MainMenu

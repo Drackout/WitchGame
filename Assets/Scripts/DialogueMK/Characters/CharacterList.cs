@@ -2,7 +2,7 @@ public enum CharacterList
 {
     None,
     Moira,
-    Galho,
+    Grandma,
     Helder,
     Celinda,
     NPC_A,

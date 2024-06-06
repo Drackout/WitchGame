@@ -676,6 +676,22 @@ PrefabInstance:
       propertyPath: easyButton
       value: 
       objectReference: {fileID: 931942875347068463}
+    - target: {fileID: 859401232806092255, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: diag1.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 859401232806092255, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: diag1.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c5cc1a93aec9d44eafb62d7cb859453, type: 2}
+    - target: {fileID: 859401232806092255, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: listOfDialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 859401232806092255, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
+      propertyPath: listOfDialogues.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c5cc1a93aec9d44eafb62d7cb859453, type: 2}
     - target: {fileID: 1073605355932902249, guid: 0ec6d19909b9a234594dafe74fde4ccd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -91,6 +91,11 @@ public class BattleSettings : MonoBehaviour
         return currentRequest.encounters[0].enemies;
     }
 
+    public int getStageIndex()
+    {
+        return stageIndex;
+    }
+
     private void LoadFromSave()
     {
         SaveManager sm = SaveManager.Instance;

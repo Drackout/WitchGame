@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_02_Easy
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: 8bd251cc0f49a0645a288debe177d9ee, type: 2}
+  Background: {fileID: 21300000, guid: 3da5c4f17c3d13d43b82dc993858ce7f, type: 3}
+  AllDialogues:
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[The battle ends, Moira breathes heavily.  An old woman from a building
+      nearby opens a window.]'
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: '[She asks with a soft tone] Are they all gone?'
+  - CharName: 1
+    CharEmotion: 3
+    Dialogue: "Yes, sorry for all the commotion, hope I didn\u2019t make too much
+      noise."
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: "What? Sorry dear you\u2019ll have to speak louder"
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "Guess not\u2026"
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: "Wha? Louder dear, my ears aren\u2019t what they used to be."
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: HAVE A GOOD NIGHT!
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: "You too dear\u2026 I\u2019ll go back to my soap opera now\u2026"
+  - CharName: 5
+    CharEmotion: 0
+    Dialogue: '[The old woman closes her window and returns to her couch as Moira
+      heads back home] '
+  SceneToGo: MainMenu
