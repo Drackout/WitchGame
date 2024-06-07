@@ -15,7 +15,7 @@ MonoBehaviour:
   encounters:
   - {fileID: 11400000, guid: 35b3ae7ccad9579409283e6e3ac0b0cb, type: 2}
   - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
-  battleScene: LisbonStreet
+  battleScene: Street_02
   location: Street
   story: "A monster stole my \u201CI <3 Lisboa\u201D shirt. Please someone go stop
     this bandit! And mail me my shirt back\u2026 if possible\u2026"
