@@ -3582,16 +3582,28 @@ PrefabInstance:
       value: Particle System
       objectReference: {fileID: 0}
     - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1237
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1237
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6507881
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.56
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65
+      value: 3.81
       objectReference: {fileID: 0}
     - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.95
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 8830598609934796320, guid: b0704e2fb245e5a4bb0152d90c368855, type: 3}
       propertyPath: m_LocalRotation.w
