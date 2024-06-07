@@ -6,4 +6,5 @@ using UnityEngine;
 public class SeenDialogue : Item
 {
     public bool[] seenDialogues;
+    public string difficultyControl;
 }

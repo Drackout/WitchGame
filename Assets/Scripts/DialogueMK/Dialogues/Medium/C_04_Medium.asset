@@ -15,7 +15,7 @@ MonoBehaviour:
   lootPrefab: {fileID: 0}
   Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
   Char2: {fileID: 11400000, guid: d29eb86762f7f5f4aa98331aef0079a0, type: 2}
-  Background: {fileID: 21300000, guid: 2f0269f3354064645b7bfed3391b588a, type: 3}
+  Background: {fileID: 21300000, guid: 3da5c4f17c3d13d43b82dc993858ce7f, type: 3}
   AllDialogues:
   - CharName: 1
     CharEmotion: 0

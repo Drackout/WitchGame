@@ -8,7 +8,7 @@ public class RequestScreen : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
-    //[SerializeField] private DialogCreation[] diag1;
+    [SerializeField] private SeenDialogue GetDifficulty;
     //[SerializeField] private DialogCreation[] diag2;
     //[SerializeField] private DialogCreation[] diag3;
     //[SerializeField] private DialogCreation[] diag4;
@@ -25,8 +25,10 @@ public class RequestScreen : MonoBehaviour
     {
         BattleSettings settings = BattleSettings.Instance;
 
-        //Debug.Log("What stage?: " + settings.getStageIndex());
-        //Debug.Log("difficulty?: " + difficulty.ToString());
+        Debug.Log("What stage?: " + settings.getStageIndex());
+        Debug.Log("difficulty?: " + difficulty.ToString());
+
+        GetDifficulty.difficultyControl = difficulty.ToString();
 
         settings.ChooseRequest(difficulty);
 

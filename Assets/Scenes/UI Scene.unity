@@ -14043,9 +14043,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1868563793329614355, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868563793329614355, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 6ba2f5cd14d687347b94789989f561d7, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868563793329614355, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2011969806371882633, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: m_Value
       value: 1

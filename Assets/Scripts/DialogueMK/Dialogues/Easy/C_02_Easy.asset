@@ -25,14 +25,14 @@ MonoBehaviour:
     CharEmotion: 0
     Dialogue: '[She asks with a soft tone] Are they all gone?'
   - CharName: 1
-    CharEmotion: 3
+    CharEmotion: 0
     Dialogue: "Yes, sorry for all the commotion, hope I didn\u2019t make too much
       noise."
   - CharName: 5
     CharEmotion: 0
     Dialogue: "What? Sorry dear you\u2019ll have to speak louder"
   - CharName: 1
-    CharEmotion: 0
+    CharEmotion: 3
     Dialogue: "Guess not\u2026"
   - CharName: 5
     CharEmotion: 0

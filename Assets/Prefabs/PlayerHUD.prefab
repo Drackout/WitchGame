@@ -1440,6 +1440,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dca2a8bf05ab7f4fb4053be561a12bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GetDifficulty: {fileID: 11400000, guid: de6a04a0d312f9748970acac1a4cb19d, type: 2}
+  EasyDials:
+  - {fileID: 11400000, guid: fdf8e3f43f6296e47b6ada5d99136b85, type: 2}
+  - {fileID: 11400000, guid: 772ab8e96e125624dbaf62b3d56a513e, type: 2}
+  - {fileID: 11400000, guid: 4ec481ad13731b24eb1310232f0fd9a4, type: 2}
+  NormalDials:
+  - {fileID: 11400000, guid: 09799b9f4e95f8148ba803efddb1c2f2, type: 2}
+  - {fileID: 11400000, guid: 6401b50aaf46dba4a96ec0eb921f3824, type: 2}
+  - {fileID: 11400000, guid: b811b3d51ec144f48a8a0890ff043b75, type: 2}
+  HardDials:
+  - {fileID: 11400000, guid: ea1ce25ede2b92944bccce718422f86c, type: 2}
+  - {fileID: 11400000, guid: 1da7a0ff3cfcdc049aee200bb0be1b3e, type: 2}
+  - {fileID: 11400000, guid: f47711047ee4ceb4c86509f835b1619d, type: 2}
+  CannonDials:
+  - {fileID: 11400000, guid: 6ba2f5cd14d687347b94789989f561d7, type: 2}
+  - {fileID: 11400000, guid: 7e6c2193082ea6847b6863e1f3d45544, type: 2}
 --- !u!1 &1985065531431823235
 GameObject:
   m_ObjectHideFlags: 0
@@ -6704,7 +6720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6717,10 +6733,10 @@ PrefabInstance:
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 6927544f38654954382140c5470b9bfa, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4139555083270474546, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: DialogCreation, Assembly-CSharp
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5314446845681726573, guid: e9c787179531489418139d80aafc8b98, type: 3}
       propertyPath: m_AnchorMax.x

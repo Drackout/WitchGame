@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 0}
   seenDialogues: 010100010001
+  difficultyControl: aaa
