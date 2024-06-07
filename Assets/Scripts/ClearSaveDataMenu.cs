@@ -9,6 +9,7 @@ public class ClearSaveDataMenu : MonoBehaviour
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject[] states;
+    [SerializeField] private SeenDialogue MMDialogues;
 
     private void Start()
     {
@@ -48,6 +49,10 @@ public class ClearSaveDataMenu : MonoBehaviour
     {
         SaveManager.Instance.ClearSave();
         SceneManager.LoadScene("MainMenu");
+
+        // Reset the room dialogues
+        for (int i = 0; i < MMDialogues.seenDialogues.Length; i++)
+            MMDialogues.seenDialogues[i] = false;
     }
 
     private enum MenuState

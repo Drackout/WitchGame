@@ -44,7 +44,7 @@ MonoBehaviour:
     CharEmotion: 0
     Dialogue: '[The woman ignores them and gets closer to Moira]'
   - CharName: 4
-    CharEmotion: 0
+    CharEmotion: 6
     Dialogue: "Moira you say? Moira here did a lovely job. If it wasn\u2019t for
       her this could have definitely gotten ugly! Luckily we were both here right
       Moira?"
@@ -56,7 +56,7 @@ MonoBehaviour:
     Dialogue: Oh, Celinda! Is Moira your new apprentice? Was she helping you with
       the fire?
   - CharName: 4
-    CharEmotion: 0
+    CharEmotion: 5
     Dialogue: "Well no, I guess we were just both here\u2026 right place, right time
       I suppose. But let\u2019s not focus on me when we have a real hero here!"
   - CharName: 1

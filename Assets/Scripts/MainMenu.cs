@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button shopButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private Button deckManagerButton;
+    [SerializeField] private SeenDialogue SeenDiag;
+    [SerializeField] private DialogCreation[] MainMenuDialogList;
 
     private void Start()
     {
@@ -36,7 +38,28 @@ public class MainMenu : MonoBehaviour
 
     private void LoadBattleScene()
     {
-        SceneManager.LoadScene("RequestsScreen");
+        BattleSettings settings = BattleSettings.Instance;
+        //Debug.Log("What stage?: " + settings.getStageIndex());
+        //Debug.Log("was it seen?: " + SeenDiag.seenDialogues[settings.getStageIndex()].ToString());
+
+        // If seen skips automatically
+        if (SeenDiag.seenDialogues[settings.getStageIndex()])
+        {
+            SceneManager.LoadScene("RequestsScreen");
+        }
+        else
+        {
+            if (MainMenuDialogList[settings.getStageIndex()] != null)
+            {
+                DialogueLoader.DialogueToLoad = MainMenuDialogList[settings.getStageIndex()];
+                SeenDiag.seenDialogues[settings.getStageIndex()] = true;
+                SceneManager.LoadScene("DialogueMK");
+            }
+            else
+            {
+                SceneManager.LoadScene("RequestsScreen");
+            }
+        }
     }
 
     private void LoadBestiaryScene()

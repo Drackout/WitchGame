@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_05_Start
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: b388bb0dd1e648d4e88d1027d2fee998, type: 2}
+  Background: {fileID: 21300000, guid: 299f9cc81f00e6e4998f92fae7a9f0c8, type: 3}
+  AllDialogues:
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[Moira wakes up late in the day. She goes to eat something with her
+      grandma and as they chit-chat a bit the TV quickly changes from a soap opera
+      to a news report ] '
+  - CharName: 10
+    CharEmotion: 4
+    Dialogue: "We interrupt this program to warn every person in Lisbon to stay inside
+      and if possible barricade themselves. A big storm is going to hit Lisbon, in
+      Terreiro do Pa\xE7o and there are monsters everywhere!"
+  - CharName: 10
+    CharEmotion: 4
+    Dialogue: "[The television starts showing images of Terreiro do Pa\xE7o, Celinda
+      is alone fighting monsters.]"
+  - CharName: 1
+    CharEmotion: 1
+    Dialogue: "It\u2019s Celinda!"
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: Who?
+  - CharName: 1
+    CharEmotion: 3
+    Dialogue: "It\u2019s my \u2026 don\u2019t worry\u2026 I have to go help her!"
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "WHAT?! Moira are you crazy? It\u2019s a suicide mission, they are
+      recommending everyone to stay inside!"
+  - CharName: 1
+    CharEmotion: 2
+    Dialogue: "I can\u2019t just leave her, she\u2019ll die grandma! "
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "It\u2019s too dangerous honey"
+  - CharName: 1
+    CharEmotion: 3
+    Dialogue: "Sorry Grandma\u2026 you can\u2019t stop me. I\u2019m going!"
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "I know I can\u2019t change your mind\u2026 just be careful okay? "
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: "I promise I\u2019ll be fine."
+  SceneToGo: RequestsScreen

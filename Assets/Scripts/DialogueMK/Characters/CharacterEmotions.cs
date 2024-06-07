@@ -4,6 +4,8 @@ public enum  CharacterEmotions
     Happy,
     Angry,
     Sad,
-    None
+    None,
+    Flattered,
+    Intrigued
 }
 

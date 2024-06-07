@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e523eb5ee7874fa9eb2dd1bea2c66, type: 3}
+  m_Name: C_02_Start
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 0}
+  Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
+  Char2: {fileID: 11400000, guid: b388bb0dd1e648d4e88d1027d2fee998, type: 2}
+  Background: {fileID: 21300000, guid: 299f9cc81f00e6e4998f92fae7a9f0c8, type: 3}
+  AllDialogues:
+  - CharName: 1
+    CharEmotion: 0
+    Dialogue: '[Moira wakes up quite late in the day. Grandma knocks at her door
+      and gets in to talk to her]'
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "I\u2019ve prepared you something to eat, it\u2019s quite late already."
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: You did well yesterday dear.
+  - CharName: 1
+    CharEmotion: 1
+    Dialogue: "Thank you grandma, I\u2019m just trying to do my best."
+  - CharName: 2
+    CharEmotion: 0
+    Dialogue: "Can\u2019t wait to see how you grow, but for that you gotta eat. So
+      get to it!"
+  - CharName: 2
+    CharEmotion: 4
+    Dialogue: '[Grandma closes the door, Moira sits on her desk looking at her computer
+      when suddenly she gets a message]'
+  - CharName: 9
+    CharEmotion: 4
+    Dialogue: That was a pretty tough fight yesterday, but you managed to hold your
+      own.
+  - CharName: 1
+    CharEmotion: 3
+    Dialogue: "Thank you but\u2026 who\u2019s this? "
+  - CharName: 4
+    CharEmotion: 4
+    Dialogue: "Oh sorry\u2026 It\u2019s Celinda dear, don\u2019t forget to save my
+      number!"
+  - CharName: 1
+    CharEmotion: 2
+    Dialogue: '[Moira stays quiet wondering to herself a bit, confused and flustered]'
+  - CharName: 1
+    CharEmotion: 2
+    Dialogue: "I don\u2019t recall giving her my number\u2026 but I was so tired
+      I don\u2019t remember much after the journalists\u2026 "
+  SceneToGo: RequestsScreen

@@ -8,5 +8,10 @@ public enum CharacterList
     NPC_A,
     NPC_B,
     NPC_C,
-    NPC_D
+    NPC_D,
+    Unknown,
+    TV,
+    NPC_E,
+    NPC_F,
+    NPC_G
 }

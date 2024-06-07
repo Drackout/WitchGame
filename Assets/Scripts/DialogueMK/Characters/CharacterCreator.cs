@@ -12,4 +12,6 @@ public class CharacterCreator : Item
     public Sprite img_Angry;
     public Sprite img_Sad;
     public Sprite img_None;
+    public Sprite img_Flattered;
+    public Sprite img_Intrigued;
 }
