@@ -9714,16 +9714,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
+      propertyPath: ShapeModule.arc.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
+      propertyPath: ShapeModule.arc.spread
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 0.0001
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
+      propertyPath: ExternalForcesModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 774
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 13.8
+      value: 41.42
       objectReference: {fileID: 0}
     - target: {fileID: 4264363490865698391, guid: a8d831f5b7202784b9d89b70bea913fc, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
