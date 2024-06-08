@@ -19,41 +19,52 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 1
     Dialogue: '[Moira wakes up quite late in the day. Grandma knocks at her door
       and gets in to talk to her]'
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "I\u2019ve prepared you something to eat, it\u2019s quite late already."
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: You did well yesterday dear.
   - CharName: 1
     CharEmotion: 1
+    BloonEmote: 9
     Dialogue: "Thank you grandma, I\u2019m just trying to do my best."
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: "Can\u2019t wait to see how you grow, but for that you gotta eat. So
       get to it!"
   - CharName: 2
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: '[Grandma closes the door, Moira sits on her desk looking at her computer
       when suddenly she gets a message]'
   - CharName: 9
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: That was a pretty tough fight yesterday, but you managed to hold your
       own.
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 10
     Dialogue: "Thank you but\u2026 who\u2019s this? "
   - CharName: 4
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: "Oh sorry\u2026 It\u2019s Celinda dear, don\u2019t forget to save my
       number!"
   - CharName: 1
     CharEmotion: 2
+    BloonEmote: 0
     Dialogue: '[Moira stays quiet wondering to herself a bit, confused and flustered]'
   - CharName: 1
     CharEmotion: 2
+    BloonEmote: 0
     Dialogue: "I don\u2019t recall giving her my number\u2026 but I was so tired
       I don\u2019t remember much after the journalists\u2026 "
   SceneToGo: RequestsScreen

@@ -19,20 +19,25 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira defeats all the monster, and as she breathes heavily trying
       to recover her energies she hears someone]'
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 10
     Dialogue: Anybody out there?
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "[No one answers\u2026 She looks around but doesn\u2019t see anyone.
       Moira checks her phone again, the requester said he ran away as fast as he
       could\u2026 So who could be lurking around here?]"
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 10
     Dialogue: Hey?
   - CharName: 0
     CharEmotion: 3
+    BloonEmote: 0
     Dialogue: "[No one answers again\u2026 creeped out Moira decided to return home]"
   SceneToGo: MainMenu

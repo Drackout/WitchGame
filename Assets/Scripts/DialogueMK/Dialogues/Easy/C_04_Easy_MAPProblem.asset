@@ -19,14 +19,17 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[After battling the monsters Moira looks around but everyone has left.
       As she heads back home she sees the spot where the civilians were having their
       late night picnic. Next to the wine bottle is a note and some escudos. ] '
   - CharName: 4
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: 'Note: Thanks Moira dear, went past this one and decided to leave it
       to you. The bottle is on me! '
   - CharName: 4
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: 'Many kisses, Celinda. '
   SceneToGo: MainMenu

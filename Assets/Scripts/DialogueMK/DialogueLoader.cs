@@ -20,9 +20,12 @@ public class DialogueLoader : MonoBehaviour
     
     [SerializeField] GameObject charName1;
     [SerializeField] GameObject charName2;
+    [SerializeField] Image imgBloonChar1;
+    [SerializeField] Image imgBloonChar2;
     
     // Gotta be smart
     [SerializeField] TextMeshProUGUI Dialogues;
+    [SerializeField] BloonScriptable BloonScriptList;
 
     int DialoguePage;
     
@@ -55,6 +58,8 @@ public class DialogueLoader : MonoBehaviour
         imgChar2.sprite = DialogueToLoad.Char2.img_None;
         txtChar1.text = DialogueToLoad.Char1.Name;
         txtChar2.text = DialogueToLoad.Char2.Name;
+        imgBloonChar1.sprite = BloonScriptList.img_None;
+        imgBloonChar2.sprite = BloonScriptList.img_None;
         
         DialoguePage = -1;
 
@@ -76,6 +81,7 @@ public class DialogueLoader : MonoBehaviour
 
             string charName = DialogueToLoad.AllDialogues[DialoguePage].CharName.ToString();
             Dialogues.text = DialogueToLoad.AllDialogues[DialoguePage].Dialogue;
+            BloonList actualBloon = DialogueToLoad.AllDialogues[DialoguePage].BloonEmote;
             
             // If the name in the list is the same as one of the objects, use that object 
             // Yes it sux if things aren't as == as should be
@@ -91,12 +97,14 @@ public class DialogueLoader : MonoBehaviour
             if (charName == txtChar1.text)
             {
                 ChangeCharExpression(DialogueToLoad.Char1, DialogueToLoad.Char2, imgChar1, imgChar2);
+                ChangeBloon(actualBloon, imgBloonChar1, imgBloonChar2);
                 charName1.SetActive(true);
                 charName2.SetActive(false);
             }
             else if (charName == txtChar2.text)
             {
                 ChangeCharExpression(DialogueToLoad.Char2, DialogueToLoad.Char1, imgChar2, imgChar1);
+                ChangeBloon(actualBloon, imgBloonChar2, imgBloonChar1);
                 charName1.SetActive(false);
                 charName2.SetActive(true);
             }
@@ -124,11 +132,47 @@ public class DialogueLoader : MonoBehaviour
                 CharToEmote.sprite = CharacterEmote.img_Angry; break;
             case CharacterEmotions.None:
                 CharToEmote.sprite = CharacterEmote.img_None; break;
+            case CharacterEmotions.Intrigued:
+                CharToEmote.sprite = CharacterEmote.img_Intrigued; break;
+            case CharacterEmotions.Flattered:
+                CharToEmote.sprite = CharacterEmote.img_Flattered; break;
             default:
                 CharToEmote.sprite = CharacterEmote.img_Normal; break;
         }
         // If it needs the char not talking to reset to normal
         //CharToNormal.sprite = CharacterNormal.img_Normal; 
+    }
+
+    private void ChangeBloon(BloonList BList, Image CharToBloon, Image BloonToNormal)
+    {
+        switch (BList)
+        {
+            case BloonList.None:
+                CharToBloon.sprite = BloonScriptList.img_None; break;
+            case BloonList.Angry:
+                CharToBloon.sprite = BloonScriptList.img_Angry; break;
+            case BloonList.AngryMark:
+                CharToBloon.sprite = BloonScriptList.img_AngryMark; break;
+            case BloonList.BloonSquare:
+                CharToBloon.sprite = BloonScriptList.img_BloonSquare; break;
+            case BloonList.BloonRound:
+                CharToBloon.sprite = BloonScriptList.img_BloonRound; break;
+            case BloonList.BloonThink:
+                CharToBloon.sprite = BloonScriptList.img_BloonThink; break;
+            case BloonList.BloonSpiky:
+                CharToBloon.sprite = BloonScriptList.img_BloonSpiky; break;
+            case BloonList.Dot:
+                CharToBloon.sprite = BloonScriptList.img_Dot; break;
+            case BloonList.Exclamation:
+                CharToBloon.sprite = BloonScriptList.img_Exclamation; break;
+            case BloonList.Love:
+                CharToBloon.sprite = BloonScriptList.img_Love; break;
+            case BloonList.Question:
+                CharToBloon.sprite = BloonScriptList.img_Question; break;
+            default:
+                CharToBloon.sprite = BloonScriptList.img_None; break;
+        }
+        BloonToNormal.sprite = BloonScriptList.img_None;
     }
 
     public void EndDialogue()

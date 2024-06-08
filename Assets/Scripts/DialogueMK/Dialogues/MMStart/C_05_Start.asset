@@ -19,44 +19,56 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira wakes up late in the day. She goes to eat something with her
       grandma and as they chit-chat a bit the TV quickly changes from a soap opera
       to a news report ] '
   - CharName: 10
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: "We interrupt this program to warn every person in Lisbon to stay inside
       and if possible barricade themselves. A big storm is going to hit Lisbon, in
       Terreiro do Pa\xE7o and there are monsters everywhere!"
   - CharName: 10
     CharEmotion: 4
+    BloonEmote: 0
     Dialogue: "[The television starts showing images of Terreiro do Pa\xE7o, Celinda
       is alone fighting monsters.]"
   - CharName: 1
     CharEmotion: 1
+    BloonEmote: 8
     Dialogue: "It\u2019s Celinda!"
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 10
     Dialogue: Who?
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 0
     Dialogue: "It\u2019s my \u2026 don\u2019t worry\u2026 I have to go help her!"
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: "WHAT?! Moira are you crazy? It\u2019s a suicide mission, they are
       recommending everyone to stay inside!"
   - CharName: 1
     CharEmotion: 2
+    BloonEmote: 0
     Dialogue: "I can\u2019t just leave her, she\u2019ll die grandma! "
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "It\u2019s too dangerous honey"
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 0
     Dialogue: "Sorry Grandma\u2026 you can\u2019t stop me. I\u2019m going!"
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "I know I can\u2019t change your mind\u2026 just be careful okay? "
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 9
     Dialogue: "I promise I\u2019ll be fine."
   SceneToGo: RequestsScreen

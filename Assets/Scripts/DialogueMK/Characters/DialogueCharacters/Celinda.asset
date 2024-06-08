@@ -15,7 +15,7 @@ MonoBehaviour:
   lootPrefab: {fileID: 0}
   Name: Celinda
   img_Normal: {fileID: 21300000, guid: 837ad05db48752f4d8f07e5218bde9ae, type: 3}
-  img_Happy: {fileID: 21300000, guid: 837ad05db48752f4d8f07e5218bde9ae, type: 3}
+  img_Happy: {fileID: 21300000, guid: 2f048f0fafe4c6f43b1d6a9cd067a65e, type: 3}
   img_Angry: {fileID: 21300000, guid: 837ad05db48752f4d8f07e5218bde9ae, type: 3}
   img_Sad: {fileID: 21300000, guid: 837ad05db48752f4d8f07e5218bde9ae, type: 3}
   img_None: {fileID: 21300000, guid: c0713fed9b4b3d244ba749920f74025f, type: 3}
