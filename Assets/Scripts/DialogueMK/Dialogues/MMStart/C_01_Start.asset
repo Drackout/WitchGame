@@ -19,52 +19,65 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Moira! You\u2019ve finally arrived, I was waiting for you."
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Come on in, I\u2019ve already prepared most of your room, all you
       need to do is unpack the rest."
   - CharName: 1
     CharEmotion: 1
+    BloonEmote: 9
     Dialogue: "Grandma! We haven\u2019t talked in so long, how have you been?"
   - CharName: 1
     CharEmotion: 1
+    BloonEmote: 0
     Dialogue: 'Oh and thank you soooo much for helping me settle in! '
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "You already know dear, can\u2019t go all that far nowadays. Oh but
       believe me! I used to go everywhere I could."
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "I still remember all the stories you used to tell me, I guess I couldn\u2019t
       resist staying away from them any longer!"
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "You\u2019re such a sweetheart. Here I'll make you some cookies and
       we ca-."
   - CharName: 10
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "And the fire is still raging on, the firefighters are all positioned
       further ahead to prevent the spread but there\u2019s some fronts here left
       unguarded. We have issued some requests already, hoping some magic users can
       come help."
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: "Oh geez that seems quite troubling, hmm I would go but I can\u2019t
       really help much in my old age."
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "No worries Grandma, I can go! I\u2019m here for a couple of hours
       and I\u2019m already helping out!"
   - CharName: 2
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Yes dear but please be careful, don\u2019t throw yourself at something
       you can\u2019t "
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Don\u2019t worry grandma I got this!"
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "[Moira opens an Internet browser on her computer as fast as she can]
       Let me just check where the fire is\u2026"
   SceneToGo: RequestsScreen

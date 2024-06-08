@@ -19,29 +19,37 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[As the battle ends, the lights flicker, one train stops in the subway,
       the driver comes to talk with Moira]'
   - CharName: 7
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: Oh someone managed to fix this station
   - CharName: 7
     CharEmotion: 0
+    BloonEmote: 10
     Dialogue: Was it you?
   - CharName: 1
     CharEmotion: 1
+    BloonEmote: 0
     Dialogue: Yup, I managed to handle the situation!
   - CharName: 7
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "This station keeps going down recently because of something magic
       related nearby, it\u2019s so annoying! I\u2019m not paid enough for this!"
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 0
     Dialogue: '[Moira starts walking away and thinks to herself]'
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 5
     Dialogue: "I probably shouldn\u2019t stay around, it looks like he\u2019s seeing
       red."
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira waves to the NPC_C and leaves the subway] '
   SceneToGo: MainMenu

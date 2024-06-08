@@ -9,6 +9,9 @@ public class DialogueNameText
     [field:SerializeField]
     public CharacterEmotions CharEmotion;
     
+    [field:SerializeField]
+    public BloonList BloonEmote;
+    
     [field: SerializeField]
     public string Dialogue;
 }

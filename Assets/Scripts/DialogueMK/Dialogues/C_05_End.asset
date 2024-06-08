@@ -19,56 +19,73 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira gets there in a nick of time ]'
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: Celinda?!
   - CharName: 1
     CharEmotion: 2
+    BloonEmote: 0
     Dialogue: '[Moira yells out in the middle of the storm]'
   - CharName: 4
     CharEmotion: 6
+    BloonEmote: 0
     Dialogue: Kid? What are you doing here?!
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "I\u2019m here to help"
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Oh I\u2019m Moira, I\u2026"
   - CharName: 4
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Celinda blasts off one of the monsters]'
   - CharName: 4
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: "It\u2019s too dangerous for you!"
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 6
     Dialogue: "I\u2019m not going to go back without you."
   - CharName: 4
     CharEmotion: 6
+    BloonEmote: 0
     Dialogue: '[Celinda looks around and sees the amount of monsters]'
   - CharName: 4
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: "Fine! Try not to die, I can\u2019t protect you! "
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira pauses for a second to rest, but more monsters start appearing
       ]'
   - CharName: 1
     CharEmotion: 2
+    BloonEmote: 2
     Dialogue: "You guys are really getting on my nerves now\u2026"
   - CharName: 4
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: Look out kid!
   - CharName: 1
     CharEmotion: 0
+    BloonEmote: 0
     Dialogue: '[Moira turns to look at Celinda, three giant monsters appear out of
       nowhere, one is very close to Moira but before she can react he hits her. Moira
       falls to the ground]'
   - CharName: 4
     CharEmotion: 0
+    BloonEmote: 8
     Dialogue: KID!
   - CharName: 1
     CharEmotion: 3
+    BloonEmote: 1
     Dialogue: '[Celinda yells out, but Moira passes out from the attack]'
   SceneToGo: MainMenu
