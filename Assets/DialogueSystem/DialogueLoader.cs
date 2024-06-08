@@ -120,6 +120,9 @@ public class DialogueLoader : MonoBehaviour
 
     private void ChangeCharExpression(CharacterCreator CharacterEmote, CharacterCreator CharacterNormal, Image CharToEmote, Image CharToNormal)
     {
+        Animator anim = CharToEmote.GetComponent<Animator>(); 
+        anim.SetTrigger(DialogueToLoad.AllDialogues[DialoguePage].CharEmotion.ToString());
+
         switch (DialogueToLoad.AllDialogues[DialoguePage].CharEmotion)
         {
             case CharacterEmotions.Normal:
