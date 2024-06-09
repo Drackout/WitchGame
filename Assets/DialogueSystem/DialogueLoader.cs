@@ -85,8 +85,8 @@ public class DialogueLoader : MonoBehaviour
             
             // If the name in the list is the same as one of the objects, use that object 
             // Yes it sux if things aren't as == as should be
-            Debug.Log("charDiag: " + charName + ", txtChar1: " + txtChar1.text);
-            Debug.Log("charDiag: " + charName + ", txtChar2: " + txtChar2.text);
+            //Debug.Log("charDiag: " + charName + ", txtChar1: " + txtChar1.text);
+            //Debug.Log("charDiag: " + charName + ", txtChar2: " + txtChar2.text);
 
             if (charName != "Moira")
             {
@@ -96,6 +96,7 @@ public class DialogueLoader : MonoBehaviour
             // 1st is change, 2nd to put normal (gets weird without)
             if (charName == txtChar1.text)
             {
+                Dialogues.alignment = TextAlignmentOptions.Left;
                 ChangeCharExpression(DialogueToLoad.Char1, DialogueToLoad.Char2, imgChar1, imgChar2);
                 ChangeBloon(actualBloon, imgBloonChar1, imgBloonChar2);
                 charName1.SetActive(true);
@@ -103,6 +104,7 @@ public class DialogueLoader : MonoBehaviour
             }
             else if (charName == txtChar2.text)
             {
+                Dialogues.alignment = TextAlignmentOptions.Right;
                 ChangeCharExpression(DialogueToLoad.Char2, DialogueToLoad.Char1, imgChar2, imgChar1);
                 ChangeBloon(actualBloon, imgBloonChar2, imgBloonChar1);
                 charName1.SetActive(false);
@@ -123,6 +125,7 @@ public class DialogueLoader : MonoBehaviour
         Animator anim = CharToEmote.GetComponent<Animator>(); 
         anim.SetTrigger(DialogueToLoad.AllDialogues[DialoguePage].CharEmotion.ToString());
 
+        // FUTURE: change to be like the baloon one
         switch (DialogueToLoad.AllDialogues[DialoguePage].CharEmotion)
         {
             case CharacterEmotions.Normal:
@@ -160,35 +163,6 @@ public class DialogueLoader : MonoBehaviour
         anim.SetTrigger(BList.ToString());
         
         BloonToNormal.sprite = BloonScriptList.img_None;
-
-        // this is a last resource in case animator goes rogue, don't panic
-        // switch (BList)
-        // {
-        //     case BloonList.None:
-        //         CharToBloon.sprite = BloonScriptList.img_None; break;
-        //     //case BloonList.Angry:
-        //     //    CharToBloon.sprite = BloonScriptList.img_Angry; break;
-        //     case BloonList.AngryMark:
-        //         CharToBloon.sprite = BloonScriptList.img_AngryMark; break;
-        //     case BloonList.BloonSquare:
-        //         CharToBloon.sprite = BloonScriptList.img_BloonSquare; break;
-        //     case BloonList.BloonRound:
-        //         CharToBloon.sprite = BloonScriptList.img_BloonRound; break;
-        //     case BloonList.BloonThink:
-        //         CharToBloon.sprite = BloonScriptList.img_BloonThink; break;
-        //     case BloonList.BloonSpiky:
-        //         CharToBloon.sprite = BloonScriptList.img_BloonSpiky; break;
-        //     //case BloonList.Dot:
-        //     //    CharToBloon.sprite = BloonScriptList.img_Dot; break;
-        //     case BloonList.Exclamation:
-        //         CharToBloon.sprite = BloonScriptList.img_Exclamation; break;
-        //     case BloonList.Love:
-        //         CharToBloon.sprite = BloonScriptList.img_Love; break;
-        //     case BloonList.Question:
-        //         CharToBloon.sprite = BloonScriptList.img_Question; break;
-        //     default:
-        //         CharToBloon.sprite = BloonScriptList.img_None; break;
-        // }
     }
 
     public void EndDialogue()
