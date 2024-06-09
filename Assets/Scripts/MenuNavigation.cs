@@ -23,23 +23,22 @@ public class MenuNavigation : MonoBehaviour
     {
         BattleSettings settings = BattleSettings.Instance;
 
-        Debug.Log("What stage?: " + (settings.getStageIndex()-1));
+        Debug.Log("What stage?: " + (settings.getStageIndex()));
         Debug.Log("difficulty?: " + GetDifficulty.difficultyControl);
 
         if (settings.getStageIndex() == 1 || settings.getStageIndex() == 5)
-            DialogueLoader.DialogueToLoad = CannonDials[settings.getStageIndex()-1];
+        {
+            if (settings.getStageIndex() == 1)
+                DialogueLoader.DialogueToLoad = CannonDials[0];
+            if (settings.getStageIndex() == 5)
+                DialogueLoader.DialogueToLoad = CannonDials[1];
+        }
         else if (GetDifficulty.difficultyControl == "Easy")
             DialogueLoader.DialogueToLoad = EasyDials[settings.getStageIndex()-2];
         else if (GetDifficulty.difficultyControl == "Medium")
             DialogueLoader.DialogueToLoad = NormalDials[settings.getStageIndex()-2];
         else if (GetDifficulty.difficultyControl == "Hard")
             DialogueLoader.DialogueToLoad = HardDials[settings.getStageIndex()-2];
-
-        //if (hasScene.name != "NONE")
-        //{
-        //    DialogueLoader.DialogueToLoad = hasScene; 
-        //    SceneManager.LoadScene("DialogueMK");
-        //}
         else
             LoadMainMenu();
 

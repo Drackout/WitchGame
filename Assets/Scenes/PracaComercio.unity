@@ -37229,6 +37229,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2186270390473514271, guid: 34b71ef15d62cb745b9ad8f858c4302e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186270390473514271, guid: 34b71ef15d62cb745b9ad8f858c4302e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186270390473514271, guid: 34b71ef15d62cb745b9ad8f858c4302e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186270390473514271, guid: 34b71ef15d62cb745b9ad8f858c4302e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5290346448124879816, guid: 34b71ef15d62cb745b9ad8f858c4302e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -45456,7 +45472,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060980485}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2060980487
 Camera:
   m_ObjectHideFlags: 0
