@@ -21,3 +21,7 @@ MonoBehaviour:
   img_None: {fileID: 21300000, guid: c0713fed9b4b3d244ba749920f74025f, type: 3}
   img_Flattered: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}
   img_Intrigued: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}
+  img_Fighting: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}
+  img_NotAmused: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}
+  img_Confident: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}
+  img_Emotional: {fileID: 21300000, guid: 1e2f7c54eb563a448bddfc3ea4491a65, type: 3}

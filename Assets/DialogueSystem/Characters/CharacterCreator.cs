@@ -14,4 +14,8 @@ public class CharacterCreator : Item
     public Sprite img_None;
     public Sprite img_Flattered;
     public Sprite img_Intrigued;
+    public Sprite img_Fighting;
+    public Sprite img_NotAmused;
+    public Sprite img_Confident;
+    public Sprite img_Emotional;
 }

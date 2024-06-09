@@ -6,6 +6,10 @@ public enum  CharacterEmotions
     Sad,
     None,
     Flattered,
-    Intrigued
+    Intrigued,
+    Fighting,
+    Not_Amused,
+    Confident,
+    Emotional
 }
 

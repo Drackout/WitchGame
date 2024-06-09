@@ -31,7 +31,7 @@ MonoBehaviour:
     BloonEmote: 10
     Dialogue: Was it you?
   - CharName: 1
-    CharEmotion: 1
+    CharEmotion: 9
     BloonEmote: 0
     Dialogue: Yup, I managed to handle the situation!
   - CharName: 7

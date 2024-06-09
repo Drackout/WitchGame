@@ -13,5 +13,6 @@ public enum CharacterList
     TV,
     NPC_E,
     NPC_F,
-    NPC_G
+    NPC_G,
+    NPC_H
 }

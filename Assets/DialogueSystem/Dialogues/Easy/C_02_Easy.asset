@@ -27,7 +27,7 @@ MonoBehaviour:
     BloonEmote: 10
     Dialogue: '[She asks with a soft tone] Are they all gone?'
   - CharName: 1
-    CharEmotion: 0
+    CharEmotion: 9
     BloonEmote: 0
     Dialogue: "Yes, sorry for all the commotion, hope I didn\u2019t make too much
       noise."

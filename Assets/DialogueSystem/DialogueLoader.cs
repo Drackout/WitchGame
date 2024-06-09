@@ -139,6 +139,14 @@ public class DialogueLoader : MonoBehaviour
                 CharToEmote.sprite = CharacterEmote.img_Intrigued; break;
             case CharacterEmotions.Flattered:
                 CharToEmote.sprite = CharacterEmote.img_Flattered; break;
+            case CharacterEmotions.Fighting:
+                CharToEmote.sprite = CharacterEmote.img_Fighting; break;
+            case CharacterEmotions.Not_Amused:
+                CharToEmote.sprite = CharacterEmote.img_NotAmused; break;
+            case CharacterEmotions.Confident:
+                CharToEmote.sprite = CharacterEmote.img_Confident; break;
+            case CharacterEmotions.Emotional:
+                CharToEmote.sprite = CharacterEmote.img_Emotional; break;
             default:
                 CharToEmote.sprite = CharacterEmote.img_Normal; break;
         }
@@ -148,34 +156,39 @@ public class DialogueLoader : MonoBehaviour
 
     private void ChangeBloon(BloonList BList, Image CharToBloon, Image BloonToNormal)
     {
-        switch (BList)
-        {
-            case BloonList.None:
-                CharToBloon.sprite = BloonScriptList.img_None; break;
-            case BloonList.Angry:
-                CharToBloon.sprite = BloonScriptList.img_Angry; break;
-            case BloonList.AngryMark:
-                CharToBloon.sprite = BloonScriptList.img_AngryMark; break;
-            case BloonList.BloonSquare:
-                CharToBloon.sprite = BloonScriptList.img_BloonSquare; break;
-            case BloonList.BloonRound:
-                CharToBloon.sprite = BloonScriptList.img_BloonRound; break;
-            case BloonList.BloonThink:
-                CharToBloon.sprite = BloonScriptList.img_BloonThink; break;
-            case BloonList.BloonSpiky:
-                CharToBloon.sprite = BloonScriptList.img_BloonSpiky; break;
-            case BloonList.Dot:
-                CharToBloon.sprite = BloonScriptList.img_Dot; break;
-            case BloonList.Exclamation:
-                CharToBloon.sprite = BloonScriptList.img_Exclamation; break;
-            case BloonList.Love:
-                CharToBloon.sprite = BloonScriptList.img_Love; break;
-            case BloonList.Question:
-                CharToBloon.sprite = BloonScriptList.img_Question; break;
-            default:
-                CharToBloon.sprite = BloonScriptList.img_None; break;
-        }
+        Animator anim = CharToBloon.GetComponent<Animator>(); 
+        anim.SetTrigger(BList.ToString());
+        
         BloonToNormal.sprite = BloonScriptList.img_None;
+
+        // this is a last resource in case animator goes rogue, don't panic
+        // switch (BList)
+        // {
+        //     case BloonList.None:
+        //         CharToBloon.sprite = BloonScriptList.img_None; break;
+        //     //case BloonList.Angry:
+        //     //    CharToBloon.sprite = BloonScriptList.img_Angry; break;
+        //     case BloonList.AngryMark:
+        //         CharToBloon.sprite = BloonScriptList.img_AngryMark; break;
+        //     case BloonList.BloonSquare:
+        //         CharToBloon.sprite = BloonScriptList.img_BloonSquare; break;
+        //     case BloonList.BloonRound:
+        //         CharToBloon.sprite = BloonScriptList.img_BloonRound; break;
+        //     case BloonList.BloonThink:
+        //         CharToBloon.sprite = BloonScriptList.img_BloonThink; break;
+        //     case BloonList.BloonSpiky:
+        //         CharToBloon.sprite = BloonScriptList.img_BloonSpiky; break;
+        //     //case BloonList.Dot:
+        //     //    CharToBloon.sprite = BloonScriptList.img_Dot; break;
+        //     case BloonList.Exclamation:
+        //         CharToBloon.sprite = BloonScriptList.img_Exclamation; break;
+        //     case BloonList.Love:
+        //         CharToBloon.sprite = BloonScriptList.img_Love; break;
+        //     case BloonList.Question:
+        //         CharToBloon.sprite = BloonScriptList.img_Question; break;
+        //     default:
+        //         CharToBloon.sprite = BloonScriptList.img_None; break;
+        // }
     }
 
     public void EndDialogue()

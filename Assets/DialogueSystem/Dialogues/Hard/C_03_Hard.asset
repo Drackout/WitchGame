@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 0}
   Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
-  Char2: {fileID: 11400000, guid: ab8f77e2f1207c544bba6bf76d41d0c3, type: 2}
+  Char2: {fileID: 11400000, guid: 71fa853915c2dae47934db70b6ddafb5, type: 2}
   Background: {fileID: 21300000, guid: 76e691d643e6fd64d9c52dbd9ae67d2c, type: 3}
   AllDialogues:
   - CharName: 1
@@ -26,28 +26,28 @@ MonoBehaviour:
     CharEmotion: 0
     BloonEmote: 0
     Dialogue: "Sorry but\u2026 I still need some help over here."
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
     BloonEmote: 6
     Dialogue: '[The kid starts crying]'
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
-    BloonEmote: 10
+    BloonEmote: 8
     Dialogue: "I'll put a negative review if you don\u2019t help me!"
   - CharName: 1
     CharEmotion: 3
     BloonEmote: 10
     Dialogue: "Don\u2019t worry I'll\u2026 find a way, wait\u2026 how did you even
       get there?"
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
     BloonEmote: 0
     Dialogue: That Tree thing threw me up here!
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
     BloonEmote: 0
     Dialogue: Now I can't get out!
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
     BloonEmote: 6
     Dialogue: '[Starts crying louder] '
