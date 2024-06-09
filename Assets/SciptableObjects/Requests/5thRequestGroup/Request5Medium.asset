@@ -17,5 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15f3179c2e387b847b726e5f92636208, type: 2}
   battleScene: PracaComercio
   location: "Pra\xE7a do Com\xE9rcio"
-  story: 
+  story: There are too many monsters, we need help saving as many people as possible
+    before the storm hits.
   thumbnail: {fileID: 21300000, guid: e098bf5a85391e641b3037ad246c6e6b, type: 3}
