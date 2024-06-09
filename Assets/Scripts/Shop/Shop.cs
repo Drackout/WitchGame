@@ -46,8 +46,8 @@ public class Shop : MonoBehaviour
 
     private void Update()
     {
-        //PlayerResources pr = PlayerResources.Instance;
-        //goldText.text = $"{pr.Gold}";
+        PlayerResources pr = PlayerResources.Instance;
+        goldText.text = $"{pr.Gold}";
     }
     
     private void LoadMainMenu()
