@@ -832,9 +832,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 675.01, y: 500}
-  m_Spacing: {x: 5.3, y: 26.28}
+  m_Spacing: {x: -96.1, y: 4.5}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3
 --- !u!114 &360026906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,7 +2747,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 700}
+  m_SizeDelta: {x: 1782, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998925439
 MonoBehaviour:
@@ -4871,7 +4871,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1260888909}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2687016
+  m_Size: 0.34765333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
