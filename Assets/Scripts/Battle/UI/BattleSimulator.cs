@@ -338,7 +338,6 @@ public class BattleSimulator : MonoBehaviour
                 case DiscardEvent ev:
                     RemoveCardFromHand(ev.Index);
                     // Debug.Log("B");
-                    yield return new WaitForSeconds(0.25f);
                     break;
                 case SlotsEvent ev:
                     slots.Slots = ev.Current;
