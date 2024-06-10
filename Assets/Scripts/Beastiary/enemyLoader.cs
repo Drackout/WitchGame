@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class enemyLoader : MonoBehaviour
 {
     [SerializeField] Image mythImage;
+    [SerializeField] Image mythElementImage;
+    [SerializeField] Image mythStrongImage;
+    [SerializeField] Image mythWeakImage;
     [SerializeField] TMP_Text mythName;
     [SerializeField] TMP_Text mythLore;
     [SerializeField] TMP_Text mythElement;
@@ -14,6 +17,9 @@ public class enemyLoader : MonoBehaviour
     [SerializeField] TMP_Text mythWeak;
     [SerializeField] int numMyth;
     [SerializeField] Sprite[] mythSprites;
+    [SerializeField] Sprite fireElement;
+    [SerializeField] Sprite waterElement;
+    [SerializeField] Sprite grassElement;
 
     IList<enemyList> myths = new List<enemyList>
     {
