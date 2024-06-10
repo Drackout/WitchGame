@@ -695,6 +695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundReplace
       objectReference: {fileID: 0}
+    - target: {fileID: 2159117904924036056, guid: 89580989286653a4cac13f69e7cd2250, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b264dda821c1a24cb09f8319e3db616, type: 3}
     - target: {fileID: 8030319193539369056, guid: 89580989286653a4cac13f69e7cd2250, type: 3}
       propertyPath: m_LocalPosition.x
       value: 941.51276

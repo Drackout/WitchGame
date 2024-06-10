@@ -1271,11 +1271,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1124222692831606564, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
   m_PrefabInstance: {fileID: 366347675}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &366347681 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1887749214639191212, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
-  m_PrefabInstance: {fileID: 366347675}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &366347682 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7246429975892184952, guid: 6927a286ac989aa4e8610b6c65797079, type: 3}
@@ -2214,7 +2209,7 @@ PrefabInstance:
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: shieldAnimator
       value: 
-      objectReference: {fileID: 366347681}
+      objectReference: {fileID: 0}
     - target: {fileID: 5945844036399449933, guid: 1a21cf13f51107a438d0a25c501b09c6, type: 3}
       propertyPath: player3dAnimator
       value: 
@@ -4451,6 +4446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundReplace
       objectReference: {fileID: 0}
+    - target: {fileID: 2159117904924036056, guid: 89580989286653a4cac13f69e7cd2250, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b264dda821c1a24cb09f8319e3db616, type: 3}
     - target: {fileID: 8030319193539369056, guid: 89580989286653a4cac13f69e7cd2250, type: 3}
       propertyPath: m_LocalPosition.x
       value: 941.51276
