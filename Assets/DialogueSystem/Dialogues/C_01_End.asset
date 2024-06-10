@@ -28,7 +28,7 @@ MonoBehaviour:
     Bloon: 0
     Dialogue: '[Moira takes a deep breath composing herself as journalists rush towards
       her]'
-  - CharName: 13
+  - CharName: 6
     CharEmotion: 4
     Emote: 0
     Bloon: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     Emote: 0
     Bloon: 0
     Dialogue: "Oh I\u2019m Moira, I\u2026"
-  - CharName: 13
+  - CharName: 6
     CharEmotion: 4
     Emote: 0
     Bloon: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     Emote: 0
     Bloon: 0
     Dialogue: '[Moira is  surprised, but plays along]'
-  - CharName: 13
+  - CharName: 6
     CharEmotion: 0
     Emote: 0
     Bloon: 0

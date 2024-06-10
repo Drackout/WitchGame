@@ -6,14 +6,14 @@ public enum CharacterList
     Helder,
     Celinda,
     Maria,
-    Jornalista2,
+    Jornalista,
     Rosa,
     Ben,
     Unknown,
     TV,
     Artur,
     Nicole,
-    Jornalista1,
+    Jornalista2,
     Tiquinho,
     Notes
 }

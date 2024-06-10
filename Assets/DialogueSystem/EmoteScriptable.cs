@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName="EmoteList_", menuName="ScriptableObjects/Dialogue/EmoteList")]

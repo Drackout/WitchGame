@@ -53,4 +53,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WitchAgram.unity
     guid: 996524596e7e3e54880f91e374fbed02
+  - enabled: 1
+    path: Assets/Scenes/LisbonStreet.unity
+    guid: 8637d5082347f754692a688c5c05043d
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom.unity
+    guid: 0016e4bbc3bdff349b3d598b21e65f58
+  - enabled: 1
+    path: Assets/Scenes/Metro.unity
+    guid: f5f5a32410791714386190955c40e116
   m_configObjects: {}

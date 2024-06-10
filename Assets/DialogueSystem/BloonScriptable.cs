@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName="BloonList_", menuName="ScriptableObjects/Dialogue/BloonList")]
