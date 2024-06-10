@@ -48,7 +48,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
     [SerializeField] private LootWindow lootWindow;
-    [SerializeField] private TMP_Text encounterCounter;
+    [SerializeField] private EncounterCounter encounterCounter;
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
@@ -176,12 +176,14 @@ public class BattleSimulator : MonoBehaviour
         int totalEncounters = request.encounters.Count();
         int counter = 0;
 
-        SetEncounterCounter(counter, totalEncounters);
+        encounterCounter.SetTotal(totalEncounters);
 
         var creatureSources = new Dictionary<Battler, EnemyCreature>();
 
         foreach (EncounterData encounter in request.encounters)
         {
+            encounterCounter.SetCounter(counter);
+
             IList<Creature> creatures = new List<Creature>();
             foreach (EnemyCreature c in encounter.enemies)
             {
@@ -210,7 +212,6 @@ public class BattleSimulator : MonoBehaviour
                 yield break;
             }
             counter += 1;
-            SetEncounterCounter(counter, totalEncounters);
         }
 
         FinishRequest();
@@ -732,11 +733,6 @@ public class BattleSimulator : MonoBehaviour
             NmbReceived.SetText("+" + nreceived.ToString());
 
         Debug.Log(dmgHeal+ ": "+reactionType);
-    }
-
-    private void SetEncounterCounter(int current, int total)
-    {
-        encounterCounter.text = $"{current + 1}/{total}";
     }
 
     public void PlayAnimation(string animString, string element, string reaction)
