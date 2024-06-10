@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 0}
   Char1: {fileID: 11400000, guid: 6044b345c5be26144973cd56cafe39f3, type: 2}
-  Char2: {fileID: 11400000, guid: d29eb86762f7f5f4aa98331aef0079a0, type: 2}
+  Char2: {fileID: 11400000, guid: f0e27e20bcfa82345883ed4b3b1633c9, type: 2}
   Background: {fileID: 21300000, guid: b60f675905cacdf4e9cd51ae77640fc9, type: 3}
   AllDialogues:
   - CharName: 1
@@ -24,14 +24,14 @@ MonoBehaviour:
     Dialogue: '[After battling the monsters Moira looks around but everyone has left.
       As she heads back home she sees the spot where the civilians were having their
       late night picnic. Next to the wine bottle is a note and some escudos. ] '
-  - CharName: 4
-    CharEmotion: 4
+  - CharName: 15
+    CharEmotion: 0
     Emote: 0
     Bloon: 0
-    Dialogue: 'Note: Thanks Moira dear, went past this one and decided to leave it
-      to you. The bottle is on me! '
-  - CharName: 4
-    CharEmotion: 4
+    Dialogue: 'Thanks Moira dear, went past this one and decided to leave it to you.
+      The bottle is on me! '
+  - CharName: 15
+    CharEmotion: 0
     Emote: 5
     Bloon: 2
     Dialogue: 'Many kisses, Celinda. '
