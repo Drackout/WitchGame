@@ -272,7 +272,6 @@ public class BattleSimulator : MonoBehaviour
                         sliders = cardContainer.transform.GetChild(i).GetComponentInChildren<Slider>();
                         sliders.value = 0;
                     }
-                    yield return new WaitForSeconds(0.25f);
                     break;
                 case MoveEvent ev:
                     // ENEMY TURN (1 by 1)
