@@ -500,6 +500,9 @@ public class BattleSimulator : MonoBehaviour
         UICardCreation uiCard = cardButton.GetComponent<UICardCreation>();
         uiCard.Create(card);
 
+        Animator animator = cardButton.GetComponent<Animator>();
+        //animator.SetTrigger("Drawn");
+
         BattleCard battleCard = cardButton.GetComponent<BattleCard>();
         battleCard.CurrentCard = card;
 
