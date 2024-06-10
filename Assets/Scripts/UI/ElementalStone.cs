@@ -8,6 +8,10 @@ public class ElementalStone : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private Element element;
     [SerializeField] private TMP_Text amountText;
 
+    //Audio
+    [SerializeField] private AudioClip GrabSoundClip;
+    [SerializeField] private AudioClip DisgrabSoundClip;
+
     public Element Element => element;
 
     public void UpdateAmount()
@@ -19,6 +23,7 @@ public class ElementalStone : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnBeginDrag(PointerEventData eventData)
     {
         OnStonePickup?.Invoke(element);
+        SoundFXManager.instance.PlaySoundFXClip(GrabSoundClip, transform, 1f);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -28,6 +33,7 @@ public class ElementalStone : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnEndDrag(PointerEventData eventData)
     {
         OnStoneDrop?.Invoke();
+        SoundFXManager.instance.PlaySoundFXClip(DisgrabSoundClip, transform, 1f);
     }
 
     private void Start()

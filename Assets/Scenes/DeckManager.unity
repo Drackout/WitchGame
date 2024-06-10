@@ -1501,6 +1501,14 @@ PrefabInstance:
       propertyPath: element
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: GrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 091d30b261b056843bb34531adbf88cb, type: 3}
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: DisgrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 35c9d1d4c06f33f419ffceaa8bcc08ad, type: 3}
     - target: {fileID: 2629532314620746953, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 71
@@ -1924,6 +1932,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419dfd512a2b71143bc5911a768b2856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabSoundClip: {fileID: 8300000, guid: 091d30b261b056843bb34531adbf88cb, type: 3}
+  DisgrabSoundClip: {fileID: 8300000, guid: 35c9d1d4c06f33f419ffceaa8bcc08ad, type: 3}
+  DropSoundClip:
+  - {fileID: 8300000, guid: f75f1a284e67ed74aa09aeee531ac847, type: 3}
+  - {fileID: 8300000, guid: dd3aa756087a6cd4bbaed6d8066fd08f, type: 3}
+  - {fileID: 8300000, guid: 29fff7611b8cdb448bb54fc62b7e3144, type: 3}
+  - {fileID: 8300000, guid: 9b1a74697933d104990d551ed3f37dab, type: 3}
 --- !u!1 &817369159
 GameObject:
   m_ObjectHideFlags: 0
@@ -4687,6 +4702,14 @@ PrefabInstance:
       propertyPath: element
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: GrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 091d30b261b056843bb34531adbf88cb, type: 3}
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: DisgrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 35c9d1d4c06f33f419ffceaa8bcc08ad, type: 3}
     - target: {fileID: 2629532314620746953, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_SizeDelta.x
       value: 85
@@ -5323,6 +5346,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 785562598}
     m_Modifications:
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: GrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 091d30b261b056843bb34531adbf88cb, type: 3}
+    - target: {fileID: -8889394442578568744, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
+      propertyPath: DisgrabSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 35c9d1d4c06f33f419ffceaa8bcc08ad, type: 3}
     - target: {fileID: 2629532314620746953, guid: 356b6f8d4d42bdd40b43f5033a7a0dab, type: 3}
       propertyPath: m_SizeDelta.x
       value: 85

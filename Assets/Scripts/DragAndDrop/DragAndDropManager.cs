@@ -6,6 +6,12 @@ public class DragAndDropManager : MonoBehaviour
     private IDictionary<string, IList<DropArea>> areaGroups;
     private GameObject tracker;
 
+    //Audio
+    [SerializeField] private AudioClip GrabSoundClip;
+    [SerializeField] private AudioClip DisgrabSoundClip;
+    
+    [SerializeField] private AudioClip[] DropSoundClip;
+
     public void Register(Draggable component, string group)
     {
         component.OnDragStart += HandleDragStart;
@@ -45,6 +51,7 @@ public class DragAndDropManager : MonoBehaviour
         string group = draggable.Group;
 
         Debug.Log($"DragAndDropManager: started drag; <{group}>");
+        SoundFXManager.instance.PlaySoundFXClip(GrabSoundClip, transform, 1f);
 
         if (!areaGroups.ContainsKey(group))
         {
@@ -60,11 +67,14 @@ public class DragAndDropManager : MonoBehaviour
         tracker = draggable.CreateTracker();
         tracker.transform.SetParent(transform);
         tracker.AddComponent<FollowMouse>();
+
+        
     }
 
     private void HandleDragEnd(Draggable draggable)
     {
         Debug.Log($"DragAndDropManager: drag end; <{draggable.gameObject.name}>");
+        SoundFXManager.instance.PlaySoundFXClip(DisgrabSoundClip, transform, 1f);
 
         DisableAllAreas();
 
@@ -78,7 +88,7 @@ public class DragAndDropManager : MonoBehaviour
     private void HandleDrop(GameObject obj)
     {
         DisableAllAreas();
-
+        SoundFXManager.instance.PlayRandomSoundFXClip(DropSoundClip, transform, 1.0f);
         if (tracker != null)
         {
             Destroy(tracker);
