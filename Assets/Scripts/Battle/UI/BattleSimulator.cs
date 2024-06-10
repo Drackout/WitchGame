@@ -48,6 +48,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private FallbackDropArea fallbackDropArea;
     [SerializeField] private CardCounter playedCardsCounter;
     [SerializeField] private LootWindow lootWindow;
+    [SerializeField] private TMP_Text encounterCounter;
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
@@ -172,7 +173,10 @@ public class BattleSimulator : MonoBehaviour
         IList<Card> cards = new List<Card>(PlayerResources.Instance.Decks[0]);
         Witch witch = new Witch("Witch", 20, cards, 5, 4, 3);
 
+        int totalEncounters = request.encounters.Count();
         int counter = 0;
+
+        SetEncounterCounter(counter, totalEncounters);
 
         var creatureSources = new Dictionary<Battler, EnemyCreature>();
 
@@ -206,6 +210,7 @@ public class BattleSimulator : MonoBehaviour
                 yield break;
             }
             counter += 1;
+            SetEncounterCounter(counter, totalEncounters);
         }
 
         FinishRequest();
@@ -730,6 +735,11 @@ public class BattleSimulator : MonoBehaviour
         Debug.Log(dmgHeal+ ": "+reactionType);
     }
 
+    private void SetEncounterCounter(int current, int total)
+    {
+        encounterCounter.text = $"{current + 1}/{total}";
+    }
+
     public void PlayAnimation(string animString, string element, string reaction)
     {
         if (reaction == "shield")
@@ -738,7 +748,7 @@ public class BattleSimulator : MonoBehaviour
             shieldString = animString + element;
             //Debug.Log("REEE: " + shieldString);
 
-            shieldAnimator.SetTrigger(shieldString);    
+            shieldAnimator.SetTrigger(shieldString);
         }
 
         if (animString == "Heal")
