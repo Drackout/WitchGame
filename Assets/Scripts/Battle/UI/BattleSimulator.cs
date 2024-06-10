@@ -101,6 +101,8 @@ public class BattleSimulator : MonoBehaviour
             var uiCard = cardObject.GetComponent<UICardCreation>();
             uiCard.SetCancelEventListener(() => HandleCancelClick(iCopy, uiCard));
 
+            cardObject.gameObject.SetActive(false);
+
             var battleCard = cardObject.GetComponent<BattleCard>();
             battleCard.Index = iCopy;
             battleCard.OnCardBeginDrag += HandleCardBeginDrag;
@@ -259,7 +261,7 @@ public class BattleSimulator : MonoBehaviour
                     }
                     break;
                 case DrawEvent ev:
-                    ShowHand(battle);
+                    AddCardToHand(ev.Card);
                     Slider sliders;
                     //Debug.Log("Aaa: " + ev);
 
@@ -270,7 +272,7 @@ public class BattleSimulator : MonoBehaviour
                         sliders = cardContainer.transform.GetChild(i).GetComponentInChildren<Slider>();
                         sliders.value = 0;
                     }
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     break;
                 case MoveEvent ev:
                     // ENEMY TURN (1 by 1)
@@ -312,7 +314,7 @@ public class BattleSimulator : MonoBehaviour
                     //Debug.Log($"Element: {ev.Card.Element}");
                     logText = $"Played {ev.Card}";
                     // Material cardPlayerMat = ev.Card.ima ent<Material>()
-                    ShowHand(battle);
+                    RemoveCardFromHand(ev.Index);
                     break;
                 }
                 case HoldEvent ev:
@@ -330,13 +332,12 @@ public class BattleSimulator : MonoBehaviour
                 }
                     break;
                 case DiscardEvent ev:
-                    ShowHand(battle);
+                    RemoveCardFromHand(ev.Index);
                     // Debug.Log("B");
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     break;
                 case SlotsEvent ev:
                     slots.Slots = ev.Current;
-                    ShowHand(battle);
 
                     // Force all cards to starting position
                     for (int i = 0; i < cardContainer.transform.childCount; i++)
@@ -453,6 +454,15 @@ public class BattleSimulator : MonoBehaviour
 
                     playerShield.Shield = battle.Witch.Shield;
                     break;
+                case StartTurnEvent ev:
+                {
+                    if (ev.Battler == battle.Witch)
+                    {
+                        PanelAnimator.ResetTrigger("PanelHide");
+                        PanelAnimator.SetTrigger("PanelShow");
+                    }
+                    break;
+                }
                 case EndTurnEvent ev:
                 {
                     playedCardsCounter.Set(0);
@@ -473,35 +483,35 @@ public class BattleSimulator : MonoBehaviour
         }
     }
 
-    private void ShowHand(Battle battle)
+    private void AddCardToHand(Card card)
     {
-        // PanelAnimator.SetTrigger("PanelShow");
-        //Debug.Log("ShowHand 1 ");
-        for (int i = 0; i < cardContainer.transform.childCount; i++)
+        GameObject cardButton = null;
+        foreach (Transform t in cardContainer.transform)
         {
-            Transform cardButton = cardContainer.transform.GetChild(i);
-            if (i < battle.Witch.Hand.Count && battle.Witch.Hand[i].Type != CardType.None)
+            if (!t.gameObject.activeSelf)
             {
-                int iCopy = i;
-                cardButton.gameObject.SetActive(true);
-                Card c = battle.Witch.Hand[i];
-                UICardCreation uicard = cardButton.GetComponent<UICardCreation>();
-                uicard.Create(c);
-                BattleCard battleCard = cardButton.GetComponent<BattleCard>();
-                battleCard.CurrentCard = c;
-
-                // When all cards in hand put panel back up
-                if (i+1 == 1)
-                {
-                    PanelAnimator.ResetTrigger("PanelHide");
-                    PanelAnimator.SetTrigger("PanelShow");
-                }
-            }
-            else
-            {
-                cardButton.gameObject.SetActive(false);
+                cardButton = t.gameObject;
+                break;
             }
         }
+
+        cardButton.SetActive(true);
+
+        UICardCreation uiCard = cardButton.GetComponent<UICardCreation>();
+        uiCard.Create(card);
+
+        BattleCard battleCard = cardButton.GetComponent<BattleCard>();
+        battleCard.CurrentCard = card;
+
+        drawPileTotalText.text = $"{battle.Witch.Deck.Count}";
+        discardPileTotalText.text = $"{battle.Witch.DiscardPile.Count}";
+    }
+
+    private void RemoveCardFromHand(int index)
+    {
+        GameObject cardButton = cardContainer.transform.GetChild(index).gameObject;
+        cardButton.SetActive(false);
+
         drawPileTotalText.text = $"{battle.Witch.Deck.Count}";
         discardPileTotalText.text = $"{battle.Witch.DiscardPile.Count}";
     }

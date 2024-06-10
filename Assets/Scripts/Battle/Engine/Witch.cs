@@ -55,6 +55,8 @@ public class Witch : Battler
             yield return ev;
         }
 
+        yield return new StartTurnEvent(this);
+
         while (GetHandCount() > 0 && actionsDone < MaxActions)
         {
             actionDone = false;
