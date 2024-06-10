@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class enemyLoader : MonoBehaviour
 {
+    [SerializeField] Image mythImageShadow;
     [SerializeField] Image mythImage;
     [SerializeField] Image mythElementImage;
     [SerializeField] Image mythStrongImage;
@@ -17,6 +18,10 @@ public class enemyLoader : MonoBehaviour
     [SerializeField] Sprite fireElement;
     [SerializeField] Sprite waterElement;
     [SerializeField] Sprite grassElement;
+    [SerializeField] Animator anim;
+    [SerializeField] Animator animUI;
+    [SerializeField] TMP_Text numAndTotal;
+ 
 
     IList<enemyList> myths = new List<enemyList>
     {
@@ -31,23 +36,35 @@ public class enemyLoader : MonoBehaviour
     void Start()
     {
         numMyth = 0;
-        updateInfo(numMyth);        
+        updateInfo(numMyth);   
     }
 
     public void advancePage()
     {
+        animUI.SetTrigger("Right");
         if (numMyth < (myths.Count-1))
         {
             numMyth++;
+            updateInfo(numMyth);    
+        }
+        else if(numMyth == (myths.Count-1))
+        {
+            numMyth = 0;
             updateInfo(numMyth);    
         }
     }
 
     public void retrocessPage()
     {
+        animUI.SetTrigger("Left");
         if (numMyth > 0)
         {
             numMyth--;
+            updateInfo(numMyth);    
+        }
+        else if(numMyth == 0)
+        {
+            numMyth = (myths.Count-1);
             updateInfo(numMyth);    
         }
     }
@@ -56,6 +73,7 @@ public class enemyLoader : MonoBehaviour
 
     void updateInfo(int numMyth)
     {
+        numAndTotal.text = (numMyth+1).ToString() + "/" + myths.Count;
         mythName.text = myths[numMyth].Name;
         mythLore.text = myths[numMyth].Lore;
 
@@ -63,7 +81,9 @@ public class enemyLoader : MonoBehaviour
         mythStrongImage.sprite = ChooseElement(myths[numMyth].Strong);
         mythWeakImage.sprite = ChooseElement(myths[numMyth].Weak);
 
+        mythImageShadow.sprite = mythSprites[numMyth];
         mythImage.sprite = mythSprites[numMyth];
+        anim.SetTrigger(numMyth.ToString());
     }
 
     private Sprite ChooseElement(Element elem)
