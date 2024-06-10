@@ -31,18 +31,10 @@ public class enemyLoader : MonoBehaviour
         new enemyList("2", "Adamastor's Tentacle", "A threat to Portuguese sailors during the XV century. This creature was responsible for most of the shipwrecks in “Cabo das Tormentas” or as it is known now Cape of good hope. \n\n Sailors believe to have defeated Adamastor when they traversed the cape, but he is just waiting for his revenge.", Element.Water, Element.Fire, Element.Grass)
     };
 
-
-    // Start is called before the first frame update
     void Start()
     {
         numMyth = 0;
         updateInfo(numMyth);        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void advancePage()
