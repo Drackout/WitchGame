@@ -12,6 +12,7 @@ public class Witch : Battler
     public InputResponse Input { get; set; }
     public IList<int> HeldCards { get; private set; }
     public int MaxActions { get; private set; }
+    public IList<Card> IncludeInNextHand { get; private set; }
 
     public IList<Card> Hand => hand;
     public IList<Card> DiscardPile => discardPile;
@@ -42,6 +43,7 @@ public class Witch : Battler
         discardPile = new List<Card>();
 
         HeldCards = new List<int>();
+        IncludeInNextHand = new List<Card>();
     }
 
     public override IEnumerable<BattleEvent> Act()
@@ -152,12 +154,21 @@ public class Witch : Battler
         // Throw out remaining cards, except held ones
         for (int i = 0; i < Slots; i++)
         {
-            if (hand[i].Type != CardType.None && !HeldCards.Contains(i))
+            if (hand[i].Type != CardType.None)
             {
                 Card c = hand[i];
-                foreach (BattleEvent ev in Discard(i))
+                if (HeldCards.Contains(i))
                 {
-                    yield return ev;
+                    IncludeInNextHand.Add(c);
+                    hand[i] = Card.None;
+                    yield return new DiscardEvent(c, i);
+                }
+                else
+                {
+                    foreach (BattleEvent ev in Discard(i))
+                    {
+                        yield return ev;
+                    }
                 }
             }
         }
@@ -273,7 +284,13 @@ public class Witch : Battler
         {
             RefillDeck();
 
-            if (deck.Count > 0 && hand[i].Type == CardType.None)
+            if (IncludeInNextHand.Count > 0)
+            {
+                hand[i] = IncludeInNextHand[i];
+                IncludeInNextHand.RemoveAt(0);
+                yield return new DrawEvent(hand[i]);
+            }
+            else if (deck.Count > 0 && hand[i].Type == CardType.None)
             {
                 Card c = deck[0];
                 hand[i] = c;
