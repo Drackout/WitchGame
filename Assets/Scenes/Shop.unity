@@ -3417,6 +3417,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.8862745
       objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1181372096}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AudioPlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3047449449335719066, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 10.5
@@ -3456,11 +3484,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2299706881393631061, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1181372096}
   m_SourcePrefab: {fileID: 100100000, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
 --- !u!224 &913125443 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1604636632595101770, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
+  m_PrefabInstance: {fileID: 913125442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &913125444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2299706881393631061, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
   m_PrefabInstance: {fileID: 913125442}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &919780243
@@ -5020,12 +5056,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2559376228003643746, guid: 9e9a57ffe77862246966ba212f1a48e5, type: 3}
   m_PrefabInstance: {fileID: 913125442}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 913125444}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1181372096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913125444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9928fa0111d37604eb0c566a03cb7cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundClip: {fileID: 8300000, guid: 459c1f1f739fdb14aad4abb5b51f29e5, type: 3}
 --- !u!1 &1186546904
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,7 +8848,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1260888909}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.6730769
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
