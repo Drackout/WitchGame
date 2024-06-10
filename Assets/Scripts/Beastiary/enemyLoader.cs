@@ -12,9 +12,6 @@ public class enemyLoader : MonoBehaviour
     [SerializeField] Image mythWeakImage;
     [SerializeField] TMP_Text mythName;
     [SerializeField] TMP_Text mythLore;
-    [SerializeField] TMP_Text mythElement;
-    [SerializeField] TMP_Text mythStrong;
-    [SerializeField] TMP_Text mythWeak;
     [SerializeField] int numMyth;
     [SerializeField] Sprite[] mythSprites;
     [SerializeField] Sprite fireElement;
@@ -61,11 +58,24 @@ public class enemyLoader : MonoBehaviour
     {
         mythName.text = myths[numMyth].Name;
         mythLore.text = myths[numMyth].Lore;
-        mythElement.text = myths[numMyth].Element.ToString();
-        mythStrong.text = myths[numMyth].Strong.ToString();
-        mythWeak.text = myths[numMyth].Weak.ToString();
+
+        mythElementImage.sprite = ChooseElement(myths[numMyth].Element);
+        mythStrongImage.sprite = ChooseElement(myths[numMyth].Strong);
+        mythWeakImage.sprite = ChooseElement(myths[numMyth].Weak);
 
         mythImage.sprite = mythSprites[numMyth];
+    }
+
+    private Sprite ChooseElement(Element elem)
+    {
+        if (elem == Element.Fire)
+            return fireElement;
+        if (elem == Element.Water)
+            return waterElement;
+        if (elem == Element.Grass)
+            return grassElement;
+
+        return fireElement;
     }
 
 }
