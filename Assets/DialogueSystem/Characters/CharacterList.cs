@@ -14,5 +14,6 @@ public enum CharacterList
     Artur,
     Nicole,
     Patricia,
-    Tiquinho
+    Tiquinho,
+    Notes
 }
