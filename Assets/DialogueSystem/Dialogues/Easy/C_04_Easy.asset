@@ -32,7 +32,7 @@ MonoBehaviour:
       The bottle is on me! '
   - CharName: 15
     CharEmotion: 0
-    Emote: 5
-    Bloon: 2
+    Emote: 0
+    Bloon: 0
     Dialogue: 'Many kisses, Celinda. '
   SceneToGo: MainMenu
