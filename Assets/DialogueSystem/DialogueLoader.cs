@@ -20,11 +20,14 @@ public class DialogueLoader : MonoBehaviour
     
     [SerializeField] GameObject charName1;
     [SerializeField] GameObject charName2;
+    [SerializeField] Image imgEmoteChar1;
+    [SerializeField] Image imgEmoteChar2;
     [SerializeField] Image imgBloonChar1;
     [SerializeField] Image imgBloonChar2;
     
     // Gotta be smart
     [SerializeField] TextMeshProUGUI Dialogues;
+    [SerializeField] EmoteScriptable EmoteScriptList;
     [SerializeField] BloonScriptable BloonScriptList;
 
     int DialoguePage;
@@ -38,12 +41,12 @@ public class DialogueLoader : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Left Click");
+            //Debug.Log("Left Click");
             UpdateDialogue(true);
         }
         else if(Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Right Click");
+            //Debug.Log("Right Click");
             UpdateDialogue(false);
         }
     }
@@ -58,8 +61,8 @@ public class DialogueLoader : MonoBehaviour
         imgChar2.sprite = DialogueToLoad.Char2.img_None;
         txtChar1.text = DialogueToLoad.Char1.Name;
         txtChar2.text = DialogueToLoad.Char2.Name;
-        imgBloonChar1.sprite = BloonScriptList.img_None;
-        imgBloonChar2.sprite = BloonScriptList.img_None;
+        imgBloonChar1.sprite = EmoteScriptList.img_None;
+        imgBloonChar2.sprite = EmoteScriptList.img_None;
         
         DialoguePage = -1;
 
@@ -81,7 +84,8 @@ public class DialogueLoader : MonoBehaviour
 
             string charName = DialogueToLoad.AllDialogues[DialoguePage].CharName.ToString();
             Dialogues.text = DialogueToLoad.AllDialogues[DialoguePage].Dialogue;
-            BloonList actualBloon = DialogueToLoad.AllDialogues[DialoguePage].BloonEmote;
+            EmoteList actualEmote = DialogueToLoad.AllDialogues[DialoguePage].Emote;
+            BloonList actualBloon = DialogueToLoad.AllDialogues[DialoguePage].Bloon;
             
             // If the name in the list is the same as one of the objects, use that object 
             // Yes it sux if things aren't as == as should be
@@ -98,6 +102,7 @@ public class DialogueLoader : MonoBehaviour
             {
                 Dialogues.alignment = TextAlignmentOptions.Left;
                 ChangeCharExpression(DialogueToLoad.Char1, DialogueToLoad.Char2, imgChar1, imgChar2);
+                ChangeEmote(actualEmote, imgEmoteChar1, imgEmoteChar2);
                 ChangeBloon(actualBloon, imgBloonChar1, imgBloonChar2);
                 charName1.SetActive(true);
                 charName2.SetActive(false);
@@ -106,6 +111,7 @@ public class DialogueLoader : MonoBehaviour
             {
                 Dialogues.alignment = TextAlignmentOptions.Right;
                 ChangeCharExpression(DialogueToLoad.Char2, DialogueToLoad.Char1, imgChar2, imgChar1);
+                ChangeEmote(actualEmote, imgEmoteChar2, imgEmoteChar1);
                 ChangeBloon(actualBloon, imgBloonChar2, imgBloonChar1);
                 charName1.SetActive(false);
                 charName2.SetActive(true);
@@ -125,7 +131,6 @@ public class DialogueLoader : MonoBehaviour
         Animator anim = CharToEmote.GetComponent<Animator>(); 
         anim.SetTrigger(DialogueToLoad.AllDialogues[DialoguePage].CharEmotion.ToString());
 
-        // FUTURE: change to be like the baloon one
         switch (DialogueToLoad.AllDialogues[DialoguePage].CharEmotion)
         {
             case CharacterEmotions.Normal:
@@ -157,11 +162,52 @@ public class DialogueLoader : MonoBehaviour
         //CharToNormal.sprite = CharacterNormal.img_Normal; 
     }
 
+    private void ChangeEmote(EmoteList EList, Image CharToEmote, Image EmoteToNormal)
+    {
+        // DEACTIVATED CAUSE CONFLICTS 
+        // Update all of them to just an animator in the end?
+        //Animator anim = CharToBloon.GetComponent<Animator>(); 
+        //anim.SetTrigger(BList.ToString());
+
+        switch (EList)
+        {
+            case EmoteList.Angry:
+                CharToEmote.sprite = EmoteScriptList.img_Angry; break;
+            case EmoteList.AngryMark:
+                CharToEmote.sprite = EmoteScriptList.img_AngryMark; break;
+            case EmoteList.Dot:
+                CharToEmote.sprite = EmoteScriptList.img_Dot; break;
+            case EmoteList.Exclamation:
+                CharToEmote.sprite = EmoteScriptList.img_Exclamation; break;
+            case EmoteList.Love:
+                CharToEmote.sprite = EmoteScriptList.img_Love; break;
+            case EmoteList.Question:
+                CharToEmote.sprite = EmoteScriptList.img_Question; break;
+            case EmoteList.None:
+                CharToEmote.sprite = EmoteScriptList.img_None; break;
+            default:
+                CharToEmote.sprite = EmoteScriptList.img_None; break;
+        }
+        EmoteToNormal.sprite = EmoteScriptList.img_None;
+    }
+
     private void ChangeBloon(BloonList BList, Image CharToBloon, Image BloonToNormal)
     {
-        Animator anim = CharToBloon.GetComponent<Animator>(); 
-        anim.SetTrigger(BList.ToString());
-        
+        switch (BList)
+        {
+            case BloonList.BloonRound:
+                CharToBloon.sprite = BloonScriptList.img_BloonRound; break;
+            case BloonList.BloonSquare:
+                CharToBloon.sprite = BloonScriptList.img_BloonSquare; break;
+            case BloonList.BloonSpiky:
+                CharToBloon.sprite = BloonScriptList.img_BloonSpiky; break;
+            case BloonList.BloonThink:
+                CharToBloon.sprite = BloonScriptList.img_BloonThink; break;
+            case BloonList.None:
+                CharToBloon.sprite = BloonScriptList.img_None; break;
+            default:
+                CharToBloon.sprite = BloonScriptList.img_None; break;
+        }
         BloonToNormal.sprite = BloonScriptList.img_None;
     }
 

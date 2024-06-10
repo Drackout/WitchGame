@@ -19,49 +19,60 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: '[A person shows up right as Moira is leaving]'
   - CharName: 4
-    CharEmotion: 5
-    BloonEmote: 0
+    CharEmotion: 7
+    Emote: 0
+    Bloon: 0
     Dialogue: "Ok just a quick one, no stress\u2026"
   - CharName: 1
     CharEmotion: 1
-    BloonEmote: 10
+    Emote: 6
+    Bloon: 2
     Dialogue: Oh, Celinda? Hi there, how are you doing!
   - CharName: 4
     CharEmotion: 6
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: "Moira, didn\u2019t know you were here, guess you beat me to it."
   - CharName: 1
     CharEmotion: 3
-    BloonEmote: 1
+    Emote: 1
+    Bloon: 2
     Dialogue: "Oh sorry I hope it\u2019s not a problem\u2026"
   - CharName: 4
     CharEmotion: 0
-    BloonEmote: 9
+    Emote: 0
+    Bloon: 0
     Dialogue: 'Problem? Oh dear you just spared me some work, don''t worry about
       it. Made me '
   - CharName: 1
     CharEmotion: 1
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: Oh ok I see.
   - CharName: 4
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: "Keep training, you\u2019re getting there I can see it, you\u2019re
       special kiddo."
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 9
+    Emote: 5
+    Bloon: 2
     Dialogue: 'Oh thank you! '
   - CharName: 4
-    CharEmotion: 0
-    BloonEmote: 0
+    CharEmotion: 5
+    Emote: 0
+    Bloon: 0
     Dialogue: "Well if there aren\u2019t any more monsters I should get going, goodbye
       dear"
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: Bye !
   SceneToGo: MainMenu

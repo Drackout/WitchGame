@@ -19,40 +19,49 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: '[Finishing the fight, a kid hanging on top of the ceiling lights makes
       itself noticeable]'
-  - CharName: 11
+  - CharName: 14
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 4
+    Bloon: 1
     Dialogue: "Sorry but\u2026 I still need some help over here."
   - CharName: 14
     CharEmotion: 0
-    BloonEmote: 6
+    Emote: 1
+    Bloon: 2
     Dialogue: '[The kid starts crying]'
   - CharName: 14
     CharEmotion: 0
-    BloonEmote: 8
+    Emote: 0
+    Bloon: 0
     Dialogue: "I'll put a negative review if you don\u2019t help me!"
   - CharName: 1
     CharEmotion: 3
-    BloonEmote: 10
+    Emote: 2
+    Bloon: 2
     Dialogue: "Don\u2019t worry I'll\u2026 find a way, wait\u2026 how did you even
       get there?"
   - CharName: 14
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: That Tree thing threw me up here!
   - CharName: 14
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 4
+    Bloon: 2
     Dialogue: Now I can't get out!
   - CharName: 14
     CharEmotion: 0
-    BloonEmote: 6
+    Emote: 1
+    Bloon: 2
     Dialogue: '[Starts crying louder] '
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 1
+    Emote: 0
+    Bloon: 0
     Dialogue: '[Moira helps the kid out of there and returns home]'
   SceneToGo: MainMenu

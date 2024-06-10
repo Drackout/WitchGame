@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SeenDialogue_MainMenu
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 0}
-  seenDialogues: 010100000100
+  seenDialogues: 000000000000
   difficultyControl: Easy

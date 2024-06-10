@@ -19,29 +19,35 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: '[After fighting a bunch of monsters a woman appears ]'
   - CharName: 1
     CharEmotion: 1
-    BloonEmote: 9
+    Emote: 5
+    Bloon: 2
     Dialogue: Oh! You must be the person who asked me here. Everything is handled
       now.
   - CharName: 12
     CharEmotion: 0
-    BloonEmote: 1
+    Emote: 1
+    Bloon: 2
     Dialogue: '[The woman sighs.] '
   - CharName: 12
     CharEmotion: 0
-    BloonEmote: 1
+    Emote: 0
+    Bloon: 0
     Dialogue: "That leaves me\u202610 minutes to get there? And I still need to go
       grab my girlfriend too. Ugh\u2026"
   - CharName: 1
     CharEmotion: 3
-    BloonEmote: 10
+    Emote: 6
+    Bloon: 2
     Dialogue: "Did she even\u2026notice I\u2019m here?"
   - CharName: 1
     CharEmotion: 3
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: '[The woman goes back to checking her phone and ignores Moira as she
       leaves]'
   SceneToGo: MainMenu

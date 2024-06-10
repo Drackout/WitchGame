@@ -19,16 +19,19 @@ MonoBehaviour:
   AllDialogues:
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 0
+    Emote: 0
+    Bloon: 0
     Dialogue: "[After battling the monsters Moira looks around but no one is there.
       She finds the \u201CI <3 Lisboa\u201D shirt in the middle of the sidewalk.
       ] "
   - CharName: 1
     CharEmotion: 0
-    BloonEmote: 2
+    Emote: 0
+    Bloon: 0
     Dialogue: "I swear tourists buy the tackiest things\u2026"
   - CharName: 1
     CharEmotion: 3
-    BloonEmote: 0
+    Emote: 1
+    Bloon: 2
     Dialogue: '[Moira sighs and returns home with the shirt.] '
   SceneToGo: MainMenu

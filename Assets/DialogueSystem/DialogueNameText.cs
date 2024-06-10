@@ -10,7 +10,10 @@ public class DialogueNameText
     public CharacterEmotions CharEmotion;
     
     [field:SerializeField]
-    public BloonList BloonEmote;
+    public EmoteList Emote;
+
+    [field:SerializeField]
+    public BloonList Bloon;
     
     [field: SerializeField]
     public string Dialogue;
