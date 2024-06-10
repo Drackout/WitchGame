@@ -15,6 +15,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SeenDialogue SeenDiag;
     [SerializeField] private DialogCreation[] MainMenuDialogList;
 
+    //Audio
+    [SerializeField] private AudioClip selectSoundClip;
+
     private void Start()
     {
         shuffleDeckToggle.isOn = BattleSettings.Instance.ShuffleDeck;
@@ -64,21 +67,25 @@ public class MainMenu : MonoBehaviour
 
     private void LoadBestiaryScene()
     {
+        SoundFXManager.instance.PlaySoundFXClip(selectSoundClip, transform, 1f);
         SceneManager.LoadScene("Bestiary");
     }
     
     private void LoadShopScene()
     {
+        SoundFXManager.instance.PlaySoundFXClip(selectSoundClip, transform, 1f);
         SceneManager.LoadScene("Shop");
     }
 
     private void LoadCrafting()
     {
+        SoundFXManager.instance.PlaySoundFXClip(selectSoundClip, transform, 1f);
         SceneManager.LoadScene("DeckManager");
     }
 
     private void Quit()
     {
+        SoundFXManager.instance.PlaySoundFXClip(selectSoundClip, transform, 1f);
         Application.Quit();
     }
 }
