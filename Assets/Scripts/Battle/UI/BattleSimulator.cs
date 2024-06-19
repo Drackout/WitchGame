@@ -49,6 +49,9 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField] private CardCounter playedCardsCounter;
     [SerializeField] private LootWindow lootWindow;
     [SerializeField] private EncounterCounter encounterCounter;
+    [SerializeField] private ParticleSystem fireAtacked;
+    [SerializeField] private ParticleSystem waterAtacked;
+    [SerializeField] private ParticleSystem grassAtacked;
 
     //Audio
     [SerializeField] private AudioClip[] damageSoundClips;
@@ -354,6 +357,7 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
+                        Debug.Log("Enemy attack element: " + ev.Element.ToString());
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
                         PlayAnimation("Hurt", "", "");                        
