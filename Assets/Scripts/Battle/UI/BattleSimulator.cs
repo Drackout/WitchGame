@@ -288,7 +288,7 @@ public class BattleSimulator : MonoBehaviour
                     PanelAnimator.SetTrigger("PanelHide");
                     for (int i = 0; i < battle.Creatures.Count; i++)
                     {
-                        Debug.Log("ev.battler1 " + ev.Battler);
+                        Debug.Log("ev.battler1 " + ev.Battler.Name);
                         if (battle.Creatures[i] == ev.Battler)
                         {
                             creatureElements[battle.Creatures[i]].PlayAnimation("Attack", 99);
@@ -357,10 +357,17 @@ public class BattleSimulator : MonoBehaviour
                 case DamageEvent ev:
                     if (ev.Target == battle.Witch)
                     {
-                        Debug.Log("Enemy attack element: " + ev.Element.ToString());
                         playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                         setNumbersReceived(ev.Damage, ev.Element, "Damage", ev.ReactionType);
-                        PlayAnimation("Hurt", "", "");                        
+                        
+                        //Check the enemy, if not use the default
+                        foreach (AnimatorControllerParameter paramName in player3dAnimator.parameters)
+                            //if (paramName.name == "Enemy Name")
+                            //    PlayAnimation("EnemyName", "", "");
+                            //else
+                            if (paramName.name == "Hurt"+ev.Element.ToString())
+                                PlayAnimation("Hurt"+ev.Element.ToString(), "", "");
+
                         //play soundFXs
                         SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
                         yield return new WaitForSeconds(1.0f);
@@ -745,20 +752,12 @@ public class BattleSimulator : MonoBehaviour
         {
             string shieldString;
             shieldString = animString + element;
-            //Debug.Log("REEE: " + shieldString);
 
             shieldAnimator.SetTrigger(shieldString);
         }
 
         if (animString == "Heal")
         {
-            //if (element == "Fire")
-            //    healFire.Play(true);
-            //if (element == "Water")
-            //    healWater.Play(true);
-            //if (element == "Grass")
-            //    healGrass.Play(true);
-
             if (reaction == "-1")
             {
                 reactions.text = "Weak..";
