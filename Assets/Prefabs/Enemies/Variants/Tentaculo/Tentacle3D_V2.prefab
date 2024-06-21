@@ -53,6 +53,14 @@ PrefabInstance:
       value: Tentacle3D_V2
       objectReference: {fileID: 0}
     - target: {fileID: 2262567853514995918, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262567853514995918, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262567853514995918, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.123
       objectReference: {fileID: 0}
@@ -61,9 +69,21 @@ PrefabInstance:
       value: 0.1011
       objectReference: {fileID: 0}
     - target: {fileID: 5782287051207476456, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_Size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782287051207476456, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782287051207476456, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 49770b53eecc56145b4345ba15333ca5, type: 3}
+      objectReference: {fileID: 21300000, guid: 1477a275b8e93b4428947034f0195897, type: 3}
+    - target: {fileID: 5782287051207476456, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6011124606209910177, guid: ded1c52aba3945a4da139b75264c8e1c, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1

@@ -373,7 +373,10 @@ public class BattleSimulator : MonoBehaviour
                         yield return new WaitForSeconds(1.0f);
 
                         if (battle.Witch.Health == 0)
+                        {
+                            PlayAnimation("Death", "", "");
                             PlayAnimation("Loss", "", "");
+                        }
                     }
                     else
                     {
@@ -383,6 +386,7 @@ public class BattleSimulator : MonoBehaviour
                         // Attack animations
                         if (ev.DamageTag == "melee")
                         {
+                            PlayAnimation("AttackSword", "", "");
                             if (ev.Element.ToString() == "Fire")
                                 EnemyAllAnimators[1].SetTrigger("FireSlash");
                             else if (ev.Element.ToString() == "Water")
@@ -395,6 +399,7 @@ public class BattleSimulator : MonoBehaviour
                         }
                         else if (ev.DamageTag == "ranged")
                         {
+                            PlayAnimation("AttackMagic", "", "");
                             if (ev.Element.ToString() == "Fire")
                                 EnemyAllAnimators[1].SetTrigger("FireExplosion");
                             else if (ev.Element.ToString() == "Water")
@@ -438,6 +443,7 @@ public class BattleSimulator : MonoBehaviour
                     // GET SHIELD
                     playerShield.Shield = battle.Witch.Shield;
                     SoundFXManager.instance.PlayRandomSoundFXClip(shieldSoundClips, transform, 1f);
+                    PlayAnimation("Shield", "", "");
                     PlayAnimation("get", ev.Shield.Element.ToString(), "shield");
                     yield return new WaitForSeconds(1.0f);
 
@@ -447,6 +453,7 @@ public class BattleSimulator : MonoBehaviour
                     playerHealthBar.Set(battle.Witch.Health, battle.Witch.MaxHealth);
                     setNumbersReceived(ev.LifeRestored, ev.Element, "Heal", ev.ReactionType);
                     SoundFXManager.instance.PlayRandomSoundFXClip(healSoundClips, transform, 1f);
+                    PlayAnimation("Healing", "", "");
                     PlayAnimation("Heal", ev.Element.ToString(), ev.ReactionType.ToString());
                     break;
                 case BlockEvent ev:

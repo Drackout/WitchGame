@@ -34887,6 +34887,18 @@ PrefabInstance:
       propertyPath: ShapeModule.radius.value
       value: 0.29
       objectReference: {fileID: 0}
+    - target: {fileID: 6545178549310372987, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.36358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545178549310372987, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.36358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545178549310372987, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.36358
+      objectReference: {fileID: 0}
     - target: {fileID: 8331431599108386743, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
       propertyPath: m_Name
       value: Fire_Explosion
@@ -34894,6 +34906,18 @@ PrefabInstance:
     - target: {fileID: 8331431599108386743, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851944617494405312, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851944617494405312, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851944617494405312, guid: 05ed1d6cf6f65f345baba2061db2451b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35063,6 +35087,18 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8731710166602571520, guid: 7a867bd1caf00dd4099bff1ad5fd0d01, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731710166602571520, guid: 7a867bd1caf00dd4099bff1ad5fd0d01, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731710166602571520, guid: 7a867bd1caf00dd4099bff1ad5fd0d01, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35205,6 +35241,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3237210762829323489}
     m_Modifications:
+    - target: {fileID: 1242386361746601292, guid: 065632d5a5499774a91e823410a2f918, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242386361746601292, guid: 065632d5a5499774a91e823410a2f918, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242386361746601292, guid: 065632d5a5499774a91e823410a2f918, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5560186891306705576, guid: 065632d5a5499774a91e823410a2f918, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.3
