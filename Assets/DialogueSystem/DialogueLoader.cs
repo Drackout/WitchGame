@@ -100,7 +100,7 @@ public class DialogueLoader : MonoBehaviour
             // 1st is change, 2nd to put normal (gets weird without)
             if (charName == txtChar1.text)
             {
-                Dialogues.alignment = TextAlignmentOptions.Left;
+                //Dialogues.alignment = TextAlignmentOptions.Left;
                 ChangeCharExpression(DialogueToLoad.Char1, DialogueToLoad.Char2, imgChar1, imgChar2);
                 ChangeEmote(actualEmote, imgEmoteChar1, imgEmoteChar2);
                 ChangeBloon(actualBloon, imgBloonChar1, imgBloonChar2);
@@ -109,7 +109,7 @@ public class DialogueLoader : MonoBehaviour
             }
             else if (charName == txtChar2.text)
             {
-                Dialogues.alignment = TextAlignmentOptions.Right;
+                //Dialogues.alignment = TextAlignmentOptions.Right;
                 ChangeCharExpression(DialogueToLoad.Char2, DialogueToLoad.Char1, imgChar2, imgChar1);
                 ChangeEmote(actualEmote, imgEmoteChar2, imgEmoteChar1);
                 ChangeBloon(actualBloon, imgBloonChar2, imgBloonChar1);
